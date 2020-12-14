@@ -1,0 +1,35 @@
+name: Publish npm package
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Get tag name
+      id: tagName
+      run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+    # Setup .npmrc file to publish to npm
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+      with:
+        token: '${{ secrets.GITHUB_TOKEN }}'
+    - name: Install node packages
+      run: npm install
+    - name: Set package version
+      run: npm version ${{ steps.tagName.outputs.tag }}
+    - name: Build index
+      run: npm run cti
+    - name: Build project
+      run: npm run build
+    - name: Run tests with coverage
+      run: npm test
+    - name: Publish package
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
