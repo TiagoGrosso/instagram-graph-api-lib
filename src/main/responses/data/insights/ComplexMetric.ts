@@ -2,6 +2,14 @@ import { AbstractMetric } from './AbstractMetric';
 import { MetricValue, BasicInsightsMetricData } from './InsightsMetricData';
 
 /**
+ * Type to represent a complex metric value.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
+export type ComplexMetricValue = { [key: string]: number };
+
+/**
  * Class to represent a complex metric.
  *
  * As a metric class, it expects to receive an array of values.
@@ -11,11 +19,11 @@ import { MetricValue, BasicInsightsMetricData } from './InsightsMetricData';
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 0.1.0
  */
-export class ComplexMetric extends AbstractMetric<MetricValue<{ [key: string]: number }>[]> {
+export class ComplexMetric extends AbstractMetric<MetricValue<ComplexMetricValue>[]> {
     /**
      * The value.
      */
-    private value: { [key: string]: number };
+    private value: ComplexMetricValue;
 
     /**
      * The end time.
@@ -27,7 +35,7 @@ export class ComplexMetric extends AbstractMetric<MetricValue<{ [key: string]: n
      *
      * @param data the metric data.
      */
-    constructor(data: BasicInsightsMetricData<MetricValue<{ [key: string]: number }>[]>) {
+    constructor(data: BasicInsightsMetricData<MetricValue<ComplexMetricValue>[]>) {
         super(data);
         this.value = this.metricData.values[0].value;
         this.endTime = new Date(this.metricData.values[0].end_time);
@@ -38,7 +46,7 @@ export class ComplexMetric extends AbstractMetric<MetricValue<{ [key: string]: n
      *
      * @returns the value of the metric.
      */
-    public getValue(): { [key: string]: number } {
+    public getValue(): ComplexMetricValue {
         return this.value;
     }
 
@@ -126,8 +134,8 @@ export class ComplexMetric extends AbstractMetric<MetricValue<{ [key: string]: n
      *
      * @returns the entries that match the provided expression.
      */
-    public getByExpression(expression: (pair: [key: string, value: number]) => boolean): { [key: string]: number } {
-        let filtered: { [key: string]: number } = {};
+    public getByExpression(expression: (pair: [key: string, value: number]) => boolean): ComplexMetricValue {
+        let filtered: ComplexMetricValue = {};
 
         Object.entries(this.value)
             .filter(expression)
@@ -143,7 +151,7 @@ export class ComplexMetric extends AbstractMetric<MetricValue<{ [key: string]: n
      *
      * @returns the entries of the values that are greater than the provided limit.
      */
-    public getByGreaterThan(limit: number): { [key: string]: number } {
+    public getByGreaterThan(limit: number): ComplexMetricValue {
         return this.getByExpression(([, value]) => value > limit);
     }
 
@@ -154,7 +162,7 @@ export class ComplexMetric extends AbstractMetric<MetricValue<{ [key: string]: n
      *
      * @returns the entries of the values that are greater than or equal to the provided limit.
      */
-    public getByGreaterThanOrEqualTo(limit: number): { [key: string]: number } {
+    public getByGreaterThanOrEqualTo(limit: number): ComplexMetricValue {
         return this.getByExpression(([, value]) => value >= limit);
     }
 
@@ -165,7 +173,7 @@ export class ComplexMetric extends AbstractMetric<MetricValue<{ [key: string]: n
      *
      * @returns the entries of the values that are equal than the provided limit.
      */
-    public getByLessThan(limit: number): { [key: string]: number } {
+    public getByLessThan(limit: number): ComplexMetricValue {
         return this.getByExpression(([, value]) => value < limit);
     }
 
@@ -176,7 +184,7 @@ export class ComplexMetric extends AbstractMetric<MetricValue<{ [key: string]: n
      *
      * @returns the entries of the values that are greater than or equal to the provided limit.
      */
-    public getByLessThanOrEqualTo(limit: number): { [key: string]: number } {
+    public getByLessThanOrEqualTo(limit: number): ComplexMetricValue {
         return this.getByExpression(([, value]) => value <= limit);
     }
 
@@ -187,7 +195,7 @@ export class ComplexMetric extends AbstractMetric<MetricValue<{ [key: string]: n
      *
      * @returns the entries of the provided keys.
      */
-    public getByKeys(...keys: string[]): { [key: string]: number } {
+    public getByKeys(...keys: string[]): ComplexMetricValue {
         return this.getByExpression(([key]) => keys.includes(key));
     }
 }

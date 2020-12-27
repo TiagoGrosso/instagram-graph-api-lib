@@ -1,6 +1,6 @@
 import { BasicInsightsMetricData, MetricValue } from '../../data/insights/InsightsMetricData';
 import { AbstractInsightsResponse } from '../../AbstractInsightsResponse';
-import { ComplexMetric } from '../../data/insights/ComplexMetric';
+import { ComplexMetric, ComplexMetricValue } from '../../data/insights/ComplexMetric';
 
 /**
  * Class that represents a response from a Page Insights request for Lifetime metrics.
@@ -14,7 +14,7 @@ export class PageInsightsLifetimeMetricResponse extends AbstractInsightsResponse
      *
      * @param body the body of the response.
      */
-    constructor(body: { data: BasicInsightsMetricData<MetricValue<{ [key: string]: number }>[]>[] }) {
+    constructor(body: { data: BasicInsightsMetricData<MetricValue<ComplexMetricValue>[]>[] }) {
         super(body.data.map((elem) => new ComplexMetric(elem)));
     }
 }
