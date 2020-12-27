@@ -1,8 +1,9 @@
-import { PageOption, LifetimeMetric, MetricPeriod, WeekAndMonthMetric } from "../main/Enums";
-import { BasicInsightsMetricData, MetricValue } from "../main/responses/data/insights/InsightsMetricData";
-import { MediaData } from "../main/responses/data/MediaData";
-import { PageInfoData } from "../main/responses/data/PageInfoData";
-import { PagingData } from "../main/responses/data/Paging";
+import { PageOption, LifetimeMetric, MetricPeriod, WeekAndMonthMetric } from '../main/Enums';
+import { BasicInsightsMetricData, MetricValue } from '../main/responses/data/insights/InsightsMetricData';
+import { ComplexMetricValue } from '../main/responses/data/insights/ComplexMetric';
+import { MediaData } from '../main/responses/data/MediaData';
+import { PageInfoData } from '../main/responses/data/PageInfoData';
+import { PagingData } from '../main/responses/data/Paging';
 
 /**
  * A set of constants used in tests.
@@ -131,7 +132,7 @@ export class TestConstants {
     /**
      * A dummy lifetime metric data.
      */
-    static readonly COMPLEX_METRIC_DATA: BasicInsightsMetricData<MetricValue<{ [key: string]: number }>[]>[] = [
+    static readonly COMPLEX_METRIC_DATA: BasicInsightsMetricData<MetricValue<ComplexMetricValue>[]>[] = [
         {
             name: LifetimeMetric.AUDIENCE_COUNTRY,
             period: MetricPeriod.LIFETIME,
