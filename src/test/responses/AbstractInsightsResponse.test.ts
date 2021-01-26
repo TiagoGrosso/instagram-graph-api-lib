@@ -1,6 +1,6 @@
 import { WeekAndMonthMetric } from '../../main/Enums';
-import { AbstractInsightsResponse } from '../../main/responses/AbstractInsightsResponse';
-import { SimpleMetric } from '../../main/responses/data/insights/SimpleMetric';
+import { AbstractInsightsResponse } from '../../main/requests/AbstractInsightsResponse';
+import { SimpleMetric } from '../../main/requests/data/insights/SimpleMetric';
 import { TestConstants } from '../TestConstants';
 
 describe('AbstractInsightsResponse', () => {

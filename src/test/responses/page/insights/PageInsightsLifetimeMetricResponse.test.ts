@@ -1,4 +1,4 @@
-import { PageInsightsLifetimeMetricResponse } from '../../../../main/responses/page/insights/PageInsightsLifetimeMetricResponse';
+import { PageInsightsLifetimeMetricResponse } from '../../../../main/requests/page/insights/PageInsightsLifetimeMetricResponse';
 import { TestConstants } from '../../../TestConstants';
 
 describe('PageInsightsLifetimeMetricResponse', () => {

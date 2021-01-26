@@ -15,7 +15,7 @@ export enum UserField {
     MEDIA_COUNT = 'media_count',
     NAME = 'name',
     PROFILE_PICTURE_URL = 'profile_picture_url',
-    USERNAME = 'username'
+    USERNAME = 'username',
 }
 
 // ! Profile Insights
@@ -30,16 +30,20 @@ export enum UserField {
 */
 
 export enum DayMetric {
+    EMAIL_CONTACTS = 'email_contacts', // Total number of taps on the email link in the IG User's profile.
     FOLLOWER_COUNT = 'follower_count', // Total number of new followers each day within the specified range.
-    IMPRESSIONS = 'impressions', // Total number of times the IG User's IG Media objects have been viewed. 
+    GET_DIRECTIONS_CLICKS = 'get_directions_clicks', // Total number of taps on the directions link in the IG User's profile.
+    IMPRESSIONS = 'impressions', // Total number of times the IG User's IG Media objects have been viewed.
+    PHONE_CALL_CLICKS = 'phone_call_clicks', // Total number of taps on the call link in the IG User's profile.
     PROFILE_VIEWS = 'profile_views', // Total number of users who have viewed the IG User's profile.
-    REACH = 'reach', // Total number of unique users who have viewed at least one of the IG User's IG Media. 
-    WEBSITE_CLICKS = 'website_clicks' // Total number of taps on the website link in the IG User's profile.
+    REACH = 'reach', // Total number of unique users who have viewed at least one of the IG User's IG Media.
+    TEXT_MESSAGE_CLICKS = 'text_message_clicks', // Total number of taps on the text message link in the IG User's profile.
+    WEBSITE_CLICKS = 'website_clicks', // Total number of taps on the website link in the IG User's profile.
 }
 
 export enum WeekAndMonthMetric {
-    IMPRESSIONS = 'impressions', // Total number of times the IG User's IG Media objects have been viewed. 
-    REACH = 'reach', // Total number of unique users who have viewed at least one of the IG User's IG Media. 
+    IMPRESSIONS = 'impressions', // Total number of times the IG User's IG Media objects have been viewed.
+    REACH = 'reach', // Total number of unique users who have viewed at least one of the IG User's IG Media.
 }
 
 export enum LifetimeMetric {
@@ -47,14 +51,14 @@ export enum LifetimeMetric {
     AUDIENCE_COUNTRY = 'audience_country', // The country of the IG User's followers
     AUDIENCE_GENDER_AGE = 'audience_gender_age', // The gender and age distribution of the IG User's followers.
     AUDIENCE_LOCALE = 'audience_locale', // The locales by country codes of the IG User's followers
-    ONLINE_FOLLOWERS = 'online_followers' // Total number of the IG User's followers who were online during the specified range.
+    ONLINE_FOLLOWERS = 'online_followers', // Total number of the IG User's followers who were online during the specified range.
 }
 
 export enum MetricPeriod {
     DAY = 'day',
     WEEK = 'week',
     MONTH = 'days_28',
-    LIFETIME = 'lifetime'
+    LIFETIME = 'lifetime',
 }
 
 // ! Media Info
@@ -92,7 +96,7 @@ export enum PostMetric {
     ENGAGEMENT = 'engagement', // Total number of likes and IG Comments on the IG Media object.
     IMPRESSIONS = 'impressions', // Total number of times the IG Media object has been seen.
     REACH = 'reach', // Total number of unique Instagram accounts that have seen the IG Media object.
-    SAVED = 'saved' // Total number of unique Instagram accounts that have saved the IG Media object.
+    SAVED = 'saved', // Total number of unique Instagram accounts that have saved the IG Media object.
 }
 
 export enum StoryMetric {
@@ -101,12 +105,12 @@ export enum StoryMetric {
     REACH = 'reach', // Total number of unique Instagram accounts that have seen the story IG Media object.
     REPLIES = 'replies', // Total number of replies (IG Comments) on the story IG Media object.
     TAPS_FORWARD = 'taps_forward', // Total number of taps to see this story IG Media object's next photo or video.
-    TAPS_BACK = 'taps_back' // Total number of taps to see this story IG Media object's previous photo or video.
+    TAPS_BACK = 'taps_back', // Total number of taps to see this story IG Media object's previous photo or video.
 }
 
 // ! Other
 
 export enum PageOption {
     BEFORE = 'before',
-    AFTER = 'after'
+    AFTER = 'after',
 }

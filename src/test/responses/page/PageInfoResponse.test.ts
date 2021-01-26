@@ -1,4 +1,4 @@
-import { PageInfoResponse } from '../../../main/responses/page/PageInfoResponse';
+import { PageInfoResponse } from '../../../main/requests/page/pageInfo/PageInfoResponse';
 import { TestConstants } from '../../TestConstants';
 
 describe('PageInfoResponse', () => {

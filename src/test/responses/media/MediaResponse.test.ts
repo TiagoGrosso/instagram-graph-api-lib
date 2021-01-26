@@ -1,9 +1,9 @@
-import { MediaResponse } from '../../../main/responses/media/MediaResponse';
+import { MediaResponse } from '../../../main/requests/media/info/MediaResponse';
 import { TestConstants } from '../../TestConstants';
 
 describe('MediaResponse', () => {
     let fullResponse: MediaResponse = new MediaResponse(TestConstants.FULL_MEDIA_DATA);
-    let partialResponse: MediaResponse = new MediaResponse(TestConstants.PARTIAL_MEDIA_DATA);
+    let partialResponse: MediaResponse = new MediaResponse(TestConstants.BARE_MEDIA_DATA);
 
     it('Gets the data', () => {
         expect(fullResponse.getData()).toEqual(TestConstants.FULL_MEDIA_DATA);

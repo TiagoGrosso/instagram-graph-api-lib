@@ -1,5 +1,5 @@
-import { Paging } from '../../../../main/responses/data/Paging';
-import { PageInsightsTimeLimitedMetricResponse } from '../../../../main/responses/page/insights/PageInsightsTimeLimitedMetricResponse';
+import { Paging } from '../../../../main/requests/data/Paging';
+import { PageInsightsTimeLimitedMetricResponse } from '../../../../main/requests/page/insights/PageInsightsTimeLimitedMetricResponse';
 import { TestConstants } from '../../../TestConstants';
 
 describe('PageInsightsLifetimeMetricResponse', () => {
