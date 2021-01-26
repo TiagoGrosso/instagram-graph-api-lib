@@ -1,5 +1,5 @@
-import { MediaInsightsResponse } from '../../../main/requests/media/insights/MediaInsightsResponse';
-import { TestConstants } from './../../TestConstants';
+import { MediaInsightsResponse } from '../../../../main/requests/media/insights/MediaInsightsResponse';
+import { TestConstants } from './../../../TestConstants';
 
 describe('MediaInsightsResponse', () => {
     let response: MediaInsightsResponse = new MediaInsightsResponse({

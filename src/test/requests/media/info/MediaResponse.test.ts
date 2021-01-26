@@ -1,5 +1,5 @@
-import { MediaResponse } from '../../../main/requests/media/info/MediaResponse';
-import { TestConstants } from '../../TestConstants';
+import { MediaResponse } from '../../../../main/requests/media/info/MediaResponse';
+import { TestConstants } from '../../../TestConstants';
 
 describe('MediaResponse', () => {
     let fullResponse: MediaResponse = new MediaResponse(TestConstants.FULL_MEDIA_DATA);

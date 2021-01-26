@@ -1,5 +1,5 @@
-import { PageInfoResponse } from '../../../main/requests/page/pageInfo/PageInfoResponse';
-import { TestConstants } from '../../TestConstants';
+import { PageInfoResponse } from '../../../../main/requests/page/pageInfo/PageInfoResponse';
+import { TestConstants } from '../../../TestConstants';
 
 describe('PageInfoResponse', () => {
     let response: PageInfoResponse = new PageInfoResponse(TestConstants.PAGE_INFO_DATA);

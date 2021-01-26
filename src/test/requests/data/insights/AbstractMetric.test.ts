@@ -1,5 +1,5 @@
 import { AbstractMetric } from '../../../../main/requests/data/insights/AbstractMetric';
-import { MetricValue } from '../../../../main/requests/data/insights/InsightsMetricData';
+import { MetricValue } from '../../../../main/requests/data/insights/BasicInsightsMetricData';
 import { TestConstants } from '../../../TestConstants';
 
 describe('AbstractMetric', () => {

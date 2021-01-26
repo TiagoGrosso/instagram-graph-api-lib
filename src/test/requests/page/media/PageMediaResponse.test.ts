@@ -1,6 +1,6 @@
-import { TestConstants } from '../../TestConstants';
-import { PageMediaResponse } from '../../../main/requests/page/media/PageMediaResponse';
-import { Paging } from '../../../main/requests/data/Paging';
+import { TestConstants } from '../../../TestConstants';
+import { PageMediaResponse } from '../../../../main/requests/page/media/PageMediaResponse';
+import { Paging } from '../../../../main/requests/data/Paging';
 
 describe('PageMediaResponse', () => {
     let response: PageMediaResponse = new PageMediaResponse({
