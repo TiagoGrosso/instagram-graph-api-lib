@@ -18,15 +18,6 @@ export class GetMediaInfoResponse extends AbstractResponse<MediaData> {
     }
 
     /**
-     * Gets the data of the response.
-     *
-     * @returns the data of the response.
-     */
-    public getData(): MediaData {
-        return this.data;
-    }
-
-    /**
      * Gets the id of the media object.
      *
      * @returns the id of the media object.

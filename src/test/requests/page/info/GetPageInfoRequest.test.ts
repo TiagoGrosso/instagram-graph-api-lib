@@ -1,7 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { Constants } from '../../../../main/Constants';
-import { UserField } from '../../../../main/Enums';
+import { PageField } from '../../../../main/Enums';
 import { GetPageInfoRequest } from '../../../../main/requests/page/info/GetPageInfoRequest';
 import { GetPageInfoResponse } from '../../../../main/requests/page/info/GetPageInfoResponse';
 import { TestConstants } from '../../../TestConstants';
@@ -10,8 +10,8 @@ describe('GetPageInfoRequest', () => {
     let request: GetPageInfoRequest = new GetPageInfoRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID,
-        UserField.BIOGRAPHY,
-        UserField.PROFILE_PICTURE_URL
+        PageField.BIOGRAPHY,
+        PageField.PROFILE_PICTURE_URL
     );
     let requestAllFields: GetPageInfoRequest = new GetPageInfoRequest(
         TestConstants.ACCESS_TOKEN,
@@ -19,12 +19,12 @@ describe('GetPageInfoRequest', () => {
     );
 
     it('Builds the config', () => {
-        let fields: string = `${UserField.BIOGRAPHY},${UserField.PROFILE_PICTURE_URL}`;
+        let fields: string = `${PageField.BIOGRAPHY},${PageField.PROFILE_PICTURE_URL}`;
 
         expect(request.config().params.fields).toEqual(fields);
         expect(request.config().method).toEqual('GET');
         expect(request.config().url).toEqual(`/${TestConstants.PAGE_ID}`);
-        expect(requestAllFields.config().params.fields).toEqual(Object.values(UserField).join(','));
+        expect(requestAllFields.config().params.fields).toEqual(Object.values(PageField).join(','));
     });
 
     let mock = new MockAdapter(axios);

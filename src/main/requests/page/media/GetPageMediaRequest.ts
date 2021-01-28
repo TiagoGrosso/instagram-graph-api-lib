@@ -11,10 +11,16 @@ export class GetPageMediaRequest extends AbstractGetMediaRequest<GetPageMediaRes
         this.pageId = pageId;
     }
 
+    /**
+     * @inheritdoc
+     */
     protected url(): string {
         return `/${this.pageId}/media`;
     }
 
+    /**
+     * @inheritdoc
+     */
     protected parseResponse(response: AxiosResponse<any>): GetPageMediaResponse {
         return new GetPageMediaResponse(response.data);
     }

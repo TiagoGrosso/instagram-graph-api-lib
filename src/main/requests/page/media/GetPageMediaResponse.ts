@@ -25,15 +25,6 @@ export class GetPageMediaResponse extends AbstractResponse<MediaData[]> {
     }
 
     /**
-     * Gets the data of the response.
-     *
-     * @returns the data of the response.
-     */
-    public getData(): MediaData[] {
-        return this.data;
-    }
-
-    /**
      * Gets the paging of the response.
      *
      * @returns the paging of the response.

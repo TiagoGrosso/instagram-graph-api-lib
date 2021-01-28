@@ -3,10 +3,13 @@ import { AbstractGetInsightsResponse } from '../../AbstractGetInsightsResponse';
 import { AbstractRequest } from '../../AbstractRequest';
 
 /**
- * Abstract builder for Page Insights Requests.
+ * An abstract class to represent Page Insights Get Requests.
+ *
+ * @param T the type of the metrics of the request.
+ * @param R the type of the response.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since 0.1.0
+ * @since `next.release`
  */
 export abstract class AbstractGetPageInsightsRequest<
     T extends DayMetric | WeekAndMonthMetric | LifetimeMetric,
@@ -28,7 +31,7 @@ export abstract class AbstractGetPageInsightsRequest<
         super(accessToken);
         this.pageId = pageId;
         this.params.metric = Array.from(metrics).join(',');
-        this.params.period = this.getPeriod();
+        this.params.period = this.period();
     }
 
     /**
@@ -38,5 +41,10 @@ export abstract class AbstractGetPageInsightsRequest<
         return `/${this.pageId}/insights`;
     }
 
-    protected abstract getPeriod(): MetricPeriod;
+    /**
+     * Gets the metric period.
+     *
+     * @returns the metric period.
+     */
+    protected abstract period(): MetricPeriod;
 }

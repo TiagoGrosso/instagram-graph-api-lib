@@ -1,23 +1,45 @@
 import { AxiosResponse } from 'axios';
 import { GetPageInfoResponse } from './GetPageInfoResponse';
 import { AbstractRequest } from '../../AbstractRequest';
-import { UserField } from '../../../Enums';
+import { PageField } from '../../../Enums';
 
+/**
+ * A request that gets information about a page.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
 export class GetPageInfoRequest extends AbstractRequest<GetPageInfoResponse> {
-    private userId: string;
+    /**
+     * The page id.
+     */
+    private pageId: string;
 
-    constructor(accessToken: string, userId: string, ...fields: UserField[]) {
+    /**
+     * The constructor.
+     *
+     * @param accessToken the access token.
+     * @param pageId the page id.
+     * @param fields the fields to retrieve from the API. If no field is specified, all are retrieved.
+     */
+    constructor(accessToken: string, pageId: string, ...fields: PageField[]) {
         super(accessToken);
-        this.userId = userId;
-        let fieldsSet: Set<UserField> = fields.length > 0 ? new Set(fields) : new Set(Object.values(UserField));
+        this.pageId = pageId;
+        let fieldsSet: Set<PageField> = fields.length > 0 ? new Set(fields) : new Set(Object.values(PageField));
         this.params.fields = Array.from(fieldsSet).join(',');
     }
 
+    /**
+     * @inheritdoc
+     */
     protected parseResponse(response: AxiosResponse<any>): GetPageInfoResponse {
         return new GetPageInfoResponse(response.data);
     }
 
+    /**
+     * @inheritdoc
+     */
     protected url(): string {
-        return `/${this.userId}`;
+        return `/${this.pageId}`;
     }
 }

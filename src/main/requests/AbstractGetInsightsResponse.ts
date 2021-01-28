@@ -2,7 +2,7 @@ import { AbstractResponse } from './AbstractResponse';
 import { AbstractMetric } from './data/insights/AbstractMetric';
 
 /**
- * Base class for representing a response from a Page Insights request.
+ * Abstract class for representing a response from a Page Insights request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 0.1.0

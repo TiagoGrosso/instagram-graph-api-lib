@@ -1,25 +1,27 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { Constants } from '../../../../main/Constants';
-import { GetPostMediaInsightsRequest } from '../../../../main/requests/media/insights/GetPostMediaInsightsRequest';
+import { GetSimplePostMediaInsightsRequest } from '../../../../main/requests/media/insights/GetSimplePostMediaInsightsRequest';
 import { GetMediaInsightsResponse } from '../../../../main/requests/media/insights/GetMediaInsightsResponse';
 import { TestConstants } from '../../../TestConstants';
-import { PostMetric } from '../../../../main/Enums';
+import { SimplePostMetric } from '../../../../main/Enums';
 
-describe('GetPostMediaInsightsRequest', () => {
-    let request = new GetPostMediaInsightsRequest(
+describe('GetSimplePostMediaInsightsRequest', () => {
+    let request = new GetSimplePostMediaInsightsRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.MEDIA_ID,
-        PostMetric.IMPRESSIONS,
-        PostMetric.ENGAGEMENT
+        SimplePostMetric.IMPRESSIONS,
+        SimplePostMetric.ENGAGEMENT
     );
-    let allFieldsRequest = new GetPostMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID);
+    let allFieldsRequest = new GetSimplePostMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID);
 
     it('Builds the config', () => {
-        expect(request.config().params.metric).toEqual([PostMetric.IMPRESSIONS, PostMetric.ENGAGEMENT].join(','));
+        expect(request.config().params.metric).toEqual(
+            [SimplePostMetric.IMPRESSIONS, SimplePostMetric.ENGAGEMENT].join(',')
+        );
         expect(request.config().method).toEqual('GET');
         expect(request.config().url).toEqual(`/${TestConstants.MEDIA_ID}/insights`);
-        expect(allFieldsRequest.config().params.metric).toEqual(Object.values(PostMetric).join(','));
+        expect(allFieldsRequest.config().params.metric).toEqual(Object.values(SimplePostMetric).join(','));
     });
 
     let mock = new MockAdapter(axios);

@@ -8,7 +8,7 @@ import { TestConstants } from '../../../TestConstants';
 
 describe('AbstractGetPageInsightsRequest', () => {
     class AbstractPageInsightsRequestImpl extends AbstractGetPageTimedInsightsRequest<any> {
-        protected getPeriod(): MetricPeriod {
+        protected period(): MetricPeriod {
             return MetricPeriod.DAY;
         }
         constructor() {

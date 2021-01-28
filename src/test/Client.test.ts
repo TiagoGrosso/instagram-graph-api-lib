@@ -3,13 +3,13 @@ import {
     DayMetric,
     LifetimeMetric,
     MediaField,
-    PostMetric,
+    SimplePostMetric,
     StoryMetric,
-    UserField,
+    PageField,
     WeekAndMonthMetric,
 } from '../main/Enums';
 import { GetMediaInfoRequest } from '../main/requests/media/info/GetMediaInfoRequest';
-import { GetPostMediaInsightsRequest } from '../main/requests/media/insights/GetPostMediaInsightsRequest';
+import { GetSimplePostMediaInsightsRequest } from '../main/requests/media/insights/GetSimplePostMediaInsightsRequest';
 import { GetStoryMediaInsightsRequest } from '../main/requests/media/insights/GetStoryMediaInsightsRequest';
 import { GetPageInfoRequest } from '../main/requests/page/info/GetPageInfoRequest';
 import { GetPageDayInsightsRequest } from '../main/requests/page/insights/GetPageDayInsightsRequest';
@@ -26,7 +26,7 @@ describe('Client', () => {
         expect(client.getAccessToken()).toEqual(TestConstants.ACCESS_TOKEN);
     });
 
-    it('Gets the access token', () => {
+    it('Gets the page id', () => {
         expect(client.getPageId()).toEqual(TestConstants.PAGE_ID);
     });
 
@@ -34,12 +34,12 @@ describe('Client', () => {
         expect(client.newGetPageInfoRequest()).toEqual(
             new GetPageInfoRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
         );
-        expect(client.newGetPageInfoRequest(UserField.BIOGRAPHY, UserField.FOLLOWS_COUNT)).toEqual(
+        expect(client.newGetPageInfoRequest(PageField.BIOGRAPHY, PageField.FOLLOWS_COUNT)).toEqual(
             new GetPageInfoRequest(
                 TestConstants.ACCESS_TOKEN,
                 TestConstants.PAGE_ID,
-                UserField.BIOGRAPHY,
-                UserField.FOLLOWS_COUNT
+                PageField.BIOGRAPHY,
+                PageField.FOLLOWS_COUNT
             )
         );
     });
@@ -132,16 +132,20 @@ describe('Client', () => {
 
     it('Builds a GetPostMediaInsightsRequest', () => {
         expect(client.newGetPostMediaInsightsRequest(TestConstants.MEDIA_ID)).toEqual(
-            new GetPostMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID)
+            new GetSimplePostMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID)
         );
         expect(
-            client.newGetPostMediaInsightsRequest(TestConstants.MEDIA_ID, PostMetric.REACH, PostMetric.ENGAGEMENT)
+            client.newGetPostMediaInsightsRequest(
+                TestConstants.MEDIA_ID,
+                SimplePostMetric.REACH,
+                SimplePostMetric.ENGAGEMENT
+            )
         ).toEqual(
-            new GetPostMediaInsightsRequest(
+            new GetSimplePostMediaInsightsRequest(
                 TestConstants.ACCESS_TOKEN,
                 TestConstants.MEDIA_ID,
-                PostMetric.REACH,
-                PostMetric.ENGAGEMENT
+                SimplePostMetric.REACH,
+                SimplePostMetric.ENGAGEMENT
             )
         );
     });
