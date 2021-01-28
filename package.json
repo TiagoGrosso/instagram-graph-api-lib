@@ -13,10 +13,12 @@
   "author": "Tiago Grosso <tiagogrosso99@gmail.com> (https://gorsisiggy.firebaseapp.com/)",
   "license": "MIT",
   "description": "InstagramData",
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.21.1"
+  },
   "devDependencies": {
     "@types/jest": "^26.0.15",
-    "axios": "^0.21.0",
+    "axios-mock-adapter": "^1.19.0",
     "create-ts-index": "^1.13.6",
     "jest": "^26.6.3",
     "ts-jest": "^26.4.4",

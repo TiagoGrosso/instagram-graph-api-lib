@@ -1,9 +1,9 @@
 import { PageOption, LifetimeMetric, MetricPeriod, WeekAndMonthMetric } from '../main/Enums';
-import { BasicInsightsMetricData, MetricValue } from '../main/responses/data/insights/InsightsMetricData';
-import { ComplexMetricValue } from '../main/responses/data/insights/ComplexMetric';
-import { MediaData } from '../main/responses/data/MediaData';
-import { PageInfoData } from '../main/responses/data/PageInfoData';
-import { PagingData } from '../main/responses/data/Paging';
+import { ComplexMetricValue } from '../main/requests/data/insights/ComplexMetric';
+import { BasicInsightsMetricData, MetricValue } from '../main/requests/data/insights/BasicInsightsMetricData';
+import { MediaData } from '../main/requests/data/MediaData';
+import { PagingData } from '../main/requests/data/Paging';
+import { PageInfoData } from '../main/requests/data/PageInfoData';
 
 /**
  * A set of constants used in tests.
@@ -91,6 +91,15 @@ export class TestConstants {
      * A dummy partial media data object.
      */
     static readonly PARTIAL_MEDIA_DATA: MediaData = {
+        id: 'media_id',
+        is_comment_enabled: false,
+        owner: { id: 'owner_id' },
+    };
+
+    /**
+     * A dummy bare media data object.
+     */
+    static readonly BARE_MEDIA_DATA: MediaData = {
         id: 'media_id_2',
     };
 
@@ -142,8 +151,8 @@ export class TestConstants {
             values: [
                 {
                     value: {
-                        Portugal: 100,
                         Spain: 500,
+                        Portugal: 100,
                         France: 1000,
                     },
                     end_time: '2020-08-01T08:00:00+0000',
@@ -170,16 +179,35 @@ export class TestConstants {
     ];
 
     /**
+     * A dummy lifetime metric data with an empty value.
+     */
+    static readonly EMPTY_COMPLEX_METRIC_DATA: BasicInsightsMetricData<MetricValue<ComplexMetricValue>[]>[] = [
+        {
+            name: LifetimeMetric.AUDIENCE_COUNTRY,
+            period: MetricPeriod.LIFETIME,
+            title: 'Metric Title',
+            description: 'Metric Description',
+            id: 'metric_id',
+            values: [
+                {
+                    value: {},
+                    end_time: '2020-09-01T08:00:00+0000',
+                },
+            ],
+        },
+    ];
+
+    /**
      * A dummy simple values data.
      */
     static readonly SIMPLE_METRIC_VALUES: MetricValue<number>[] = [
         {
-            value: 100,
-            end_time: '2020-09-01T08:00:00+0000',
-        },
-        {
             value: 200,
             end_time: '2020-09-01T09:00:00+0000',
+        },
+        {
+            value: 100,
+            end_time: '2020-09-01T08:00:00+0000',
         },
         {
             value: 300,
@@ -205,12 +233,7 @@ export class TestConstants {
             title: 'Metric Title 2',
             description: 'Metric Description 2',
             id: 'metric_id_2',
-            values: [
-                {
-                    value: 300,
-                    end_time: '2020-09-01T10:00:00+0000',
-                },
-            ],
+            values: [],
         },
     ];
 }
