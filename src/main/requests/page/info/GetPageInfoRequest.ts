@@ -7,7 +7,7 @@ import { PageField } from '../../../Enums';
  * A request that gets information about a page.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.2.0
  */
 export class GetPageInfoRequest extends AbstractRequest<GetPageInfoResponse> {
     /**

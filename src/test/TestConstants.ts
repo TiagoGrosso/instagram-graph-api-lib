@@ -9,7 +9,7 @@ import { PageInfoData } from '../main/requests/data/PageInfoData';
  * A set of constants used in tests.
  *
  * @author Tiago Grosso (tiagogrosso99@gmail.com)
- * @since `next.release`
+ * @since 0.1.0
  */
 export class TestConstants {
     /**

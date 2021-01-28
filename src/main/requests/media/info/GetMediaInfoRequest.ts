@@ -7,7 +7,7 @@ import { GetMediaInfoResponse } from './GetMediaInfoResponse';
  * A request that gets information about a media object.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.2.0
  */
 export class GetMediaInfoRequest extends AbstractGetMediaRequest<GetMediaInfoResponse> {
     /**

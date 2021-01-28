@@ -4,7 +4,7 @@
  * @param T The type of data in the response.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.2.0
  */
 export abstract class AbstractResponse<T> {
     /**

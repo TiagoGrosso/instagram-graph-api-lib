@@ -6,7 +6,7 @@ import { AbstractResponse } from './AbstractResponse';
  * Abstract class to represent requests related to media info.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.2.0
  */
 export abstract class AbstractGetMediaRequest<T extends AbstractResponse<any>> extends AbstractRequest<T> {
     /**

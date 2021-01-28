@@ -21,7 +21,7 @@ import { GetPageMediaRequest } from './requests/page/media/GetPageMediaRequest';
  * A client that creating requests.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.2.0
  */
 export class Client {
     /**

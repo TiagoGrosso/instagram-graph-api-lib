@@ -5,7 +5,7 @@ import { AbstractGetPageTimedInsightsRequest } from './AbstractGetPageTimedInsig
  * A Page Insights Get Request that queries a day metric.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.2.0
  */
 export class GetPageDayInsightsRequest extends AbstractGetPageTimedInsightsRequest<DayMetric> {
     /**

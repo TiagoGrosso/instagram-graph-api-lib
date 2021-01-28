@@ -5,7 +5,7 @@ import { MetricValue, BasicInsightsMetricData } from './BasicInsightsMetricData'
  * Type to represent a complex metric value.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.2.0
  */
 export type ComplexMetricValue = { [key: string]: number };
 

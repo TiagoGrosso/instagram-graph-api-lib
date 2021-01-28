@@ -1,39 +1,39 @@
 {
-  "name": "instagram-graph-api",
-  "version": "0.1.0",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "cti": "cti entrypoint src/ -o Index.ts -e test",
-    "test": "jest --coverage",
-    "docs": "typedoc --out docs src"
-  },
-  "keywords": [],
-  "author": "Tiago Grosso <tiagogrosso99@gmail.com> (https://gorsisiggy.firebaseapp.com/)",
-  "license": "MIT",
-  "description": "InstagramData",
-  "dependencies": {
-    "axios": "^0.21.1"
-  },
-  "devDependencies": {
-    "@types/jest": "^26.0.15",
-    "axios-mock-adapter": "^1.19.0",
-    "create-ts-index": "^1.13.6",
-    "jest": "^26.6.3",
-    "ts-jest": "^26.4.4",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.0.5"
-  },
-  "directories": {
-    "test": "test"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TiagoGrosso/InstagramData.git"
-  },
-  "bugs": {
-    "url": "https://github.com/TiagoGrosso/InstagramData/issues"
-  },
-  "homepage": "https://github.com/TiagoGrosso/InstagramData#readme"
+    "name": "instagram-graph-api",
+    "version": "0.1.0",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "cti": "cti entrypoint src/ -o Index.ts -e test",
+        "test": "jest --coverage",
+        "docs": "typedoc --out docs src"
+    },
+    "keywords": [],
+    "author": "Tiago Grosso <tiagogrosso99@gmail.com> (https://gorsisiggy.firebaseapp.com/)",
+    "license": "MIT",
+    "description": "InstagramData",
+    "dependencies": {
+        "axios": "^0.21.1"
+    },
+    "devDependencies": {
+        "@types/jest": "^26.0.15",
+        "axios-mock-adapter": "^1.19.0",
+        "create-ts-index": "^1.13.6",
+        "jest": "^26.6.3",
+        "ts-jest": "^26.4.4",
+        "ts-node": "^9.1.1",
+        "typescript": "^4.0.5"
+    },
+    "directories": {
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TiagoGrosso/InstagramData.git"
+    },
+    "bugs": {
+        "url": "https://github.com/TiagoGrosso/InstagramData/issues"
+    },
+    "homepage": "https://github.com/TiagoGrosso/InstagramData#readme"
 }

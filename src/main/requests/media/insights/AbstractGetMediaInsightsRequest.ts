@@ -9,7 +9,7 @@ import { GetMediaInsightsResponse } from './GetMediaInsightsResponse';
  * @param T te type of metrics. This matches the type of media object (Post or Story).
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.2.0
  */
 export abstract class AbstractGetMediaInsightsRequest<
     T extends SimplePostMetric | StoryMetric | AlbumMetric

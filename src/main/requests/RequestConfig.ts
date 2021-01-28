@@ -4,7 +4,7 @@ import { Params } from './Params';
  * Type to represent request methods.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.2.0
  */
 export type Method = 'GET' | 'POST';
 

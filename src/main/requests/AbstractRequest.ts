@@ -16,7 +16,7 @@ export type PageOptionToken = { option: PageOption; value: string };
  * @param R the type of the response.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.2.0
  */
 export abstract class AbstractRequest<R extends AbstractResponse<any>> {
     /**

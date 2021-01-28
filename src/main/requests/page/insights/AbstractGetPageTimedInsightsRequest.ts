@@ -9,7 +9,7 @@ import { GetPageTimedInsightsResponse } from './GetPageTimedInsightsResponse';
  * @param T the type of the metrics of the request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.2.0
  */
 export abstract class AbstractGetPageTimedInsightsRequest<
     T extends DayMetric | WeekAndMonthMetric

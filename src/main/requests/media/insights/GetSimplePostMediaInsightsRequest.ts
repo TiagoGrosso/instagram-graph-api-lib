@@ -5,7 +5,7 @@ import { AbstractGetMediaInsightsRequest } from './AbstractGetMediaInsightsReque
  * A request that gets insights about a media object (of type 'Photo' or 'Video').
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.2.0
  */
 export class GetSimplePostMediaInsightsRequest extends AbstractGetMediaInsightsRequest<SimplePostMetric> {
     /**
