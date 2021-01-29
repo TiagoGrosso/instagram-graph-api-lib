@@ -4,7 +4,7 @@ on:
     tags:
       - '*'
 jobs:
-  update-docs:
+  prepare-release:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -12,24 +12,28 @@ jobs:
       with:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
+    - name: Get tag name
+      id: tagName
+      run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+    - name: Replace version placeholder
+      run: sh scripts/replace-next-version-tag.sh ${{ steps.tagName.outputs.tag }}
     - name: Install node packages
       run: npm install
     - name: Generate docs
       run: npm run docs
-    - name: Add and Commit docs
+    - name: Add and Commit changes
       uses: EndBug/add-and-commit@v7.0.0
       with:
-        add: 'docs'
-        message: 'Update docs before release'
+        add: '.'
+        message: 'Prepare release'
   publish:
-    needs: update-docs
+    needs: prepare-release
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Get tag name
       id: tagName
       run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
-    # Setup .npmrc file to publish to npm
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
