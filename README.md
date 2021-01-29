@@ -10,7 +10,9 @@ This npm package lets you easily perform requests to the [Instagram Graph API](h
 
 Simply run `npm install instagram-graph-api`.
 
-## How to use this lib
+## How do I use this lib?
+
+You can always check the [typedoc documentation](https://tiagogrosso.github.io/instagram-graph-api-lib/) if you are having doubts.
 
 ### Building requests
 
@@ -125,6 +127,6 @@ All the request to a page will require the use of a Page ID. To find out what th
     });
     ```
 
-# What can this lib currently do
+# What can this lib currently do?
 
 As previously stated, this lib is in its early stages and, as such, only supports requests to a reduced number of resources on the Instagram Graph API.
