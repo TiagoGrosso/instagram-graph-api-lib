@@ -1,0 +1,339 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>instagram-graph-api</title>
+	<meta name="description" content="Documentation for instagram-graph-api">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">instagram-graph-api</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>instagram-graph-api</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#instagram-graph-api" id="instagram-graph-api" style="color: inherit; text-decoration: none;">
+					<h1>Instagram Graph API</h1>
+				</a>
+				<a href="#description" id="description" style="color: inherit; text-decoration: none;">
+					<h2>Description</h2>
+				</a>
+				<p>This npm package lets you easily perform requests to the <a href="https://developers.facebook.com/docs/instagram-api/">Instagram Graph API</a>.</p>
+				<blockquote>
+					<p>:warning: <strong>This package is still in its early stages</strong>: While it&#39;s expected that the general structure of building and executing requests will remain the same, this is not a guarantee as the package expands to cover more parts of the Instagram Graph API. Any breaking change will, however, be well documented on each release.</p>
+				</blockquote>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<p>Simply run <code>npm install instagram-graph-api</code>.</p>
+				<a href="#how-to-use-this-lib" id="how-to-use-this-lib" style="color: inherit; text-decoration: none;">
+					<h2>How to use this lib</h2>
+				</a>
+				<a href="#building-requests" id="building-requests" style="color: inherit; text-decoration: none;">
+					<h3>Building requests</h3>
+				</a>
+				<p>This lib was built with a simple mindset: creating requests should be as straightforward as possible. With that in mind, to start pumping out request left and right, just create a client and use it to build requests for you:</p>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Client</span><span style="color: #000000">, </span><span style="color: #001080">GetPageInfoRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageMediaRequest</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">: </span><span style="color: #267F99">Client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Client</span><span style="color: #000000">(</span><span style="color: #001080">freshSnootsAccessToken</span><span style="color: #000000">, </span><span style="color: #001080">freshSnootsInstagramId</span><span style="color: #000000">);</span>
+
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">pageInfoRequest</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000"> = </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">newGetPageInfoRequest</span><span style="color: #000000">();</span>
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">pageMediaRequest</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000"> = </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">newGetPageMediaRequest</span><span style="color: #000000">();</span>
+<span style="color: #000000">[...]</span>
+</code></pre>
+				<p>You can also build each request yourself, and that won&#39;t be hard at all. You&#39;ll just have to pass the Access Token and the Page ID to each new request. Here&#39;s an example:</p>
+				<pre><code class="language-typescript"><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
+</code></pre>
+				<a href="#executing-the-requests" id="executing-the-requests" style="color: inherit; text-decoration: none;">
+					<h3>Executing the requests</h3>
+				</a>
+				<p>After you get your request object, you can do one of two things:</p>
+				<a href="#built-in-execute-method" id="built-in-execute-method" style="color: inherit; text-decoration: none;">
+					<h4>Built-in execute() method</h4>
+				</a>
+				<p>You can execute the request with the built in method that returns a parsed response or extract the config to easily execute the requests yourself. This will use <a href="https://www.npmjs.com/package/axios">Axios</a>.</p>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageInfoRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageInfoResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
+
+<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageInfoResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">`The page </span><span style="color: #0000FF">${</span><span style="color: #001080">response</span><span style="color: #000000FF">.</span><span style="color: #795E26">getName</span><span style="color: #000000FF">()</span><span style="color: #0000FF">}</span><span style="color: #A31515"> has </span><span style="color: #0000FF">${</span><span style="color: #001080">response</span><span style="color: #000000FF">.</span><span style="color: #795E26">getFollowers</span><span style="color: #000000FF">()</span><span style="color: #0000FF">}</span><span style="color: #A31515"> followers.`</span><span style="color: #000000">);</span>
+<span style="color: #000000">});</span>
+</code></pre>
+				<a href="#extract-the-config" id="extract-the-config" style="color: inherit; text-decoration: none;">
+					<h4>Extract the config</h4>
+				</a>
+				<p>Alternatively, you can extract the request config to modify it, execute it and parse the response as you see fit.</p>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageInfoRequest</span><span style="color: #000000">, </span><span style="color: #001080">RequestConfig</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
+
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">config</span><span style="color: #000000">: </span><span style="color: #267F99">RequestConfig</span><span style="color: #000000"> = </span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">config</span><span style="color: #000000">();</span>
+
+<span style="color: #000000">[...]</span>
+</code></pre>
+				<a href="#other-request-options" id="other-request-options" style="color: inherit; text-decoration: none;">
+					<h3>Other request options</h3>
+				</a>
+				<p>You can give paging and range options to the requests, as supported by certain resources on the Instagram Graph API. (check the <a href="(https://developers.facebook.com/docs/instagram-api/reference/)">reference documetation</a> to see which ones do). For example, the Get Page Media request supports paging, here&#39;s a naive example of how to use:</p>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageMediaRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageMediaResponse</span><span style="color: #000000">, </span><span style="color: #001080">PageOption</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
+
+<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">nextPage</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000"> | </span><span style="color: #267F99">undefined</span><span style="color: #000000"> = </span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getPaging</span><span style="color: #000000">().</span><span style="color: #795E26">getAfter</span><span style="color: #000000">();</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">nextPage</span><span style="color: #000000">) {</span>
+<span style="color: #000000">        </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000">)</span>
+<span style="color: #000000">        </span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">addPaging</span><span style="color: #000000">({ </span><span style="color: #001080">option:</span><span style="color: #000000"> </span><span style="color: #001080">PageOption</span><span style="color: #000000">.</span><span style="color: #0070C1">AFTER</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #001080">nextPage</span><span style="color: #000000"> }); </span><span style="color: #008000">// you can reuse the old request 😎</span>
+<span style="color: #000000">        </span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">([...])</span>
+<span style="color: #000000">    } </span><span style="color: #AF00DB">else</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;🛑🛑🛑&#039;</span><span style="color: #000000">);</span>
+<span style="color: #000000">    }</span>
+<span style="color: #000000">});</span>
+</code></pre>
+				<p>Similarly, you can add a range option which the Get Insights requests use, like so:</p>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageLifetimeInsightsRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageLifetimeInsightsRequest</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
+
+
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageLifetimeInsightsRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">GetPageLifetimeInsightsRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
+<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">addRange</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;2021-01-01&#039;</span><span style="color: #000000">), </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;2021-01-15&#039;</span><span style="color: #000000">))</span>
+
+<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageLifetimeInsightsResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    [...]</span>
+<span style="color: #000000">});</span>
+</code></pre>
+				<a href="#access-token" id="access-token" style="color: inherit; text-decoration: none;">
+					<h3>Access Token</h3>
+				</a>
+				<p>To use this lib you&#39;ll require an Access Token to Facebook&#39;s Graph API (over which the Instagram Graph API is built), which in turn will require a couple of other things. Check out the <a href="https://developers.facebook.com/docs/instagram-api/getting-started">before you start</a> on the getting started documentation.</p>
+				<p>You can follow Facebook&#39;s documentation on how to <a href="https://developers.facebook.com/docs/facebook-login/access-tokens/">generate an access token</a> to grab a token for yourself. You&#39;ll most likely want a Page Token. Check which permissions you&#39;ll need for the request you want to perform on the <a href="https://developers.facebook.com/docs/instagram-api/reference/">Instagram Graph API Reference</a>.</p>
+				<p>You can also extend your token&#39;s validity to avoid having to generate a new one once in a while. Once again, Facebook&#39;s documentation on how to <a href="https://developers.facebook.com/docs/facebook-login/access-tokens/refreshing">generate long-lived tokens</a> will come in handy. Long-lived Page Tokens do not have an expiration date, making them ideal for most use cases of this lib.</p>
+				<a href="#page-id" id="page-id" style="color: inherit; text-decoration: none;">
+					<h3>Page ID</h3>
+				</a>
+				<p>All the request to a page will require the use of a Page ID. To find out what the ID of a page is, you can:</p>
+				<ul>
+					<li><p>  <a href="https://developers.facebook.com/docs/instagram-api/guides/business-discovery">Directly make a call to the API</a></p>
+					</li>
+					<li><p>  Use one of the many websites that will make that call for you (look for <code>Instagram Page ID</code> on a search engine)</p>
+					</li>
+					<li><p>Use this lib to make the request for you, by building and executing a <code>GetMeRequest</code>, as such:</p>
+						<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetMeRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetMeResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetMeRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">GetMeRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">);</span>
+
+<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetMeResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getIgPageId</span><span style="color: #000000">());</span>
+<span style="color: #000000">});</span>
+</code></pre>
+					</li>
+				</ul>
+				<a href="#what-can-this-lib-currently-do" id="what-can-this-lib-currently-do" style="color: inherit; text-decoration: none;">
+					<h1>What can this lib currently do</h1>
+				</a>
+				<p>As previously stated, this lib is in its early stages and, as such, only supports requests to a reduced number of resources on the Instagram Graph API.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Modules</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/client.html">Client</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/constants.html">Constants</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/enums.html">Enums</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_abstractgetinsightsresponse.html">requests/<wbr>Abstract<wbr>Get<wbr>Insights<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_abstractgetmediarequest.html">requests/<wbr>Abstract<wbr>Get<wbr>Media<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_abstractrequest.html">requests/<wbr>Abstract<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_abstractresponse.html">requests/<wbr>Abstract<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_params.html">requests/<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_requestconfig.html">requests/<wbr>Request<wbr>Config</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_medata.html">requests/data/<wbr>MeData</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_mediadata.html">requests/data/<wbr>Media<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_pageinfodata.html">requests/data/<wbr>Page<wbr>Info<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_paging.html">requests/data/<wbr>Paging</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_insights_abstractmetric.html">requests/data/insights/<wbr>Abstract<wbr>Metric</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_insights_basicinsightsmetricdata.html">requests/data/insights/<wbr>Basic<wbr>Insights<wbr>Metric<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_insights_complexmetric.html">requests/data/insights/<wbr>Complex<wbr>Metric</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_insights_simplemetric.html">requests/data/insights/<wbr>Simple<wbr>Metric</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_info_getmediainforequest.html">requests/media/info/<wbr>Get<wbr>Media<wbr>Info<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_info_getmediainforesponse.html">requests/media/info/<wbr>Get<wbr>Media<wbr>Info<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_insights_abstractgetmediainsightsrequest.html">requests/media/insights/<wbr>Abstract<wbr>Get<wbr>Media<wbr>Insights<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_insights_getalbummediainsightsrequest.html">requests/media/insights/<wbr>Get<wbr>Album<wbr>Media<wbr>Insights<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_insights_getmediainsightsresponse.html">requests/media/insights/<wbr>Get<wbr>Media<wbr>Insights<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_insights_getsimplepostmediainsightsrequest.html">requests/media/insights/<wbr>Get<wbr>Simple<wbr>Post<wbr>Media<wbr>Insights<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_insights_getstorymediainsightsrequest.html">requests/media/insights/<wbr>Get<wbr>Story<wbr>Media<wbr>Insights<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_info_getpageinforequest.html">requests/page/info/<wbr>Get<wbr>Page<wbr>Info<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_info_getpageinforesponse.html">requests/page/info/<wbr>Get<wbr>Page<wbr>Info<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_insights_abstractgetpageinsightsrequest.html">requests/page/insights/<wbr>Abstract<wbr>Get<wbr>Page<wbr>Insights<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_insights_abstractgetpagetimedinsightsrequest.html">requests/page/insights/<wbr>Abstract<wbr>Get<wbr>Page<wbr>Timed<wbr>Insights<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_insights_getpagedayinsightsrequest.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Day<wbr>Insights<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_insights_getpagelifetimeinsightsrequest.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Lifetime<wbr>Insights<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_insights_getpagelifetimeinsightsresponse.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Lifetime<wbr>Insights<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_insights_getpagemonthinsightsrequest.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Month<wbr>Insights<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_insights_getpagetimedinsightsresponse.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Timed<wbr>Insights<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_insights_getpageweekinsightsrequest.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Week<wbr>Insights<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_me_getmerequest.html">requests/page/me/<wbr>Get<wbr>MeRequest</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_me_getmeresponse.html">requests/page/me/<wbr>Get<wbr>MeResponse</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_media_getpagemediarequest.html">requests/page/media/<wbr>Get<wbr>Page<wbr>Media<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_media_getpagemediaresponse.html">requests/page/media/<wbr>Get<wbr>Page<wbr>Media<wbr>Response</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

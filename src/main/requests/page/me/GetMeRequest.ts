@@ -6,7 +6,7 @@ import { GetMeResponse } from './GetMeResponse';
  * A Get request to obtain information about the user making it.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.3.0
  */
 export class GetMeRequest extends AbstractRequest<GetMeResponse> {
     /**

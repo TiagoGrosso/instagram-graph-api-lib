@@ -5,7 +5,7 @@ import { MeData } from '../../data/MeData';
  * Class that represents a response from a Get Me request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.3.0
  */
 export class GetMeResponse extends AbstractResponse<MeData> {
     /**
