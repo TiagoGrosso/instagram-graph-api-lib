@@ -7,7 +7,7 @@
         "build": "tsc",
         "cti": "cti entrypoint src/ -o Index.ts -e test",
         "test": "jest --coverage",
-        "docs": "typedoc --out docs src README.md"
+        "docs": "typedoc --out docs src/main README.md"
     },
     "keywords": [
         "lib",

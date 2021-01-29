@@ -118,7 +118,6 @@ dist
 # Project Specific
 *.code-workspace
 lib/
-docs/
 
 # For testing purposes
 src/Main.ts 
