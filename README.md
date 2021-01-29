@@ -126,3 +126,5 @@ All the request to a page will require the use of a Page ID. To find out what th
     ```
 
 # What can this lib currently do
+
+As previously stated, this lib is in its early stages and, as such, only supports requests to a reduced number of resources on the Instagram Graph API.
