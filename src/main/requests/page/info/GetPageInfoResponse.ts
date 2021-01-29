@@ -9,15 +9,6 @@ import { PageInfoData } from '../../data/PageInfoData';
  */
 export class GetPageInfoResponse extends AbstractResponse<PageInfoData> {
     /**
-     * The constructor.
-     *
-     * @param data the data of the response.
-     */
-    constructor(data: PageInfoData) {
-        super(data);
-    }
-
-    /**
      * Gets the id of the page.
      *
      * @returns the id of the page.

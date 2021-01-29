@@ -4,6 +4,23 @@ on:
     tags:
       - '*'
 jobs:
+  update-docs:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install node packages
+      run: npm install
+    - name: Generate docs
+      run: npm run docs
+    - name: Add and Commit docs
+      uses: EndBug/add-and-commit@v7.0.0
+      with:
+        add: 'docs'
+        message: 'Updated docs before release'
   publish:
     runs-on: ubuntu-latest
     steps:
