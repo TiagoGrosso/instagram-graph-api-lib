@@ -7,12 +7,17 @@
         "build": "tsc",
         "cti": "cti entrypoint src/ -o Index.ts -e test",
         "test": "jest --coverage",
-        "docs": "typedoc --out docs src"
+        "docs": "typedoc --out docs src README.md"
     },
-    "keywords": [],
-    "author": "Tiago Grosso <tiagogrosso99@gmail.com> (https://gorsisiggy.firebaseapp.com/)",
+    "keywords": [
+        "lib",
+        "instagram",
+        "rest",
+        "request"
+    ],
+    "author": "Tiago Grosso <tiagogrosso99@gmail.com>",
     "license": "MIT",
-    "description": "InstagramData",
+    "description": "A library to help perform requests to the Instagram Graph API.",
     "dependencies": {
         "axios": "^0.21.1"
     },
@@ -30,10 +35,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/TiagoGrosso/InstagramData.git"
+        "url": "git+https://github.com/TiagoGrosso/instagram-graph-api-lib.git"
     },
     "bugs": {
-        "url": "https://github.com/TiagoGrosso/InstagramData/issues"
+        "url": "https://github.com/TiagoGrosso/instagram-graph-api-lib/issues"
     },
-    "homepage": "https://github.com/TiagoGrosso/InstagramData#readme"
+    "homepage": "https://github.com/TiagoGrosso/instagram-graph-api-lib#readme"
 }

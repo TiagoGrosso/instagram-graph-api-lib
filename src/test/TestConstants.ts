@@ -4,6 +4,7 @@ import { BasicInsightsMetricData, MetricValue } from '../main/requests/data/insi
 import { MediaData } from '../main/requests/data/MediaData';
 import { PagingData } from '../main/requests/data/Paging';
 import { PageInfoData } from '../main/requests/data/PageInfoData';
+import { MeData } from '../main/requests/data/MeData';
 
 /**
  * A set of constants used in tests.
@@ -136,6 +137,16 @@ export class TestConstants {
         name: 'Page Name',
         profile_picture_url: 'page_picture_url',
         username: 'page_username',
+    };
+
+    /**
+     * A dummy me data object.
+     */
+    static readonly ME_DATA: MeData = {
+        instagram_business_account: {
+            id: 'page_ig_id',
+        },
+        id: 'page_id',
     };
 
     /**
