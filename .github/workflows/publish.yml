@@ -1,43 +1,70 @@
 name: Publish npm package
 on:
-  push:
-    tags:
-      - '*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Bump Version
+        default: X.Y.X
+        required: true
+    
 jobs:
   prepare-release:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+      with:
+        token: '${{ secrets.GITHUB_TOKEN }}'
+    - name: Create release branch
+      run: git checkout -b release/${{ github.event.inputs.version }}
+    - name: Push release branch to remote
+      run: git push --set-upstream origin release/${{ github.event.inputs.version }}
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
-    - name: Get tag name
-      id: tagName
-      run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
     - name: Replace version placeholder
-      run: sh scripts/replace-next-version-tag.sh ${{ steps.tagName.outputs.tag }}
+      run: sh scripts/replace-next-version-tag.sh ${{ github.event.inputs.version }}
     - name: Install node packages
       run: npm install
     - name: Generate docs
       run: npm run docs
-    - uses: oleksiyrudenko/gha-git-credentials@v2-latest
-      with:
-        token: '${{ secrets.ACCESS_TOKEN }}'
     - name: Add and Commit changes
       uses: EndBug/add-and-commit@v7.0.0
       with:
         add: '.'
-        message: 'Prepare release'
-        branch: master
-  publish:
+        message: 'Prepare release ${{ github.event.inputs.version }}'
+        branch: release/${{ github.event.inputs.version }}
+  
+  create-release:
     needs: prepare-release
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Get tag name
-      id: tagName
-      run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
+      with:
+        ref: release/${{ github.event.inputs.version }}
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.event.inputs.version }}
+        release_name: ${{ github.event.inputs.version }}
+        body: Release ${{ github.event.inputs.version }}
+        draft: false
+        prerelease: false
+
+  publish:
+    needs: create-release
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.inputs.version }}
+    - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+      with:
+        token: '${{ secrets.GITHUB_TOKEN }}'
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
@@ -45,7 +72,7 @@ jobs:
     - name: Install node packages
       run: npm install
     - name: Set package version
-      run: npm version ${{ steps.tagName.outputs.tag }}
+      run: npm version ${{ github.event.inputs.version }}
     - name: Build index
       run: npm run cti
     - name: Build project
