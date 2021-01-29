@@ -22,6 +22,7 @@ jobs:
         add: 'docs'
         message: 'Update docs before release'
   publish:
+    needs: update-docs
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
