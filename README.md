@@ -21,7 +21,7 @@ This lib was built with a simple mindset: creating requests should be as straigh
 ```typescript
 import { Client, GetPageInfoRequest, GetPageMediaRequest } from 'instagram-graph-api';
 
-let client: Client = new Client(freshSnootsAccessToken, freshSnootsInstagramId);
+let client: Client = new Client(ACCESS_TOKEN, PAGE_ID);
 
 let pageInfoRequest: GetPageInfoRequest = client.newGetPageInfoRequest();
 let pageMediaRequest: GetPageMediaRequest = client.newGetPageMediaRequest();
