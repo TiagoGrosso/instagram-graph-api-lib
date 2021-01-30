@@ -5,7 +5,7 @@ import { AbstractResponse } from '../../AbstractResponse';
  * Technically the request will return an array of objects, but in practice it will always have a single item.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since X.Y.Z
  */
 export class GetHashtagIdResponse extends AbstractResponse<{ id: string }[]> {
     /**
