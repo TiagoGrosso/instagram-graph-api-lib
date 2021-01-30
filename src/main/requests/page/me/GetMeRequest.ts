@@ -22,7 +22,7 @@ export class GetMeRequest extends AbstractRequest<GetMeResponse> {
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<any>): GetMeResponse {
+    protected parseResponse(response: AxiosResponse<never>): GetMeResponse {
         return new GetMeResponse(response.data);
     }
 

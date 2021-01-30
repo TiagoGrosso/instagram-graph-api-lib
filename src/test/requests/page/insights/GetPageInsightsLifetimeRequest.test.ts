@@ -7,13 +7,13 @@ import { GetPageLifetimeInsightsResponse } from '../../../../main/requests/page/
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetPageLifetimeInsightsRequest', () => {
-    let request: GetPageLifetimeInsightsRequest = new GetPageLifetimeInsightsRequest(
+    const request: GetPageLifetimeInsightsRequest = new GetPageLifetimeInsightsRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID,
         LifetimeMetric.AUDIENCE_CITY,
         LifetimeMetric.AUDIENCE_GENDER_AGE
     );
-    let allFieldsRequest: GetPageLifetimeInsightsRequest = new GetPageLifetimeInsightsRequest(
+    const allFieldsRequest: GetPageLifetimeInsightsRequest = new GetPageLifetimeInsightsRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID
     );
@@ -28,7 +28,7 @@ describe('GetPageLifetimeInsightsRequest', () => {
         expect(allFieldsRequest.config().params.metric).toEqual(Object.values(LifetimeMetric).join(','));
     });
 
-    let mock = new MockAdapter(axios);
+    const mock = new MockAdapter(axios);
     mock.onGet(`${Constants.API_URL}/${TestConstants.PAGE_ID}/insights`).reply(200, {
         data: TestConstants.COMPLEX_METRIC_DATA,
     });

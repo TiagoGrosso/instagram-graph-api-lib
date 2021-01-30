@@ -2,7 +2,7 @@ import { Paging } from '../../../main/requests/data/Paging';
 import { TestConstants } from '../../TestConstants';
 
 describe('Paging', () => {
-    let paging: Paging = new Paging(TestConstants.PAGING);
+    const paging: Paging = new Paging(TestConstants.PAGING);
 
     it('Gets the paging data', () => {
         expect(paging.getPaging()).toEqual(TestConstants.PAGING);
@@ -23,7 +23,7 @@ describe('Paging', () => {
         expect(paging.getAfter()).toEqual(TestConstants.PAGING.cursors?.after);
     });
 
-    let partialPaging: Paging = new Paging(TestConstants.NO_CURSORS_PAGING);
+    const partialPaging: Paging = new Paging(TestConstants.NO_CURSORS_PAGING);
 
     it("Doesn't throw on undefined cursors", () => {
         expect(partialPaging.getBefore()).toBeUndefined();

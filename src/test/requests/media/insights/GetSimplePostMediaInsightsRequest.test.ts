@@ -7,13 +7,13 @@ import { TestConstants } from '../../../TestConstants';
 import { SimplePostMetric } from '../../../../main/Enums';
 
 describe('GetSimplePostMediaInsightsRequest', () => {
-    let request = new GetSimplePostMediaInsightsRequest(
+    const request = new GetSimplePostMediaInsightsRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.MEDIA_ID,
         SimplePostMetric.IMPRESSIONS,
         SimplePostMetric.ENGAGEMENT
     );
-    let allFieldsRequest = new GetSimplePostMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID);
+    const allFieldsRequest = new GetSimplePostMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID);
 
     it('Builds the config', () => {
         expect(request.config().params.metric).toEqual(
@@ -24,7 +24,7 @@ describe('GetSimplePostMediaInsightsRequest', () => {
         expect(allFieldsRequest.config().params.metric).toEqual(Object.values(SimplePostMetric).join(','));
     });
 
-    let mock = new MockAdapter(axios);
+    const mock = new MockAdapter(axios);
     mock.onGet(`${Constants.API_URL}/${TestConstants.MEDIA_ID}/insights`).reply(200, {
         data: TestConstants.SIMPLE_METRIC_DATA,
     });

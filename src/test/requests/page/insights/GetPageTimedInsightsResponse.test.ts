@@ -3,7 +3,7 @@ import { GetPageTimedInsightsResponse } from '../../../../main/requests/page/ins
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetPageTimedInsightsResponse', () => {
-    let response: GetPageTimedInsightsResponse = new GetPageTimedInsightsResponse({
+    const response: GetPageTimedInsightsResponse = new GetPageTimedInsightsResponse({
         data: TestConstants.SIMPLE_METRIC_DATA,
         paging: TestConstants.PAGING,
     });

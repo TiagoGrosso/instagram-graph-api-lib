@@ -3,13 +3,13 @@ import { GetPageDayInsightsRequest } from '../../../../main/requests/page/insigh
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetPageInsightsDayRequest', () => {
-    let request: GetPageDayInsightsRequest = new GetPageDayInsightsRequest(
+    const request: GetPageDayInsightsRequest = new GetPageDayInsightsRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID,
         DayMetric.REACH,
         DayMetric.IMPRESSIONS
     );
-    let allFieldsRequest: GetPageDayInsightsRequest = new GetPageDayInsightsRequest(
+    const allFieldsRequest: GetPageDayInsightsRequest = new GetPageDayInsightsRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID
     );

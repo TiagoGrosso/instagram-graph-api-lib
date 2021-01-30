@@ -17,7 +17,7 @@ export abstract class AbstractGetPageTimedInsightsRequest<
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<any>): GetPageTimedInsightsResponse {
+    protected parseResponse(response: AxiosResponse<never>): GetPageTimedInsightsResponse {
         return new GetPageTimedInsightsResponse(response.data);
     }
 }

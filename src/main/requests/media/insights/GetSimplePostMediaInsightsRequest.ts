@@ -16,7 +16,7 @@ export class GetSimplePostMediaInsightsRequest extends AbstractGetMediaInsightsR
      * @param metrics the metrics to retrieve from the API. If no metric is specified, all are retrieved.
      */
     constructor(accessToken: string, mediaId: string, ...metrics: SimplePostMetric[]) {
-        let metricsSet: Set<SimplePostMetric> =
+        const metricsSet: Set<SimplePostMetric> =
             metrics.length > 0 ? new Set(metrics) : new Set(Object.values(SimplePostMetric));
         super(accessToken, mediaId, metricsSet);
     }

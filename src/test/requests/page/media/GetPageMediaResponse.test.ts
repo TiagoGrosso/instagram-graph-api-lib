@@ -3,7 +3,7 @@ import { GetPageMediaResponse } from '../../../../main/requests/page/media/GetPa
 import { Paging } from '../../../../main/requests/data/Paging';
 
 describe('GetPageMediaResponse', () => {
-    let response: GetPageMediaResponse = new GetPageMediaResponse({
+    const response: GetPageMediaResponse = new GetPageMediaResponse({
         data: [TestConstants.FULL_MEDIA_DATA, TestConstants.BARE_MEDIA_DATA],
         paging: TestConstants.PAGING,
     });
@@ -23,7 +23,7 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects captions map', () => {
-        let expected = new Map<string, string | undefined>();
+        const expected = new Map<string, string | undefined>();
         expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.caption);
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.caption);
 
@@ -38,7 +38,7 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects comments count map', () => {
-        let expected = new Map<string, number | undefined>();
+        const expected = new Map<string, number | undefined>();
         expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.comments_count);
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.comments_count);
 
@@ -50,7 +50,7 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects ig ids map', () => {
-        let expected = new Map<string, string | undefined>();
+        const expected = new Map<string, string | undefined>();
         expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.ig_id);
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.ig_id);
 
@@ -65,7 +65,7 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects `is_comments_enabled` map', () => {
-        let expected = new Map<string, boolean | undefined>();
+        const expected = new Map<string, boolean | undefined>();
         expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.is_comment_enabled);
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.is_comment_enabled);
 
@@ -80,7 +80,7 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects likes map', () => {
-        let expected = new Map<string, number | undefined>();
+        const expected = new Map<string, number | undefined>();
         expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.like_count);
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.like_count);
 
@@ -95,7 +95,7 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects types map', () => {
-        let expected = new Map<string, string | undefined>();
+        const expected = new Map<string, string | undefined>();
         expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.media_type);
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.media_type);
 
@@ -110,7 +110,7 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects URLs map', () => {
-        let expected = new Map<string, string | undefined>();
+        const expected = new Map<string, string | undefined>();
         expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.media_url);
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.media_url);
 
@@ -125,7 +125,7 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects owners map', () => {
-        let expected = new Map<string, { id: string } | undefined>();
+        const expected = new Map<string, { id: string } | undefined>();
         expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.owner);
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.owner);
 
@@ -140,7 +140,7 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects owner ids map', () => {
-        let expected = new Map<string, string | undefined>();
+        const expected = new Map<string, string | undefined>();
         expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.owner?.id);
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.owner?.id);
 
@@ -155,7 +155,7 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects permalinks map', () => {
-        let expected = new Map<string, string | undefined>();
+        const expected = new Map<string, string | undefined>();
         expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.permalink);
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.permalink);
 
@@ -170,7 +170,7 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects shortcodes map', () => {
-        let expected = new Map<string, string | undefined>();
+        const expected = new Map<string, string | undefined>();
         expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.shortcode);
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.shortcode);
 
@@ -178,12 +178,12 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects timestamps', () => {
-        expect(response.getTimestamps()).toEqual([new Date(TestConstants.FULL_MEDIA_DATA.timestamp!), undefined]);
+        expect(response.getTimestamps()).toEqual([new Date(TestConstants.FULL_MEDIA_DATA.timestamp ?? ''), undefined]);
     });
 
     it('Gets the media objects timestamps map', () => {
-        let expected = new Map<string, Date | undefined>();
-        expected.set(TestConstants.FULL_MEDIA_DATA.id, new Date(TestConstants.FULL_MEDIA_DATA.timestamp!));
+        const expected = new Map<string, Date | undefined>();
+        expected.set(TestConstants.FULL_MEDIA_DATA.id, new Date(TestConstants.FULL_MEDIA_DATA.timestamp ?? ''));
         expected.set(TestConstants.BARE_MEDIA_DATA.id, undefined);
 
         expect(response.getTimestampsMap()).toEqual(expected);
@@ -197,7 +197,7 @@ describe('GetPageMediaResponse', () => {
     });
 
     it('Gets the media objects usernames map', () => {
-        let expected = new Map<string, string | undefined>();
+        const expected = new Map<string, string | undefined>();
         expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.username);
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.username);
 

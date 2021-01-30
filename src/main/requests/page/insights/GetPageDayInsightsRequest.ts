@@ -15,7 +15,7 @@ export class GetPageDayInsightsRequest extends AbstractGetPageTimedInsightsReque
      * @param metrics the metrics to retrieve from the API. If no metric is specified, all are retrieved.
      */
     constructor(accessToken: string, pageId: string, ...metrics: DayMetric[]) {
-        let metricsSet: Set<DayMetric> = metrics.length > 0 ? new Set(metrics) : new Set(Object.values(DayMetric));
+        const metricsSet: Set<DayMetric> = metrics.length > 0 ? new Set(metrics) : new Set(Object.values(DayMetric));
         super(accessToken, pageId, metricsSet);
     }
 

@@ -25,14 +25,14 @@ export class GetPageInfoRequest extends AbstractRequest<GetPageInfoResponse> {
     constructor(accessToken: string, pageId: string, ...fields: PageField[]) {
         super(accessToken);
         this.pageId = pageId;
-        let fieldsSet: Set<PageField> = fields.length > 0 ? new Set(fields) : new Set(Object.values(PageField));
+        const fieldsSet: Set<PageField> = fields.length > 0 ? new Set(fields) : new Set(Object.values(PageField));
         this.params.fields = Array.from(fieldsSet).join(',');
     }
 
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<any>): GetPageInfoResponse {
+    protected parseResponse(response: AxiosResponse<never>): GetPageInfoResponse {
         return new GetPageInfoResponse(response.data);
     }
 

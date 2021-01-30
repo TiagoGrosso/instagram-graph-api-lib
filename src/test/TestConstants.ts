@@ -90,7 +90,7 @@ export class TestConstants {
         permalink: 'media_permalink',
         shortcode: 'media_shortcode',
         timestamp: '2020-07-01T08:00:00+0000',
-        username: 'media_susername',
+        username: 'media_username',
     };
 
     /**

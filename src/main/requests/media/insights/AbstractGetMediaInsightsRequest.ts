@@ -42,7 +42,7 @@ export abstract class AbstractGetMediaInsightsRequest<
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<any>): GetMediaInsightsResponse {
+    protected parseResponse(response: AxiosResponse<never>): GetMediaInsightsResponse {
         return new GetMediaInsightsResponse(response.data);
     }
 }

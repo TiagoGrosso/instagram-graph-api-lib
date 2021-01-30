@@ -135,7 +135,7 @@ export class ComplexMetric extends AbstractMetric<MetricValue<ComplexMetricValue
      * @returns the entries that match the provided expression.
      */
     public getByExpression(expression: (pair: [key: string, value: number]) => boolean): ComplexMetricValue {
-        let filtered: ComplexMetricValue = {};
+        const filtered: ComplexMetricValue = {};
 
         Object.entries(this.value)
             .filter(expression)

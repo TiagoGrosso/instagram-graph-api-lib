@@ -7,19 +7,19 @@ import { GetPageInfoResponse } from '../../../../main/requests/page/info/GetPage
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetPageInfoRequest', () => {
-    let request: GetPageInfoRequest = new GetPageInfoRequest(
+    const request: GetPageInfoRequest = new GetPageInfoRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID,
         PageField.BIOGRAPHY,
         PageField.PROFILE_PICTURE_URL
     );
-    let requestAllFields: GetPageInfoRequest = new GetPageInfoRequest(
+    const requestAllFields: GetPageInfoRequest = new GetPageInfoRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID
     );
 
     it('Builds the config', () => {
-        let fields: string = `${PageField.BIOGRAPHY},${PageField.PROFILE_PICTURE_URL}`;
+        const fields = `${PageField.BIOGRAPHY},${PageField.PROFILE_PICTURE_URL}`;
 
         expect(request.config().params.fields).toEqual(fields);
         expect(request.config().method).toEqual('GET');
@@ -27,7 +27,7 @@ describe('GetPageInfoRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Object.values(PageField).join(','));
     });
 
-    let mock = new MockAdapter(axios);
+    const mock = new MockAdapter(axios);
     mock.onGet(`${Constants.API_URL}/${TestConstants.PAGE_ID}`).reply(200, TestConstants.PAGE_INFO_DATA);
     it('Parses the response', () => {
         expect.assertions(1);

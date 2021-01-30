@@ -7,13 +7,13 @@ import { GetMediaInsightsResponse } from '../../../../main/requests/media/insigh
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetAlbumMediaInsightsRequest', () => {
-    let request = new GetAlbumMediaInsightsRequest(
+    const request = new GetAlbumMediaInsightsRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.MEDIA_ID,
         AlbumMetric.CAROUSEL_ALBUM_IMPRESSIONS,
         AlbumMetric.CAROUSEL_ALBUM_REACH
     );
-    let allFieldsRequest = new GetAlbumMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID);
+    const allFieldsRequest = new GetAlbumMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID);
 
     it('Builds the config', () => {
         expect(request.config().params.metric).toEqual(
@@ -24,7 +24,7 @@ describe('GetAlbumMediaInsightsRequest', () => {
         expect(allFieldsRequest.config().params.metric).toEqual(Object.values(AlbumMetric).join(','));
     });
 
-    let mock = new MockAdapter(axios);
+    const mock = new MockAdapter(axios);
     mock.onGet(`${Constants.API_URL}/${TestConstants.MEDIA_ID}/insights`).reply(200, {
         data: TestConstants.SIMPLE_METRIC_DATA,
     });

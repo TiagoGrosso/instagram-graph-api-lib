@@ -21,7 +21,7 @@ import { GetPageMediaRequest } from '../main/requests/page/media/GetPageMediaReq
 import { TestConstants } from './TestConstants';
 
 describe('Client', () => {
-    let client: Client = new Client(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID);
+    const client: Client = new Client(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID);
 
     it('Gets the access token', () => {
         expect(client.getAccessToken()).toEqual(TestConstants.ACCESS_TOKEN);

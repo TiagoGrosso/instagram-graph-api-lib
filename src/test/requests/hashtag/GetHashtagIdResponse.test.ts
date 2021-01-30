@@ -2,7 +2,7 @@ import { GetHashtagIdResponse } from '../../../main/requests/hashtag/search/GetH
 import { TestConstants } from '../../TestConstants';
 
 describe('GetHashtagIdResponse', () => {
-    let response = new GetHashtagIdResponse([{ id: TestConstants.HASHTAG_ID }]);
+    const response = new GetHashtagIdResponse([{ id: TestConstants.HASHTAG_ID }]);
 
     it('Gets the id', () => {
         expect(response.getId()).toEqual(TestConstants.HASHTAG_ID);

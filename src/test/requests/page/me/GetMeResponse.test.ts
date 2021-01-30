@@ -2,8 +2,8 @@ import { GetMeResponse } from '../../../../main/requests/page/me/GetMeResponse';
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetMeResponse', () => {
-    let response: GetMeResponse = new GetMeResponse(TestConstants.ME_DATA);
-    let noIgIdResponse: GetMeResponse = new GetMeResponse({ id: 'test' });
+    const response: GetMeResponse = new GetMeResponse(TestConstants.ME_DATA);
+    const noIgIdResponse: GetMeResponse = new GetMeResponse({ id: 'test' });
     it('Gets the page id', () => {
         expect(response.getPageId()).toEqual(TestConstants.ME_DATA.id);
     });

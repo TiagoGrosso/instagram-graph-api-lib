@@ -2,8 +2,8 @@ import { ComplexMetric } from '../../../../main/requests/data/insights/ComplexMe
 import { TestConstants } from '../../../TestConstants';
 
 describe('ComplexMetric', () => {
-    let metric = new ComplexMetric(TestConstants.COMPLEX_METRIC_DATA[0]);
-    let emptyMetric = new ComplexMetric(TestConstants.EMPTY_COMPLEX_METRIC_DATA[0]);
+    const metric = new ComplexMetric(TestConstants.COMPLEX_METRIC_DATA[0]);
+    const emptyMetric = new ComplexMetric(TestConstants.EMPTY_COMPLEX_METRIC_DATA[0]);
 
     it('Gets the value', () => {
         expect(metric.getValue()).toEqual(TestConstants.COMPLEX_METRIC_DATA[0].values[0].value);

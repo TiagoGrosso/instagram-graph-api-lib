@@ -8,7 +8,7 @@ import { AbstractResponse } from './AbstractResponse';
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 0.2.0
  */
-export abstract class AbstractGetMediaRequest<T extends AbstractResponse<any>> extends AbstractRequest<T> {
+export abstract class AbstractGetMediaRequest<T extends AbstractResponse<unknown>> extends AbstractRequest<T> {
     /**
      * The constructor.
      *
@@ -17,7 +17,7 @@ export abstract class AbstractGetMediaRequest<T extends AbstractResponse<any>> e
      */
     constructor(accessToken: string, ...fields: MediaField[]) {
         super(accessToken);
-        let fieldsSet: Set<MediaField> = fields.length > 0 ? new Set(fields) : new Set(Object.values(MediaField));
+        const fieldsSet: Set<MediaField> = fields.length > 0 ? new Set(fields) : new Set(Object.values(MediaField));
         this.params.fields = Array.from(fieldsSet).join(',');
     }
 }

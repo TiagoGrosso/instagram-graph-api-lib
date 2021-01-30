@@ -20,7 +20,7 @@ export class GetPageLifetimeInsightsRequest extends AbstractGetPageInsightsReque
      * @param metrics the metrics to retrieve from the API. If no metric is specified, all are retrieved.
      */
     constructor(accessToken: string, pageId: string, ...metrics: LifetimeMetric[]) {
-        let metricsSet: Set<LifetimeMetric> =
+        const metricsSet: Set<LifetimeMetric> =
             metrics.length > 0 ? new Set(metrics) : new Set(Object.values(LifetimeMetric));
         super(accessToken, pageId, metricsSet);
     }
@@ -28,7 +28,7 @@ export class GetPageLifetimeInsightsRequest extends AbstractGetPageInsightsReque
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<any>): GetPageLifetimeInsightsResponse {
+    protected parseResponse(response: AxiosResponse<never>): GetPageLifetimeInsightsResponse {
         return new GetPageLifetimeInsightsResponse(response.data);
     }
 

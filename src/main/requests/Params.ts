@@ -7,7 +7,7 @@
 export interface Params {
     access_token: string;
     fields?: string;
-    limit?: Number;
+    limit?: number;
     before?: string;
     after?: string;
     metric?: string;

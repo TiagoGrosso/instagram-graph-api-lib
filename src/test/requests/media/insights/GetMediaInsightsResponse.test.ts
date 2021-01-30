@@ -2,7 +2,7 @@ import { GetMediaInsightsResponse } from '../../../../main/requests/media/insigh
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetMediaInsightsResponse', () => {
-    let response: GetMediaInsightsResponse = new GetMediaInsightsResponse({
+    const response: GetMediaInsightsResponse = new GetMediaInsightsResponse({
         data: TestConstants.SIMPLE_METRIC_DATA,
     });
 

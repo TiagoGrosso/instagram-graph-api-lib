@@ -37,7 +37,7 @@ export class GetMediaInfoRequest extends AbstractGetMediaRequest<GetMediaInfoRes
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<any>): GetMediaInfoResponse {
+    protected parseResponse(response: AxiosResponse<never>): GetMediaInfoResponse {
         return new GetMediaInfoResponse(response.data);
     }
 }

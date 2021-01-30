@@ -4,7 +4,7 @@ import { TestConstants } from '../../../TestConstants';
 
 describe('AbstractMetric', () => {
     class MetricImpl extends AbstractMetric<MetricValue<number>[]> {}
-    let metric = new MetricImpl(TestConstants.SIMPLE_METRIC_DATA[0]);
+    const metric = new MetricImpl(TestConstants.SIMPLE_METRIC_DATA[0]);
     it('Gets the metric data', () => {
         expect(metric.getMetricData()).toEqual(TestConstants.SIMPLE_METRIC_DATA[0]);
     });

@@ -15,7 +15,7 @@ export class GetPageMonthInsightsRequest extends AbstractGetPageTimedInsightsReq
      * @param metrics the metrics to retrieve from the API. If no metric is specified, all are retrieved.
      */
     constructor(accessToken: string, pageId: string, ...metrics: WeekAndMonthMetric[]) {
-        let metricsSet: Set<WeekAndMonthMetric> =
+        const metricsSet: Set<WeekAndMonthMetric> =
             metrics.length > 0 ? new Set(metrics) : new Set(Object.values(WeekAndMonthMetric));
         super(accessToken, pageId, metricsSet);
     }

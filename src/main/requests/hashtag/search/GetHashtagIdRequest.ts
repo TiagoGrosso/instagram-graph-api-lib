@@ -25,7 +25,7 @@ export class GetHashtagIdRequest extends AbstractRequest<GetHashtagIdResponse> {
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<any>): GetHashtagIdResponse {
+    protected parseResponse(response: AxiosResponse<never>): GetHashtagIdResponse {
         return new GetHashtagIdResponse(response.data);
     }
 

@@ -6,9 +6,9 @@ import { TestConstants } from '../TestConstants';
 describe('AbstractGetInsightsResponse', () => {
     class InsightsResponseImpl extends AbstractGetInsightsResponse<SimpleMetric> {}
 
-    let metrics: SimpleMetric[] = TestConstants.SIMPLE_METRIC_DATA.map((elem) => new SimpleMetric(elem));
+    const metrics: SimpleMetric[] = TestConstants.SIMPLE_METRIC_DATA.map((elem) => new SimpleMetric(elem));
 
-    let response = new InsightsResponseImpl(metrics);
+    const response = new InsightsResponseImpl(metrics);
 
     it('Gets metrics', () => {
         expect(response.getMetrics()).toEqual(metrics);

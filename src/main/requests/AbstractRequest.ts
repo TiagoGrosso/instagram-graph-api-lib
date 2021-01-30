@@ -18,7 +18,7 @@ export type PageOptionToken = { option: PageOption; value: string };
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 0.2.0
  */
-export abstract class AbstractRequest<R extends AbstractResponse<any>> {
+export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
     /**
      * The request params.
      */
@@ -87,7 +87,7 @@ export abstract class AbstractRequest<R extends AbstractResponse<any>> {
      *
      * @param response the parsed response.
      */
-    protected abstract parseResponse(response: AxiosResponse<any>): R;
+    protected abstract parseResponse(response: AxiosResponse<unknown>): R;
 
     /**
      * Gets the url for the request.

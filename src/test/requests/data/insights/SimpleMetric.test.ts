@@ -2,8 +2,8 @@ import { SimpleMetric } from '../../../../main/requests/data/insights/SimpleMetr
 import { TestConstants } from '../../../TestConstants';
 
 describe('SimpleMetric', () => {
-    let metric = new SimpleMetric(TestConstants.SIMPLE_METRIC_DATA[0]);
-    let emptyMetric = new SimpleMetric(TestConstants.SIMPLE_METRIC_DATA[1]);
+    const metric = new SimpleMetric(TestConstants.SIMPLE_METRIC_DATA[0]);
+    const emptyMetric = new SimpleMetric(TestConstants.SIMPLE_METRIC_DATA[1]);
 
     it('Gets greater than', () => {
         expect(metric.getGreaterThan(100).sort()).toEqual(

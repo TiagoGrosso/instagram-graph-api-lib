@@ -7,7 +7,7 @@ import { AbstractMetric } from './data/insights/AbstractMetric';
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 0.1.0
  */
-export abstract class AbstractGetInsightsResponse<T extends AbstractMetric<any>> extends AbstractResponse<T[]> {
+export abstract class AbstractGetInsightsResponse<T extends AbstractMetric<unknown>> extends AbstractResponse<T[]> {
     /**
      * Gets the metrics in the response.
      *
@@ -47,8 +47,8 @@ export abstract class AbstractGetInsightsResponse<T extends AbstractMetric<any>>
      *
      * @returns the metric with the given name or undefined if not found.
      */
-    public getMetricByName(name: string, ignoreCase: boolean = true): T | undefined {
-        let sensitivity = ignoreCase ? { sensitivity: 'accent' } : { sensitivity: 'case' };
+    public getMetricByName(name: string, ignoreCase = true): T | undefined {
+        const sensitivity = ignoreCase ? { sensitivity: 'accent' } : { sensitivity: 'case' };
         return this.getMetricByExpression(
             (metric) => metric.getMetricName().localeCompare(name, undefined, sensitivity) === 0
         );
@@ -62,7 +62,7 @@ export abstract class AbstractGetInsightsResponse<T extends AbstractMetric<any>>
      * @returns the metrics whose names match the given regex.
      */
     public getMetricsByRegex(regexString: string): T[] {
-        let regExp = new RegExp(regexString);
+        const regExp = new RegExp(regexString);
         return this.getMetricsByExpression((metric) => regExp.test(metric.getMetricName()));
     }
 }

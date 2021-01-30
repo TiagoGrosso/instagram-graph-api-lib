@@ -37,7 +37,7 @@ export class GetPageMediaRequest extends AbstractGetMediaRequest<GetPageMediaRes
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<any>): GetPageMediaResponse {
+    protected parseResponse(response: AxiosResponse<never>): GetPageMediaResponse {
         return new GetPageMediaResponse(response.data);
     }
 }

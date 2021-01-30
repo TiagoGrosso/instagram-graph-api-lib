@@ -6,7 +6,7 @@ import { GetHashtagIdResponse } from '../../../main/requests/hashtag/search/GetH
 import { TestConstants } from '../../TestConstants';
 
 describe('GetHashtagIdRequest', () => {
-    let request = new GetHashtagIdRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.HASHTAG);
+    const request = new GetHashtagIdRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.HASHTAG);
 
     it('Builds the config', () => {
         expect(request.config().params.q).toEqual(TestConstants.HASHTAG);
@@ -15,7 +15,7 @@ describe('GetHashtagIdRequest', () => {
         expect(request.config().url).toEqual('/ig_hashtag_search');
     });
 
-    let mock = new MockAdapter(axios);
+    const mock = new MockAdapter(axios);
     mock.onGet(`${Constants.API_URL}/ig_hashtag_search`).reply(200, [{ id: TestConstants.HASHTAG_ID }]);
     it('Parses the response', () => {
         expect.assertions(1);

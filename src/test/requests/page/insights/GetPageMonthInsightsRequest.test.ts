@@ -3,13 +3,13 @@ import { GetPageMonthInsightsRequest } from '../../../../main/requests/page/insi
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetPageMonthInsightsRequest', () => {
-    let request: GetPageMonthInsightsRequest = new GetPageMonthInsightsRequest(
+    const request: GetPageMonthInsightsRequest = new GetPageMonthInsightsRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID,
         WeekAndMonthMetric.REACH,
         WeekAndMonthMetric.IMPRESSIONS
     );
-    let allFieldsRequest: GetPageMonthInsightsRequest = new GetPageMonthInsightsRequest(
+    const allFieldsRequest: GetPageMonthInsightsRequest = new GetPageMonthInsightsRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID
     );

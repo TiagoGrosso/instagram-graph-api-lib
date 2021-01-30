@@ -2,7 +2,7 @@ import { GetPageInfoResponse } from '../../../../main/requests/page/info/GetPage
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetPageInfoResponse', () => {
-    let response: GetPageInfoResponse = new GetPageInfoResponse(TestConstants.PAGE_INFO_DATA);
+    const response: GetPageInfoResponse = new GetPageInfoResponse(TestConstants.PAGE_INFO_DATA);
 
     it('Gets the page id', () => {
         expect(response.getId()).toEqual(TestConstants.PAGE_INFO_DATA.id);

@@ -16,7 +16,8 @@ export class GetStoryMediaInsightsRequest extends AbstractGetMediaInsightsReques
      * @param metrics the metrics to retrieve from the API. If no metric is specified, all are retrieved.
      */
     constructor(accessToken: string, mediaId: string, ...metrics: StoryMetric[]) {
-        let metricsSet: Set<StoryMetric> = metrics.length > 0 ? new Set(metrics) : new Set(Object.values(StoryMetric));
+        const metricsSet: Set<StoryMetric> =
+            metrics.length > 0 ? new Set(metrics) : new Set(Object.values(StoryMetric));
         super(accessToken, mediaId, metricsSet);
     }
 }

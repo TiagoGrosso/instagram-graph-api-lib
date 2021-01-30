@@ -7,19 +7,19 @@ import { GetPageMediaResponse } from '../../../../main/requests/page/media/GetPa
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetPageMediaRequest', () => {
-    let request: GetPageMediaRequest = new GetPageMediaRequest(
+    const request: GetPageMediaRequest = new GetPageMediaRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID,
         MediaField.LIKE_COUNT,
         MediaField.MEDIA_TYPE
     );
-    let requestAllFields: GetPageMediaRequest = new GetPageMediaRequest(
+    const requestAllFields: GetPageMediaRequest = new GetPageMediaRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID
     );
 
     it('Builds the config', () => {
-        let fields: string = `${MediaField.LIKE_COUNT},${MediaField.MEDIA_TYPE}`;
+        const fields = `${MediaField.LIKE_COUNT},${MediaField.MEDIA_TYPE}`;
 
         expect(request.config().params.fields).toEqual(fields);
         expect(request.config().method).toEqual('GET');
@@ -27,7 +27,7 @@ describe('GetPageMediaRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Object.values(MediaField).join(','));
     });
 
-    let mock = new MockAdapter(axios);
+    const mock = new MockAdapter(axios);
     mock.onGet(`${Constants.API_URL}/${TestConstants.PAGE_ID}/media`).reply(200, {
         data: [TestConstants.PARTIAL_MEDIA_DATA],
         paging: TestConstants.PAGING,

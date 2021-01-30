@@ -2,7 +2,7 @@ import { GetPageLifetimeInsightsResponse } from '../../../../main/requests/page/
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetPageLifetimeInsightsResponse', () => {
-    let response: GetPageLifetimeInsightsResponse = new GetPageLifetimeInsightsResponse({
+    const response: GetPageLifetimeInsightsResponse = new GetPageLifetimeInsightsResponse({
         data: TestConstants.COMPLEX_METRIC_DATA,
     });
 

@@ -7,13 +7,13 @@ import { GetStoryMediaInsightsRequest } from '../../../../main/requests/media/in
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetStoryMediaInsightsRequest', () => {
-    let request = new GetStoryMediaInsightsRequest(
+    const request = new GetStoryMediaInsightsRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.MEDIA_ID,
         StoryMetric.IMPRESSIONS,
         StoryMetric.TAPS_BACK
     );
-    let allFieldsRequest = new GetStoryMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID);
+    const allFieldsRequest = new GetStoryMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID);
 
     it('Builds the config', () => {
         expect(request.config().params.metric).toEqual([StoryMetric.IMPRESSIONS, StoryMetric.TAPS_BACK].join(','));
@@ -22,7 +22,7 @@ describe('GetStoryMediaInsightsRequest', () => {
         expect(allFieldsRequest.config().params.metric).toEqual(Object.values(StoryMetric).join(','));
     });
 
-    let mock = new MockAdapter(axios);
+    const mock = new MockAdapter(axios);
     mock.onGet(`${Constants.API_URL}/${TestConstants.MEDIA_ID}/insights`).reply(200, {
         data: TestConstants.SIMPLE_METRIC_DATA,
     });

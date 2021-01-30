@@ -2,8 +2,8 @@ import { GetMediaInfoResponse } from '../../../../main/requests/media/info/GetMe
 import { TestConstants } from '../../../TestConstants';
 
 describe('MediaResponse', () => {
-    let fullResponse: GetMediaInfoResponse = new GetMediaInfoResponse(TestConstants.FULL_MEDIA_DATA);
-    let partialResponse: GetMediaInfoResponse = new GetMediaInfoResponse(TestConstants.BARE_MEDIA_DATA);
+    const fullResponse: GetMediaInfoResponse = new GetMediaInfoResponse(TestConstants.FULL_MEDIA_DATA);
+    const partialResponse: GetMediaInfoResponse = new GetMediaInfoResponse(TestConstants.BARE_MEDIA_DATA);
 
     it('Gets the data', () => {
         expect(fullResponse.getData()).toEqual(TestConstants.FULL_MEDIA_DATA);
@@ -62,7 +62,7 @@ describe('MediaResponse', () => {
     });
 
     it('Gets the `timestamp`', () => {
-        expect(fullResponse.getTimestamp()).toEqual(new Date(TestConstants.FULL_MEDIA_DATA.timestamp!));
+        expect(fullResponse.getTimestamp()).toEqual(new Date(TestConstants.FULL_MEDIA_DATA.timestamp ?? ''));
     });
 
     it('Does not throw on undefined `timestamp`', () => {

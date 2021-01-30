@@ -7,7 +7,7 @@ import { GetPageTimedInsightsResponse } from '../../../../main/requests/page/ins
 import { TestConstants } from '../../../TestConstants';
 
 describe('AbstractGetPageInsightsRequest', () => {
-    class AbstractPageInsightsRequestImpl extends AbstractGetPageTimedInsightsRequest<any> {
+    class AbstractPageInsightsRequestImpl extends AbstractGetPageTimedInsightsRequest<never> {
         protected period(): MetricPeriod {
             return MetricPeriod.DAY;
         }
@@ -16,9 +16,9 @@ describe('AbstractGetPageInsightsRequest', () => {
         }
     }
 
-    let request: AbstractPageInsightsRequestImpl = new AbstractPageInsightsRequestImpl();
+    const request: AbstractPageInsightsRequestImpl = new AbstractPageInsightsRequestImpl();
 
-    let mock = new MockAdapter(axios);
+    const mock = new MockAdapter(axios);
     mock.onGet(`${Constants.API_URL}/${TestConstants.PAGE_ID}/insights`).reply(200, {
         data: TestConstants.SIMPLE_METRIC_DATA,
         paging: TestConstants.PAGING,

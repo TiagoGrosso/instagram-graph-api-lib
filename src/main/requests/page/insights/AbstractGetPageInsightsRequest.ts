@@ -1,6 +1,7 @@
 import { DayMetric, LifetimeMetric, MetricPeriod, WeekAndMonthMetric } from '../../../Enums';
 import { AbstractGetInsightsResponse } from '../../AbstractGetInsightsResponse';
 import { AbstractRequest } from '../../AbstractRequest';
+import { AbstractMetric } from '../../data/insights/AbstractMetric';
 
 /**
  * An abstract class to represent Page Insights Get Requests.
@@ -13,7 +14,7 @@ import { AbstractRequest } from '../../AbstractRequest';
  */
 export abstract class AbstractGetPageInsightsRequest<
     T extends DayMetric | WeekAndMonthMetric | LifetimeMetric,
-    R extends AbstractGetInsightsResponse<any>
+    R extends AbstractGetInsightsResponse<AbstractMetric<unknown>>
 > extends AbstractRequest<R> {
     /**
      * The id of the page.
