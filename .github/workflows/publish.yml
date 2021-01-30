@@ -88,13 +88,8 @@ jobs:
     needs: publish
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: repo-sync/pull-request@v2
       with:
-        ref: release/${{ github.event.inputs.version }}
-    - uses: peter-evans/create-pull-request@v3
-      with:
-        token: ${{ secrets.REPO_PAT }} # To trigger the pipelines on the pull request
-        title: Merge changes after release ${{ github.event.inputs.version }}
-        commit-message: Merge changes after release ${{ github.event.inputs.version }}
-        branch: ${GITHUB_REF##*/}
-        delete-branch: true
+        source_branch: release/${{ github.event.inputs.version }}
+        destination_branch: ${GITHUB_REF##*/}
+        pr_title: Merge changes after release ${{ github.event.inputs.version }}
