@@ -16,7 +16,7 @@ You can always check the [typedoc documentation](https://tiagogrosso.github.io/i
 
 ### Building requests
 
-This lib was built with a simple mindset: creating requests should be as straightforward as possible. With that in mind, to start pumping out request left and right, just create a client and use it to build requests for you:
+This lib was built with a simple mindset: creating requests should be as straightforward as possible. With that in mind, to start pumping out requests left and right, just create a client and use it to build requests for you:
 
 ```typescript
 import { Client, GetPageInfoRequest, GetPageMediaRequest } from 'instagram-graph-api';
@@ -111,7 +111,7 @@ You can also extend your token's validity to avoid having to generate a new one 
 
 ### Page ID
 
-All the request to a page will require the use of a Page ID. To find out what the ID of a page is, you can:
+All the requests to a page will require the use of a Page ID. To find out what the ID of a page is, you can:
 
 -   [Directly make a call to the API](https://developers.facebook.com/docs/instagram-api/guides/business-discovery)
 -   Use one of the many websites that will make that call for you (look for `Instagram Page ID` on a search engine)
