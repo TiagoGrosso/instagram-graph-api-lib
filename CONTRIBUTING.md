@@ -36,7 +36,7 @@ In case your editor does not support ESLint, execute `npm run lint` when you wan
 
 ---
 
-Both the format checker and the linter run on all Pull Request workflows, along with a coverage check of the tests and a transpilling of the Typescript. To minimize feedback time and the number of failing pipelines, these same checks run as a pre-push hook using [Husky 🐶](https://www.npmjs.com/package/husky).
+Both the format checker and the linter run on all Pull Request workflows, along with a coverage check of the tests and a transpilling of the Typescript. To minimize feedback time and the number of failing pipelines, these same checks run as a pre-commit hook using [Husky 🐶](https://www.npmjs.com/package/husky). If you just want to temporarily save your changes and the hook is getting in the way, you can skip it with the `--no-verify` flag, as such: `git commit -m "🐱‍🏍" --no-verify`.
 
 ## Test Coverage
 
