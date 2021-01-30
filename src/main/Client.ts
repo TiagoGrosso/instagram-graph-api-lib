@@ -7,6 +7,7 @@ import {
     PageField,
     WeekAndMonthMetric,
 } from './Enums';
+import { GetHashtagIdRequest } from './requests/hashtag/search/GetHashtagIdRequest';
 import { GetMediaInfoRequest } from './requests/media/info/GetMediaInfoRequest';
 import { GetSimplePostMediaInsightsRequest } from './requests/media/insights/GetSimplePostMediaInsightsRequest';
 import { GetStoryMediaInsightsRequest } from './requests/media/insights/GetStoryMediaInsightsRequest';
@@ -70,7 +71,7 @@ export class Client {
      *
      * @returns a new {@link GetPageInfoRequest}.
      */
-    public newGetPageInfoRequest(...fields: PageField[]) {
+    public newGetPageInfoRequest(...fields: PageField[]): GetPageInfoRequest {
         return new GetPageInfoRequest(this.accessToken, this.pageId, ...fields);
     }
 
@@ -81,7 +82,7 @@ export class Client {
      *
      * @returns a new {@link GetPageMediaRequest}.
      */
-    public newGetPageMediaRequest(...fields: MediaField[]) {
+    public newGetPageMediaRequest(...fields: MediaField[]): GetPageMediaRequest {
         return new GetPageMediaRequest(this.accessToken, this.pageId, ...fields);
     }
 
@@ -92,7 +93,7 @@ export class Client {
      *
      * @returns a new {@link GetPageLifetimeInsightsRequest}.
      */
-    public newGetPageLifetimeInsightsRequest(...metrics: LifetimeMetric[]) {
+    public newGetPageLifetimeInsightsRequest(...metrics: LifetimeMetric[]): GetPageLifetimeInsightsRequest {
         return new GetPageLifetimeInsightsRequest(this.accessToken, this.pageId, ...metrics);
     }
 
@@ -103,7 +104,7 @@ export class Client {
      *
      * @returns a new {@link GetPageDayInsightsRequest}.
      */
-    public newGetPageDayInsightsRequest(...metrics: DayMetric[]) {
+    public newGetPageDayInsightsRequest(...metrics: DayMetric[]): GetPageDayInsightsRequest {
         return new GetPageDayInsightsRequest(this.accessToken, this.pageId, ...metrics);
     }
 
@@ -114,7 +115,7 @@ export class Client {
      *
      * @returns a new {@link GetPageWeekInsightsRequest}.
      */
-    public newGetPageWeekInsightsRequest(...metrics: WeekAndMonthMetric[]) {
+    public newGetPageWeekInsightsRequest(...metrics: WeekAndMonthMetric[]): GetPageWeekInsightsRequest {
         return new GetPageWeekInsightsRequest(this.accessToken, this.pageId, ...metrics);
     }
 
@@ -125,7 +126,7 @@ export class Client {
      *
      * @returns a new {@link GetPageMonthInsightsRequest}.
      */
-    public newGetPageMonthInsightsRequest(...metrics: WeekAndMonthMetric[]) {
+    public newGetPageMonthInsightsRequest(...metrics: WeekAndMonthMetric[]): GetPageMonthInsightsRequest {
         return new GetPageMonthInsightsRequest(this.accessToken, this.pageId, ...metrics);
     }
 
@@ -137,7 +138,7 @@ export class Client {
      *
      * @returns a new {@link GetMediaInfoRequest}.
      */
-    public newGetMediaInfoRequest(mediaId: string, ...fields: MediaField[]) {
+    public newGetMediaInfoRequest(mediaId: string, ...fields: MediaField[]): GetMediaInfoRequest {
         return new GetMediaInfoRequest(this.accessToken, mediaId, ...fields);
     }
 
@@ -149,7 +150,10 @@ export class Client {
      *
      * @returns a new {@link GetPostMediaInsightsRequest}.
      */
-    public newGetPostMediaInsightsRequest(mediaId: string, ...metrics: SimplePostMetric[]) {
+    public newGetPostMediaInsightsRequest(
+        mediaId: string,
+        ...metrics: SimplePostMetric[]
+    ): GetSimplePostMediaInsightsRequest {
         return new GetSimplePostMediaInsightsRequest(this.accessToken, mediaId, ...metrics);
     }
 
@@ -161,7 +165,19 @@ export class Client {
      *
      * @returns a new {@link GetPostMediaInsightsRequest}.
      */
-    public newGetStoryMediaInsightsRequest(mediaId: string, ...metrics: StoryMetric[]) {
+    public newGetStoryMediaInsightsRequest(mediaId: string, ...metrics: StoryMetric[]): GetStoryMediaInsightsRequest {
         return new GetStoryMediaInsightsRequest(this.accessToken, mediaId, ...metrics);
+    }
+
+    /**
+     * Builds a new {@link GetHashtagIdRequest}.
+     *
+     * @param hashtag the hashtag.
+     * @param userId (optional) the id of the user making the request. If ommited, the page id is used.
+     *
+     * @returns a new {@link GetHashtagIdRequest}.
+     */
+    public newGetHashtagIdRequest(hashtag: string, userId: string = this.pageId): GetHashtagIdRequest {
+        return new GetHashtagIdRequest(this.accessToken, userId, hashtag);
     }
 }

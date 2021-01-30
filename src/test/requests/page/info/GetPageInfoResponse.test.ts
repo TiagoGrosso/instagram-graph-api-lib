@@ -4,10 +4,6 @@ import { TestConstants } from '../../../TestConstants';
 describe('GetPageInfoResponse', () => {
     let response: GetPageInfoResponse = new GetPageInfoResponse(TestConstants.PAGE_INFO_DATA);
 
-    it('Gets the data object', () => {
-        expect(response.getData()).toEqual(TestConstants.PAGE_INFO_DATA);
-    });
-
     it('Gets the page id', () => {
         expect(response.getId()).toEqual(TestConstants.PAGE_INFO_DATA.id);
     });

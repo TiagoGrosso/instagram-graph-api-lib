@@ -9,15 +9,6 @@ import { AbstractMetric } from './data/insights/AbstractMetric';
  */
 export abstract class AbstractGetInsightsResponse<T extends AbstractMetric<any>> extends AbstractResponse<T[]> {
     /**
-     * The constructor.
-     *
-     * @param body the body of the response.
-     */
-    constructor(data: T[]) {
-        super(data);
-    }
-
-    /**
      * Gets the metrics in the response.
      *
      * @returns the metrics in the response.

@@ -8,6 +8,7 @@ import {
     PageField,
     WeekAndMonthMetric,
 } from '../main/Enums';
+import { GetHashtagIdRequest } from '../main/requests/hashtag/search/GetHashtagIdRequest';
 import { GetMediaInfoRequest } from '../main/requests/media/info/GetMediaInfoRequest';
 import { GetSimplePostMediaInsightsRequest } from '../main/requests/media/insights/GetSimplePostMediaInsightsRequest';
 import { GetStoryMediaInsightsRequest } from '../main/requests/media/insights/GetStoryMediaInsightsRequest';
@@ -163,6 +164,15 @@ describe('Client', () => {
                 StoryMetric.REACH,
                 StoryMetric.TAPS_FORWARD
             )
+        );
+    });
+
+    it('Builds a GetHashtagIdRequest', () => {
+        expect(client.newGetHashtagIdRequest(TestConstants.HASHTAG)).toEqual(
+            new GetHashtagIdRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.HASHTAG)
+        );
+        expect(client.newGetHashtagIdRequest(TestConstants.HASHTAG, TestConstants.PAGE_ID_2)).toEqual(
+            new GetHashtagIdRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID_2, TestConstants.HASHTAG)
         );
     });
 });

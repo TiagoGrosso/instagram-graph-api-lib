@@ -83,3 +83,18 @@ jobs:
       run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  
+  create-pull-request:
+    needs: publish
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: release/${{ github.event.inputs.version }}
+    - uses: peter-evans/create-pull-request@v3
+      with:
+        token: ${{ secrets.REPO_PAT }} # To trigger the pipelines on the pull request
+        title: Merge changes after release ${{ github.event.inputs.version }}
+        commit-message: Merge changes after release ${{ github.event.inputs.version }}
+        branch: ${GITHUB_REF##*/}
+        delete-branch: true

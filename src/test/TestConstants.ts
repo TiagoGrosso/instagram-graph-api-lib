@@ -39,6 +39,11 @@ export class TestConstants {
     static readonly PAGE_ID: string = 'page_id';
 
     /**
+     * Another dummy page id.
+     */
+    static readonly PAGE_ID_2: string = 'page_id_2';
+
+    /**
      * A dummy limit.
      */
     static readonly LIMIT: number = 20;
@@ -247,4 +252,14 @@ export class TestConstants {
             values: [],
         },
     ];
+
+    /**
+     * A dummy hashtag.
+     */
+    static readonly HASHTAG: string = 'cutepuppies';
+
+    /**
+     * A dummy hashtag id.
+     */
+    static readonly HASHTAG_ID: string = 'hashtag_id';
 }
