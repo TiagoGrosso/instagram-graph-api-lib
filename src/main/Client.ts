@@ -173,7 +173,7 @@ export class Client {
      * Builds a new {@link GetHashtagIdRequest}.
      *
      * @param hashtag the hashtag.
-     * @param userId (optional) the id of the user making the request. If ommited, the page id is used.
+     * @param userId (optional) the id of the user making the request. If omitted, the page id is used.
      *
      * @returns a new {@link GetHashtagIdRequest}.
      */
