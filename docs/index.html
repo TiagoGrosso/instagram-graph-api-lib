@@ -68,20 +68,22 @@
 				<blockquote>
 					<p>:warning: <strong>This package is still in its early stages</strong>: While it&#39;s expected that the general structure of building and executing requests will remain the same, this is not a guarantee as the package expands to cover more parts of the Instagram Graph API. Any breaking change will, however, be well documented on each release.</p>
 				</blockquote>
+				<p>This package is made by independent contributors and is in no way offically related to or supported by Instagram/Facebook.</p>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
 				<p>Simply run <code>npm install instagram-graph-api</code>.</p>
-				<a href="#how-to-use-this-lib" id="how-to-use-this-lib" style="color: inherit; text-decoration: none;">
-					<h2>How to use this lib</h2>
+				<a href="#how-do-i-use-this-lib" id="how-do-i-use-this-lib" style="color: inherit; text-decoration: none;">
+					<h2>How do I use this lib?</h2>
 				</a>
+				<p>You can always check the <a href="https://tiagogrosso.github.io/instagram-graph-api-lib/">typedoc documentation</a> if you are having doubts.</p>
 				<a href="#building-requests" id="building-requests" style="color: inherit; text-decoration: none;">
 					<h3>Building requests</h3>
 				</a>
-				<p>This lib was built with a simple mindset: creating requests should be as straightforward as possible. With that in mind, to start pumping out request left and right, just create a client and use it to build requests for you:</p>
+				<p>This lib was built with a simple mindset: creating requests should be as straightforward as possible. With that in mind, to start pumping out requests left and right, just create a client and use it to build requests for you:</p>
 				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Client</span><span style="color: #000000">, </span><span style="color: #001080">GetPageInfoRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageMediaRequest</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
 
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">: </span><span style="color: #267F99">Client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Client</span><span style="color: #000000">(</span><span style="color: #001080">freshSnootsAccessToken</span><span style="color: #000000">, </span><span style="color: #001080">freshSnootsInstagramId</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">: </span><span style="color: #267F99">Client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Client</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
 
 <span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">pageInfoRequest</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000"> = </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">newGetPageInfoRequest</span><span style="color: #000000">();</span>
 <span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">pageMediaRequest</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000"> = </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">newGetPageMediaRequest</span><span style="color: #000000">();</span>
@@ -157,7 +159,7 @@
 				<a href="#page-id" id="page-id" style="color: inherit; text-decoration: none;">
 					<h3>Page ID</h3>
 				</a>
-				<p>All the request to a page will require the use of a Page ID. To find out what the ID of a page is, you can:</p>
+				<p>All the requests to a page will require the use of a Page ID. To find out what the ID of a page is, you can:</p>
 				<ul>
 					<li><p>  <a href="https://developers.facebook.com/docs/instagram-api/guides/business-discovery">Directly make a call to the API</a></p>
 					</li>
@@ -175,7 +177,7 @@
 					</li>
 				</ul>
 				<a href="#what-can-this-lib-currently-do" id="what-can-this-lib-currently-do" style="color: inherit; text-decoration: none;">
-					<h1>What can this lib currently do</h1>
+					<h1>What can this lib currently do?</h1>
 				</a>
 				<p>As previously stated, this lib is in its early stages and, as such, only supports requests to a reduced number of resources on the Instagram Graph API.</p>
 			</div>
@@ -236,6 +238,12 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_data_insights_simplemetric.html">requests/data/insights/<wbr>Simple<wbr>Metric</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_hashtag_search_gethashtagidrequest.html">requests/hashtag/search/<wbr>Get<wbr>Hashtag<wbr>IdRequest</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_hashtag_search_gethashtagidresponse.html">requests/hashtag/search/<wbr>Get<wbr>Hashtag<wbr>IdResponse</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_media_info_getmediainforequest.html">requests/media/info/<wbr>Get<wbr>Media<wbr>Info<wbr>Request</a>

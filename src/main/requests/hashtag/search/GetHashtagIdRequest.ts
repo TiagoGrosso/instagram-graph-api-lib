@@ -6,7 +6,7 @@ import { GetHashtagIdResponse } from './GetHashtagIdResponse';
  * A request that gets the id of an hashtag.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.4.0
  */
 export class GetHashtagIdRequest extends AbstractRequest<GetHashtagIdResponse> {
     /**
