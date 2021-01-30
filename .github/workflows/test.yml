@@ -31,3 +31,22 @@ jobs:
       run: npm install
     - name: Run tests with coverage
       run: npm test
+
+  create-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+      with:
+        token: '${{ secrets.GITHUB_TOKEN }}'
+    - name: Replace version placeholder
+      run: sh scripts/replace-next-version-tag.sh X.Y.Z
+    - name: Add and Commit changes
+      uses: EndBug/add-and-commit@v7.0.0
+      with:
+        add: '.'
+        message: 'Prepare release X.Y.Z'
+    - uses: repo-sync/pull-request@v2
+      with:
+        github_token: ${{ secrets.REPO_PAT }}
+        pr_title: "Test title" # Title of pull request
