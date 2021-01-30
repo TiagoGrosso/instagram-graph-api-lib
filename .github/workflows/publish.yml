@@ -79,10 +79,13 @@ jobs:
       run: npm run build
     - name: Run tests with coverage
       run: npm test
-    - name: Publish package
-      run: npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Check format
+      run: npm run check-format
+    - name: Run linter
+      run: npm run lint
+    - uses: JS-DevTools/npm-publish@v1
+      with:
+        token: ${{ secrets.NPM_TOKEN }}
   
   create-pull-request:
     needs: publish
