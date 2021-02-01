@@ -68,7 +68,7 @@
 				<blockquote>
 					<p>:warning: <strong>This package is still in its early stages</strong>: While it&#39;s expected that the general structure of building and executing requests will remain the same, this is not a guarantee as the package expands to cover more parts of the Instagram Graph API. Any breaking change will, however, be well documented on each release.</p>
 				</blockquote>
-				<p>This package is made by independent contributors and is in no way offically related to or supported by Instagram/Facebook.</p>
+				<p>This package is made by independent contributors and is in no way officially related to or supported by Instagram/Facebook.</p>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
@@ -123,7 +123,7 @@
 				<a href="#other-request-options" id="other-request-options" style="color: inherit; text-decoration: none;">
 					<h3>Other request options</h3>
 				</a>
-				<p>You can give paging and range options to the requests, as supported by certain resources on the Instagram Graph API. (check the <a href="(https://developers.facebook.com/docs/instagram-api/reference/)">reference documetation</a> to see which ones do). For example, the Get Page Media request supports paging, here&#39;s a naive example of how to use:</p>
+				<p>You can give paging and range options to the requests, as supported by certain resources on the Instagram Graph API. (check the <a href="(https://developers.facebook.com/docs/instagram-api/reference/)">reference documentation</a> to see which ones do). For example, the Get Page Media request supports paging, here&#39;s a naive example of how to use:</p>
 				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageMediaRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageMediaResponse</span><span style="color: #000000">, </span><span style="color: #001080">PageOption</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
 
 <span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
@@ -131,7 +131,6 @@
 <span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">    </span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">nextPage</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000"> | </span><span style="color: #267F99">undefined</span><span style="color: #000000"> = </span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getPaging</span><span style="color: #000000">().</span><span style="color: #795E26">getAfter</span><span style="color: #000000">();</span>
 <span style="color: #000000">    </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">nextPage</span><span style="color: #000000">) {</span>
-<span style="color: #000000">        </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;&#039;</span><span style="color: #000000">)</span>
 <span style="color: #000000">        </span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">addPaging</span><span style="color: #000000">({ </span><span style="color: #001080">option:</span><span style="color: #000000"> </span><span style="color: #001080">PageOption</span><span style="color: #000000">.</span><span style="color: #0070C1">AFTER</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #001080">nextPage</span><span style="color: #000000"> }); </span><span style="color: #008000">// you can reuse the old request 😎</span>
 <span style="color: #000000">        </span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">([...])</span>
 <span style="color: #000000">    } </span><span style="color: #AF00DB">else</span><span style="color: #000000"> {</span>
@@ -143,11 +142,21 @@
 				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageLifetimeInsightsRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageLifetimeInsightsRequest</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
 
 
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageLifetimeInsightsRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">GetPageLifetimeInsightsRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageLifetimeInsightsRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">GetPageLifetimeInsightsRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
 <span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">addRange</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;2021-01-01&#039;</span><span style="color: #000000">), </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;2021-01-15&#039;</span><span style="color: #000000">))</span>
 
 <span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageLifetimeInsightsResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">    [...]</span>
+<span style="color: #000000">});</span>
+</code></pre>
+				<p>Finally, you can add a limit option that will limit the amount of objects retrieved with that request. For example:</p>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageMediaRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageMediaResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
+<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">addLimit</span><span style="color: #000000">(</span><span style="color: #098658">5</span><span style="color: #000000">);</span>
+
+<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getData</span><span style="color: #000000">().</span><span style="color: #001080">length</span><span style="color: #000000">); </span><span style="color: #008000">// This will be &lt; 5</span>
 <span style="color: #000000">});</span>
 </code></pre>
 				<a href="#access-token" id="access-token" style="color: inherit; text-decoration: none;">
@@ -216,6 +225,15 @@
 						<a href="modules/requests_requestconfig.html">requests/<wbr>Request<wbr>Config</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_commentdata.html">requests/data/<wbr>Comment<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_common.html">requests/data/<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_hashtagmediadata.html">requests/data/<wbr>Hashtag<wbr>Media<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/requests_data_medata.html">requests/data/<wbr>MeData</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -240,10 +258,43 @@
 						<a href="modules/requests_data_insights_simplemetric.html">requests/data/insights/<wbr>Simple<wbr>Metric</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/requests_hashtag_media_abstractgethashtagmediarequest.html">requests/hashtag/media/<wbr>Abstract<wbr>Get<wbr>Hashtag<wbr>Media<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_hashtag_media_gethashtagmediaresponse.html">requests/hashtag/media/<wbr>Get<wbr>Hashtag<wbr>Media<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_hashtag_media_gethashtagrecentmediarequest.html">requests/hashtag/media/<wbr>Get<wbr>Hashtag<wbr>Recent<wbr>Media<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_hashtag_media_gethashtagtopmediarequest.html">requests/hashtag/media/<wbr>Get<wbr>Hashtag<wbr>Top<wbr>Media<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/requests_hashtag_search_gethashtagidrequest.html">requests/hashtag/search/<wbr>Get<wbr>Hashtag<wbr>IdRequest</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_hashtag_search_gethashtagidresponse.html">requests/hashtag/search/<wbr>Get<wbr>Hashtag<wbr>IdResponse</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_children_getmediachildrenrequest.html">requests/media/children/<wbr>Get<wbr>Media<wbr>Children<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_children_getmediachildrenresponse.html">requests/media/children/<wbr>Get<wbr>Media<wbr>Children<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_comments_abstractmediacommentsrequest.html">requests/media/comments/<wbr>Abstract<wbr>Media<wbr>Comments<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_comments_getmediacommentsrequest.html">requests/media/comments/<wbr>Get<wbr>Media<wbr>Comments<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_comments_getmediacommentsresponse.html">requests/media/comments/<wbr>Get<wbr>Media<wbr>Comments<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_comments_postmediacommentrequest.html">requests/media/comments/<wbr>Post<wbr>Media<wbr>Comment<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_media_comments_postmediacommentresponse.html">requests/media/comments/<wbr>Post<wbr>Media<wbr>Comment<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_media_info_getmediainforequest.html">requests/media/info/<wbr>Get<wbr>Media<wbr>Info<wbr>Request</a>

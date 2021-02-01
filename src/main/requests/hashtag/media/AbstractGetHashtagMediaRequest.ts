@@ -7,7 +7,7 @@ import { GetHashtagMediaResponse } from './GetHashtagMediaResponse';
  * A request that gets information about the media of an hashtag.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export abstract class AbstractGetHashtagMediaRequest extends AbstractRequest<GetHashtagMediaResponse> {
     /**

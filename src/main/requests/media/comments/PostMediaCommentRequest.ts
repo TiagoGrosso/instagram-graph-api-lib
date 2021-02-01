@@ -7,7 +7,7 @@ import { PostMediaCommentResponse } from './PostMediaCommentResponse';
  * A request that creates a comment on a media object.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export class PostMediaCommentRequest extends AbstractMediaCommentsRequest<PostMediaCommentResponse> {
     /**

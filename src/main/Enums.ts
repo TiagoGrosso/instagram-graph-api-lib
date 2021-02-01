@@ -352,7 +352,7 @@ export enum PageOption {
  * Media fields that can be retrieved on Get Hashtag Media requests.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export enum HashtagMediaField {
     /**

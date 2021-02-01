@@ -5,7 +5,7 @@ import { CommentData } from '../../data/CommentData';
  * Class that represents a response from a Get Media Comments request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
     /**

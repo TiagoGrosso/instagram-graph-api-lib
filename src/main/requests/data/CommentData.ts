@@ -2,7 +2,7 @@
  * Interface to represent the data regarding a comment.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export interface CommentData {
     /**

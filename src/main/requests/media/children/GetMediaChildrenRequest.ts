@@ -6,7 +6,7 @@ import { GetMediaChildrenResponse } from './GetMediaChildrenResponse';
  * A request that gets the children of an album media object.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export class GetMediaChildrenRequest extends AbstractRequest<GetMediaChildrenResponse> {
     /**

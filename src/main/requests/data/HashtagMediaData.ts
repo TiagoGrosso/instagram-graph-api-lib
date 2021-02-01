@@ -4,7 +4,7 @@ import { Children } from './Common';
  * Interface to represent the data regarding a Media Object retrieved through a Get Hashtag Media request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export interface HashtagMediaData {
     /**

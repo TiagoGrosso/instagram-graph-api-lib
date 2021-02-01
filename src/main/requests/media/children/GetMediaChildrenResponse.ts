@@ -4,7 +4,7 @@ import { AbstractResponse } from '../../../../main/requests/AbstractResponse';
  * Class that represents a response from a Get Media Children Response.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export class GetMediaChildrenResponse extends AbstractResponse<{ id: string }[]> {
     /**

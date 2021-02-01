@@ -6,7 +6,7 @@ import { GetMediaCommentsResponse } from './GetMediaCommentsResponse';
  * A request that gets the comments of a media object.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export class GetMediaCommentsRequest extends AbstractMediaCommentsRequest<GetMediaCommentsResponse> {
     /**
