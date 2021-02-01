@@ -1,14 +1,15 @@
 import { AbstractResponse } from '../../AbstractResponse';
-import { MediaData } from '../../data/MediaData';
+import { Children } from '../../data/Common';
+import { HashtagMediaData } from '../../data/HashtagMediaData';
 import { Paging, PagingData } from '../../data/Paging';
 
 /**
- * Class that represents a response from a Page Media request.
+ * Class that represents a response from a Get Hashtag Media request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since 0.1.0
+ * @since `next.release`
  */
-export class GetPageMediaResponse extends AbstractResponse<MediaData[]> {
+export class GetHashtagMediaResponse extends AbstractResponse<HashtagMediaData[]> {
     /**
      * The paging of the response.
      */
@@ -19,7 +20,7 @@ export class GetPageMediaResponse extends AbstractResponse<MediaData[]> {
      *
      * @param body the body of the response
      */
-    constructor(body: { data: MediaData[]; paging: PagingData }) {
+    constructor(body: { data: HashtagMediaData[]; paging: PagingData }) {
         super(body.data);
         this.paging = new Paging(body.paging);
     }
@@ -40,6 +41,30 @@ export class GetPageMediaResponse extends AbstractResponse<MediaData[]> {
      */
     public getIds(): string[] {
         return this.data.map((elem) => elem.id);
+    }
+
+    /**
+     * Gets an array with the children of the all the media objects.
+     * If a media object does not have the 'children' field, 'undefined' is returned for that object.
+     *
+     * @returns an array with the children of the all the media objects.
+     */
+    public getChildren(): (Children | undefined)[] {
+        return this.data.map((elem) => elem.children);
+    }
+
+    /**
+     * Gets a map from the id of the media objects to their children.
+     * If a media object does have not a the 'children' field, 'undefined' is returned for that object.
+     *
+     * @returns a map from the id of the media objects to their 'children'.
+     */
+    public getChildrenMap(): Map<string, Children | undefined> {
+        return new Map(
+            this.data.map((elem) => {
+                return [elem.id, elem.children];
+            })
+        );
     }
 
     /**
@@ -86,54 +111,6 @@ export class GetPageMediaResponse extends AbstractResponse<MediaData[]> {
         return new Map(
             this.data.map((elem) => {
                 return [elem.id, elem.comments_count];
-            })
-        );
-    }
-
-    /**
-     * Gets an array with the ig_id of the all the media objects.
-     * If a media object does not have the 'like_count' field, 'undefined' is returned for that object.
-     *
-     * @returns an array with the ig_id of the all the media objects.
-     */
-    public getIgIds(): (string | undefined)[] {
-        return this.data.map((elem) => elem.ig_id);
-    }
-
-    /**
-     * Gets a map from the id of the media objects to their ig_id.
-     * If a media object does not have the 'like_count' field, 'undefined' is returned for that object.
-     *
-     * @returns a map from the ig of the media objects to their 'ig_id'.
-     */
-    public getIgIdsMap(): Map<string, string | undefined> {
-        return new Map(
-            this.data.map((elem) => {
-                return [elem.id, elem.ig_id];
-            })
-        );
-    }
-
-    /**
-     * Gets an array with the 'is_comment_enabled' of the all the media objects.
-     * If a media object does not have the 'is_comment_enabled' field, 'undefined' is returned for that object.
-     *
-     * @returns an array with the 'is_comment_enabled' of the all the media objects.
-     */
-    public getCommentsEnabled(): (boolean | undefined)[] {
-        return this.data.map((elem) => elem.is_comment_enabled);
-    }
-
-    /**
-     * Gets a map from the id of the media objects to whether they have comments enabled.
-     * If a media object does have not a the 'is_comment_enabled' field, 'undefined' is returned for that object.
-     *
-     * @returns a map from the id of the media objects to whether they have comments enabled.
-     */
-    public getCommentsEnabledMap(): Map<string, boolean | undefined> {
-        return new Map(
-            this.data.map((elem) => {
-                return [elem.id, elem.is_comment_enabled];
             })
         );
     }
@@ -211,54 +188,6 @@ export class GetPageMediaResponse extends AbstractResponse<MediaData[]> {
     }
 
     /**
-     * Gets an array with the media owner of the all the media object.
-     * If a media object does not have the 'owner' field, 'undefined' is returned for that object.
-     *
-     * @returns an array with the media owner of the all the media objects.
-     */
-    public getMediaOwners(): ({ id: string } | undefined)[] {
-        return this.data.map((elem) => elem.owner);
-    }
-
-    /**
-     * Gets a map from the id of the media objects to their media owner.
-     * If a media object does have not a the 'owner' field, 'undefined' is returned for that object.
-     *
-     * @returns a map from the id of the media objects to their 'owner'.
-     */
-    public getMediaOwnersMap(): Map<string, { id: string } | undefined> {
-        return new Map(
-            this.data.map((elem) => {
-                return [elem.id, elem.owner];
-            })
-        );
-    }
-
-    /**
-     * Gets an array with the id of media owner of the all the media object.
-     * If a media object does not have the 'owner' field, 'undefined' is returned for that object.
-     *
-     * @returns an array with the id of media owner of the all the media objects.
-     */
-    public getMediaOwnerIds(): (string | undefined)[] {
-        return this.data.map((elem) => elem.owner?.id);
-    }
-
-    /**
-     * Gets a map from the id of the media objects to the id of their media owner.
-     * If a media object does have not a the 'owner' field, 'undefined' is returned for that object.
-     *
-     * @returns a map from the id of the media objects to their 'owner.id'.
-     */
-    public getMediaOwnerIdsMap(): Map<string, string | undefined> {
-        return new Map(
-            this.data.map((elem) => {
-                return [elem.id, elem.owner?.id];
-            })
-        );
-    }
-
-    /**
      * Gets an array with the media owner of the all the permalinks.
      * If a media object does not have the 'permalink' field, 'undefined' is returned for that object.
      *
@@ -283,30 +212,6 @@ export class GetPageMediaResponse extends AbstractResponse<MediaData[]> {
     }
 
     /**
-     * Gets an array with the media owner of the all the shortcodes.
-     * If a media object does not have the 'shortcode' field, 'undefined' is returned for that object.
-     *
-     * @returns an array with the shortcodes of the all the media objects.
-     */
-    public getShortcodes(): (string | undefined)[] {
-        return this.data.map((elem) => elem.shortcode);
-    }
-
-    /**
-     * Gets a map from the id of the media objects to their shortcode.
-     * If a media object does have not a the 'shortcode' field, 'undefined' is returned for that object.
-     *
-     * @returns a map from the id of the media objects to their 'shortcode'.
-     */
-    public getShortcodesMap(): Map<string, string | undefined> {
-        return new Map(
-            this.data.map((elem) => {
-                return [elem.id, elem.shortcode];
-            })
-        );
-    }
-
-    /**
      * Gets an array with the media owner of the all the timestamps.
      * If a media object does not have the 'timestamp' field, 'undefined' is returned for that object.
      *
@@ -326,30 +231,6 @@ export class GetPageMediaResponse extends AbstractResponse<MediaData[]> {
         return new Map(
             this.data.map((elem) => {
                 return [elem.id, elem.timestamp != undefined ? new Date(elem.timestamp) : undefined];
-            })
-        );
-    }
-
-    /**
-     * Gets an array with the media owner of the all the usernames.
-     * If a media object does not have the 'username' field, 'undefined' is returned for that object.
-     *
-     * @returns an array with the usernames of the all the media objects.
-     */
-    public getUsernames(): (string | undefined)[] {
-        return this.data.map((elem) => elem.username);
-    }
-
-    /**
-     * Gets a map from the id of the media objects to their username.
-     * If a media object does have not a the 'username' field, 'undefined' is returned for that object.
-     *
-     * @returns a map from the id of the media objects to their 'username'.
-     */
-    public getUsernamesMap(): Map<string, string | undefined> {
-        return new Map(
-            this.data.map((elem) => {
-                return [elem.id, elem.username];
             })
         );
     }

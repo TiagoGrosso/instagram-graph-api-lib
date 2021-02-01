@@ -10,6 +10,8 @@ Did you find a cheeky typo in the docs? 📰
 
 Then clone/fork the repo, do the changes you see fit and submit them in a Pull Request! Our dedicated team of 1 lonely dev will try to address it and give you feedback as soon as possible!
 
+You can also help by contributing to Pull Request reviews or by opening new issues and starting discussions on the future of this repo.
+
 ## General Guidelines
 
 The repo enforces pretty much everything by itself with the tools it has embedded into it.

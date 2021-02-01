@@ -96,4 +96,4 @@ jobs:
         source_branch: release/${{ github.event.inputs.version }}
         destination_branch: ${GITHUB_REF##*/}
         pr_title: Merge changes after release ${{ github.event.inputs.version }}
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.REPO_PAT }}

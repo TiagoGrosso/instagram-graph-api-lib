@@ -5,14 +5,49 @@
  * @since 0.1.0
  */
 export enum PageField {
+    /**
+     * The biography of the page.
+     */
     BIOGRAPHY = 'biography',
+
+    /**
+     * The id of the page.
+     */
     ID = 'id',
+
+    /**
+     * The instagram of the page.
+     */
     IG_ID = 'ig_id',
+
+    /**
+     * The number of followers of the page.
+     */
     FOLLOWERS_COUNT = 'followers_count',
+
+    /**
+     * The number of follows of the page.
+     */
     FOLLOWS_COUNT = 'follows_count',
+
+    /**
+     * The number of media objects of the page.
+     */
     MEDIA_COUNT = 'media_count',
+
+    /**
+     * The name of the page.
+     */
     NAME = 'name',
+
+    /**
+     * The URL of the profile picture of the page.
+     */
     PROFILE_PICTURE_URL = 'profile_picture_url',
+
+    /**
+     * The username of the page.
+     */
     USERNAME = 'username',
 }
 
@@ -141,22 +176,70 @@ export enum MetricPeriod {
  */
 export enum MediaField {
     CAPTION = 'caption',
+
+    /**
+     * The number of comments on the media object.
+     */
     COMMENTS_COUNT = 'comments_count',
+
+    /**
+     * The id of the media object.
+     */
     ID = 'id',
+
+    /**
+     * The Instagram id of the media object.
+     */
     IG_ID = 'ig_id',
+
+    /**
+     * Whether comments are enabled on the media object.
+     */
     IS_COMMENT_ENABLED = 'is_comment_enabled',
+
+    /**
+     * The number of likes on the media object.
+     */
     LIKE_COUNT = 'like_count',
+
+    /**
+     * The type of media object.
+     */
     MEDIA_TYPE = 'media_type',
+
+    /**
+     * The URL of the media object.
+     */
     MEDIA_URL = 'media_url',
+
+    /**
+     * The owner of the media object.
+     */
     OWNER = 'owner',
+
+    /**
+     * The permalink of the media object.
+     */
     PERMALINK = 'permalink',
+
+    /**
+     * The shortcode of the media object.
+     */
     SHORTCODE = 'shortcode',
+
+    /**
+     * The URL of thumbnail of the media object.
+     */
     THUMBNAIL_URL = 'thumbnail_url',
 
     /**
-     * ISO 8601 formatted creation date in UTC (default is UTC ±00:00)
+     * The ISO 8601 formatted creation date in UTC (default is UTC ±00:00)
      */
     TIMESTAMP = 'timestamp',
+
+    /**
+     * The username of the media object owner.
+     */
     USERNAME = 'username',
 }
 
@@ -263,4 +346,57 @@ export enum AlbumMetric {
 export enum PageOption {
     BEFORE = 'before',
     AFTER = 'after',
+}
+
+/**
+ * Media fields that can be retrieved on Get Hashtag Media requests.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
+export enum HashtagMediaField {
+    /**
+     * The caption of the media object.
+     */
+    CAPTION = 'caption',
+
+    /**
+     * The children of the media object. Only returned for Album IG Media.
+     */
+    CHILDREN = 'children',
+
+    /**
+     * The number of comments on the media object.
+     */
+    COMMENTS_COUNT = 'comments_count',
+
+    /**
+     * The id of the media object.
+     */
+    ID = 'id',
+
+    /**
+     * The number of likes on the media object.
+     */
+    LIKE_COUNT = 'like_count',
+
+    /**
+     * The type of media object.
+     */
+    MEDIA_TYPE = 'media_type',
+
+    /**
+     * The url of the media object. Not returned for Album IG Media
+     */
+    MEDIA_URL = 'media_url',
+
+    /**
+     * The permalink of the media object.
+     */
+    PERMALINK = 'permalink',
+
+    /**
+     * The ISO 8601 formatted creation date in UTC (default is UTC ±00:00)
+     */
+    TIMESTAMP = 'timestamp',
 }
