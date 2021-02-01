@@ -12,6 +12,7 @@ import {
 import { GetHashtagRecentMediaRequest } from '../main/requests/hashtag/media/GetHashtagRecentMediaRequest';
 import { GetHashtagTopMediaRequest } from '../main/requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from '../main/requests/hashtag/search/GetHashtagIdRequest';
+import { GetMediaChildrenRequest } from '../main/requests/media/children/GetMediaChildrenRequest';
 import { GetMediaCommentsRequest } from '../main/requests/media/comments/GetMediaCommentsRequest';
 import { PostMediaCommentRequest } from '../main/requests/media/comments/PostMediaCommentRequest';
 import { GetMediaInfoRequest } from '../main/requests/media/info/GetMediaInfoRequest';
@@ -133,6 +134,12 @@ describe('Client', () => {
                 MediaField.OWNER,
                 MediaField.PERMALINK
             )
+        );
+    });
+
+    it('Builds a GetMediaChildrenRequest', () => {
+        expect(client.newGetMediaChildrenRequest(TestConstants.MEDIA_ID)).toEqual(
+            new GetMediaChildrenRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID)
         );
     });
 

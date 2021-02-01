@@ -12,6 +12,7 @@ import { AbstractGetHashtagMediaRequest } from './requests/hashtag/media/Abstrac
 import { GetHashtagRecentMediaRequest } from './requests/hashtag/media/GetHashtagRecentMediaRequest';
 import { GetHashtagTopMediaRequest } from './requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from './requests/hashtag/search/GetHashtagIdRequest';
+import { GetMediaChildrenRequest } from './requests/media/children/GetMediaChildrenRequest';
 import { GetMediaCommentsRequest } from './requests/media/comments/GetMediaCommentsRequest';
 import { PostMediaCommentRequest } from './requests/media/comments/PostMediaCommentRequest';
 import { GetMediaInfoRequest } from './requests/media/info/GetMediaInfoRequest';
@@ -146,6 +147,17 @@ export class Client {
      */
     public newGetMediaInfoRequest(mediaId: string, ...fields: MediaField[]): GetMediaInfoRequest {
         return new GetMediaInfoRequest(this.accessToken, mediaId, ...fields);
+    }
+
+    /**
+     * Builds a new {@link GetMediaChildrenRequest}.
+     *
+     * @param mediaId the media object id.
+     *
+     * @returns a new {@link GetMediaChildrenRequest}.
+     */
+    public newGetMediaChildrenRequest(mediaId: string): GetMediaChildrenRequest {
+        return new GetMediaChildrenRequest(this.accessToken, mediaId);
     }
 
     /**

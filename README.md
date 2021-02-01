@@ -94,11 +94,24 @@ Similarly, you can add a range option which the Get Insights requests use, like 
 import { GetPageLifetimeInsightsRequest, GetPageLifetimeInsightsRequest } from 'instagram-graph-api';
 
 
-let request: GetPageLifetimeInsightsRequest = new GetPageLifetimeInsightsRequest(ACCESS_TOKEN, PAGE_ID);
+const request: GetPageLifetimeInsightsRequest = new GetPageLifetimeInsightsRequest(ACCESS_TOKEN, PAGE_ID);
 request.addRange(new Date('2021-01-01'), new Date('2021-01-15'))
 
 request.execute().then((response: GetPageLifetimeInsightsResponse) => {
     [...]
+});
+```
+
+Finally, you can add a limit option that will limit the amount of objects retrieved with that request. For example:
+
+```typescript
+import { GetPageMediaRequest, GetPageMediaResponse } from 'instagram-graph-api';
+
+const request: GetPageMediaRequest = new GetPageMediaRequest(ACCESS_TOKEN, PAGE_ID);
+request.addLimit(5);
+
+request.execute().then((response: GetPageMediaResponse) => {
+    console.log(response.getData().length); // This will be < 5
 });
 ```
 
