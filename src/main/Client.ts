@@ -12,6 +12,8 @@ import { AbstractGetHashtagMediaRequest } from './requests/hashtag/media/Abstrac
 import { GetHashtagRecentMediaRequest } from './requests/hashtag/media/GetHashtagRecentMediaRequest';
 import { GetHashtagTopMediaRequest } from './requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from './requests/hashtag/search/GetHashtagIdRequest';
+import { GetMediaCommentsRequest } from './requests/media/comments/GetMediaCommentsRequest';
+import { PostMediaCommentRequest } from './requests/media/comments/PostMediaCommentRequest';
 import { GetMediaInfoRequest } from './requests/media/info/GetMediaInfoRequest';
 import { GetSimplePostMediaInsightsRequest } from './requests/media/insights/GetSimplePostMediaInsightsRequest';
 import { GetStoryMediaInsightsRequest } from './requests/media/insights/GetStoryMediaInsightsRequest';
@@ -147,6 +149,29 @@ export class Client {
     }
 
     /**
+     * Builds a new {@link GetMediaCommentsRequest}.
+     *
+     * @param mediaId the media object id.
+     *
+     * @returns a new {@link GetMediaCommentsRequest}.
+     */
+    public newGetMediaCommentsRequest(mediaId: string): GetMediaCommentsRequest {
+        return new GetMediaCommentsRequest(this.accessToken, mediaId);
+    }
+
+    /**
+     * Builds a new {@link PostMediaCommentRequest}.
+     *
+     * @param mediaId the media object id.
+     * @param text the text of the comment,
+     *
+     * @returns a new {@link PostMediaCommentRequest}.
+     */
+    public newPostMediaCommentRequest(mediaId: string, text: string): PostMediaCommentRequest {
+        return new PostMediaCommentRequest(this.accessToken, mediaId, text);
+    }
+
+    /**
      * Builds a new {@link GetPostMediaInsightsRequest}.
      *
      * @param mediaId the media object id (must be of type 'Photo' or 'Video').
@@ -154,7 +179,7 @@ export class Client {
      *
      * @returns a new {@link GetPostMediaInsightsRequest}.
      */
-    public newGetPostMediaInsightsRequest(
+    public newGetSimplePostMediaInsightsRequest(
         mediaId: string,
         ...metrics: SimplePostMetric[]
     ): GetSimplePostMediaInsightsRequest {

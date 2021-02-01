@@ -18,7 +18,8 @@ export class GetHashtagMediaResponse extends AbstractResponse<HashtagMediaData[]
     /**
      * The constructor.
      *
-     * @param body the body of the response
+     * @param body the body of the response.
+     * @param paging the paging of the response.
      */
     constructor(body: { data: HashtagMediaData[]; paging: PagingData }) {
         super(body.data);
