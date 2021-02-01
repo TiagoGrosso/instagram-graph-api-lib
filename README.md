@@ -6,7 +6,7 @@ This npm package lets you easily perform requests to the [Instagram Graph API](h
 
 > :warning: **This package is still in its early stages**: While it's expected that the general structure of building and executing requests will remain the same, this is not a guarantee as the package expands to cover more parts of the Instagram Graph API. Any breaking change will, however, be well documented on each release.
 
-This package is made by independent contributors and is in no way offically related to or supported by Instagram/Facebook.
+This package is made by independent contributors and is in no way officially related to or supported by Instagram/Facebook.
 
 ## Installation
 
@@ -70,7 +70,7 @@ let config: RequestConfig = request.config();
 
 ### Other request options
 
-You can give paging and range options to the requests, as supported by certain resources on the Instagram Graph API. (check the [reference documetation](<(https://developers.facebook.com/docs/instagram-api/reference/)>) to see which ones do). For example, the Get Page Media request supports paging, here's a naive example of how to use:
+You can give paging and range options to the requests, as supported by certain resources on the Instagram Graph API. (check the [reference documentation](<(https://developers.facebook.com/docs/instagram-api/reference/)>) to see which ones do). For example, the Get Page Media request supports paging, here's a naive example of how to use:
 
 ```typescript
 import { GetPageMediaRequest, GetPageMediaResponse, PageOption } from 'instagram-graph-api';

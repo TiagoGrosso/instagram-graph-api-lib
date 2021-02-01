@@ -16,4 +16,5 @@ export interface Params {
     until?: Date;
     user_id?: string;
     q?: string;
+    message?: string;
 }

@@ -1,17 +1,19 @@
 import { Client } from '../main/Client';
 import {
     DayMetric,
+    HashtagMediaField,
     LifetimeMetric,
     MediaField,
+    PageField,
     SimplePostMetric,
     StoryMetric,
-    PageField,
     WeekAndMonthMetric,
-    HashtagMediaField,
 } from '../main/Enums';
 import { GetHashtagRecentMediaRequest } from '../main/requests/hashtag/media/GetHashtagRecentMediaRequest';
 import { GetHashtagTopMediaRequest } from '../main/requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from '../main/requests/hashtag/search/GetHashtagIdRequest';
+import { GetMediaCommentsRequest } from '../main/requests/media/comments/GetMediaCommentsRequest';
+import { PostMediaCommentRequest } from '../main/requests/media/comments/PostMediaCommentRequest';
 import { GetMediaInfoRequest } from '../main/requests/media/info/GetMediaInfoRequest';
 import { GetSimplePostMediaInsightsRequest } from '../main/requests/media/insights/GetSimplePostMediaInsightsRequest';
 import { GetStoryMediaInsightsRequest } from '../main/requests/media/insights/GetStoryMediaInsightsRequest';
@@ -134,12 +136,28 @@ describe('Client', () => {
         );
     });
 
-    it('Builds a GetPostMediaInsightsRequest', () => {
-        expect(client.newGetPostMediaInsightsRequest(TestConstants.MEDIA_ID)).toEqual(
+    it('Builds a GetMediaCommentsRequests', () => {
+        expect(client.newGetMediaCommentsRequest(TestConstants.MEDIA_ID)).toEqual(
+            new GetMediaCommentsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID)
+        );
+    });
+
+    it('Builds a PostMediaCommentRequest', () => {
+        expect(client.newPostMediaCommentRequest(TestConstants.MEDIA_ID, TestConstants.COMMENTS_DATA[0].text)).toEqual(
+            new PostMediaCommentRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.MEDIA_ID,
+                TestConstants.COMMENTS_DATA[0].text
+            )
+        );
+    });
+
+    it('Builds a GetSimplePostMediaInsightsRequest', () => {
+        expect(client.newGetSimplePostMediaInsightsRequest(TestConstants.MEDIA_ID)).toEqual(
             new GetSimplePostMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID)
         );
         expect(
-            client.newGetPostMediaInsightsRequest(
+            client.newGetSimplePostMediaInsightsRequest(
                 TestConstants.MEDIA_ID,
                 SimplePostMetric.REACH,
                 SimplePostMetric.ENGAGEMENT

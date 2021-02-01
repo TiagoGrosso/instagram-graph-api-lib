@@ -6,6 +6,7 @@ import { PagingData } from '../main/requests/data/Paging';
 import { PageInfoData } from '../main/requests/data/PageInfoData';
 import { MeData } from '../main/requests/data/MeData';
 import { HashtagMediaData } from '../main/requests/data/HashtagMediaData';
+import { CommentData } from '../main/requests/data/CommentData';
 
 /**
  * A set of constants used in tests.
@@ -33,6 +34,11 @@ export class TestConstants {
      * A dummy media id.
      */
     static readonly MEDIA_ID: string = 'media_id';
+
+    /**
+     * A dummy comment id.
+     */
+    static readonly COMMENT_ID: string = 'comment_id';
 
     /**
      * A dummy page id.
@@ -109,6 +115,22 @@ export class TestConstants {
     static readonly BARE_MEDIA_DATA: MediaData = {
         id: 'media_id_2',
     };
+
+    /**
+     * A dummy comment data array.
+     */
+    static readonly COMMENTS_DATA: CommentData[] = [
+        {
+            timestamp: '2021-01-31T16:57:20+0000',
+            text: 'Dummy text',
+            id: 'comment_id',
+        },
+        {
+            timestamp: '2021-01-31T16:58:20+0000',
+            text: 'Text dummy',
+            id: 'comment_id_2',
+        },
+    ];
 
     /**
      * A dummy paging object.
