@@ -4,7 +4,7 @@ import { AbstractResponse } from '../../AbstractResponse';
  * Class that represents a response from a Post Media Comment request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export class PostMediaCommentResponse extends AbstractResponse<{ id: string }> {
     /**

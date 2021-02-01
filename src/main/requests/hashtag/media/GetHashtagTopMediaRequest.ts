@@ -4,7 +4,7 @@ import { AbstractGetHashtagMediaRequest } from './AbstractGetHashtagMediaRequest
  * A request that gets information about the top media of an hashtag.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export class GetHashtagTopMediaRequest extends AbstractGetHashtagMediaRequest {
     /**

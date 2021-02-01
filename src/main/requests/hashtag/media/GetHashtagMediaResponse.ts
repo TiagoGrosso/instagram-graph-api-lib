@@ -7,7 +7,7 @@ import { Paging, PagingData } from '../../data/Paging';
  * Class that represents a response from a Get Hashtag Media request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export class GetHashtagMediaResponse extends AbstractResponse<HashtagMediaData[]> {
     /**

@@ -5,7 +5,7 @@ import { AbstractResponse } from '../../AbstractResponse';
  * Abstract class to represent requests related to a media's comments.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.0
  */
 export abstract class AbstractMediaCommentsRequest<T extends AbstractResponse<unknown>> extends AbstractRequest<T> {
     /**
