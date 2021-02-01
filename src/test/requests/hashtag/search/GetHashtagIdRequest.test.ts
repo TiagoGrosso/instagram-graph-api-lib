@@ -16,11 +16,11 @@ describe('GetHashtagIdRequest', () => {
     });
 
     const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/ig_hashtag_search`).reply(200, [{ id: TestConstants.HASHTAG_ID }]);
+    mock.onGet(`${Constants.API_URL}/ig_hashtag_search`).reply(200, { data: [{ id: TestConstants.HASHTAG_ID }] });
     it('Parses the response', () => {
         expect.assertions(1);
         return request.execute().then((response) => {
-            expect(response).toEqual(new GetHashtagIdResponse([{ id: TestConstants.HASHTAG_ID }]));
+            expect(response).toEqual(new GetHashtagIdResponse({ data: [{ id: TestConstants.HASHTAG_ID }] }));
         });
     });
 });

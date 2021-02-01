@@ -9,6 +9,15 @@ import { AbstractResponse } from '../../AbstractResponse';
  */
 export class GetHashtagIdResponse extends AbstractResponse<{ id: string }[]> {
     /**
+     * The constructor.
+     *
+     * @param body the body of the response
+     */
+    constructor(body: { data: { id: string }[] }) {
+        super(body.data);
+    }
+
+    /**
      * Gets the id of the hashtag.
      *
      * @returns the id of the hashtag.
