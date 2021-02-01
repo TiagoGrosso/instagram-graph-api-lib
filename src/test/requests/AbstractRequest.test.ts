@@ -66,4 +66,9 @@ describe('AbstractRequest', () => {
         expect(request.config().params.since).toEqual(TestConstants.SINCE);
         expect(request.config().params.until).toEqual(TestConstants.UNTIL);
     });
+
+    it('Adds the limit', () => {
+        request.addLimit(TestConstants.LIMIT);
+        expect(request.config().params.limit).toEqual(TestConstants.LIMIT);
+    });
 });

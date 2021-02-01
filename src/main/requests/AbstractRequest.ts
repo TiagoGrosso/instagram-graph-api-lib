@@ -83,6 +83,15 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
     }
 
     /**
+     * Adds the limit param to the request.
+     *
+     * @param limit the number of objects to retrieve.
+     */
+    public addLimit(limit: number): void {
+        this.params.limit = limit;
+    }
+
+    /**
      * Parses the response into a response object.
      *
      * @param response the parsed response.

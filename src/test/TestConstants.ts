@@ -117,6 +117,21 @@ export class TestConstants {
     };
 
     /**
+     * A dummy children data object
+     */
+    static readonly CHILDREN_DATA: { id: string }[] = [
+        {
+            id: 'child_1',
+        },
+        {
+            id: 'child_2',
+        },
+        {
+            id: 'child_3',
+        },
+    ];
+
+    /**
      * A dummy comment data array.
      */
     static readonly COMMENTS_DATA: CommentData[] = [
