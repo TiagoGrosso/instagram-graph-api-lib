@@ -80,7 +80,6 @@ let request: GetPageMediaRequest = new GetPageMediaRequest(ACCESS_TOKEN, PAGE_ID
 request.execute().then((response: GetPageMediaResponse) => {
     let nextPage: string | undefined = response.getPaging().getAfter();
     if (nextPage) {
-        console.log('')
         request.addPaging({ option: PageOption.AFTER, value: nextPage }); // you can reuse the old request 😎
         request.execute([...])
     } else {
