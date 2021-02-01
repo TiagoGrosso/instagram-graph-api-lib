@@ -1,9 +1,9 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../main/Constants';
-import { GetHashtagIdRequest } from '../../../main/requests/hashtag/search/GetHashtagIdRequest';
-import { GetHashtagIdResponse } from '../../../main/requests/hashtag/search/GetHashtagIdResponse';
-import { TestConstants } from '../../TestConstants';
+import { Constants } from '../../../../main/Constants';
+import { GetHashtagIdRequest } from '../../../../main/requests/hashtag/search/GetHashtagIdRequest';
+import { GetHashtagIdResponse } from '../../../../main/requests/hashtag/search/GetHashtagIdResponse';
+import { TestConstants } from '../../../TestConstants';
 
 describe('GetHashtagIdRequest', () => {
     const request = new GetHashtagIdRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.HASHTAG);

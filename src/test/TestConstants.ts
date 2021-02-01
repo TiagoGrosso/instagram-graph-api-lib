@@ -5,6 +5,7 @@ import { MediaData } from '../main/requests/data/MediaData';
 import { PagingData } from '../main/requests/data/Paging';
 import { PageInfoData } from '../main/requests/data/PageInfoData';
 import { MeData } from '../main/requests/data/MeData';
+import { HashtagMediaData } from '../main/requests/data/HashtagMediaData';
 
 /**
  * A set of constants used in tests.
@@ -262,4 +263,43 @@ export class TestConstants {
      * A dummy hashtag id.
      */
     static readonly HASHTAG_ID: string = 'hashtag_id';
+
+    /**
+     * A dummy hashtag image media data object.
+     */
+    static readonly HASHTAG_IMAGE_MEDIA_DATA: HashtagMediaData = {
+        id: 'media_id',
+        caption: 'media_caption',
+        comments_count: 20,
+        like_count: 500,
+        media_type: 'IMAGE',
+        media_url: 'media_url',
+        permalink: 'media_permalink',
+        timestamp: '2020-07-01T08:00:00+0000',
+    };
+
+    /**
+     * A dummy hashtag album media data object.
+     */
+    static readonly HASHTAG_ALBUM_MEDIA_DATA: HashtagMediaData = {
+        id: 'media_id_2',
+        children: {
+            data: [
+                {
+                    id: 'child_3',
+                },
+                {
+                    id: 'child_4',
+                },
+                {
+                    id: 'child_5',
+                },
+            ],
+        },
+        caption: 'media_caption_2',
+        comments_count: 30,
+        like_count: 600,
+        media_type: 'CAROUSEL_ALBUM',
+        permalink: 'media_permalink_2',
+    };
 }

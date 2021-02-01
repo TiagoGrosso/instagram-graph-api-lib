@@ -1,5 +1,5 @@
-import { GetHashtagIdResponse } from '../../../main/requests/hashtag/search/GetHashtagIdResponse';
-import { TestConstants } from '../../TestConstants';
+import { GetHashtagIdResponse } from '../../../../main/requests/hashtag/search/GetHashtagIdResponse';
+import { TestConstants } from '../../../TestConstants';
 
 describe('GetHashtagIdResponse', () => {
     const response = new GetHashtagIdResponse([{ id: TestConstants.HASHTAG_ID }]);

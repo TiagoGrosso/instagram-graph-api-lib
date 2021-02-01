@@ -1,12 +1,16 @@
 import {
     DayMetric,
+    HashtagMediaField,
     LifetimeMetric,
     MediaField,
+    PageField,
     SimplePostMetric,
     StoryMetric,
-    PageField,
     WeekAndMonthMetric,
 } from './Enums';
+import { AbstractGetHashtagMediaRequest } from './requests/hashtag/media/AbstractGetHashtagMediaRequest';
+import { GetHashtagRecentMediaRequest } from './requests/hashtag/media/GetHashtagRecentMediaRequest';
+import { GetHashtagTopMediaRequest } from './requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from './requests/hashtag/search/GetHashtagIdRequest';
 import { GetMediaInfoRequest } from './requests/media/info/GetMediaInfoRequest';
 import { GetSimplePostMediaInsightsRequest } from './requests/media/insights/GetSimplePostMediaInsightsRequest';
@@ -179,5 +183,39 @@ export class Client {
      */
     public newGetHashtagIdRequest(hashtag: string, userId: string = this.pageId): GetHashtagIdRequest {
         return new GetHashtagIdRequest(this.accessToken, userId, hashtag);
+    }
+
+    /**
+     * Builds a new {@link GetHashtagRecentMediaRequest}.
+     *
+     * @param hashtagId the hashtag id.
+     * @param userId (optional) the id of the user making the request. If omitted, the page id is used.
+     * @param fields the media fields to retrieve from the API. If no field is specified, all are retrieved.
+     *
+     * @returns a new {@link GetHashtagRecentMediaRequest}.
+     */
+    public newGetHashtagRecentMediaRequest(
+        hashtagId: string,
+        userId: string = this.pageId,
+        ...fields: HashtagMediaField[]
+    ): AbstractGetHashtagMediaRequest {
+        return new GetHashtagRecentMediaRequest(this.accessToken, hashtagId, userId, ...fields);
+    }
+
+    /**
+     * Builds a new {@link GetHashtagTopMediaRequest}.
+     *
+     * @param hashtagId the hashtag id.
+     * @param userId (optional) the id of the user making the request. If omitted, the page id is used.
+     * @param fields the media fields to retrieve from the API. If no field is specified, all are retrieved.
+     *
+     * @returns a new {@link GetHashtagTopMediaRequest}.
+     */
+    public newGetHashtagTopMediaRequest(
+        hashtagId: string,
+        userId: string = this.pageId,
+        ...fields: HashtagMediaField[]
+    ): AbstractGetHashtagMediaRequest {
+        return new GetHashtagTopMediaRequest(this.accessToken, hashtagId, userId, ...fields);
     }
 }

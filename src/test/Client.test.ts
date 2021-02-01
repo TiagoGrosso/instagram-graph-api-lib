@@ -7,7 +7,10 @@ import {
     StoryMetric,
     PageField,
     WeekAndMonthMetric,
+    HashtagMediaField,
 } from '../main/Enums';
+import { GetHashtagRecentMediaRequest } from '../main/requests/hashtag/media/GetHashtagRecentMediaRequest';
+import { GetHashtagTopMediaRequest } from '../main/requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from '../main/requests/hashtag/search/GetHashtagIdRequest';
 import { GetMediaInfoRequest } from '../main/requests/media/info/GetMediaInfoRequest';
 import { GetSimplePostMediaInsightsRequest } from '../main/requests/media/insights/GetSimplePostMediaInsightsRequest';
@@ -173,6 +176,54 @@ describe('Client', () => {
         );
         expect(client.newGetHashtagIdRequest(TestConstants.HASHTAG, TestConstants.PAGE_ID_2)).toEqual(
             new GetHashtagIdRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID_2, TestConstants.HASHTAG)
+        );
+    });
+
+    it('Builds a GetHashtagRecentMediaRequest', () => {
+        expect(client.newGetHashtagRecentMediaRequest(TestConstants.HASHTAG_ID)).toEqual(
+            new GetHashtagRecentMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.HASHTAG_ID,
+                TestConstants.PAGE_ID
+            )
+        );
+        expect(
+            client.newGetHashtagRecentMediaRequest(
+                TestConstants.HASHTAG_ID,
+                TestConstants.PAGE_ID_2,
+                HashtagMediaField.CAPTION,
+                HashtagMediaField.CHILDREN
+            )
+        ).toEqual(
+            new GetHashtagRecentMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.HASHTAG_ID,
+                TestConstants.PAGE_ID_2,
+                HashtagMediaField.CAPTION,
+                HashtagMediaField.CHILDREN
+            )
+        );
+    });
+
+    it('Builds a GetHashtagTopMediaRequest', () => {
+        expect(client.newGetHashtagTopMediaRequest(TestConstants.HASHTAG_ID)).toEqual(
+            new GetHashtagTopMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.HASHTAG_ID, TestConstants.PAGE_ID)
+        );
+        expect(
+            client.newGetHashtagTopMediaRequest(
+                TestConstants.HASHTAG_ID,
+                TestConstants.PAGE_ID_2,
+                HashtagMediaField.CAPTION,
+                HashtagMediaField.CHILDREN
+            )
+        ).toEqual(
+            new GetHashtagTopMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.HASHTAG_ID,
+                TestConstants.PAGE_ID_2,
+                HashtagMediaField.CAPTION,
+                HashtagMediaField.CHILDREN
+            )
         );
     });
 });

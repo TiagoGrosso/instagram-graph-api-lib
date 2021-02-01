@@ -9,15 +9,6 @@ import { MediaData } from '../../data/MediaData';
  */
 export class GetMediaInfoResponse extends AbstractResponse<MediaData> {
     /**
-     * The constructor.
-     *
-     * @param data the data of the response.
-     */
-    constructor(data: MediaData) {
-        super(data);
-    }
-
-    /**
      * Gets the id of the media object.
      *
      * @returns the id of the media object.
