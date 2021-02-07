@@ -400,3 +400,56 @@ export enum HashtagMediaField {
      */
     TIMESTAMP = 'timestamp',
 }
+
+/**
+ * Comment fields that can be retrieved on Get Comment requests.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
+export enum CommentField {
+    /**
+     * Whether the comment is hidden.
+     */
+    HIDDEN = 'hidden',
+
+    /**
+     * The id of the comment.
+     */
+    ID = 'id',
+
+    /**
+     * The number of likes on the comment.
+     */
+    LIKE_COUNT = 'like_count',
+
+    /**
+     * The media object that contains the comment.
+     */
+    MEDIA = 'media',
+
+    /**
+     * The number of replies on the comment.
+     */
+    REPLIES = 'replies',
+
+    /**
+     * The text of the comment.
+     */
+    TEXT = 'text',
+
+    /**
+     * The timestamp of the comment.
+     */
+    TIMESTAMP = 'timestamp',
+
+    /**
+     * The user that made the comment. Only returned if the user making the query also owns the comment, otherwise, the username field will be included
+     */
+    USER = 'user',
+
+    /**
+     * The username of the user who made the comment.
+     */
+    USERNAME = 'username',
+}

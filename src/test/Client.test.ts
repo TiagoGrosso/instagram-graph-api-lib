@@ -150,12 +150,8 @@ describe('Client', () => {
     });
 
     it('Builds a PostMediaCommentRequest', () => {
-        expect(client.newPostMediaCommentRequest(TestConstants.MEDIA_ID, TestConstants.COMMENTS_DATA[0].text)).toEqual(
-            new PostMediaCommentRequest(
-                TestConstants.ACCESS_TOKEN,
-                TestConstants.MEDIA_ID,
-                TestConstants.COMMENTS_DATA[0].text
-            )
+        expect(client.newPostMediaCommentRequest(TestConstants.MEDIA_ID, TestConstants.COMMENT_TEXT)).toEqual(
+            new PostMediaCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID, TestConstants.COMMENT_TEXT)
         );
     });
 

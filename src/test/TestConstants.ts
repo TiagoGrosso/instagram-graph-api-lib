@@ -132,18 +132,30 @@ export class TestConstants {
     ];
 
     /**
+     * A dummy comment text.
+     */
+    static readonly COMMENT_TEXT: string = 'Dummy Text for a comment';
+
+    /**
      * A dummy comment data array.
      */
     static readonly COMMENTS_DATA: CommentData[] = [
         {
-            timestamp: '2021-01-31T16:57:20+0000',
-            text: 'Dummy text',
             id: 'comment_id',
         },
         {
             timestamp: '2021-01-31T16:58:20+0000',
             text: 'Text dummy',
             id: 'comment_id_2',
+            hidden: true,
+            like_count: 500,
+            media: {
+                id: 'media_id',
+            },
+            user: {
+                id: 'user_id',
+            },
+            username: 'username',
         },
     ];
 

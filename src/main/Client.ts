@@ -1,4 +1,5 @@
 import {
+    CommentField,
     DayMetric,
     HashtagMediaField,
     LifetimeMetric,
@@ -164,11 +165,12 @@ export class Client {
      * Builds a new {@link GetMediaCommentsRequest}.
      *
      * @param mediaId the media object id.
+     * @param fields the fields to retrieve from the API. If no field is specified, all are retrieved.
      *
      * @returns a new {@link GetMediaCommentsRequest}.
      */
-    public newGetMediaCommentsRequest(mediaId: string): GetMediaCommentsRequest {
-        return new GetMediaCommentsRequest(this.accessToken, mediaId);
+    public newGetMediaCommentsRequest(mediaId: string, ...fields: CommentField[]): GetMediaCommentsRequest {
+        return new GetMediaCommentsRequest(this.accessToken, mediaId, ...fields);
     }
 
     /**

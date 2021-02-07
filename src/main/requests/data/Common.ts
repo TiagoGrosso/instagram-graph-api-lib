@@ -5,7 +5,9 @@
  * @since 0.5.0
  */
 export type Children = {
-    data: {
-        id: string;
-    }[];
+    data: InnerId[];
+};
+
+export type InnerId = {
+    id: string;
 };
