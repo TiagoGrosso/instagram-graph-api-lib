@@ -134,14 +134,14 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Get<wbr>Media<wbr>Comments<wbr>Request<span class="tsd-signature-symbol">(</span>accessToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, mediaId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="requests_media_comments_getmediacommentsrequest.getmediacommentsrequest.html" class="tsd-signature-type" data-tsd-kind="Class">GetMediaCommentsRequest</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Get<wbr>Media<wbr>Comments<wbr>Request<span class="tsd-signature-symbol">(</span>accessToken<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, mediaId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, <span class="tsd-signature-symbol">...</span>fields<span class="tsd-signature-symbol">: </span><a href="../enums/enums.commentfield.html" class="tsd-signature-type" data-tsd-kind="Enumeration">CommentField</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="requests_media_comments_getmediacommentsrequest.getmediacommentsrequest.html" class="tsd-signature-type" data-tsd-kind="Class">GetMediaCommentsRequest</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html">AbstractMediaCommentsRequest</a>.<a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/53e91eb/src/main/requests/media/comments/AbstractMediaCommentsRequest.ts#L14">requests/media/comments/AbstractMediaCommentsRequest.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/5c10379/src/main/requests/media/comments/GetMediaCommentsRequest.ts#L12">requests/media/comments/GetMediaCommentsRequest.ts:12</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -154,13 +154,19 @@
 								<li>
 									<h5>accessToken: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>The access token.</p>
+										<p>the access token.</p>
 									</div>
 								</li>
 								<li>
 									<h5>mediaId: <span class="tsd-signature-type">string</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the id of the media object.</p>
+										<p>the media object id.</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>fields: <a href="../enums/enums.commentfield.html" class="tsd-signature-type" data-tsd-kind="Enumeration">CommentField</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the fields to retrieve from the API. If no field is specified, all are retrieved.</p>
 									</div>
 								</li>
 							</ul>
@@ -178,7 +184,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html">AbstractMediaCommentsRequest</a>.<a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html#params">params</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/53e91eb/src/main/requests/AbstractRequest.ts#L25">requests/AbstractRequest.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/5c10379/src/main/requests/AbstractRequest.ts#L25">requests/AbstractRequest.ts:25</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -201,7 +207,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html">AbstractMediaCommentsRequest</a>.<a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html#addlimit">addLimit</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/53e91eb/src/main/requests/AbstractRequest.ts#L90">requests/AbstractRequest.ts:90</a></li>
+									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/5c10379/src/main/requests/AbstractRequest.ts#L90">requests/AbstractRequest.ts:90</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -233,7 +239,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html">AbstractMediaCommentsRequest</a>.<a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html#addpaging">addPaging</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/53e91eb/src/main/requests/AbstractRequest.ts#L68">requests/AbstractRequest.ts:68</a></li>
+									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/5c10379/src/main/requests/AbstractRequest.ts#L68">requests/AbstractRequest.ts:68</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -265,7 +271,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html">AbstractMediaCommentsRequest</a>.<a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html#addrange">addRange</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/53e91eb/src/main/requests/AbstractRequest.ts#L80">requests/AbstractRequest.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/5c10379/src/main/requests/AbstractRequest.ts#L80">requests/AbstractRequest.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -303,7 +309,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html">AbstractMediaCommentsRequest</a>.<a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html#config">config</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/53e91eb/src/main/requests/AbstractRequest.ts#L43">requests/AbstractRequest.ts:43</a></li>
+									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/5c10379/src/main/requests/AbstractRequest.ts#L43">requests/AbstractRequest.ts:43</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -327,7 +333,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html">AbstractMediaCommentsRequest</a>.<a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html#execute">execute</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/53e91eb/src/main/requests/AbstractRequest.ts#L57">requests/AbstractRequest.ts:57</a></li>
+									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/5c10379/src/main/requests/AbstractRequest.ts#L57">requests/AbstractRequest.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -351,7 +357,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html">AbstractMediaCommentsRequest</a>.<a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html#method">method</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/53e91eb/src/main/requests/AbstractRequest.ts#L113">requests/AbstractRequest.ts:113</a></li>
+									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/5c10379/src/main/requests/AbstractRequest.ts#L113">requests/AbstractRequest.ts:113</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -375,7 +381,7 @@
 							<aside class="tsd-sources">
 								<p>Overrides <a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html">AbstractMediaCommentsRequest</a>.<a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html#parseresponse">parseResponse</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/53e91eb/src/main/requests/media/comments/GetMediaCommentsRequest.ts#L15">requests/media/comments/GetMediaCommentsRequest.ts:15</a></li>
+									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/5c10379/src/main/requests/media/comments/GetMediaCommentsRequest.ts#L29">requests/media/comments/GetMediaCommentsRequest.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -405,7 +411,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html">AbstractMediaCommentsRequest</a>.<a href="requests_media_comments_abstractmediacommentsrequest.abstractmediacommentsrequest.html#url">url</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/53e91eb/src/main/requests/media/comments/AbstractMediaCommentsRequest.ts#L30">requests/media/comments/AbstractMediaCommentsRequest.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/5c10379/src/main/requests/media/comments/AbstractMediaCommentsRequest.ts#L30">requests/media/comments/AbstractMediaCommentsRequest.ts:30</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

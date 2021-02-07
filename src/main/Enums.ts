@@ -405,7 +405,7 @@ export enum HashtagMediaField {
  * Comment fields that can be retrieved on Get Comment requests.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.5.1
  */
 export enum CommentField {
     /**
