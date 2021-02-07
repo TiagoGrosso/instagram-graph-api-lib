@@ -9,7 +9,7 @@ describe('GetMediaCommentsRequest', () => {
     const request: PostMediaCommentRequest = new PostMediaCommentRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.MEDIA_ID,
-        TestConstants.COMMENTS_DATA[0].text
+        TestConstants.COMMENT_TEXT
     );
 
     it('Builds the config', () => {
