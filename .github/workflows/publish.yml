@@ -91,6 +91,12 @@ jobs:
     needs: publish
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.inputs.version }}
+    - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+      with:
+        token: '${{ secrets.REPO_PAT }}'
     - uses: repo-sync/pull-request@v2
       with:
         source_branch: release/${{ github.event.inputs.version }}
