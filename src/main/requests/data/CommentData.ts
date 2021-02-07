@@ -38,6 +38,11 @@ export interface CommentData {
     media?: InnerId;
 
     /**
+     * The replies to the comment.
+     */
+    replies?: CommentReplies;
+
+    /**
      * The user that made the comment. Only returned if the user making the query also owns the comment, otherwise, the username field will be included
      */
     user?: InnerId;
@@ -47,3 +52,39 @@ export interface CommentData {
      */
     username?: string;
 }
+
+/**
+ * Interface to represent the data regarding a reply to a comment.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
+export interface CommentReplyData {
+    /**
+     * The id of the reply comment.
+     */
+    id: string;
+
+    /**
+     * The creation date of the reply comment in ISO 8601.
+     */
+    timestamp: string;
+
+    /**
+     * The text of the reply comment.
+     */
+    text: string;
+}
+
+/**
+ * The type of a comment replies object.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
+export type CommentReplies = {
+    /**
+     * The data of the replies object.
+     */
+    data: CommentReplyData[];
+};

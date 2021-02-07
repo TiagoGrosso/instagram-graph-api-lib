@@ -152,6 +152,20 @@ export class TestConstants {
             media: {
                 id: 'media_id',
             },
+            replies: {
+                data: [
+                    {
+                        id: 'reply_id',
+                        timestamp: '2021-02-05T21:30:00+0000',
+                        text: 'reply text',
+                    },
+                    {
+                        id: 'reply_id_2',
+                        timestamp: '2021-02-05T21:45:00+0000',
+                        text: 'reply text 2',
+                    },
+                ],
+            },
             user: {
                 id: 'user_id',
             },

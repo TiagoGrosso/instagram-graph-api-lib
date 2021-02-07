@@ -9,7 +9,7 @@ import {
     StoryMetric,
     WeekAndMonthMetric,
 } from './Enums';
-import { AbstractGetHashtagMediaRequest } from './requests/hashtag/media/AbstractGetHashtagMediaRequest';
+import { GetCommentRequest } from './requests/comment/GetCommentRequest';
 import { GetHashtagRecentMediaRequest } from './requests/hashtag/media/GetHashtagRecentMediaRequest';
 import { GetHashtagTopMediaRequest } from './requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from './requests/hashtag/search/GetHashtagIdRequest';
@@ -237,7 +237,7 @@ export class Client {
         hashtagId: string,
         userId: string = this.pageId,
         ...fields: HashtagMediaField[]
-    ): AbstractGetHashtagMediaRequest {
+    ): GetHashtagRecentMediaRequest {
         return new GetHashtagRecentMediaRequest(this.accessToken, hashtagId, userId, ...fields);
     }
 
@@ -254,7 +254,19 @@ export class Client {
         hashtagId: string,
         userId: string = this.pageId,
         ...fields: HashtagMediaField[]
-    ): AbstractGetHashtagMediaRequest {
+    ): GetHashtagTopMediaRequest {
         return new GetHashtagTopMediaRequest(this.accessToken, hashtagId, userId, ...fields);
+    }
+
+    /**
+     * Builds a new {@link GetCommentRequest}.
+     *
+     * @param commentId the comment id.
+     * @param fields the comment fields to retrieve from the API. If no field is specified, all are retrieved.
+     *
+     * @returns a new {@link GetCommentRequest}.
+     */
+    public newGetCommentRequest(commentId: string, ...fields: CommentField[]): GetCommentRequest {
+        return new GetCommentRequest(this.accessToken, commentId, ...fields);
     }
 }

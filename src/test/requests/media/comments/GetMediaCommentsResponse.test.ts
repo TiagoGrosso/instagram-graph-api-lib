@@ -1,3 +1,4 @@
+import { CommentReplyData } from '../../../../main/requests/data/CommentData';
 import { InnerId } from '../../../../main/requests/data/Common';
 import { GetMediaCommentsResponse } from '../../../../main/requests/media/comments/GetMediaCommentsResponse';
 import { TestConstants } from '../../../TestConstants';
@@ -78,6 +79,19 @@ describe('GetMediaCommentsResponse', () => {
         expect(response.getMediaObjectsMap()).toEqual(expected);
     });
 
+    it('Gets the comments replies', () => {
+        expect(response.getReplies().sort()).toEqual(
+            [TestConstants.COMMENTS_DATA[0].hidden, TestConstants.COMMENTS_DATA[1].replies?.data].sort()
+        );
+    });
+
+    it('Gets the comments replies map', () => {
+        const expected = new Map<string, CommentReplyData[] | undefined>();
+        expected.set(TestConstants.COMMENTS_DATA[0].id, TestConstants.COMMENTS_DATA[0].replies?.data);
+        expected.set(TestConstants.COMMENTS_DATA[1].id, TestConstants.COMMENTS_DATA[1].replies?.data);
+        expect(response.getRepliesMap()).toEqual(expected);
+    });
+
     it('Gets the comments users', () => {
         expect(response.getUsers().sort()).toEqual(
             [TestConstants.COMMENTS_DATA[0].hidden, TestConstants.COMMENTS_DATA[1].user].sort()
@@ -91,13 +105,13 @@ describe('GetMediaCommentsResponse', () => {
         expect(response.getUsersMap()).toEqual(expected);
     });
 
-    it('Gets the comments users', () => {
+    it('Gets the comments usernames', () => {
         expect(response.getUsernames().sort()).toEqual(
             [TestConstants.COMMENTS_DATA[0].hidden, TestConstants.COMMENTS_DATA[1].username].sort()
         );
     });
 
-    it('Gets the comments users map', () => {
+    it('Gets the comments usernames map', () => {
         const expected = new Map<string, string | undefined>();
         expected.set(TestConstants.COMMENTS_DATA[0].id, TestConstants.COMMENTS_DATA[0].username);
         expected.set(TestConstants.COMMENTS_DATA[1].id, TestConstants.COMMENTS_DATA[1].username);

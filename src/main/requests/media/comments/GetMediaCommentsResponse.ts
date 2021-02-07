@@ -1,5 +1,5 @@
 import { AbstractResponse } from '../../AbstractResponse';
-import { CommentData } from '../../data/CommentData';
+import { CommentData, CommentReplyData } from '../../data/CommentData';
 import { InnerId } from '../../data/Common';
 
 /**
@@ -29,7 +29,7 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
 
     /**
      * Gets an array with the text of the all the comments.
-     * If a media object does not have the 'text' field, 'undefined' is returned for that object.
+     * If a comment object does not have the 'text' field, 'undefined' is returned for that object.
      *
      * @returns an array with the text of the all the comments.
      */
@@ -39,7 +39,7 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
 
     /**
      * Gets a map from the id of the comments to their text.
-     * If a media object does not have the 'text' field, 'undefined' is returned for that object.
+     * If a comment object does not have the 'text' field, 'undefined' is returned for that object.
      *
      * @returns a map from the id of the comments to their 'text'.
      */
@@ -53,7 +53,7 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
 
     /**
      * Gets an array with the timestamp of the all the comments.
-     * If a media object does not have the 'timestamp' field, 'undefined' is returned for that object.
+     * If a comment object does not have the 'timestamp' field, 'undefined' is returned for that object.
      *
      * @returns an array with the timestamp of the all the comments.
      */
@@ -63,7 +63,7 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
 
     /**
      * Gets a map from the id of the comments to their timestamp.
-     * If a media object does not have the 'timestamp' field, 'undefined' is returned for that object.
+     * If a comment object does not have the 'timestamp' field, 'undefined' is returned for that object.
      *
      * @returns a map from the id of the comments to their 'timestamp'.
      */
@@ -77,7 +77,7 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
 
     /**
      * Gets an array with whether each of the comments is hidden.
-     * If a media object does not have the 'hidden' field, 'undefined' is returned for that object.
+     * If a comment object does not have the 'hidden' field, 'undefined' is returned for that object.
      *
      * @returns an array with whether each of the comments is hidden.
      */
@@ -87,7 +87,7 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
 
     /**
      * Gets a map from the id of the comments to whether they are hidden.
-     * If a media object does not have the 'hidden' field, 'undefined' is returned for that object.
+     * If a comment object does not have the 'hidden' field, 'undefined' is returned for that object.
      *
      * @returns a map from the id of the comments to whether it is hidden.
      */
@@ -101,7 +101,7 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
 
     /**
      * Gets an array with the like_count of the all the comments.
-     * If a media object does not have the 'like_count' field, 'undefined' is returned for that object.
+     * If a comment object does not have the 'like_count' field, 'undefined' is returned for that object.
      *
      * @returns an array with the like_count of the all the comments.
      */
@@ -111,7 +111,7 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
 
     /**
      * Gets a map from the id of the comments to their like_count.
-     * If a media object does not have the 'like_count' field, 'undefined' is returned for that object.
+     * If a comment object does not have the 'like_count' field, 'undefined' is returned for that object.
      *
      * @returns a map from the id of the comments to their 'like_count'.
      */
@@ -125,7 +125,7 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
 
     /**
      * Gets an array with the media of the all the comments.
-     * If a media object does not have the 'media' field, 'undefined' is returned for that object.
+     * If a comment object does not have the 'media' field, 'undefined' is returned for that object.
      *
      * @returns an array with the media of the all the comments.
      */
@@ -135,7 +135,7 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
 
     /**
      * Gets a map from the id of the comments to their media.
-     * If a media object does not have the 'media' field, 'undefined' is returned for that object.
+     * If a comment object does not have the 'media' field, 'undefined' is returned for that object.
      *
      * @returns a map from the id of the comments to their 'media'.
      */
@@ -143,6 +143,30 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
         return new Map(
             this.data.map((elem) => {
                 return [elem.id, elem.media];
+            })
+        );
+    }
+
+    /**
+     * Gets an array with the replies of the all the comments.
+     * If a comment object does not have the 'replies' field, 'undefined' is returned for that object.
+     *
+     * @returns an array with the replies of the all the comments.
+     */
+    public getReplies(): (CommentReplyData[] | undefined)[] {
+        return this.data.map((elem) => elem.replies?.data);
+    }
+
+    /**
+     * Gets a map from the id of the comments to their replies.
+     * If a comment object does not have the 'replies' field, 'undefined' is returned for that object.
+     *
+     * @returns a map from the id of the comments to their 'replies'.
+     */
+    public getRepliesMap(): Map<string, CommentReplyData[] | undefined> {
+        return new Map(
+            this.data.map((elem) => {
+                return [elem.id, elem.replies?.data];
             })
         );
     }

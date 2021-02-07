@@ -1,5 +1,6 @@
 import { Client } from '../main/Client';
 import {
+    CommentField,
     DayMetric,
     HashtagMediaField,
     LifetimeMetric,
@@ -9,6 +10,7 @@ import {
     StoryMetric,
     WeekAndMonthMetric,
 } from '../main/Enums';
+import { GetCommentRequest } from '../main/requests/comment/GetCommentRequest';
 import { GetHashtagRecentMediaRequest } from '../main/requests/hashtag/media/GetHashtagRecentMediaRequest';
 import { GetHashtagTopMediaRequest } from '../main/requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from '../main/requests/hashtag/search/GetHashtagIdRequest';
@@ -244,6 +246,22 @@ describe('Client', () => {
                 TestConstants.PAGE_ID_2,
                 HashtagMediaField.CAPTION,
                 HashtagMediaField.CHILDREN
+            )
+        );
+    });
+
+    it('Builds a GetCommentRequest', () => {
+        expect(client.newGetCommentRequest(TestConstants.COMMENT_ID)).toEqual(
+            new GetCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID)
+        );
+        expect(
+            client.newGetCommentRequest(TestConstants.COMMENT_ID, CommentField.REPLIES, CommentField.TIMESTAMP)
+        ).toEqual(
+            new GetCommentRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.COMMENT_ID,
+                CommentField.REPLIES,
+                CommentField.TIMESTAMP
             )
         );
     });
