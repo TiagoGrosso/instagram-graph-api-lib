@@ -6,7 +6,7 @@ import { Params } from './Params';
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 0.2.0
  */
-export type Method = 'GET' | 'POST';
+export type Method = 'GET' | 'POST' | 'DELETE';
 
 /**
  * Interface to represent request configs.

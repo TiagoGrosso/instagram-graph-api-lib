@@ -17,4 +17,5 @@ export interface Params {
     user_id?: string;
     q?: string;
     message?: string;
+    hide?: boolean;
 }

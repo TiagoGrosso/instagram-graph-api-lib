@@ -9,7 +9,9 @@ import {
     StoryMetric,
     WeekAndMonthMetric,
 } from './Enums';
+import { DeleteCommentRequest } from './requests/comment/DeleteCommentRequest';
 import { GetCommentRequest } from './requests/comment/GetCommentRequest';
+import { PostHideCommentRequest } from './requests/comment/PostHideCommentRequest';
 import { GetHashtagRecentMediaRequest } from './requests/hashtag/media/GetHashtagRecentMediaRequest';
 import { GetHashtagTopMediaRequest } from './requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from './requests/hashtag/search/GetHashtagIdRequest';
@@ -268,5 +270,28 @@ export class Client {
      */
     public newGetCommentRequest(commentId: string, ...fields: CommentField[]): GetCommentRequest {
         return new GetCommentRequest(this.accessToken, commentId, ...fields);
+    }
+
+    /**
+     * Builds a new {@link PostHideCommentRequest}.
+     *
+     * @param commentId the comment id.
+     * @param hide whether to hide or show the comment (default: true).
+     *
+     * @returns a new {@link PostHideCommentRequest}.
+     */
+    public newPostHideCommentRequest(commentId: string, hide = true): PostHideCommentRequest {
+        return new PostHideCommentRequest(this.accessToken, commentId, hide);
+    }
+
+    /**
+     * Builds a new {@link DeleteCommentRequest}.
+     *
+     * @param commentId the comment id.
+     *
+     * @returns a new {@link DeleteCommentRequest}.
+     */
+    public newDeleteCommentRequest(commentId: string): DeleteCommentRequest {
+        return new DeleteCommentRequest(this.accessToken, commentId);
     }
 }
