@@ -29,8 +29,10 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
     - name: Install node packages
       run: npm install
-    - name: Run tests with coverage
-      run: npm test
+    - name: Run tests and report coverage
+      uses: mattallty/jest-github-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   check-format:
     runs-on: ubuntu-latest
     steps:
