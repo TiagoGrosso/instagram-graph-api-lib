@@ -5,7 +5,7 @@ import { AbstractResponse } from '../AbstractResponse';
  * Abstract class for request related to comments.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.6.0
  */
 export abstract class AbstractCommentRequest<T extends AbstractResponse<unknown>> extends AbstractRequest<T> {
     /**

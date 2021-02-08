@@ -6,7 +6,7 @@ import { InnerId } from '../data/Common';
  * Class that represents a response from the Get Comment Request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.6.0
  */
 export class GetCommentResponse extends AbstractResponse<CommentData> {
     /**

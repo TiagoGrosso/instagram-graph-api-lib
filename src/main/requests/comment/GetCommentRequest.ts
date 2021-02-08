@@ -7,7 +7,7 @@ import { GetCommentResponse } from './GetCommentResponse';
  * Request to get information about a comment.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.6.0
  */
 export class GetCommentRequest extends AbstractCommentRequest<GetCommentResponse> {
     /**
