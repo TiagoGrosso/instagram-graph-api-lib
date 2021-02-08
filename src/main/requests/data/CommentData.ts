@@ -57,7 +57,7 @@ export interface CommentData {
  * Interface to represent the data regarding a reply to a comment.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.6.0
  */
 export interface CommentReplyData {
     /**
@@ -80,7 +80,7 @@ export interface CommentReplyData {
  * The type of a comment replies object.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.6.0
  */
 export type CommentReplies = {
     /**

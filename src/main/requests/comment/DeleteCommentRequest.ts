@@ -7,7 +7,7 @@ import { CommentUpdateResponse } from './CommentUpdateResponse';
  * Request to delete a comment.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.6.0
  */
 export class DeleteCommentRequest extends AbstractCommentRequest<CommentUpdateResponse> {
     /**

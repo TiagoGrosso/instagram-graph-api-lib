@@ -7,7 +7,7 @@ import { CommentUpdateResponse } from './CommentUpdateResponse';
  * Request to toggle whether a comment is hidden.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.6.0
  */
 export class PostHideCommentRequest extends AbstractCommentRequest<CommentUpdateResponse> {
     /**
