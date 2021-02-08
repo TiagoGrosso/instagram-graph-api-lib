@@ -1,5 +1,7 @@
 # Instagram Graph API
 
+[![codecov](https://codecov.io/gh/TiagoGrosso/instagram-graph-api-lib/branch/master/graph/badge.svg?token=1WBXW0RE0Q)](https://codecov.io/gh/TiagoGrosso/instagram-graph-api-lib)
+
 ## Description
 
 This npm package lets you easily perform requests to the [Instagram Graph API](https://developers.facebook.com/docs/instagram-api/).
