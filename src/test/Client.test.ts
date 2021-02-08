@@ -10,7 +10,9 @@ import {
     StoryMetric,
     WeekAndMonthMetric,
 } from '../main/Enums';
+import { DeleteCommentRequest } from '../main/requests/comment/DeleteCommentRequest';
 import { GetCommentRequest } from '../main/requests/comment/GetCommentRequest';
+import { PostHideCommentRequest } from '../main/requests/comment/PostHideCommentRequest';
 import { GetHashtagRecentMediaRequest } from '../main/requests/hashtag/media/GetHashtagRecentMediaRequest';
 import { GetHashtagTopMediaRequest } from '../main/requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from '../main/requests/hashtag/search/GetHashtagIdRequest';
@@ -263,6 +265,21 @@ describe('Client', () => {
                 CommentField.REPLIES,
                 CommentField.TIMESTAMP
             )
+        );
+    });
+
+    it('Builds a PostHideCommentRequest', () => {
+        expect(client.newPostHideCommentRequest(TestConstants.COMMENT_ID)).toEqual(
+            new PostHideCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID)
+        );
+        expect(client.newPostHideCommentRequest(TestConstants.COMMENT_ID, false)).toEqual(
+            new PostHideCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID, false)
+        );
+    });
+
+    it('Builds a DeleteCommentRequest', () => {
+        expect(client.newDeleteCommentRequest(TestConstants.COMMENT_ID)).toEqual(
+            new DeleteCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID)
         );
     });
 });
