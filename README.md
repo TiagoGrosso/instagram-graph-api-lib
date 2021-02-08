@@ -40,7 +40,7 @@ let request: GetPageInfoRequest = new GetPageInfoRequest(ACCESS_TOKEN, PAGE_ID);
 
 ### Executing the requests
 
-After you get your request object, you can do one of two things:
+After you build your request object, you can do one of two things:
 
 #### Built-in execute() method
 

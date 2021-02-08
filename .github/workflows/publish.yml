@@ -100,6 +100,6 @@ jobs:
     - uses: repo-sync/pull-request@v2
       with:
         source_branch: release/${{ github.event.inputs.version }}
-        destination_branch: ${GITHUB_REF##*/}
+        destination_branch: ${{ github.ref }}
         pr_title: Merge changes after release ${{ github.event.inputs.version }}
         github_token: ${{ secrets.REPO_PAT }}
