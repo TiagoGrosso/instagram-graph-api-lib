@@ -1,0 +1,23 @@
+on:
+  pull_request:
+    branches:
+    - '*'
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    - name: Install node packages
+      run: npm install
+    - name: Run tests and report coverage
+      uses: mattallty/jest-github-action@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        changes-only: true
+
