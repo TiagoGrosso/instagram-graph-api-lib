@@ -7,7 +7,7 @@ import { AbstractRepliesRequest } from './AbstractRepliesRequest';
  * A request to get the replies to a comment.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 0.7.0
  */
 export class GetRepliesRequest extends AbstractRepliesRequest<GetObjectCommentsResponse> {
     /**
