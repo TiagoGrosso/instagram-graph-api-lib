@@ -10,6 +10,8 @@ This npm package lets you easily perform requests to the [Instagram Graph API](h
 
 This package is made by independent contributors and is in no way officially related to or supported by Instagram/Facebook.
 
+You can find what changed in each version by checking the [Changelog](changelog/changelog.md).
+
 ## Installation
 
 Simply run `npm install instagram-graph-api`.

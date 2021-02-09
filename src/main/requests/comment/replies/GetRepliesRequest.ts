@@ -1,25 +1,26 @@
 import { AxiosResponse } from 'axios';
 import { CommentField } from '../../../Enums';
 import { GetObjectCommentsResponse } from '../../common/GetObjectCommentsResponse';
-import { AbstractMediaCommentsRequest } from './AbstractMediaCommentsRequest';
+import { AbstractRepliesRequest } from './AbstractRepliesRequest';
 
 /**
- * A request that gets the comments of a media object.
+ * A request to get the replies to a comment.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since 0.5.0
+ * @since `next.release`
  */
-export class GetMediaCommentsRequest extends AbstractMediaCommentsRequest<GetObjectCommentsResponse> {
+export class GetRepliesRequest extends AbstractRepliesRequest<GetObjectCommentsResponse> {
     /**
      * The constructor.
      *
      * @param accessToken the access token.
-     * @param mediaId the media object id.
+     * @param pageId the id of the comment.
      * @param fields the fields to retrieve from the API. If no field is specified, all are retrieved.
      */
-    constructor(accessToken: string, mediaId: string, ...fields: CommentField[]) {
-        super(accessToken, mediaId);
+    constructor(accessToken: string, commentId: string, ...fields: CommentField[]) {
+        super(accessToken, commentId);
         const fieldsSet: Set<CommentField> = fields.length > 0 ? new Set(fields) : new Set(Object.values(CommentField));
+        fieldsSet.delete(CommentField.REPLIES); // Only allowed for top level comments.
         this.params.fields = Array.from(fieldsSet).join(',');
     }
 

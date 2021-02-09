@@ -13,6 +13,8 @@ import {
 import { DeleteCommentRequest } from '../main/requests/comment/DeleteCommentRequest';
 import { GetCommentRequest } from '../main/requests/comment/GetCommentRequest';
 import { PostHideCommentRequest } from '../main/requests/comment/PostHideCommentRequest';
+import { GetRepliesRequest } from '../main/requests/comment/replies/GetRepliesRequest';
+import { PostReplyRequest } from '../main/requests/comment/replies/PostReplyRequest';
 import { GetHashtagRecentMediaRequest } from '../main/requests/hashtag/media/GetHashtagRecentMediaRequest';
 import { GetHashtagTopMediaRequest } from '../main/requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from '../main/requests/hashtag/search/GetHashtagIdRequest';
@@ -280,6 +282,26 @@ describe('Client', () => {
     it('Builds a DeleteCommentRequest', () => {
         expect(client.newDeleteCommentRequest(TestConstants.COMMENT_ID)).toEqual(
             new DeleteCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID)
+        );
+    });
+
+    it('Builds a GetRepliesRequest', () => {
+        expect(client.newGetRepliesRequest(TestConstants.COMMENT_ID)).toEqual(
+            new GetRepliesRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID)
+        );
+        expect(client.newGetRepliesRequest(TestConstants.COMMENT_ID, CommentField.TEXT, CommentField.USER)).toEqual(
+            new GetRepliesRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.COMMENT_ID,
+                CommentField.TEXT,
+                CommentField.USER
+            )
+        );
+    });
+
+    it('Builds a PostReplyComment', () => {
+        expect(client.newPostReplyRequest(TestConstants.COMMENT_ID, TestConstants.COMMENT_TEXT)).toEqual(
+            new PostReplyRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID, TestConstants.COMMENT_TEXT)
         );
     });
 });

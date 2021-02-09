@@ -4,4 +4,6 @@ then
   exit
 fi
 
+mv changelog/next_release.md changelog/$1.md
+
 find src/ -type f | xargs sed -i "s/\`next.release\`/"$1"/"

@@ -1,4 +1,4 @@
-import { AbstractResponse } from '../../AbstractResponse';
+import { AbstractResponse } from '../AbstractResponse';
 
 /**
  * Class that represents a response from a Post Media Comment request.
@@ -6,7 +6,7 @@ import { AbstractResponse } from '../../AbstractResponse';
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 0.5.0
  */
-export class PostMediaCommentResponse extends AbstractResponse<{ id: string }> {
+export class CreatedObjectIdResponse extends AbstractResponse<{ id: string }> {
     /**
      * Gets the id of the comment that was created.
      *
