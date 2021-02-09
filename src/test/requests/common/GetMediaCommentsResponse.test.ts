@@ -1,10 +1,10 @@
-import { CommentReplyData } from '../../../../main/requests/data/CommentData';
-import { InnerId } from '../../../../main/requests/data/Common';
-import { GetMediaCommentsResponse } from '../../../../main/requests/media/comments/GetMediaCommentsResponse';
-import { TestConstants } from '../../../TestConstants';
+import { CommentReplyData } from '../../../main/requests/data/CommentData';
+import { InnerId } from '../../../main/requests/data/Common';
+import { GetObjectCommentsResponse } from '../../../main/requests/common/GetObjectCommentsResponse';
+import { TestConstants } from '../../TestConstants';
 
 describe('GetMediaCommentsResponse', () => {
-    const response: GetMediaCommentsResponse = new GetMediaCommentsResponse({
+    const response: GetObjectCommentsResponse = new GetObjectCommentsResponse({
         data: TestConstants.COMMENTS_DATA,
     });
 

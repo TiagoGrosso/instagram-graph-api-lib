@@ -1,24 +1,25 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { Constants } from '../../../../main/Constants';
-import { PostMediaCommentRequest } from '../../../../main/requests/media/comments/PostMediaCommentRequest';
+import { PostReplyRequest } from '../../../../main/requests/comment/replies/PostReplyRequest';
 import { CreatedObjectIdResponse } from '../../../../main/requests/common/CreatedObjectIdResponse';
 import { TestConstants } from '../../../TestConstants';
 
-describe('GetMediaCommentsRequest', () => {
-    const request: PostMediaCommentRequest = new PostMediaCommentRequest(
+describe('GetRepliesRequest', () => {
+    const request: PostReplyRequest = new PostReplyRequest(
         TestConstants.ACCESS_TOKEN,
-        TestConstants.MEDIA_ID,
+        TestConstants.COMMENT_ID,
         TestConstants.COMMENT_TEXT
     );
 
     it('Builds the config', () => {
         expect(request.config().method).toEqual('POST');
-        expect(request.config().url).toEqual(`/${TestConstants.MEDIA_ID}/comments`);
+        expect(request.config().url).toEqual(`/${TestConstants.COMMENT_ID}/replies`);
+        expect(request.config().params.message).toEqual(TestConstants.COMMENT_TEXT);
     });
 
     const mock = new MockAdapter(axios);
-    mock.onPost(`${Constants.API_URL}/${TestConstants.MEDIA_ID}/comments`).reply(200, {
+    mock.onPost(`${Constants.API_URL}/${TestConstants.COMMENT_ID}/replies`).reply(200, {
         id: TestConstants.COMMENT_ID,
     });
     it('Parses the response', () => {

@@ -3,7 +3,7 @@ import MockAdapter from 'axios-mock-adapter';
 import { Constants } from '../../../../main/Constants';
 import { CommentField } from '../../../../main/Enums';
 import { GetMediaCommentsRequest } from '../../../../main/requests/media/comments/GetMediaCommentsRequest';
-import { GetMediaCommentsResponse } from '../../../../main/requests/media/comments/GetMediaCommentsResponse';
+import { GetObjectCommentsResponse } from '../../../../main/requests/common/GetObjectCommentsResponse';
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetMediaCommentsRequest', () => {
@@ -32,7 +32,7 @@ describe('GetMediaCommentsRequest', () => {
     it('Parses the response', () => {
         expect.assertions(1);
         return request.execute().then((response) => {
-            expect(response).toEqual(new GetMediaCommentsResponse({ data: TestConstants.COMMENTS_DATA }));
+            expect(response).toEqual(new GetObjectCommentsResponse({ data: TestConstants.COMMENTS_DATA }));
         });
     });
 });

@@ -1,24 +1,24 @@
 import { AxiosResponse } from 'axios';
-import { Method } from '../../RequestConfig';
-import { AbstractMediaCommentsRequest } from './AbstractMediaCommentsRequest';
 import { CreatedObjectIdResponse } from '../../common/CreatedObjectIdResponse';
+import { Method } from '../../RequestConfig';
+import { AbstractRepliesRequest } from './AbstractRepliesRequest';
 
 /**
- * A request that creates a comment on a media object.
+ * Request that creates a reply to a comment.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since 0.5.0
+ * @since `next.release`
  */
-export class PostMediaCommentRequest extends AbstractMediaCommentsRequest<CreatedObjectIdResponse> {
+export class PostReplyRequest extends AbstractRepliesRequest<CreatedObjectIdResponse> {
     /**
      * The constructor.
      *
      * @param accessToken The access token.
-     * @param mediaId the id of the media object.
-     * @param text the text of the comment.
+     * @param commentId the id of the comment object.
+     * @param text the text of the reply.
      */
-    constructor(accessToken: string, mediaId: string, text: string) {
-        super(accessToken, mediaId);
+    constructor(accessToken: string, commentId: string, text: string) {
+        super(accessToken, commentId);
         this.params.message = text;
     }
 

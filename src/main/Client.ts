@@ -12,6 +12,8 @@ import {
 import { DeleteCommentRequest } from './requests/comment/DeleteCommentRequest';
 import { GetCommentRequest } from './requests/comment/GetCommentRequest';
 import { PostHideCommentRequest } from './requests/comment/PostHideCommentRequest';
+import { GetRepliesRequest } from './requests/comment/replies/GetRepliesRequest';
+import { PostReplyRequest } from './requests/comment/replies/PostReplyRequest';
 import { GetHashtagRecentMediaRequest } from './requests/hashtag/media/GetHashtagRecentMediaRequest';
 import { GetHashtagTopMediaRequest } from './requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from './requests/hashtag/search/GetHashtagIdRequest';
@@ -293,5 +295,29 @@ export class Client {
      */
     public newDeleteCommentRequest(commentId: string): DeleteCommentRequest {
         return new DeleteCommentRequest(this.accessToken, commentId);
+    }
+
+    /**
+     * Builds a new {@link GetRepliesRequest}.
+     *
+     * @param commentId the comment id.
+     * @param fields the comment fields to retrieve from the API. If no field is specified, all are retrieved.
+     *
+     * @returns a new {@link GetRepliesRequest}.
+     */
+    public newGetRepliesRequest(commentId: string, ...fields: CommentField[]): GetRepliesRequest {
+        return new GetRepliesRequest(this.accessToken, commentId, ...fields);
+    }
+
+    /**
+     * Builds a new {@link PostReplyRequest}.
+     *
+     * @param commentId the comment id.
+     * @param text the text of the reply.
+     *
+     * @returns a new {@link PostReplyRequest}.
+     */
+    public newPostReplyRequest(commentId: string, text: string): PostReplyRequest {
+        return new PostReplyRequest(this.accessToken, commentId, text);
     }
 }

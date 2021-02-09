@@ -1,14 +1,14 @@
-import { AbstractResponse } from '../../AbstractResponse';
-import { CommentData, CommentReplyData } from '../../data/CommentData';
-import { InnerId } from '../../data/Common';
+import { AbstractResponse } from '../AbstractResponse';
+import { CommentData, CommentReplyData } from '../data/CommentData';
+import { InnerId } from '../data/Common';
 
 /**
- * Class that represents a response from a Get Media Comments request.
+ * Class that represents a response from requests to get the comments on an object.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since 0.5.0
+ * @since `next.release`
  */
-export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
+export class GetObjectCommentsResponse extends AbstractResponse<CommentData[]> {
     /**
      * The constructor.
      *
@@ -150,6 +150,7 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
     /**
      * Gets an array with the replies of the all the comments.
      * If a comment object does not have the 'replies' field, 'undefined' is returned for that object.
+     * The replies field can only be returned for top level comments.
      *
      * @returns an array with the replies of the all the comments.
      */
@@ -160,6 +161,7 @@ export class GetMediaCommentsResponse extends AbstractResponse<CommentData[]> {
     /**
      * Gets a map from the id of the comments to their replies.
      * If a comment object does not have the 'replies' field, 'undefined' is returned for that object.
+     * The replies field can only be returned for top level comments.
      *
      * @returns a map from the id of the comments to their 'replies'.
      */
