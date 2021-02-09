@@ -6,4 +6,5 @@ fi
 
 mv changelog/next_release.md changelog/$1.md
 
-find src/ -type f | xargs sed -i "s/\`next.release\`/"$1"/"
+find src/ -type f | xargs sed -i "s/\`next.release\`/"$1"/g"
+find changelog/ -type f | xargs sed -i "s/\`next.release\`/"$1"/g"
