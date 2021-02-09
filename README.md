@@ -1,6 +1,10 @@
 # Instagram Graph API
 
+[![npm version](https://img.shields.io/npm/v/instagram-graph-api.svg?style=flat-square)](https://www.npmjs.org/package/instagram-graph-api)
 [![codecov](https://codecov.io/gh/TiagoGrosso/instagram-graph-api-lib/branch/master/graph/badge.svg?token=1WBXW0RE0Q)](https://codecov.io/gh/TiagoGrosso/instagram-graph-api-lib)
+[![install size](https://packagephobia.com/badge?p=instagram-graph-api)](https://packagephobia.com/result?p=instagram-graph-api)
+[![npm downloads](https://img.shields.io/npm/dm/instagram-graph-api.svg?style=flat-square)](http://npm-stat.com/charts.html?package=instagram-graph-api)
+![License](https://img.shields.io/npm/l/instagram-graph-api)
 
 ## Description
 
