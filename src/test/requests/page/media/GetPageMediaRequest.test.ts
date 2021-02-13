@@ -1,17 +1,18 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { Constants } from '../../../../main/Constants';
-import { MediaField } from '../../../../main/Enums';
+import { PrivateMediaField, PublicMediaField } from '../../../../main/Enums';
 import { GetPageMediaRequest } from '../../../../main/requests/page/media/GetPageMediaRequest';
 import { GetPageMediaResponse } from '../../../../main/requests/page/media/GetPageMediaResponse';
+import { Utils } from '../../../../main/Utils';
 import { TestConstants } from '../../../TestConstants';
 
 describe('GetPageMediaRequest', () => {
     const request: GetPageMediaRequest = new GetPageMediaRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID,
-        MediaField.LIKE_COUNT,
-        MediaField.MEDIA_TYPE
+        PublicMediaField.LIKE_COUNT,
+        PrivateMediaField.SHORTCODE
     );
     const requestAllFields: GetPageMediaRequest = new GetPageMediaRequest(
         TestConstants.ACCESS_TOKEN,
@@ -19,12 +20,12 @@ describe('GetPageMediaRequest', () => {
     );
 
     it('Builds the config', () => {
-        const fields = `${MediaField.LIKE_COUNT},${MediaField.MEDIA_TYPE}`;
+        const fields = `${PublicMediaField.LIKE_COUNT},${PrivateMediaField.SHORTCODE}`;
 
         expect(request.config().params.fields).toEqual(fields);
         expect(request.config().method).toEqual('GET');
         expect(request.config().url).toEqual(`/${TestConstants.PAGE_ID}/media`);
-        expect(requestAllFields.config().params.fields).toEqual(Object.values(MediaField).join(','));
+        expect(requestAllFields.config().params.fields).toEqual(Utils.getAllMediaFields().join(','));
     });
 
     const mock = new MockAdapter(axios);

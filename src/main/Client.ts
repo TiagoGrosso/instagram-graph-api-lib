@@ -1,10 +1,10 @@
 import {
     CommentField,
     DayMetric,
-    HashtagMediaField,
     LifetimeMetric,
     MediaField,
     PageField,
+    PublicMediaField,
     SimplePostMetric,
     StoryMetric,
     WeekAndMonthMetric,
@@ -241,7 +241,7 @@ export class Client {
     public newGetHashtagRecentMediaRequest(
         hashtagId: string,
         userId: string = this.pageId,
-        ...fields: HashtagMediaField[]
+        ...fields: PublicMediaField[]
     ): GetHashtagRecentMediaRequest {
         return new GetHashtagRecentMediaRequest(this.accessToken, hashtagId, userId, ...fields);
     }
@@ -258,7 +258,7 @@ export class Client {
     public newGetHashtagTopMediaRequest(
         hashtagId: string,
         userId: string = this.pageId,
-        ...fields: HashtagMediaField[]
+        ...fields: PublicMediaField[]
     ): GetHashtagTopMediaRequest {
         return new GetHashtagTopMediaRequest(this.accessToken, hashtagId, userId, ...fields);
     }
@@ -329,7 +329,7 @@ export class Client {
      *
      * @returns a new {@link GetTagsRequest}.
      */
-    public newGetTagsRequest(...fields: MediaField[]): GetTagsRequest {
+    public newGetTagsRequest(...fields: PublicMediaField[]): GetTagsRequest {
         return new GetTagsRequest(this.accessToken, this.pageId, ...fields);
     }
 }

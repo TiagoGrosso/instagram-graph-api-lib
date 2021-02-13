@@ -1,7 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { Constants } from '../../../../main/Constants';
-import { MediaField } from '../../../../main/Enums';
+import { PublicMediaField } from '../../../../main/Enums';
 import { GetTagsRequest } from '../../../../main/requests/page/tags/GetTagsRequest';
 import { GetTagsResponse } from '../../../../main/requests/page/tags/GetTagsResponse';
 import { TestConstants } from '../../../TestConstants';
@@ -10,19 +10,19 @@ describe('GetTagsRequest', () => {
     const request = new GetTagsRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID,
-        MediaField.CAPTION,
-        MediaField.LIKE_COUNT
+        PublicMediaField.CAPTION,
+        PublicMediaField.LIKE_COUNT
     );
     const requestAllFields = new GetTagsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID);
 
     it('Builds the config', () => {
-        const fields = `${MediaField.CAPTION},${MediaField.LIKE_COUNT}`;
+        const fields = `${PublicMediaField.CAPTION},${PublicMediaField.LIKE_COUNT}`;
 
         expect(request.config().params.fields).toEqual(fields);
         expect(request.config().method).toEqual('GET');
         expect(request.config().url).toEqual(`/${TestConstants.PAGE_ID}/tags`);
 
-        expect(requestAllFields.config().params.fields).toEqual(Object.values(MediaField).join(','));
+        expect(requestAllFields.config().params.fields).toEqual(Object.values(PublicMediaField).join(','));
     });
 
     const mock = new MockAdapter(axios);

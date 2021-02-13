@@ -1,6 +1,6 @@
 import { MediaData } from '../../data/MediaData';
 import { Cursors, PagingData } from '../../data/Paging';
-import { AbstractGetManyMediaResponse } from '../AbstractGetManyMediaResponse';
+import { AbstractGetManyMediaResponse } from '../../AbstractGetManyMediaResponse';
 
 /**
  * Class to represent responses to a Get Tags request.

@@ -169,12 +169,15 @@ export enum MetricPeriod {
 }
 
 /**
- * Media info fields.
+ * Public Media info fields.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since 0.1.0
+ * @since `next.release`
  */
-export enum MediaField {
+export enum PublicMediaField {
+    /**
+     * The caption of the media.
+     */
     CAPTION = 'caption',
 
     /**
@@ -188,14 +191,9 @@ export enum MediaField {
     ID = 'id',
 
     /**
-     * The Instagram id of the media object.
+     * The children of the media object. Only returned for Album IG Media.
      */
-    IG_ID = 'ig_id',
-
-    /**
-     * Whether comments are enabled on the media object.
-     */
-    IS_COMMENT_ENABLED = 'is_comment_enabled',
+    CHILDREN = 'children',
 
     /**
      * The number of likes on the media object.
@@ -223,16 +221,6 @@ export enum MediaField {
     PERMALINK = 'permalink',
 
     /**
-     * The shortcode of the media object.
-     */
-    SHORTCODE = 'shortcode',
-
-    /**
-     * The URL of thumbnail of the media object.
-     */
-    THUMBNAIL_URL = 'thumbnail_url',
-
-    /**
      * The ISO 8601 formatted creation date in UTC (default is UTC ±00:00)
      */
     TIMESTAMP = 'timestamp',
@@ -242,6 +230,36 @@ export enum MediaField {
      */
     USERNAME = 'username',
 }
+
+/**
+ * Private Media info fields.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
+export enum PrivateMediaField {
+    /**
+     * The Instagram id of the media object.
+     */
+    IG_ID = 'ig_id',
+
+    /**
+     * Whether comments are enabled on the media object.
+     */
+    IS_COMMENT_ENABLED = 'is_comment_enabled',
+
+    /**
+     * The shortcode of the media object.
+     */
+    SHORTCODE = 'shortcode',
+
+    /**
+     * The URL of thumbnail of the media object.
+     */
+    THUMBNAIL_URL = 'thumbnail_url',
+}
+
+export type MediaField = PrivateMediaField | PublicMediaField;
 
 /**
  * Post insights metrics.
@@ -346,59 +364,6 @@ export enum AlbumMetric {
 export enum PageOption {
     BEFORE = 'before',
     AFTER = 'after',
-}
-
-/**
- * Media fields that can be retrieved on Get Hashtag Media requests.
- *
- * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since 0.5.0
- */
-export enum HashtagMediaField {
-    /**
-     * The caption of the media object.
-     */
-    CAPTION = 'caption',
-
-    /**
-     * The children of the media object. Only returned for Album IG Media.
-     */
-    CHILDREN = 'children',
-
-    /**
-     * The number of comments on the media object.
-     */
-    COMMENTS_COUNT = 'comments_count',
-
-    /**
-     * The id of the media object.
-     */
-    ID = 'id',
-
-    /**
-     * The number of likes on the media object.
-     */
-    LIKE_COUNT = 'like_count',
-
-    /**
-     * The type of media object.
-     */
-    MEDIA_TYPE = 'media_type',
-
-    /**
-     * The url of the media object. Not returned for Album IG Media
-     */
-    MEDIA_URL = 'media_url',
-
-    /**
-     * The permalink of the media object.
-     */
-    PERMALINK = 'permalink',
-
-    /**
-     * The ISO 8601 formatted creation date in UTC (default is UTC ±00:00)
-     */
-    TIMESTAMP = 'timestamp',
 }
 
 /**

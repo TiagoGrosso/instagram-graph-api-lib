@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { MediaField } from '../../../Enums';
+import { MediaField, PublicMediaField } from '../../../Enums';
 import { AbstractGetMediaRequest } from '../../AbstractGetMediaRequest';
 import { GetTagsResponse } from './GetTagsResponse';
 
@@ -20,10 +20,11 @@ export class GetTagsRequest extends AbstractGetMediaRequest<GetTagsResponse> {
      *
      * @param accessToken the access token.
      * @param pageId the page id.
-     * @param fields the fields to retrieve from the API for each media object. If no field is specified, all are retrieved.
+     * @param fields the fields to retrieve from the API for each media object. If no field is specified, all public fields are retrieved.
      */
     constructor(accessToken: string, pageId: string, ...fields: MediaField[]) {
-        super(accessToken, ...fields);
+        const actualFields: MediaField[] = fields.length > 0 ? fields : Object.values(PublicMediaField);
+        super(accessToken, ...actualFields);
         this.pageId = pageId;
     }
 

@@ -1,12 +1,11 @@
-import { PageOption, LifetimeMetric, MetricPeriod, WeekAndMonthMetric } from '../main/Enums';
-import { ComplexMetricValue } from '../main/requests/data/insights/ComplexMetric';
-import { BasicInsightsMetricData, MetricValue } from '../main/requests/data/insights/BasicInsightsMetricData';
-import { MediaData } from '../main/requests/data/MediaData';
-import { PagingData } from '../main/requests/data/Paging';
-import { PageInfoData } from '../main/requests/data/PageInfoData';
-import { MeData } from '../main/requests/data/MeData';
-import { HashtagMediaData } from '../main/requests/data/HashtagMediaData';
+import { LifetimeMetric, MetricPeriod, PageOption, WeekAndMonthMetric } from '../main/Enums';
 import { CommentData } from '../main/requests/data/CommentData';
+import { BasicInsightsMetricData, MetricValue } from '../main/requests/data/insights/BasicInsightsMetricData';
+import { ComplexMetricValue } from '../main/requests/data/insights/ComplexMetric';
+import { MeData } from '../main/requests/data/MeData';
+import { MediaData } from '../main/requests/data/MediaData';
+import { PageInfoData } from '../main/requests/data/PageInfoData';
+import { PagingData } from '../main/requests/data/Paging';
 
 /**
  * A set of constants used in tests.
@@ -330,7 +329,7 @@ export class TestConstants {
     /**
      * A dummy hashtag image media data object.
      */
-    static readonly HASHTAG_IMAGE_MEDIA_DATA: HashtagMediaData = {
+    static readonly HASHTAG_IMAGE_MEDIA_DATA: MediaData = {
         id: 'media_id',
         caption: 'media_caption',
         comments_count: 20,
@@ -344,7 +343,7 @@ export class TestConstants {
     /**
      * A dummy hashtag album media data object.
      */
-    static readonly HASHTAG_ALBUM_MEDIA_DATA: HashtagMediaData = {
+    static readonly HASHTAG_ALBUM_MEDIA_DATA: MediaData = {
         id: 'media_id_2',
         children: {
             data: [

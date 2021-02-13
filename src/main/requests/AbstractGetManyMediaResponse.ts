@@ -1,5 +1,6 @@
-import { AbstractResponse } from '../AbstractResponse';
-import { MediaData } from '../data/MediaData';
+import { AbstractResponse } from './AbstractResponse';
+import { Children } from './data/Common';
+import { MediaData } from './data/MediaData';
 
 export class AbstractGetManyMediaResponse extends AbstractResponse<MediaData[]> {
     /**
@@ -9,6 +10,30 @@ export class AbstractGetManyMediaResponse extends AbstractResponse<MediaData[]> 
      */
     public getIds(): string[] {
         return this.data.map((elem) => elem.id);
+    }
+
+    /**
+     * Gets an array with the children of the all the media objects.
+     * If a media object does not have the 'children' field, 'undefined' is returned for that object.
+     *
+     * @returns an array with the children of the all the media objects.
+     */
+    public getChildren(): (Children | undefined)[] {
+        return this.data.map((elem) => elem.children);
+    }
+
+    /**
+     * Gets a map from the id of the media objects to their children.
+     * If a media object does have not a the 'children' field, 'undefined' is returned for that object.
+     *
+     * @returns a map from the id of the media objects to their 'children'.
+     */
+    public getChildrenMap(): Map<string, Children | undefined> {
+        return new Map(
+            this.data.map((elem) => {
+                return [elem.id, elem.children];
+            })
+        );
     }
 
     /**

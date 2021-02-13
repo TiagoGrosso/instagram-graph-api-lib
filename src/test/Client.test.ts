@@ -2,10 +2,10 @@ import { Client } from '../main/Client';
 import {
     CommentField,
     DayMetric,
-    HashtagMediaField,
     LifetimeMetric,
-    MediaField,
     PageField,
+    PrivateMediaField,
+    PublicMediaField,
     SimplePostMetric,
     StoryMetric,
     WeekAndMonthMetric,
@@ -62,12 +62,12 @@ describe('Client', () => {
         expect(client.newGetPageMediaRequest()).toEqual(
             new GetPageMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
         );
-        expect(client.newGetPageMediaRequest(MediaField.IS_COMMENT_ENABLED, MediaField.OWNER)).toEqual(
+        expect(client.newGetPageMediaRequest(PrivateMediaField.IS_COMMENT_ENABLED, PublicMediaField.OWNER)).toEqual(
             new GetPageMediaRequest(
                 TestConstants.ACCESS_TOKEN,
                 TestConstants.PAGE_ID,
-                MediaField.IS_COMMENT_ENABLED,
-                MediaField.OWNER
+                PrivateMediaField.IS_COMMENT_ENABLED,
+                PublicMediaField.OWNER
             )
         );
     });
@@ -134,12 +134,14 @@ describe('Client', () => {
         expect(client.newGetMediaInfoRequest(TestConstants.MEDIA_ID)).toEqual(
             new GetMediaInfoRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID)
         );
-        expect(client.newGetMediaInfoRequest(TestConstants.MEDIA_ID, MediaField.OWNER, MediaField.PERMALINK)).toEqual(
+        expect(
+            client.newGetMediaInfoRequest(TestConstants.MEDIA_ID, PublicMediaField.OWNER, PrivateMediaField.SHORTCODE)
+        ).toEqual(
             new GetMediaInfoRequest(
                 TestConstants.ACCESS_TOKEN,
                 TestConstants.MEDIA_ID,
-                MediaField.OWNER,
-                MediaField.PERMALINK
+                PublicMediaField.OWNER,
+                PrivateMediaField.SHORTCODE
             )
         );
     });
@@ -219,16 +221,16 @@ describe('Client', () => {
             client.newGetHashtagRecentMediaRequest(
                 TestConstants.HASHTAG_ID,
                 TestConstants.PAGE_ID_2,
-                HashtagMediaField.CAPTION,
-                HashtagMediaField.CHILDREN
+                PublicMediaField.CAPTION,
+                PublicMediaField.CHILDREN
             )
         ).toEqual(
             new GetHashtagRecentMediaRequest(
                 TestConstants.ACCESS_TOKEN,
                 TestConstants.HASHTAG_ID,
                 TestConstants.PAGE_ID_2,
-                HashtagMediaField.CAPTION,
-                HashtagMediaField.CHILDREN
+                PublicMediaField.CAPTION,
+                PublicMediaField.CHILDREN
             )
         );
     });
@@ -241,16 +243,16 @@ describe('Client', () => {
             client.newGetHashtagTopMediaRequest(
                 TestConstants.HASHTAG_ID,
                 TestConstants.PAGE_ID_2,
-                HashtagMediaField.CAPTION,
-                HashtagMediaField.CHILDREN
+                PublicMediaField.CAPTION,
+                PublicMediaField.CHILDREN
             )
         ).toEqual(
             new GetHashtagTopMediaRequest(
                 TestConstants.ACCESS_TOKEN,
                 TestConstants.HASHTAG_ID,
                 TestConstants.PAGE_ID_2,
-                HashtagMediaField.CAPTION,
-                HashtagMediaField.CHILDREN
+                PublicMediaField.CAPTION,
+                PublicMediaField.CHILDREN
             )
         );
     });
@@ -310,12 +312,12 @@ describe('Client', () => {
         expect(client.newGetTagsRequest()).toEqual(
             new GetTagsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
         );
-        expect(client.newGetTagsRequest(MediaField.LIKE_COUNT, MediaField.THUMBNAIL_URL)).toEqual(
+        expect(client.newGetTagsRequest(PublicMediaField.LIKE_COUNT, PublicMediaField.CAPTION)).toEqual(
             new GetTagsRequest(
                 TestConstants.ACCESS_TOKEN,
                 TestConstants.PAGE_ID,
-                MediaField.LIKE_COUNT,
-                MediaField.THUMBNAIL_URL
+                PublicMediaField.LIKE_COUNT,
+                PublicMediaField.CAPTION
             )
         );
     });

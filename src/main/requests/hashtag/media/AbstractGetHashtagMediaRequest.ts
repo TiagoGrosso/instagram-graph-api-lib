@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
-import { HashtagMediaField } from '../../../Enums';
-import { AbstractRequest } from '../../AbstractRequest';
+import { PublicMediaField } from '../../../Enums';
+import { AbstractGetMediaRequest } from '../../AbstractGetMediaRequest';
 import { GetHashtagMediaResponse } from './GetHashtagMediaResponse';
 
 /**
@@ -9,7 +9,7 @@ import { GetHashtagMediaResponse } from './GetHashtagMediaResponse';
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 0.5.0
  */
-export abstract class AbstractGetHashtagMediaRequest extends AbstractRequest<GetHashtagMediaResponse> {
+export abstract class AbstractGetHashtagMediaRequest extends AbstractGetMediaRequest<GetHashtagMediaResponse> {
     /**
      * The id of the hashtag.
      */
@@ -23,13 +23,11 @@ export abstract class AbstractGetHashtagMediaRequest extends AbstractRequest<Get
      * @param userId the id of the user making the request.
      * @param fields the fields to retrieve from the API. If no field is specified, all are retrieved.
      */
-    constructor(accessToken: string, hashtagId: string, userId: string, ...fields: HashtagMediaField[]) {
-        super(accessToken);
+    constructor(accessToken: string, hashtagId: string, userId: string, ...fields: PublicMediaField[]) {
+        const actualFields: PublicMediaField[] = fields.length > 0 ? fields : Object.values(PublicMediaField);
+        super(accessToken, ...actualFields);
         this.hashtagId = hashtagId;
         this.params.user_id = userId;
-        const fieldsSet: Set<HashtagMediaField> =
-            fields.length > 0 ? new Set(fields) : new Set(Object.values(HashtagMediaField));
-        this.params.fields = Array.from(fieldsSet).join(',');
     }
 
     /**
