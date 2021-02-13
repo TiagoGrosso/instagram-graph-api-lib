@@ -2,4 +2,4 @@
 
 Follow the links to the version that you wish to consult.
 
-## [`next.release`](./`next.release`.md)
+## [0.7.0](./0.7.0.md)
