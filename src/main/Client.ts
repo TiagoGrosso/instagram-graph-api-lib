@@ -29,6 +29,7 @@ import { GetPageLifetimeInsightsRequest } from './requests/page/insights/GetPage
 import { GetPageMonthInsightsRequest } from './requests/page/insights/GetPageMonthInsightsRequest';
 import { GetPageWeekInsightsRequest } from './requests/page/insights/GetPageWeekInsightsRequest';
 import { GetPageMediaRequest } from './requests/page/media/GetPageMediaRequest';
+import { GetTagsRequest } from './requests/page/tags/GetTagsRequest';
 
 /**
  * A client that creating requests.
@@ -319,5 +320,16 @@ export class Client {
      */
     public newPostReplyRequest(commentId: string, text: string): PostReplyRequest {
         return new PostReplyRequest(this.accessToken, commentId, text);
+    }
+
+    /**
+     * Builds a new {@link GetTagsRequest}.
+     *
+     * @param fields the fields to retrieve from the API for each media object. If no field is specified, all are retrieved.
+     *
+     * @returns a new {@link GetTagsRequest}.
+     */
+    public newGetTagsRequest(...fields: MediaField[]): GetTagsRequest {
+        return new GetTagsRequest(this.accessToken, this.pageId, ...fields);
     }
 }

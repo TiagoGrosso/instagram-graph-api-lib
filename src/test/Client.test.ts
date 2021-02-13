@@ -30,6 +30,7 @@ import { GetPageLifetimeInsightsRequest } from '../main/requests/page/insights/G
 import { GetPageMonthInsightsRequest } from '../main/requests/page/insights/GetPageMonthInsightsRequest';
 import { GetPageWeekInsightsRequest } from '../main/requests/page/insights/GetPageWeekInsightsRequest';
 import { GetPageMediaRequest } from '../main/requests/page/media/GetPageMediaRequest';
+import { GetTagsRequest } from '../main/requests/page/tags/GetTagsRequest';
 import { TestConstants } from './TestConstants';
 
 describe('Client', () => {
@@ -302,6 +303,20 @@ describe('Client', () => {
     it('Builds a PostReplyComment', () => {
         expect(client.newPostReplyRequest(TestConstants.COMMENT_ID, TestConstants.COMMENT_TEXT)).toEqual(
             new PostReplyRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID, TestConstants.COMMENT_TEXT)
+        );
+    });
+
+    it('Builds a GetTagsRequest', () => {
+        expect(client.newGetTagsRequest()).toEqual(
+            new GetTagsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
+        );
+        expect(client.newGetTagsRequest(MediaField.LIKE_COUNT, MediaField.THUMBNAIL_URL)).toEqual(
+            new GetTagsRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                MediaField.LIKE_COUNT,
+                MediaField.THUMBNAIL_URL
+            )
         );
     });
 });
