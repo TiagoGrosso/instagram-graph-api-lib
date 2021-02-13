@@ -172,7 +172,7 @@ export enum MetricPeriod {
  * Public Media info fields.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.0.0
  */
 export enum PublicMediaField {
     /**
@@ -235,7 +235,7 @@ export enum PublicMediaField {
  * Private Media info fields.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.0.0
  */
 export enum PrivateMediaField {
     /**

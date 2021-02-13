@@ -69,10 +69,7 @@
 				<a href="#description" id="description" style="color: inherit; text-decoration: none;">
 					<h2>Description</h2>
 				</a>
-				<p>This npm package lets you easily perform requests to the <a href="https://developers.facebook.com/docs/instagram-api/">Instagram Graph API</a>.</p>
-				<blockquote>
-					<p>:warning: <strong>This package is still in its early stages</strong>: While it&#39;s expected that the general structure of building and executing requests will remain the same, this is not a guarantee as the package expands to cover more parts of the Instagram Graph API. Any breaking change will, however, be well documented on each release.</p>
-				</blockquote>
+				<p>This npm package lets you easily perform requests to the <a href="https://developers.facebook.com/docs/instagram-api/">Instagram Graph API</a>, aiming to reduce the integration time and allowing you to easily obtain the information you want through code.</p>
 				<p>This package is made by independent contributors and is in no way officially related to or supported by Instagram/Facebook.</p>
 				<p>You can find what changed in each version by checking the <a href="changelog/changelog.md">Changelog</a>.</p>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
@@ -83,6 +80,19 @@
 					<h2>How do I use this lib?</h2>
 				</a>
 				<p>You can always check the <a href="https://tiagogrosso.github.io/instagram-graph-api-lib/">typedoc documentation</a> if you are having doubts.</p>
+				<a href="#what-can-this-lib-currently-do" id="what-can-this-lib-currently-do" style="color: inherit; text-decoration: none;">
+					<h2>What can this lib currently do?</h2>
+				</a>
+				<p>This lib supports making requests to most of the Instagram Graph API resources. It does not yet cover:</p>
+				<ul>
+					<li>  <code>Recently Searched Hashtags</code> in the <code>IG User</code> node.</li>
+					<li>  <code>Stories</code> in the <code>IG User</code> node</li>
+					<li>  <code>Mentions</code>, <code>Mentioned Comments</code> and <code>Mentioned Media</code> in the <code>IG User</code> node.</li>
+					<li>  <code>IG Container</code> and <code>Media Publish</code>.</li>
+					<li>  Webhooks.</li>
+				</ul>
+				<p>As it currently stands, this lib allows you to get a lot of information about your page and media, including basic information and insights. It also allows you to create and reply to comments, delete them and hide them.
+				For now, this lib does not contain any complex logic. It simply models requests to the Instagram Graph API and gives you an easy way to execute them.</p>
 				<a href="#building-requests" id="building-requests" style="color: inherit; text-decoration: none;">
 					<h3>Building requests</h3>
 				</a>
@@ -191,10 +201,10 @@
 </code></pre>
 					</li>
 				</ul>
-				<a href="#what-can-this-lib-currently-do" id="what-can-this-lib-currently-do" style="color: inherit; text-decoration: none;">
-					<h1>What can this lib currently do?</h1>
+				<a href="#release-process" id="release-process" style="color: inherit; text-decoration: none;">
+					<h2>Release Process</h2>
 				</a>
-				<p>As previously stated, this lib is in its early stages and, as such, only supports requests to a reduced number of resources on the Instagram Graph API.</p>
+				<p>Releases of this lib should be very incremental. When a new resource is supported a release will be issued soon after without waiting to pile up new features to do big releases.</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -213,7 +223,13 @@
 						<a href="modules/enums.html">Enums</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/utils.html">Utils</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/requests_abstractgetinsightsresponse.html">requests/<wbr>Abstract<wbr>Get<wbr>Insights<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_abstractgetmanymediaresponse.html">requests/<wbr>Abstract<wbr>Get<wbr>Many<wbr>Media<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_abstractgetmediarequest.html">requests/<wbr>Abstract<wbr>Get<wbr>Media<wbr>Request</a>
@@ -268,9 +284,6 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_data_common.html">requests/data/<wbr>Common</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_hashtagmediadata.html">requests/data/<wbr>Hashtag<wbr>Media<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_data_medata.html">requests/data/<wbr>MeData</a>
@@ -391,6 +404,12 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_page_media_getpagemediaresponse.html">requests/page/media/<wbr>Get<wbr>Page<wbr>Media<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_tags_gettagsrequest.html">requests/page/tags/<wbr>Get<wbr>Tags<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_tags_gettagsresponse.html">requests/page/tags/<wbr>Get<wbr>Tags<wbr>Response</a>
 					</li>
 				</ul>
 			</nav>

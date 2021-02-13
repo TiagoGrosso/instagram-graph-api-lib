@@ -7,7 +7,7 @@ import { GetTagsResponse } from './GetTagsResponse';
  * A request that gets information about the media objects that a page was tagged in.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.0.0
  */
 export class GetTagsRequest extends AbstractGetMediaRequest<GetTagsResponse> {
     /**
