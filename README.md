@@ -8,9 +8,7 @@
 
 ## Description
 
-This npm package lets you easily perform requests to the [Instagram Graph API](https://developers.facebook.com/docs/instagram-api/).
-
-> :warning: **This package is still in its early stages**: While it's expected that the general structure of building and executing requests will remain the same, this is not a guarantee as the package expands to cover more parts of the Instagram Graph API. Any breaking change will, however, be well documented on each release.
+This npm package lets you easily perform requests to the [Instagram Graph API](https://developers.facebook.com/docs/instagram-api/), aiming to reduce the integration time and allowing you to easily obtain the information you want through code.
 
 This package is made by independent contributors and is in no way officially related to or supported by Instagram/Facebook.
 
@@ -23,6 +21,19 @@ Simply run `npm install instagram-graph-api`.
 ## How do I use this lib?
 
 You can always check the [typedoc documentation](https://tiagogrosso.github.io/instagram-graph-api-lib/) if you are having doubts.
+
+## What can this lib currently do?
+
+This lib supports making requests to most of the Instagram Graph API resources. It does not yet cover:
+
+-   `Recently Searched Hashtags` in the `IG User` node.
+-   `Stories` in the `IG User` node
+-   `Mentions`, `Mentioned Comments` and `Mentioned Media` in the `IG User` node.
+-   `IG Container` and `Media Publish`.
+-   Webhooks.
+
+As it currently stands, this lib allows you to get a lot of information about your page and media, including basic information and insights. It also allows you to create and reply to comments, delete them and hide them.
+For now, this lib does not contain any complex logic. It simply models requests to the Instagram Graph API and gives you an easy way to execute them.
 
 ### Building requests
 
@@ -149,6 +160,6 @@ All the requests to a page will require the use of a Page ID. To find out what t
     });
     ```
 
-# What can this lib currently do?
+## Release Process
 
-As previously stated, this lib is in its early stages and, as such, only supports requests to a reduced number of resources on the Instagram Graph API.
+Releases of this lib should be very incremental. When a new resource is supported a release will be issued soon after without waiting to pile up new features to do big releases.
