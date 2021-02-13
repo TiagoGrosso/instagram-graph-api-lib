@@ -4,7 +4,7 @@ import { MediaField, PrivateMediaField, PublicMediaField } from './Enums';
  * A set of utility functions.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.0.0
  */
 export class Utils {
     /**

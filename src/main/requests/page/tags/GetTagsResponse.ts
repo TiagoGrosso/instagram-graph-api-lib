@@ -6,7 +6,7 @@ import { AbstractGetManyMediaResponse } from '../../AbstractGetManyMediaResponse
  * Class to represent responses to a Get Tags request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.0.0
  */
 export class GetTagsResponse extends AbstractGetManyMediaResponse {
     /**

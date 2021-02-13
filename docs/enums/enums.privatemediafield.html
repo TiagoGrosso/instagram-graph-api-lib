@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MetricPeriod | instagram-graph-api</title>
+	<title>PrivateMediaField | instagram-graph-api</title>
 	<meta name="description" content="Documentation for instagram-graph-api">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -58,10 +58,10 @@
 					<a href="../modules/enums.html">Enums</a>
 				</li>
 				<li>
-					<a href="enums.metricperiod.html">MetricPeriod</a>
+					<a href="enums.privatemediafield.html">PrivateMediaField</a>
 				</li>
 			</ul>
-			<h1>Enumeration MetricPeriod</h1>
+			<h1>Enumeration PrivateMediaField</h1>
 		</div>
 	</div>
 </header>
@@ -71,14 +71,14 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Page insights metric periods.</p>
+						<p>Private Media info fields.</p>
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>author</dt>
 						<dd><p>Tiago Grosso <a href="mailto:tiagogrosso99@gmail.com">tiagogrosso99@gmail.com</a></p>
 						</dd>
 						<dt>since</dt>
-						<dd><p>0.1.0</p>
+						<dd><p>1.0.0</p>
 						</dd>
 					</dl>
 				</div>
@@ -90,10 +90,10 @@
 						<section class="tsd-index-section ">
 							<h3>Enumeration members</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="enums.metricperiod.html#day" class="tsd-kind-icon">DAY</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="enums.metricperiod.html#lifetime" class="tsd-kind-icon">LIFETIME</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="enums.metricperiod.html#month" class="tsd-kind-icon">MONTH</a></li>
-								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="enums.metricperiod.html#week" class="tsd-kind-icon">WEEK</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="enums.privatemediafield.html#ig_id" class="tsd-kind-icon">IG_<wbr>ID</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="enums.privatemediafield.html#is_comment_enabled" class="tsd-kind-icon">IS_<wbr>COMMENT_<wbr>ENABLED</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="enums.privatemediafield.html#shortcode" class="tsd-kind-icon">SHORTCODE</a></li>
+								<li class="tsd-kind-enum-member tsd-parent-kind-enum"><a href="enums.privatemediafield.html#thumbnail_url" class="tsd-kind-icon">THUMBNAIL_<wbr>URL</a></li>
 							</ul>
 						</section>
 					</div>
@@ -102,44 +102,64 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Enumeration members</h2>
 				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="day" class="tsd-anchor"></a>
-					<h3>DAY</h3>
-					<div class="tsd-signature tsd-kind-icon">DAY<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;day&quot;</span></div>
+					<a name="ig_id" class="tsd-anchor"></a>
+					<h3>IG_<wbr>ID</h3>
+					<div class="tsd-signature tsd-kind-icon">IG_<wbr>ID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;ig_id&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/67aaf2e/src/main/Enums.ts#L165">Enums.ts:165</a></li>
+							<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/67aaf2e/src/main/Enums.ts#L244">Enums.ts:244</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The Instagram id of the media object.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="lifetime" class="tsd-anchor"></a>
-					<h3>LIFETIME</h3>
-					<div class="tsd-signature tsd-kind-icon">LIFETIME<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;lifetime&quot;</span></div>
+					<a name="is_comment_enabled" class="tsd-anchor"></a>
+					<h3>IS_<wbr>COMMENT_<wbr>ENABLED</h3>
+					<div class="tsd-signature tsd-kind-icon">IS_<wbr>COMMENT_<wbr>ENABLED<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;is_comment_enabled&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/67aaf2e/src/main/Enums.ts#L168">Enums.ts:168</a></li>
+							<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/67aaf2e/src/main/Enums.ts#L249">Enums.ts:249</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Whether comments are enabled on the media object.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="month" class="tsd-anchor"></a>
-					<h3>MONTH</h3>
-					<div class="tsd-signature tsd-kind-icon">MONTH<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;days_28&quot;</span></div>
+					<a name="shortcode" class="tsd-anchor"></a>
+					<h3>SHORTCODE</h3>
+					<div class="tsd-signature tsd-kind-icon">SHORTCODE<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;shortcode&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/67aaf2e/src/main/Enums.ts#L167">Enums.ts:167</a></li>
+							<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/67aaf2e/src/main/Enums.ts#L254">Enums.ts:254</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The shortcode of the media object.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-enum-member tsd-parent-kind-enum">
-					<a name="week" class="tsd-anchor"></a>
-					<h3>WEEK</h3>
-					<div class="tsd-signature tsd-kind-icon">WEEK<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;week&quot;</span></div>
+					<a name="thumbnail_url" class="tsd-anchor"></a>
+					<h3>THUMBNAIL_<wbr>URL</h3>
+					<div class="tsd-signature tsd-kind-icon">THUMBNAIL_<wbr>URL<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol"> = &quot;thumbnail_url&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/67aaf2e/src/main/Enums.ts#L166">Enums.ts:166</a></li>
+							<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/67aaf2e/src/main/Enums.ts#L259">Enums.ts:259</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The URL of thumbnail of the media object.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>
@@ -168,36 +188,36 @@
 					<li class=" tsd-kind-enum tsd-parent-kind-module">
 						<a href="enums.lifetimemetric.html" class="tsd-kind-icon">Lifetime<wbr>Metric</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-enum tsd-parent-kind-module">
+					<li class=" tsd-kind-enum tsd-parent-kind-module">
 						<a href="enums.metricperiod.html" class="tsd-kind-icon">Metric<wbr>Period</a>
-						<ul>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="enums.metricperiod.html#day" class="tsd-kind-icon">DAY</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="enums.metricperiod.html#lifetime" class="tsd-kind-icon">LIFETIME</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="enums.metricperiod.html#month" class="tsd-kind-icon">MONTH</a>
-							</li>
-							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
-								<a href="enums.metricperiod.html#week" class="tsd-kind-icon">WEEK</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-enum tsd-parent-kind-module">
 						<a href="enums.pagefield.html" class="tsd-kind-icon">Page<wbr>Field</a>
 					</li>
 					<li class=" tsd-kind-enum tsd-parent-kind-module">
 						<a href="enums.pageoption.html" class="tsd-kind-icon">Page<wbr>Option</a>
 					</li>
-					<li class=" tsd-kind-enum tsd-parent-kind-module">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-enum tsd-parent-kind-module">
 						<a href="enums.privatemediafield.html" class="tsd-kind-icon">Private<wbr>Media<wbr>Field</a>
+						<ul>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="enums.privatemediafield.html#ig_id" class="tsd-kind-icon">IG_<wbr>ID</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="enums.privatemediafield.html#is_comment_enabled" class="tsd-kind-icon">IS_<wbr>COMMENT_<wbr>ENABLED</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="enums.privatemediafield.html#shortcode" class="tsd-kind-icon">SHORTCODE</a>
+							</li>
+							<li class=" tsd-kind-enum-member tsd-parent-kind-enum">
+								<a href="enums.privatemediafield.html#thumbnail_url" class="tsd-kind-icon">THUMBNAIL_<wbr>URL</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-enum tsd-parent-kind-module">
 						<a href="enums.publicmediafield.html" class="tsd-kind-icon">Public<wbr>Media<wbr>Field</a>
 					</li>
