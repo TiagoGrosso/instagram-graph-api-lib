@@ -1,4 +1,5 @@
 import { MediaField } from '../Enums';
+import { Utils } from '../Utils';
 import { AbstractRequest } from './AbstractRequest';
 import { AbstractResponse } from './AbstractResponse';
 
@@ -17,7 +18,7 @@ export abstract class AbstractGetMediaRequest<T extends AbstractResponse<unknown
      */
     constructor(accessToken: string, ...fields: MediaField[]) {
         super(accessToken);
-        const fieldsSet: Set<MediaField> = fields.length > 0 ? new Set(fields) : new Set(Object.values(MediaField));
+        const fieldsSet: Set<string> = fields.length > 0 ? new Set(fields) : new Set(Utils.getAllMediaFields());
         this.params.fields = Array.from(fieldsSet).join(',');
     }
 }

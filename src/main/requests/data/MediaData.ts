@@ -1,3 +1,5 @@
+import { Children } from './Common';
+
 /**
  * Interface to represent the data regarding a Media Object.
  *
@@ -11,6 +13,11 @@ export interface MediaData {
     id: string;
 
     /**
+     * The children of the media object. Only returned for Album IG Media.
+     */
+    children?: Children;
+
+    /**
      * The caption of the media object.
      */
     caption?: string;
@@ -21,7 +28,7 @@ export interface MediaData {
     comments_count?: number;
 
     /**
-     * The instragram id of the media object.
+     * The instagram id of the media object.
      */
     ig_id?: string;
 

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { Constants } from '../../../../main/Constants';
-import { MediaField } from '../../../../main/Enums';
+import { PrivateMediaField, PublicMediaField } from '../../../../main/Enums';
 import { GetMediaInfoRequest } from '../../../../main/requests/media/info/GetMediaInfoRequest';
 import { GetMediaInfoResponse } from '../../../../main/requests/media/info/GetMediaInfoResponse';
 import { TestConstants } from '../../../TestConstants';
@@ -10,8 +10,8 @@ describe('GetMediaRequest', () => {
     const request: GetMediaInfoRequest = new GetMediaInfoRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.MEDIA_ID,
-        MediaField.IS_COMMENT_ENABLED,
-        MediaField.OWNER
+        PrivateMediaField.IS_COMMENT_ENABLED,
+        PublicMediaField.OWNER
     );
     const requestAllFields: GetMediaInfoRequest = new GetMediaInfoRequest(
         TestConstants.ACCESS_TOKEN,
@@ -19,12 +19,12 @@ describe('GetMediaRequest', () => {
     );
 
     it('Builds the config', () => {
-        const fields = `${MediaField.IS_COMMENT_ENABLED},${MediaField.OWNER}`;
+        const fields = `${PrivateMediaField.IS_COMMENT_ENABLED},${PublicMediaField.OWNER}`;
 
         expect(request.config().params.fields).toEqual(fields);
         expect(request.config().method).toEqual('GET');
         expect(request.config().url).toEqual(`/${TestConstants.MEDIA_ID}`);
-        expect(requestAllFields.config().params.fields).toEqual(Object.values(MediaField).join(','));
+        expect(requestAllFields.config().params.fields).toEqual(Object.values(PublicMediaField).join(','));
     });
 
     const mock = new MockAdapter(axios);

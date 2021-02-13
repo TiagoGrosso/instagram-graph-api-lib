@@ -1,6 +1,6 @@
 import { MediaData } from '../../data/MediaData';
 import { Paging, PagingData } from '../../data/Paging';
-import { AbstractGetManyMediaResponse } from '../AbstractGetManyMediaResponse';
+import { AbstractGetManyMediaResponse } from '../../AbstractGetManyMediaResponse';
 
 /**
  * Class that represents a response from a Page Media request.
