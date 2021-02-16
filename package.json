@@ -5,7 +5,7 @@
     "types": "lib/index.d.ts",
     "scripts": {
         "build": "tsc",
-        "cti": "cti entrypoint src/ -o Index.ts -e test",
+        "cti": "cti entrypoint src/ -o index.ts -e test",
         "test": "jest --coverage",
         "docs": "typedoc --out docs src/main README.md",
         "format": "prettier --write src",
