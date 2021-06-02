@@ -8,7 +8,7 @@ import { Method } from '../../RequestConfig';
  * A request that creates a new Photo Media container.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.1.0
  */
 export class PostPagePhotoMediaRequest extends AbstractRequest<CreatedObjectIdResponse> {
     /**

@@ -423,7 +423,7 @@ export enum CommentField {
  * Container fields that can be retrieved through Get Container requests.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.1.0
  */
 export enum ContainerField {
     /**

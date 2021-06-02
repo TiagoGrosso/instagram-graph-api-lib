@@ -2,7 +2,7 @@
  * Possible status codes for the container.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.1.0
  */
 export enum CONTAINER_STATUS_CODE {
     /**
@@ -35,7 +35,7 @@ export enum CONTAINER_STATUS_CODE {
  * Interface to represent the data regarding a container.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.1.0
  */
 export interface ContainerData {
     /**

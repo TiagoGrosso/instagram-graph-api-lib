@@ -8,7 +8,7 @@ import { GetContainerResponse } from './GetContainerResponse';
  * A request that gets info about a container
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.1.0
  */
 export class GetContainerRequest extends AbstractRequest<GetContainerResponse> {
     /**

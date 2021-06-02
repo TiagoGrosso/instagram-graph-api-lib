@@ -7,7 +7,7 @@ import { Method } from '../../../../main/requests/RequestConfig';
  * A request that publishes a media object.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.1.0
  */
 export class PostPublishMediaRequest extends AbstractRequest<CreatedObjectIdResponse> {
     /**

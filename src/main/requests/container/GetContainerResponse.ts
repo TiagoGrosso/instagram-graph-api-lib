@@ -5,7 +5,7 @@ import { ContainerData, CONTAINER_STATUS_CODE } from '../data/ContainerData';
  * Class that represents a response from a Get Container request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.1.0
  */
 export class GetContainerResponse extends AbstractResponse<ContainerData> {
     /**

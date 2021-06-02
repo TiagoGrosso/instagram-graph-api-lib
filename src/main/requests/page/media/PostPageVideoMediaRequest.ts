@@ -7,7 +7,7 @@ import { Method } from '../../RequestConfig';
  * A request that creates a new Video Media container.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.1.0
  */
 export class PostPageVideoMediaRequest extends AbstractRequest<CreatedObjectIdResponse> {
     /**
