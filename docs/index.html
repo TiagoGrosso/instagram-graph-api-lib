@@ -88,10 +88,9 @@
 					<li>  <code>Recently Searched Hashtags</code> in the <code>IG User</code> node.</li>
 					<li>  <code>Stories</code> in the <code>IG User</code> node</li>
 					<li>  <code>Mentions</code>, <code>Mentioned Comments</code> and <code>Mentioned Media</code> in the <code>IG User</code> node.</li>
-					<li>  <code>IG Container</code> and <code>Media Publish</code>.</li>
 					<li>  Webhooks.</li>
 				</ul>
-				<p>As it currently stands, this lib allows you to get a lot of information about your page and media, including basic information and insights. It also allows you to create and reply to comments, delete them and hide them.
+				<p>As it currently stands, this lib allows you to get a lot of information about your page and media, including basic information and insights. It also allows you to create and publish media (photos and videos) as well as to create and reply to comments, delete them and hide them.
 				For now, this lib does not contain any complex logic. It simply models requests to the Instagram Graph API and gives you an easy way to execute them.</p>
 				<a href="#building-requests" id="building-requests" style="color: inherit; text-decoration: none;">
 					<h3>Building requests</h3>
@@ -136,10 +135,20 @@
 
 <span style="color: #000000">[...]</span>
 </code></pre>
+				<a href="#publishing-media" id="publishing-media" style="color: inherit; text-decoration: none;">
+					<h3>Publishing media</h3>
+				</a>
+				<p>Publishing Media through the Instagram Graph API, and conversely through this lib, follows these steps:</p>
+				<ol>
+					<li>Create an IG Container object (through the <code>PostPagePhotoMediaRequest</code> or the <code>PostPageVideoMediaRequest</code>).</li>
+					<li>Wait for the IG Container status to move to <code>FINISHED</code> (check the status through the <code>GetContainerRequest</code>).</li>
+					<li>Publish the IG Container (through the <code>PostPublishMediaRequest</code>).</li>
+				</ol>
+				<p>For more info on this flow, refer to the <a href="https://developers.facebook.com/docs/instagram-api/guides/content-publishing">Content Publishing documentation</a>.</p>
 				<a href="#other-request-options" id="other-request-options" style="color: inherit; text-decoration: none;">
 					<h3>Other request options</h3>
 				</a>
-				<p>You can give paging and range options to the requests, as supported by certain resources on the Instagram Graph API. (check the <a href="(https://developers.facebook.com/docs/instagram-api/reference/)">reference documentation</a> to see which ones do). For example, the Get Page Media request supports paging, here&#39;s a naive example of how to use:</p>
+				<p>You can give paging and range options to the requests, as supported by certain resources on the Instagram Graph API. (check the <a href="https://developers.facebook.com/docs/instagram-api/reference/">reference documentation</a> to see which ones do). For example, the Get Page Media request supports paging, here&#39;s a naive example of how to use:</p>
 				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageMediaRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageMediaResponse</span><span style="color: #000000">, </span><span style="color: #001080">PageOption</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
 
 <span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetPageMediaRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
@@ -280,10 +289,19 @@
 						<a href="modules/requests_common_getobjectcommentsresponse.html">requests/common/<wbr>Get<wbr>Object<wbr>Comments<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/requests_container_getcontainerrequest.html">requests/container/<wbr>Get<wbr>Container<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_container_getcontainerresponse.html">requests/container/<wbr>Get<wbr>Container<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/requests_data_commentdata.html">requests/data/<wbr>Comment<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_data_common.html">requests/data/<wbr>Common</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_containerdata.html">requests/data/<wbr>Container<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_data_medata.html">requests/data/<wbr>MeData</a>
@@ -404,6 +422,15 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_page_media_getpagemediaresponse.html">requests/page/media/<wbr>Get<wbr>Page<wbr>Media<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_media_postpagephotomediarequest.html">requests/page/media/<wbr>Post<wbr>Page<wbr>Photo<wbr>Media<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_media_postpagevideomediarequest.html">requests/page/media/<wbr>Post<wbr>Page<wbr>Video<wbr>Media<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_media_publish_postpublishmediarequest.html">requests/page/media_<wbr>publish/<wbr>Post<wbr>Publish<wbr>Media<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_page_tags_gettagsrequest.html">requests/page/tags/<wbr>Get<wbr>Tags<wbr>Request</a>
