@@ -1,5 +1,6 @@
 import {
     CommentField,
+    ContainerField,
     DayMetric,
     LifetimeMetric,
     MediaField,
@@ -14,6 +15,7 @@ import { GetCommentRequest } from './requests/comment/GetCommentRequest';
 import { PostHideCommentRequest } from './requests/comment/PostHideCommentRequest';
 import { GetRepliesRequest } from './requests/comment/replies/GetRepliesRequest';
 import { PostReplyRequest } from './requests/comment/replies/PostReplyRequest';
+import { GetContainerRequest } from './requests/container/GetContainerRequest';
 import { GetHashtagRecentMediaRequest } from './requests/hashtag/media/GetHashtagRecentMediaRequest';
 import { GetHashtagTopMediaRequest } from './requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from './requests/hashtag/search/GetHashtagIdRequest';
@@ -29,7 +31,11 @@ import { GetPageLifetimeInsightsRequest } from './requests/page/insights/GetPage
 import { GetPageMonthInsightsRequest } from './requests/page/insights/GetPageMonthInsightsRequest';
 import { GetPageWeekInsightsRequest } from './requests/page/insights/GetPageWeekInsightsRequest';
 import { GetPageMediaRequest } from './requests/page/media/GetPageMediaRequest';
+import { PostPagePhotoMediaRequest } from './requests/page/media/PostPagePhotoMediaRequest';
+import { PostPageVideoMediaRequest } from './requests/page/media/PostPageVideoMediaRequest';
+import { PostPublishMediaRequest } from './requests/page/media_publish/PostPublishMediaRequest';
 import { GetTagsRequest } from './requests/page/tags/GetTagsRequest';
+import { UserTag } from './requests/Params';
 
 /**
  * A client that creating requests.
@@ -331,5 +337,66 @@ export class Client {
      */
     public newGetTagsRequest(...fields: PublicMediaField[]): GetTagsRequest {
         return new GetTagsRequest(this.accessToken, this.pageId, ...fields);
+    }
+
+    /**
+     * Builds a new {@link GetContainerRequest}.
+     *
+     * @param containerId the container id.
+     * @param fields the fields to retrieve from the API.
+     *
+     * @returns a new {@link GetCommentRequest}.
+     */
+    public newGetContainerRequest(containerId: string, ...fields: ContainerField[]): GetContainerRequest {
+        return new GetContainerRequest(this.accessToken, containerId, ...fields);
+    }
+
+    /**
+     * Build a new {@link PostPagePhotoMediaRequest}.
+     *
+     * @param imageUrl the image URL.
+     * @param caption the caption.
+     * @param locationId the location id.
+     * @param userTags the user_tags.
+     *
+     * @returns a new {@link PostPagePhotoMediaRequest}.
+     */
+    public newPostPagePhotoMediaRequest(
+        imageUrl: string,
+        caption?: string,
+        locationId?: string,
+        userTags?: UserTag[]
+    ): PostPagePhotoMediaRequest {
+        return new PostPagePhotoMediaRequest(this.accessToken, this.pageId, imageUrl, caption, locationId, userTags);
+    }
+
+    /**
+     * Build a new {@link PostPageVideoMediaRequest}.
+     *
+     * @param videoUrl the image URL.
+     * @param caption the caption.
+     * @param thumbOffset the thumbnail offset time in milliseconds.
+     * @param locationId the location id.
+     *
+     * @returns a new {@link PostPageVideoMediaRequest}.
+     */
+    public newPostPageVideoMediaRequest(
+        videoUrl: string,
+        caption?: string,
+        thumbOffset?: number,
+        locationId?: string
+    ): PostPageVideoMediaRequest {
+        return new PostPageVideoMediaRequest(this.accessToken, this.pageId, videoUrl, caption, thumbOffset, locationId);
+    }
+
+    /**
+     * Builds a new {@link PostPublishMediaRequest}.
+     *
+     * @param containerId the container id.
+     *
+     * @returns a new {@link PostPublishMediaRequest}.
+     */
+    public newPostPublishMediaRequest(containerId: string): PostPublishMediaRequest {
+        return new PostPublishMediaRequest(this.accessToken, this.pageId, containerId);
     }
 }

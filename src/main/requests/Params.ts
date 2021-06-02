@@ -1,4 +1,13 @@
 /**
+ * Represents a user tag in a media object.
+ */
+export type UserTag = {
+    username: string;
+    x: number;
+    y: number;
+};
+
+/**
  * Interface to represent the params of a request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
@@ -18,4 +27,15 @@ export interface Params {
     q?: string;
     message?: string;
     hide?: boolean;
+    image_url?: string;
+    caption?: string;
+    user_tags?: UserTag[];
+    thumb_offset?: number;
+    video_url?: string;
+    media_type?: 'video';
+    /**
+     * Not obtainable through this API. https://developers.facebook.com/docs/instagram-api/reference/ig-user/media
+     */
+    location_id?: string;
+    creation_id?: string;
 }
