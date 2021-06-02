@@ -29,7 +29,6 @@ This lib supports making requests to most of the Instagram Graph API resources. 
 -   `Recently Searched Hashtags` in the `IG User` node.
 -   `Stories` in the `IG User` node
 -   `Mentions`, `Mentioned Comments` and `Mentioned Media` in the `IG User` node.
--   `IG Container` and `Media Publish`.
 -   Webhooks.
 
 As it currently stands, this lib allows you to get a lot of information about your page and media, including basic information and insights. It also allows you to create and reply to comments, delete them and hide them.
@@ -87,9 +86,19 @@ let config: RequestConfig = request.config();
 [...]
 ```
 
+### Publishing media
+
+Publishing Media through the Instagram Graph API, and conversely through this lib, follows these steps:
+
+1. Create an IG Container object (through the `PostPagePhotoMediaRequest` or the `PostPageVideoMediaRequest`).
+2. Wait for the IG Container status to move to `FINISHED` (check the status through the `GetContainerRequest`).
+3. Publish the IG Container (through the `PostPublishMediaRequest`).
+
+For more info on this flow, refer to the [Content Publishing documentation](https://developers.facebook.com/docs/instagram-api/guides/content-publishing).
+
 ### Other request options
 
-You can give paging and range options to the requests, as supported by certain resources on the Instagram Graph API. (check the [reference documentation](<(https://developers.facebook.com/docs/instagram-api/reference/)>) to see which ones do). For example, the Get Page Media request supports paging, here's a naive example of how to use:
+You can give paging and range options to the requests, as supported by certain resources on the Instagram Graph API. (check the [reference documentation](https://developers.facebook.com/docs/instagram-api/reference/) to see which ones do). For example, the Get Page Media request supports paging, here's a naive example of how to use:
 
 ```typescript
 import { GetPageMediaRequest, GetPageMediaResponse, PageOption } from 'instagram-graph-api';
