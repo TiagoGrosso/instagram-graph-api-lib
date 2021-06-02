@@ -31,7 +31,7 @@ This lib supports making requests to most of the Instagram Graph API resources. 
 -   `Mentions`, `Mentioned Comments` and `Mentioned Media` in the `IG User` node.
 -   Webhooks.
 
-As it currently stands, this lib allows you to get a lot of information about your page and media, including basic information and insights. It also allows you to create and reply to comments, delete them and hide them.
+As it currently stands, this lib allows you to get a lot of information about your page and media, including basic information and insights. It also allows you to create and publish media (photos and videos) as well as to create and reply to comments, delete them and hide them.
 For now, this lib does not contain any complex logic. It simply models requests to the Instagram Graph API and gives you an easy way to execute them.
 
 ### Building requests
