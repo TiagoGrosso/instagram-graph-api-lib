@@ -370,7 +370,7 @@ export class TestConstants {
     /**
      * A dummy image URL.
      */
-    static readonly IMAGE_URL: string = 'https://test.com';
+    static readonly MEDIA_URL: string = 'https://test.com';
 
     /**
      * A dummy caption.
@@ -390,6 +390,11 @@ export class TestConstants {
         x: 0.2,
         y: 0.5,
     };
+
+    /**
+     * A dummy thumbnail offset time.
+     */
+    static readonly THUMB_OFFSET: number = 1000;
 
     /**
      * A dummy container id.

@@ -1,16 +1,15 @@
 import { AxiosResponse } from 'axios';
 import { AbstractRequest } from '../../AbstractRequest';
 import { CreatedObjectIdResponse } from '../../common/CreatedObjectIdResponse';
-import { UserTag } from '../../Params';
 import { Method } from '../../RequestConfig';
 
 /**
- * A request that creates a new Photo Media container.
+ * A request that creates a new Video Media container.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since `next.release`
  */
-export class PostPagePhotoMediaRequest extends AbstractRequest<CreatedObjectIdResponse> {
+export class PostPageVideoMediaRequest extends AbstractRequest<CreatedObjectIdResponse> {
     /**
      * The page id.
      */
@@ -21,25 +20,25 @@ export class PostPagePhotoMediaRequest extends AbstractRequest<CreatedObjectIdRe
      *
      * @param accessToken the access token.
      * @param pageId the page id.
-     * @param imageUrl the image URL.
+     * @param videoUrl the video URL.
      * @param caption the caption.
      * @param locationId the location id.
-     * @param userTags the user_tags.
      */
     constructor(
         accessToken: string,
         pageId: string,
-        imageUrl: string,
+        videoUrl: string,
         caption?: string,
-        locationId?: string,
-        userTags?: UserTag[]
+        thumbOffset?: number,
+        locationId?: string
     ) {
         super(accessToken);
         this.pageId = pageId;
-        this.params.image_url = imageUrl;
+        this.params.video_url = videoUrl;
         this.params.caption = caption;
+        this.params.thumb_offset = thumbOffset;
         this.params.location_id = locationId;
-        this.params.user_tags = userTags;
+        this.params.media_type = 'video';
     }
 
     /**
@@ -49,7 +48,7 @@ export class PostPagePhotoMediaRequest extends AbstractRequest<CreatedObjectIdRe
      *
      * @returns this object, for chained invocation.
      */
-    public withCaption(caption: string): PostPagePhotoMediaRequest {
+    public withCaption(caption: string): PostPageVideoMediaRequest {
         this.params.caption = caption;
         return this;
     }
@@ -61,20 +60,20 @@ export class PostPagePhotoMediaRequest extends AbstractRequest<CreatedObjectIdRe
      *
      * @returns this object, for chained invocation.
      */
-    public withLocationId(locationId: string): PostPagePhotoMediaRequest {
+    public withLocationId(locationId: string): PostPageVideoMediaRequest {
         this.params.location_id = locationId;
         return this;
     }
 
     /**
-     * Sets the user_tags in the request.
+     * Sets the thumbnail offset time in the request.
      *
-     * @param userTags the user_tags.
+     * @param thumbOffset the thumbnail offset time.
      *
      * @returns this object, for chained invocation.
      */
-    public withUserTags(userTags: UserTag[]): PostPagePhotoMediaRequest {
-        this.params.user_tags = userTags;
+    public withThumbOffset(thumbOffset: number): PostPageVideoMediaRequest {
+        this.params.thumb_offset = thumbOffset;
         return this;
     }
 

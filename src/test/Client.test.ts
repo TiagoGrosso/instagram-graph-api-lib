@@ -33,6 +33,7 @@ import { GetPageMonthInsightsRequest } from '../main/requests/page/insights/GetP
 import { GetPageWeekInsightsRequest } from '../main/requests/page/insights/GetPageWeekInsightsRequest';
 import { GetPageMediaRequest } from '../main/requests/page/media/GetPageMediaRequest';
 import { PostPagePhotoMediaRequest } from '../main/requests/page/media/PostPagePhotoMediaRequest';
+import { PostPageVideoMediaRequest } from '../main/requests/page/media/PostPageVideoMediaRequest';
 import { PostPublishMediaRequest } from '../main/requests/page/media_publish/PostPublishMediaRequest';
 import { GetTagsRequest } from '../main/requests/page/tags/GetTagsRequest';
 import { TestConstants } from './TestConstants';
@@ -340,12 +341,12 @@ describe('Client', () => {
     });
 
     it('Builds a PostPagePhotoMediaRequest', () => {
-        expect(client.newPostPagePhotoMediaRequest(TestConstants.IMAGE_URL)).toEqual(
-            new PostPagePhotoMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.IMAGE_URL)
+        expect(client.newPostPagePhotoMediaRequest(TestConstants.MEDIA_URL)).toEqual(
+            new PostPagePhotoMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.MEDIA_URL)
         );
         expect(
             client.newPostPagePhotoMediaRequest(
-                TestConstants.IMAGE_URL,
+                TestConstants.MEDIA_URL,
                 TestConstants.CAPTION,
                 TestConstants.LOCATION_ID,
                 [TestConstants.USER_TAG]
@@ -354,10 +355,33 @@ describe('Client', () => {
             new PostPagePhotoMediaRequest(
                 TestConstants.ACCESS_TOKEN,
                 TestConstants.PAGE_ID,
-                TestConstants.IMAGE_URL,
+                TestConstants.MEDIA_URL,
                 TestConstants.CAPTION,
                 TestConstants.LOCATION_ID,
                 [TestConstants.USER_TAG]
+            )
+        );
+    });
+
+    it('Builds a PostPageVideoMediaRequest', () => {
+        expect(client.newPostPageVideoMediaRequest(TestConstants.MEDIA_URL)).toEqual(
+            new PostPageVideoMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.MEDIA_URL)
+        );
+        expect(
+            client.newPostPageVideoMediaRequest(
+                TestConstants.MEDIA_URL,
+                TestConstants.CAPTION,
+                TestConstants.THUMB_OFFSET,
+                TestConstants.LOCATION_ID
+            )
+        ).toEqual(
+            new PostPageVideoMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.MEDIA_URL,
+                TestConstants.CAPTION,
+                TestConstants.THUMB_OFFSET,
+                TestConstants.LOCATION_ID
             )
         );
     });

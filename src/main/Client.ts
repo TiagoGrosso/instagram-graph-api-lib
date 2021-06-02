@@ -32,6 +32,7 @@ import { GetPageMonthInsightsRequest } from './requests/page/insights/GetPageMon
 import { GetPageWeekInsightsRequest } from './requests/page/insights/GetPageWeekInsightsRequest';
 import { GetPageMediaRequest } from './requests/page/media/GetPageMediaRequest';
 import { PostPagePhotoMediaRequest } from './requests/page/media/PostPagePhotoMediaRequest';
+import { PostPageVideoMediaRequest } from './requests/page/media/PostPageVideoMediaRequest';
 import { PostPublishMediaRequest } from './requests/page/media_publish/PostPublishMediaRequest';
 import { GetTagsRequest } from './requests/page/tags/GetTagsRequest';
 import { UserTag } from './requests/Params';
@@ -367,6 +368,25 @@ export class Client {
         userTags?: UserTag[]
     ): PostPagePhotoMediaRequest {
         return new PostPagePhotoMediaRequest(this.accessToken, this.pageId, imageUrl, caption, locationId, userTags);
+    }
+
+    /**
+     * Build a new {@link PostPageVideoMediaRequest}.
+     *
+     * @param videoUrl the image URL.
+     * @param caption the caption.
+     * @param thumbOffset the thumbnail offset time in milliseconds.
+     * @param locationId the location id.
+     *
+     * @returns a new {@link PostPageVideoMediaRequest}.
+     */
+    public newPostPageVideoMediaRequest(
+        videoUrl: string,
+        caption?: string,
+        thumbOffset?: number,
+        locationId?: string
+    ): PostPageVideoMediaRequest {
+        return new PostPageVideoMediaRequest(this.accessToken, this.pageId, videoUrl, caption, thumbOffset, locationId);
     }
 
     /**

@@ -32,6 +32,7 @@ export interface Params {
     user_tags?: UserTag[];
     thumb_offset?: number;
     video_url?: string;
+    media_type?: 'video';
     /**
      * Not obtainable through this API. https://developers.facebook.com/docs/instagram-api/reference/ig-user/media
      */
