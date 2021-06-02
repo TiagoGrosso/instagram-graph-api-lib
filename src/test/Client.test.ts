@@ -1,6 +1,7 @@
 import { Client } from '../main/Client';
 import {
     CommentField,
+    ContainerField,
     DayMetric,
     LifetimeMetric,
     PageField,
@@ -15,6 +16,7 @@ import { GetCommentRequest } from '../main/requests/comment/GetCommentRequest';
 import { PostHideCommentRequest } from '../main/requests/comment/PostHideCommentRequest';
 import { GetRepliesRequest } from '../main/requests/comment/replies/GetRepliesRequest';
 import { PostReplyRequest } from '../main/requests/comment/replies/PostReplyRequest';
+import { GetContainerRequest } from '../main/requests/container/GetContainerRequest';
 import { GetHashtagRecentMediaRequest } from '../main/requests/hashtag/media/GetHashtagRecentMediaRequest';
 import { GetHashtagTopMediaRequest } from '../main/requests/hashtag/media/GetHashtagTopMediaRequest';
 import { GetHashtagIdRequest } from '../main/requests/hashtag/search/GetHashtagIdRequest';
@@ -30,6 +32,8 @@ import { GetPageLifetimeInsightsRequest } from '../main/requests/page/insights/G
 import { GetPageMonthInsightsRequest } from '../main/requests/page/insights/GetPageMonthInsightsRequest';
 import { GetPageWeekInsightsRequest } from '../main/requests/page/insights/GetPageWeekInsightsRequest';
 import { GetPageMediaRequest } from '../main/requests/page/media/GetPageMediaRequest';
+import { PostPagePhotoMediaRequest } from '../main/requests/page/media/PostPagePhotoMediaRequest';
+import { PostPublishMediaRequest } from '../main/requests/page/media_publish/PostPublishMediaRequest';
 import { GetTagsRequest } from '../main/requests/page/tags/GetTagsRequest';
 import { TestConstants } from './TestConstants';
 
@@ -319,6 +323,48 @@ describe('Client', () => {
                 PublicMediaField.LIKE_COUNT,
                 PublicMediaField.CAPTION
             )
+        );
+    });
+
+    it('Builds a GetContainerRquest', () => {
+        expect(client.newGetContainerRequest(TestConstants.CONTAINER_ID)).toEqual(
+            new GetContainerRequest(TestConstants.ACCESS_TOKEN, TestConstants.CONTAINER_ID)
+        );
+        expect(client.newGetContainerRequest(TestConstants.CONTAINER_ID, ...Object.values(ContainerField))).toEqual(
+            new GetContainerRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.CONTAINER_ID,
+                ...Object.values(ContainerField)
+            )
+        );
+    });
+
+    it('Builds a PostPagePhotoMediaRequest', () => {
+        expect(client.newPostPagePhotoMediaRequest(TestConstants.IMAGE_URL)).toEqual(
+            new PostPagePhotoMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.IMAGE_URL)
+        );
+        expect(
+            client.newPostPagePhotoMediaRequest(
+                TestConstants.IMAGE_URL,
+                TestConstants.CAPTION,
+                TestConstants.LOCATION_ID,
+                [TestConstants.USER_TAG]
+            )
+        ).toEqual(
+            new PostPagePhotoMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.IMAGE_URL,
+                TestConstants.CAPTION,
+                TestConstants.LOCATION_ID,
+                [TestConstants.USER_TAG]
+            )
+        );
+    });
+
+    it('Builds a PostPublishMediaRequest', () => {
+        expect(client.newPostPublishMediaRequest(TestConstants.CONTAINER_ID)).toEqual(
+            new PostPublishMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.CONTAINER_ID)
         );
     });
 });

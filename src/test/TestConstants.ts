@@ -1,11 +1,13 @@
 import { LifetimeMetric, MetricPeriod, PageOption, WeekAndMonthMetric } from '../main/Enums';
 import { CommentData } from '../main/requests/data/CommentData';
+import { CONTAINER_STATUS_CODE } from '../main/requests/data/ContainerData';
 import { BasicInsightsMetricData, MetricValue } from '../main/requests/data/insights/BasicInsightsMetricData';
 import { ComplexMetricValue } from '../main/requests/data/insights/ComplexMetric';
 import { MeData } from '../main/requests/data/MeData';
 import { MediaData } from '../main/requests/data/MediaData';
 import { PageInfoData } from '../main/requests/data/PageInfoData';
 import { PagingData } from '../main/requests/data/Paging';
+import { UserTag } from '../main/requests/Params';
 
 /**
  * A set of constants used in tests.
@@ -364,4 +366,43 @@ export class TestConstants {
         media_type: 'CAROUSEL_ALBUM',
         permalink: 'media_permalink_2',
     };
+
+    /**
+     * A dummy image URL.
+     */
+    static readonly IMAGE_URL: string = 'https://test.com';
+
+    /**
+     * A dummy caption.
+     */
+    static readonly CAPTION: string = 'Test Caption';
+
+    /**
+     * A dummy location id.
+     */
+    static readonly LOCATION_ID: string = '111000999333';
+
+    /**
+     * A dummy user tag.
+     */
+    static readonly USER_TAG: UserTag = {
+        username: 'user',
+        x: 0.2,
+        y: 0.5,
+    };
+
+    /**
+     * A dummy container id.
+     */
+    static readonly CONTAINER_ID: string = 'container_id';
+
+    /**
+     * A dummy container status.
+     */
+    static readonly CONTAINER_STATUS: string = 'Finished: Media has been uploaded and it is ready to be published.';
+
+    /**
+     * A dummy container status code.
+     */
+    static readonly CONTAINER_STATUS_CODE: CONTAINER_STATUS_CODE = CONTAINER_STATUS_CODE.FINISHED;
 }

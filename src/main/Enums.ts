@@ -418,3 +418,26 @@ export enum CommentField {
      */
     USERNAME = 'username',
 }
+
+/**
+ * Container fields that can be retrieved through Get Container requests.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
+export enum ContainerField {
+    /**
+     * The id of the container.
+     */
+    ID = 'id',
+
+    /**
+     * Publishing status. If status_code is ERROR, this value will be an error subcode.
+     */
+    STATUS = 'status',
+
+    /**
+     * The container's publishing status.
+     */
+    STATUS_CODE = 'status_code',
+}
