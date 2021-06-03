@@ -58,7 +58,7 @@ After you build your request object, you can do one of two things:
 
 #### Built-in execute() method
 
-You can execute the request with the built in method that returns a parsed response or extract the config to easily execute the requests yourself. This will use [Axios](https://www.npmjs.com/package/axios).
+You can execute the request with the built in method that returns a parsed response. This will use [Axios](https://www.npmjs.com/package/axios).
 
 ```typescript
 import { GetPageInfoRequest, GetPageInfoResponse } from 'instagram-graph-api';
