@@ -35,6 +35,7 @@ import { GetPageMediaRequest } from '../main/requests/page/media/GetPageMediaReq
 import { PostPagePhotoMediaRequest } from '../main/requests/page/media/PostPagePhotoMediaRequest';
 import { PostPageVideoMediaRequest } from '../main/requests/page/media/PostPageVideoMediaRequest';
 import { PostPublishMediaRequest } from '../main/requests/page/media_publish/PostPublishMediaRequest';
+import { GetPageStoriesRequest } from '../main/requests/page/stories/GetPageStoriesRequest';
 import { GetTagsRequest } from '../main/requests/page/tags/GetTagsRequest';
 import { TestConstants } from './TestConstants';
 
@@ -389,6 +390,12 @@ describe('Client', () => {
     it('Builds a PostPublishMediaRequest', () => {
         expect(client.newPostPublishMediaRequest(TestConstants.CONTAINER_ID)).toEqual(
             new PostPublishMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.CONTAINER_ID)
+        );
+    });
+
+    it('Builds a GetPageStoriesRequest', () => {
+        expect(client.newGetPageStoriesRequest()).toEqual(
+            new GetPageStoriesRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
         );
     });
 });

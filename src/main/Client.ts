@@ -34,6 +34,7 @@ import { GetPageMediaRequest } from './requests/page/media/GetPageMediaRequest';
 import { PostPagePhotoMediaRequest } from './requests/page/media/PostPagePhotoMediaRequest';
 import { PostPageVideoMediaRequest } from './requests/page/media/PostPageVideoMediaRequest';
 import { PostPublishMediaRequest } from './requests/page/media_publish/PostPublishMediaRequest';
+import { GetPageStoriesRequest } from './requests/page/stories/GetPageStoriesRequest';
 import { GetTagsRequest } from './requests/page/tags/GetTagsRequest';
 import { UserTag } from './requests/Params';
 
@@ -398,5 +399,14 @@ export class Client {
      */
     public newPostPublishMediaRequest(containerId: string): PostPublishMediaRequest {
         return new PostPublishMediaRequest(this.accessToken, this.pageId, containerId);
+    }
+
+    /**
+     * Builds a new {@link GetPageStoriesRequest}.
+     *
+     * @returns a new {@link GetPageStoriesRequest}.
+     */
+    public newGetPageStoriesRequest(): GetPageStoriesRequest {
+        return new GetPageStoriesRequest(this.accessToken, this.pageId);
     }
 }
