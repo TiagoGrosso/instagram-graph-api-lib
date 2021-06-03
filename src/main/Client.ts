@@ -34,6 +34,7 @@ import { GetPageMediaRequest } from './requests/page/media/GetPageMediaRequest';
 import { PostPagePhotoMediaRequest } from './requests/page/media/PostPagePhotoMediaRequest';
 import { PostPageVideoMediaRequest } from './requests/page/media/PostPageVideoMediaRequest';
 import { PostPublishMediaRequest } from './requests/page/media_publish/PostPublishMediaRequest';
+import { GetPageRecentlySearchedHashtagsRequest } from './requests/page/recently_searched_hashtags/GetPageRecentlySearchedHashtagsRequest';
 import { GetPageStoriesRequest } from './requests/page/stories/GetPageStoriesRequest';
 import { GetTagsRequest } from './requests/page/tags/GetTagsRequest';
 import { UserTag } from './requests/Params';
@@ -408,5 +409,14 @@ export class Client {
      */
     public newGetPageStoriesRequest(): GetPageStoriesRequest {
         return new GetPageStoriesRequest(this.accessToken, this.pageId);
+    }
+
+    /**
+     * Builds a new {@link GetPageRecentlySearchedHashtagsRequest}.
+     *
+     * @returns a new {@link GetPageRecentlySearchedHashtagsRequest}.
+     */
+    public newGetPageRecentlySearchedHashtagsRequest(): GetPageRecentlySearchedHashtagsRequest {
+        return new GetPageRecentlySearchedHashtagsRequest(this.accessToken, this.pageId);
     }
 }
