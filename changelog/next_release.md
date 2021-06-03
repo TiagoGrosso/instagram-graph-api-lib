@@ -1,9 +1,1 @@
 # `next.release`
-
-## Added
-
--   `GetPageStoriesRequest`
-
-## Changed
-
--   Target API version changed from v9.0 to v10.0

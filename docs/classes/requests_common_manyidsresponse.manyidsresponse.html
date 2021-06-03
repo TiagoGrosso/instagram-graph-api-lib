@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>GetMediaChildrenResponse | instagram-graph-api</title>
+	<title>ManyIdsResponse | instagram-graph-api</title>
 	<meta name="description" content="Documentation for instagram-graph-api">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -55,13 +55,13 @@
 					<a href="../modules.html">instagram-graph-api</a>
 				</li>
 				<li>
-					<a href="../modules/requests_media_children_getmediachildrenresponse.html">requests/media/children/GetMediaChildrenResponse</a>
+					<a href="../modules/requests_common_manyidsresponse.html">requests/common/ManyIdsResponse</a>
 				</li>
 				<li>
-					<a href="requests_media_children_getmediachildrenresponse.getmediachildrenresponse.html">GetMediaChildrenResponse</a>
+					<a href="requests_common_manyidsresponse.manyidsresponse.html">ManyIdsResponse</a>
 				</li>
 			</ul>
-			<h1>Class GetMediaChildrenResponse</h1>
+			<h1>Class ManyIdsResponse</h1>
 		</div>
 	</div>
 </header>
@@ -71,14 +71,14 @@
 			<section class="tsd-panel tsd-comment">
 				<div class="tsd-comment tsd-typography">
 					<div class="lead">
-						<p>Class that represents a response from a Get Media Children Response.</p>
+						<p>Class that represents a response from a request that simply returns an array of id objects.</p>
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>author</dt>
 						<dd><p>Tiago Grosso <a href="mailto:tiagogrosso99@gmail.com">tiagogrosso99@gmail.com</a></p>
 						</dd>
 						<dt>since</dt>
-						<dd><p>0.5.0</p>
+						<dd><p>1.2.0</p>
 						</dd>
 					</dl>
 				</div>
@@ -90,7 +90,7 @@
 						<a href="requests_abstractresponse.abstractresponse.html" class="tsd-signature-type" data-tsd-kind="Class">AbstractResponse</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">GetMediaChildrenResponse</span>
+								<span class="target">ManyIdsResponse</span>
 							</li>
 						</ul>
 					</li>
@@ -103,20 +103,22 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="requests_media_children_getmediachildrenresponse.getmediachildrenresponse.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><a href="requests_common_manyidsresponse.manyidsresponse.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="requests_media_children_getmediachildrenresponse.getmediachildrenresponse.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="requests_common_manyidsresponse.manyidsresponse.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="requests_common_manyidsresponse.manyidsresponse.html#paging" class="tsd-kind-icon">paging</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="requests_media_children_getmediachildrenresponse.getmediachildrenresponse.html#getdata" class="tsd-kind-icon">get<wbr>Data</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="requests_media_children_getmediachildrenresponse.getmediachildrenresponse.html#getids" class="tsd-kind-icon">get<wbr>Ids</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="requests_common_manyidsresponse.manyidsresponse.html#getdata" class="tsd-kind-icon">get<wbr>Data</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="requests_common_manyidsresponse.manyidsresponse.html#getids" class="tsd-kind-icon">get<wbr>Ids</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="requests_common_manyidsresponse.manyidsresponse.html#getpaging" class="tsd-kind-icon">get<wbr>Paging</a></li>
 							</ul>
 						</section>
 					</div>
@@ -128,14 +130,14 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Get<wbr>Media<wbr>Children<wbr>Response<span class="tsd-signature-symbol">(</span>body<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="requests_media_children_getmediachildrenresponse.getmediachildrenresponse.html" class="tsd-signature-type" data-tsd-kind="Class">GetMediaChildrenResponse</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Many<wbr>Ids<wbr>Response<span class="tsd-signature-symbol">(</span>body<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>paging<span class="tsd-signature-symbol">: </span><a href="../interfaces/requests_data_paging.pagingdata.html" class="tsd-signature-type" data-tsd-kind="Interface">PagingData</a><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="requests_common_manyidsresponse.manyidsresponse.html" class="tsd-signature-type" data-tsd-kind="Class">ManyIdsResponse</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="requests_abstractresponse.abstractresponse.html">AbstractResponse</a>.<a href="requests_abstractresponse.abstractresponse.html#constructor">constructor</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/9d60c03/src/main/requests/media/children/GetMediaChildrenResponse.ts#L9">requests/media/children/GetMediaChildrenResponse.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/9d60c03/src/main/requests/common/ManyIdsResponse.ts#L14">requests/common/ManyIdsResponse.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -146,18 +148,21 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>body: <span class="tsd-signature-symbol">{ </span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></h5>
+									<h5>body: <span class="tsd-signature-symbol">{ </span>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>paging<span class="tsd-signature-symbol">: </span><a href="../interfaces/requests_data_paging.pagingdata.html" class="tsd-signature-type" data-tsd-kind="Interface">PagingData</a><span class="tsd-signature-symbol"> }</span></h5>
 									<div class="tsd-comment tsd-typography">
-										<p>the body of the response.</p>
+										<p>the body of the response</p>
 									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
 											<h5>data<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">[]</span></h5>
 										</li>
+										<li class="tsd-parameter">
+											<h5>paging<span class="tsd-signature-symbol">: </span><a href="../interfaces/requests_data_paging.pagingdata.html" class="tsd-signature-type" data-tsd-kind="Interface">PagingData</a></h5>
+										</li>
 									</ul>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="requests_media_children_getmediachildrenresponse.getmediachildrenresponse.html" class="tsd-signature-type" data-tsd-kind="Class">GetMediaChildrenResponse</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="requests_common_manyidsresponse.manyidsresponse.html" class="tsd-signature-type" data-tsd-kind="Class">ManyIdsResponse</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -177,6 +182,21 @@
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>The response data.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+					<a name="paging" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagPrivate">Private</span> paging</h3>
+					<div class="tsd-signature tsd-kind-icon">paging<span class="tsd-signature-symbol">:</span> <a href="requests_data_paging.paging.html" class="tsd-signature-type" data-tsd-kind="Class">Paging</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/9d60c03/src/main/requests/common/ManyIdsResponse.ts#L14">requests/common/ManyIdsResponse.ts:14</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The paging of the response.</p>
 						</div>
 					</div>
 				</section>
@@ -217,16 +237,39 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/9d60c03/src/main/requests/media/children/GetMediaChildrenResponse.ts#L24">requests/media/children/GetMediaChildrenResponse.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/9d60c03/src/main/requests/common/ManyIdsResponse.ts#L31">requests/common/ManyIdsResponse.ts:31</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Gets an array with the ids of all the comments.</p>
+									<p>Gets the ids in the response.</p>
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
-							<p>an array with the ids of all the comments.</p>
+							<p>the ids in the response.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="getpaging" class="tsd-anchor"></a>
+					<h3>get<wbr>Paging</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Paging<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="requests_data_paging.paging.html" class="tsd-signature-type" data-tsd-kind="Class">Paging</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/TiagoGrosso/instagram-graph-api-lib/blob/9d60c03/src/main/requests/common/ManyIdsResponse.ts#L40">requests/common/ManyIdsResponse.ts:40</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Gets the paging of the response.</p>
+								</div>
+							</div>
+							<h4 class="tsd-returns-title">Returns <a href="requests_data_paging.paging.html" class="tsd-signature-type" data-tsd-kind="Class">Paging</a></h4>
+							<p>the paging of the response.</p>
 						</li>
 					</ul>
 				</section>
@@ -239,7 +282,7 @@
 						<a href="../modules.html">Modules</a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/requests_media_children_getmediachildrenresponse.html">requests/media/children/<wbr>Get<wbr>Media<wbr>Children<wbr>Response</a>
+						<a href="../modules/requests_common_manyidsresponse.html">requests/common/<wbr>Many<wbr>Ids<wbr>Response</a>
 					</li>
 				</ul>
 			</nav>
@@ -248,19 +291,25 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-class tsd-parent-kind-module">
-						<a href="requests_media_children_getmediachildrenresponse.getmediachildrenresponse.html" class="tsd-kind-icon">Get<wbr>Media<wbr>Children<wbr>Response</a>
+						<a href="requests_common_manyidsresponse.manyidsresponse.html" class="tsd-kind-icon">Many<wbr>Ids<wbr>Response</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited">
-								<a href="requests_media_children_getmediachildrenresponse.getmediachildrenresponse.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="requests_common_manyidsresponse.manyidsresponse.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="requests_media_children_getmediachildrenresponse.getmediachildrenresponse.html#data" class="tsd-kind-icon">data</a>
+								<a href="requests_common_manyidsresponse.manyidsresponse.html#data" class="tsd-kind-icon">data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
+								<a href="requests_common_manyidsresponse.manyidsresponse.html#paging" class="tsd-kind-icon">paging</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="requests_media_children_getmediachildrenresponse.getmediachildrenresponse.html#getdata" class="tsd-kind-icon">get<wbr>Data</a>
+								<a href="requests_common_manyidsresponse.manyidsresponse.html#getdata" class="tsd-kind-icon">get<wbr>Data</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="requests_media_children_getmediachildrenresponse.getmediachildrenresponse.html#getids" class="tsd-kind-icon">get<wbr>Ids</a>
+								<a href="requests_common_manyidsresponse.manyidsresponse.html#getids" class="tsd-kind-icon">get<wbr>Ids</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="requests_common_manyidsresponse.manyidsresponse.html#getpaging" class="tsd-kind-icon">get<wbr>Paging</a>
 							</li>
 						</ul>
 					</li>
@@ -293,6 +342,9 @@
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
 			</ul>
 		</div>
 	</div>

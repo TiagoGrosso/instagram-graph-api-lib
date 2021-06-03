@@ -5,7 +5,7 @@ import { Paging, PagingData } from '../data/Paging';
  * Class that represents a response from a request that simply returns an array of id objects.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.2.0
  */
 export class ManyIdsResponse extends AbstractResponse<{ id: string }[]> {
     /**
