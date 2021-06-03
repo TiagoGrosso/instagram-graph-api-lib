@@ -8,5 +8,5 @@ export class Constants {
     /**
      * The URL of the api.
      */
-    static readonly API_URL: string = 'https://graph.facebook.com/v9.0';
+    static readonly API_URL: string = 'https://graph.facebook.com/v10.0';
 }
