@@ -26,7 +26,6 @@ You can always check the [typedoc documentation](https://tiagogrosso.github.io/i
 
 This lib supports making requests to most of the Instagram Graph API resources. It does not yet cover:
 
--   `Recently Searched Hashtags` in the `IG User` node.
 -   `Mentions`, `Mentioned Comments` and `Mentioned Media` in the `IG User` node.
 -   Webhooks.
 
