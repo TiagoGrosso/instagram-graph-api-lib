@@ -7,7 +7,7 @@ import { PagingData } from '../../data/Paging';
  * A request that gets the stories of a page.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.2.0
  */
 export class GetPageStoriesRequest extends AbstractRequest<ManyIdsResponse> {
     /**
