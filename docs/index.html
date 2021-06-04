@@ -85,7 +85,6 @@
 				</a>
 				<p>This lib supports making requests to most of the Instagram Graph API resources. It does not yet cover:</p>
 				<ul>
-					<li>  <code>Recently Searched Hashtags</code> in the <code>IG User</code> node.</li>
 					<li>  <code>Mentions</code>, <code>Mentioned Comments</code> and <code>Mentioned Media</code> in the <code>IG User</code> node.</li>
 					<li>  Webhooks.</li>
 				</ul>
@@ -113,7 +112,7 @@
 				<a href="#built-in-execute-method" id="built-in-execute-method" style="color: inherit; text-decoration: none;">
 					<h4>Built-in execute() method</h4>
 				</a>
-				<p>You can execute the request with the built in method that returns a parsed response or extract the config to easily execute the requests yourself. This will use <a href="https://www.npmjs.com/package/axios">Axios</a>.</p>
+				<p>You can execute the request with the built in method that returns a parsed response. This will use <a href="https://www.npmjs.com/package/axios">Axios</a>.</p>
 				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageInfoRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageInfoResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
 
 <span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetPageInfoRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
@@ -433,6 +432,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_page_media_publish_postpublishmediarequest.html">requests/page/media_<wbr>publish/<wbr>Post<wbr>Publish<wbr>Media<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_recently_searched_hashtags_getpagerecentlysearchedhashtagsrequest.html">requests/page/recently_<wbr>searched_<wbr>hashtags/<wbr>Get<wbr>Page<wbr>Recently<wbr>Searched<wbr>Hashtags<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_page_stories_getpagestoriesrequest.html">requests/page/stories/<wbr>Get<wbr>Page<wbr>Stories<wbr>Request</a>
