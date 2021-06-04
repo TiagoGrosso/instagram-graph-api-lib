@@ -7,7 +7,7 @@ import { PagingData } from '../../data/Paging';
  * A request that gets the Recently Searched Hashtags of a user/page.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.3.0
  */
 export class GetPageRecentlySearchedHashtagsRequest extends AbstractRequest<ManyIdsResponse> {
     /**
