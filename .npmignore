@@ -119,6 +119,7 @@ dist
 *.code-workspace
 src/
 docs/
+changelog/
 scripts/
 tsconfig.json
 jest.config.ts
