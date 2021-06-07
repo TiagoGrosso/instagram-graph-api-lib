@@ -275,7 +275,7 @@ export type MediaField = PrivateMediaField | PublicMediaField;
  * The surfaces where media can bne published.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.4.0
  */
 export enum MediaProductType {
     AD = 'AD',
