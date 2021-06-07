@@ -353,6 +353,11 @@ export enum AlbumMetric {
      * Total number of unique Instagram accounts that have saved the album IG Media object.
      */
     CAROUSEL_ALBUM_SAVED = 'carousel_album_saved',
+
+    /**
+     * (Video IG Media objects only) Always returns 0. Use carousel_album_reach and carousel_album_impressions instead.
+     */
+    CAROUSEL_ALBUM_VIDEO_VIEWS = 'carousel_album_video_views',
 }
 
 /**
