@@ -1,4 +1,4 @@
-import { LifetimeMetric, MetricPeriod, PageOption, WeekAndMonthMetric } from '../main/Enums';
+import { LifetimeMetric, MediaProductType, MetricPeriod, PageOption, WeekAndMonthMetric } from '../main/Enums';
 import { CommentData } from '../main/requests/data/CommentData';
 import { CONTAINER_STATUS_CODE } from '../main/requests/data/ContainerData';
 import { BasicInsightsMetricData, MetricValue } from '../main/requests/data/insights/BasicInsightsMetricData';
@@ -99,6 +99,8 @@ export class TestConstants {
         shortcode: 'media_shortcode',
         timestamp: '2020-07-01T08:00:00+0000',
         username: 'media_username',
+        media_product_type: MediaProductType.FEED,
+        video_title: 'Some title',
     };
 
     /**
@@ -340,6 +342,8 @@ export class TestConstants {
         media_url: 'media_url',
         permalink: 'media_permalink',
         timestamp: '2020-07-01T08:00:00+0000',
+        video_title: 'Some title',
+        media_product_type: MediaProductType.IGTV,
     };
 
     /**
@@ -365,6 +369,8 @@ export class TestConstants {
         like_count: 600,
         media_type: 'CAROUSEL_ALBUM',
         permalink: 'media_permalink_2',
+        video_title: 'Some title',
+        media_product_type: MediaProductType.FEED,
     };
 
     /**

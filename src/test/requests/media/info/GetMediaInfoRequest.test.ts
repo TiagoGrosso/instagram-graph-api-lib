@@ -6,7 +6,7 @@ import { GetMediaInfoRequest } from '../../../../main/requests/media/info/GetMed
 import { GetMediaInfoResponse } from '../../../../main/requests/media/info/GetMediaInfoResponse';
 import { TestConstants } from '../../../TestConstants';
 
-describe('GetMediaRequest', () => {
+describe('GetMediaInfoRequest', () => {
     const request: GetMediaInfoRequest = new GetMediaInfoRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.MEDIA_ID,

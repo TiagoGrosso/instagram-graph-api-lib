@@ -2,4 +2,5 @@
 
 ## Added
 
--   `CAROUSEL_ALBUM_VIDEO_VIEWS` as a new retrievable metric in the `GetAlbumMediaInsightsRequest`
+-   `CAROUSEL_ALBUM_VIDEO_VIEWS` as a new retrievable metric in the `GetAlbumMediaInsightsRequest`.
+-   Support for retrieving data about IGTV media through the `media_product_type` and `video_title` fields on requests and responses related to getting media objects.

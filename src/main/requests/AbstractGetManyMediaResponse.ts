@@ -1,3 +1,4 @@
+import { MediaProductType } from '../Enums';
 import { AbstractResponse } from './AbstractResponse';
 import { Children } from './data/Common';
 import { MediaData } from './data/MediaData';
@@ -229,7 +230,7 @@ export class AbstractGetManyMediaResponse extends AbstractResponse<MediaData[]> 
     }
 
     /**
-     * Gets an array with the id of media owner of the all the media object.
+     * Gets an array with the id of media owner of the all the media objects.
      * If a media object does not have the 'owner' field, 'undefined' is returned for that object.
      *
      * @returns an array with the id of media owner of the all the media objects.
@@ -253,7 +254,7 @@ export class AbstractGetManyMediaResponse extends AbstractResponse<MediaData[]> 
     }
 
     /**
-     * Gets an array with the media owner of the all the permalinks.
+     * Gets an array with the permalinks of the all the media objects.
      * If a media object does not have the 'permalink' field, 'undefined' is returned for that object.
      *
      * @returns an array with the permalinks of the all the media objects.
@@ -277,7 +278,7 @@ export class AbstractGetManyMediaResponse extends AbstractResponse<MediaData[]> 
     }
 
     /**
-     * Gets an array with the media owner of the all the shortcodes.
+     * Getsan array with the shortcodes of the all the media objects.
      * If a media object does not have the 'shortcode' field, 'undefined' is returned for that object.
      *
      * @returns an array with the shortcodes of the all the media objects.
@@ -301,7 +302,7 @@ export class AbstractGetManyMediaResponse extends AbstractResponse<MediaData[]> 
     }
 
     /**
-     * Gets an array with the media owner of the all the timestamps.
+     * Gets an array with the timestamps of the all the media objects.
      * If a media object does not have the 'timestamp' field, 'undefined' is returned for that object.
      *
      * @returns an array with the timestamps of the all the media objects.
@@ -325,7 +326,7 @@ export class AbstractGetManyMediaResponse extends AbstractResponse<MediaData[]> 
     }
 
     /**
-     * Gets an array with the media owner of the all the usernames.
+     * Gets an array with the usernames of the all the media objects.
      * If a media object does not have the 'username' field, 'undefined' is returned for that object.
      *
      * @returns an array with the usernames of the all the media objects.
@@ -344,6 +345,54 @@ export class AbstractGetManyMediaResponse extends AbstractResponse<MediaData[]> 
         return new Map(
             this.data.map((elem) => {
                 return [elem.id, elem.username];
+            })
+        );
+    }
+
+    /**
+     * Gets an array with the media product type of the all the media objects.
+     * If a media object does not have the 'media_product_type' field, 'undefined' is returned for that object.
+     *
+     * @returns an array with the media product type of the all the media objects.
+     */
+    public getMediaProductTypes(): (MediaProductType | undefined)[] {
+        return this.data.map((elem) => elem.media_product_type);
+    }
+
+    /**
+     * Gets a map from the id of the media objects to their media product type.
+     * If a media object does have not a the 'media_product_type' field, 'undefined' is returned for that object.
+     *
+     * @returns a map from the id of the media objects to their 'media_product_type'.
+     */
+    public getMediaProductTypesMap(): Map<string, MediaProductType | undefined> {
+        return new Map(
+            this.data.map((elem) => {
+                return [elem.id, elem.media_product_type];
+            })
+        );
+    }
+
+    /**
+     * Gets an array with the video titles of the all the media objects.
+     * If a media object does not have the 'video_title' field, 'undefined' is returned for that object.
+     *
+     * @returns an array with the video titles of the all the media objects.
+     */
+    public getVideoTitles(): (string | undefined)[] {
+        return this.data.map((elem) => elem.video_title);
+    }
+
+    /**
+     * Gets a map from the id of the media objects to their video title.
+     * If a media object does have not a the 'video_title' field, 'undefined' is returned for that object.
+     *
+     * @returns a map from the id of the media objects to their 'video_title'.
+     */
+    public getVideoTitlesMap(): Map<string, string | undefined> {
+        return new Map(
+            this.data.map((elem) => {
+                return [elem.id, elem.video_title];
             })
         );
     }

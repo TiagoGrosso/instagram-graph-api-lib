@@ -1,6 +1,7 @@
 import { TestConstants } from '../../../TestConstants';
 import { GetPageMediaResponse } from '../../../../main/requests/page/media/GetPageMediaResponse';
 import { Paging } from '../../../../main/requests/data/Paging';
+import { MediaProductType } from '../../../../main/Enums';
 
 describe('GetPageMediaResponse', () => {
     const response: GetPageMediaResponse = new GetPageMediaResponse({
@@ -202,6 +203,36 @@ describe('GetPageMediaResponse', () => {
         expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.username);
 
         expect(response.getUsernamesMap()).toEqual(expected);
+    });
+
+    it('Gets the media objects media product type', () => {
+        expect(response.getMediaProductTypes()).toEqual([
+            TestConstants.FULL_MEDIA_DATA.media_product_type,
+            TestConstants.BARE_MEDIA_DATA.media_product_type,
+        ]);
+    });
+
+    it('Gets the media objects media product type map', () => {
+        const expected = new Map<string, MediaProductType | undefined>();
+        expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.media_product_type);
+        expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.media_product_type);
+
+        expect(response.getMediaProductTypesMap()).toEqual(expected);
+    });
+
+    it('Gets the media objects video titles', () => {
+        expect(response.getVideoTitles()).toEqual([
+            TestConstants.FULL_MEDIA_DATA.video_title,
+            TestConstants.BARE_MEDIA_DATA.video_title,
+        ]);
+    });
+
+    it('Gets the media objects video titles map', () => {
+        const expected = new Map<string, string | undefined>();
+        expected.set(TestConstants.FULL_MEDIA_DATA.id, TestConstants.FULL_MEDIA_DATA.video_title);
+        expected.set(TestConstants.BARE_MEDIA_DATA.id, TestConstants.BARE_MEDIA_DATA.video_title);
+
+        expect(response.getVideoTitlesMap()).toEqual(expected);
     });
 
     it('Gets the paging', () => {

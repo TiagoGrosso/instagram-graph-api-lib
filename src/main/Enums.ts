@@ -229,6 +229,16 @@ export enum PublicMediaField {
      * The username of the media object owner.
      */
     USERNAME = 'username',
+
+    /**
+     * Surface where the media is published. Can be AD, FEED, IGTV, or STORY.
+     */
+    MEDIA_PRODUCT_TYPE = 'media_product_type',
+
+    /**
+     * IGTV media title.
+     */
+    VIDEO_TITLE = 'video_title',
 }
 
 /**
@@ -260,6 +270,19 @@ export enum PrivateMediaField {
 }
 
 export type MediaField = PrivateMediaField | PublicMediaField;
+
+/**
+ * The surfaces where media can bne published.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
+export enum MediaProductType {
+    AD = 'AD',
+    FEED = 'FEED',
+    IGTV = 'IGTV',
+    STORY = 'STORY',
+}
 
 /**
  * Post insights metrics.

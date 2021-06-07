@@ -1,3 +1,4 @@
+import { MediaProductType } from '../../../Enums';
 import { AbstractResponse } from '../../AbstractResponse';
 import { MediaData } from '../../data/MediaData';
 
@@ -132,5 +133,23 @@ export class GetMediaInfoResponse extends AbstractResponse<MediaData> {
      */
     public getUsername(): string | undefined {
         return this.data.username;
+    }
+
+    /**
+     * Gets the surface where the media is published.
+     *
+     * @returns the surface where the media is published.
+     */
+    public getMediaProductType(): MediaProductType | undefined {
+        return this.data.media_product_type;
+    }
+
+    /**
+     * Gets the video title of the IGTV media object.
+     *
+     * @returns the video title of the IGTV media object.
+     */
+    public getVideoTitle(): string | undefined {
+        return this.data.video_title;
     }
 }

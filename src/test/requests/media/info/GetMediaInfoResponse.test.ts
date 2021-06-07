@@ -1,7 +1,7 @@
 import { GetMediaInfoResponse } from '../../../../main/requests/media/info/GetMediaInfoResponse';
 import { TestConstants } from '../../../TestConstants';
 
-describe('MediaResponse', () => {
+describe('GetMediaInfoResponse', () => {
     const fullResponse: GetMediaInfoResponse = new GetMediaInfoResponse(TestConstants.FULL_MEDIA_DATA);
     const partialResponse: GetMediaInfoResponse = new GetMediaInfoResponse(TestConstants.BARE_MEDIA_DATA);
 
@@ -71,5 +71,13 @@ describe('MediaResponse', () => {
 
     it('Gets the `username`', () => {
         expect(fullResponse.getUsername()).toEqual(TestConstants.FULL_MEDIA_DATA.username);
+    });
+
+    it('Gets the `media_product_type`', () => {
+        expect(fullResponse.getMediaProductType()).toEqual(TestConstants.FULL_MEDIA_DATA.media_product_type);
+    });
+
+    it('Gets the `video_title`', () => {
+        expect(fullResponse.getVideoTitle()).toEqual(TestConstants.FULL_MEDIA_DATA.video_title);
     });
 });
