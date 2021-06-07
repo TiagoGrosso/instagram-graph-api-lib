@@ -8,11 +8,15 @@
 
 ## Description
 
-This npm package lets you easily perform requests to the [Instagram Graph API](https://developers.facebook.com/docs/instagram-api/), aiming to reduce the integration time and allowing you to easily obtain the information you want through code.
+This npm package lets you easily perform requests to the [Instagram Graph API](https://developers.facebook.com/docs/instagram-api/), aiming to reduce the integration time and allowing you to easily obtain the information you want through code and to publish your media without hassle.
 
 This package is made by independent contributors and is in no way officially related to or supported by Instagram/Facebook.
 
 You can find what changed in each version by checking the [Changelog](changelog/changelog.md).
+
+## New since 1.2.0
+
+You can now use this lib to publish videos and photos to your page! Check out the [Publishing media](#publishing-media) section.
 
 ## Installation
 
