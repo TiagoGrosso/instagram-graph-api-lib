@@ -1,3 +1,4 @@
+import { MediaProductType } from '../../Enums';
 import { Children } from './Common';
 
 /**
@@ -81,4 +82,14 @@ export interface MediaData {
      * The username of the media object.
      */
     username?: string;
+
+    /**
+     * Surface where the media is published.
+     */
+    media_product_type?: MediaProductType;
+
+    /**
+     * IGTV media title.
+     */
+    video_title?: string;
 }
