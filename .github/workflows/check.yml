@@ -15,10 +15,10 @@ jobs:
       with:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
-    - name: Build index
-      run: npm run cti
     - name: Install node packages
       run: npm install
+    - name: Build index
+      run: npm run cti
     - name: Build project
       run: npm run build
   test:
