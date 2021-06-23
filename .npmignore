@@ -125,3 +125,8 @@ tsconfig.json
 jest.config.ts
 lib/Main.*
 .github/*
+.eslint*
+.prettier*
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+rollup.config.ts
