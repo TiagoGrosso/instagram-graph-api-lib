@@ -10,3 +10,4 @@ Follow the links to the version that you wish to consult.
 -   [1.3.0](./1.3.0.md)
 -   [1.4.0](./1.4.0.md)
 -   [1.5.0](./1.5.0.md)
+-   [1.6.0](./1.6.0.md)

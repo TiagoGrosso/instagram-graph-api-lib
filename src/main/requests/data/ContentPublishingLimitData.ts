@@ -2,7 +2,7 @@
  * Interface to represent a content publishing limit config.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.6.0
  */
 export interface Config {
     /**
@@ -20,7 +20,7 @@ export interface Config {
  * Interface to represent data retrieved from a content publishing limit request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.6.0
  */
 export interface ContentPublishingLimitData {
     /**

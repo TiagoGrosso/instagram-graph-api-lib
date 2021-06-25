@@ -5,7 +5,7 @@ import { Config, ContentPublishingLimitData } from '../../data/ContentPublishing
  * Represents a response to a content publishing limit request.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.6.0
  */
 export class GetContentPublishingLimitResponse extends AbstractResponse<ContentPublishingLimitData> {
     /**
