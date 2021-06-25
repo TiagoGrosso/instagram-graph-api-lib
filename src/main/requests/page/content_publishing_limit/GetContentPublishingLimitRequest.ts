@@ -8,7 +8,7 @@ import { GetContentPublishingLimitResponse } from './GetContentPublishingLimitRe
  * A request that gets the content publishing limit of a page.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.6.0
  */
 export class GetContentPublishingLimitRequest extends AbstractRequest<GetContentPublishingLimitResponse> {
     /**
@@ -77,7 +77,7 @@ export class GetContentPublishingLimitRequest extends AbstractRequest<GetContent
  * An error class for invalid dates when querying the content publishing limit.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.6.0
  */
 export class DateOlderThanOneDay extends Error {
     /**

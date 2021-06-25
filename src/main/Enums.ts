@@ -474,7 +474,7 @@ export enum ContainerField {
  * Fields that can be retrieved through Get Content Publishing Limit Requests.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.6.0
  */
 export enum ContentPublishingLimitFields {
     /**
