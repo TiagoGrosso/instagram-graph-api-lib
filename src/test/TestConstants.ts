@@ -1,6 +1,7 @@
 import { LifetimeMetric, MediaProductType, MetricPeriod, PageOption, WeekAndMonthMetric } from '../main/Enums';
 import { CommentData } from '../main/requests/data/CommentData';
 import { CONTAINER_STATUS_CODE } from '../main/requests/data/ContainerData';
+import { ContentPublishingLimitData } from '../main/requests/data/ContentPublishingLimitData';
 import { BasicInsightsMetricData, MetricValue } from '../main/requests/data/insights/BasicInsightsMetricData';
 import { ComplexMetricValue } from '../main/requests/data/insights/ComplexMetric';
 import { MeData } from '../main/requests/data/MeData';
@@ -416,4 +417,22 @@ export class TestConstants {
      * A dummy container status code.
      */
     static readonly CONTAINER_STATUS_CODE: CONTAINER_STATUS_CODE = CONTAINER_STATUS_CODE.FINISHED;
+
+    /**
+     * A dummy Content Publishing Limit Data.
+     */
+    static readonly CONTENT_PUBLISHING_LIMIT_DATA: ContentPublishingLimitData = {
+        config: {
+            quota_duration: 86400,
+            quota_total: 25,
+        },
+        quota_usage: 0,
+    };
+
+    /**
+     * A dummy Content Publishing Limit Data with only the required fields.
+     */
+    static readonly CONTENT_PUBLISHING_LIMIT_DATA_PARTIAL: ContentPublishingLimitData = {
+        quota_usage: 5,
+    };
 }

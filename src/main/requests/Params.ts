@@ -21,7 +21,7 @@ export interface Params {
     after?: string;
     metric?: string;
     period?: string;
-    since?: Date;
+    since?: Date | number;
     until?: Date;
     user_id?: string;
     q?: string;

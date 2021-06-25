@@ -74,5 +74,10 @@
     "**/*.spec.ts",
     "**/*.test.ts",
     "src/test/TestConstants.ts"
-  ]
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }
