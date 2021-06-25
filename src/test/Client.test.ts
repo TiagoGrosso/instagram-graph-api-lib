@@ -2,6 +2,7 @@ import { Client } from '../main/Client';
 import {
     CommentField,
     ContainerField,
+    ContentPublishingLimitFields,
     DayMetric,
     LifetimeMetric,
     PageField,
@@ -26,6 +27,7 @@ import { PostMediaCommentRequest } from '../main/requests/media/comments/PostMed
 import { GetMediaInfoRequest } from '../main/requests/media/info/GetMediaInfoRequest';
 import { GetSimplePostMediaInsightsRequest } from '../main/requests/media/insights/GetSimplePostMediaInsightsRequest';
 import { GetStoryMediaInsightsRequest } from '../main/requests/media/insights/GetStoryMediaInsightsRequest';
+import { GetContentPublishingLimitRequest } from '../main/requests/page/content_publishing_limit/GetContentPublishingLimitRequest';
 import { GetPageInfoRequest } from '../main/requests/page/info/GetPageInfoRequest';
 import { GetPageDayInsightsRequest } from '../main/requests/page/insights/GetPageDayInsightsRequest';
 import { GetPageLifetimeInsightsRequest } from '../main/requests/page/insights/GetPageLifetimeInsightsRequest';
@@ -403,6 +405,19 @@ describe('Client', () => {
     it('Builds a GetPageRecentlySearchedHashtagsRequest', () => {
         expect(client.newGetPageRecentlySearchedHashtagsRequest()).toEqual(
             new GetPageRecentlySearchedHashtagsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
+        );
+    });
+
+    it('Builds a GetContentPublishingLimitRequest', () => {
+        expect(client.newGetContentPublishingLimitRequest()).toEqual(
+            new GetContentPublishingLimitRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
+        );
+        expect(client.newGetContentPublishingLimitRequest(ContentPublishingLimitFields.QUOTA_USAGE)).toEqual(
+            new GetContentPublishingLimitRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                ContentPublishingLimitFields.QUOTA_USAGE
+            )
         );
     });
 });

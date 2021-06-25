@@ -1,6 +1,7 @@
 import {
     CommentField,
     ContainerField,
+    ContentPublishingLimitFields,
     DayMetric,
     LifetimeMetric,
     MediaField,
@@ -25,6 +26,7 @@ import { PostMediaCommentRequest } from './requests/media/comments/PostMediaComm
 import { GetMediaInfoRequest } from './requests/media/info/GetMediaInfoRequest';
 import { GetSimplePostMediaInsightsRequest } from './requests/media/insights/GetSimplePostMediaInsightsRequest';
 import { GetStoryMediaInsightsRequest } from './requests/media/insights/GetStoryMediaInsightsRequest';
+import { GetContentPublishingLimitRequest } from './requests/page/content_publishing_limit/GetContentPublishingLimitRequest';
 import { GetPageInfoRequest } from './requests/page/info/GetPageInfoRequest';
 import { GetPageDayInsightsRequest } from './requests/page/insights/GetPageDayInsightsRequest';
 import { GetPageLifetimeInsightsRequest } from './requests/page/insights/GetPageLifetimeInsightsRequest';
@@ -418,5 +420,18 @@ export class Client {
      */
     public newGetPageRecentlySearchedHashtagsRequest(): GetPageRecentlySearchedHashtagsRequest {
         return new GetPageRecentlySearchedHashtagsRequest(this.accessToken, this.pageId);
+    }
+
+    /**
+     * Builds a new {@link GetContentPublishingLimitRequest}.
+     *
+     * @param fields the fields to retrieve.
+     *
+     * @returns a new {@link GetContentPublishingLimitRequest}.
+     */
+    public newGetContentPublishingLimitRequest(
+        ...fields: ContentPublishingLimitFields[]
+    ): GetContentPublishingLimitRequest {
+        return new GetContentPublishingLimitRequest(this.accessToken, this.pageId, ...fields);
     }
 }

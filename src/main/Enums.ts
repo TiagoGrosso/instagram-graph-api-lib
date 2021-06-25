@@ -469,3 +469,21 @@ export enum ContainerField {
      */
     STATUS_CODE = 'status_code',
 }
+
+/**
+ * Fields that can be retrieved through Get Content Publishing Limit Requests.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
+export enum ContentPublishingLimitFields {
+    /**
+     * The Content Publishing Limit config.
+     */
+    CONFIG = 'config',
+
+    /**
+     * The quota usage.
+     */
+    QUOTA_USAGE = 'quota_usage',
+}
