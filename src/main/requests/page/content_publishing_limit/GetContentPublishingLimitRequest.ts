@@ -56,13 +56,23 @@ export class GetContentPublishingLimitRequest extends AbstractRequest<GetContent
     }
 
     /**
+     * @inheritdoc
+     */
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public withRange(_since: Date, _until: Date): this {
+        throw new Error('For GetContentPublishingLimitRequest, use "since(date)" instead.');
+    }
+
+    /**
      * Adds the `since` param to the request.
      *
      * @param date the date. Must be, at most, 1 day ago.
      *
      * @throws {DateOlderThanOneDay} if the date is not at most 1 day ago.
+     *
+     * @returns this request, for chained invocation.
      */
-    public since(date: Date): void {
+    public since(date: Date): this {
         const yesterday: Date = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
 
@@ -70,6 +80,7 @@ export class GetContentPublishingLimitRequest extends AbstractRequest<GetContent
             throw new DateOlderThanOneDay(date);
         }
         this.params.since = Math.floor(date.getTime() / 1000);
+        return this;
     }
 }
 

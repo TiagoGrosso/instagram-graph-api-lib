@@ -1,4 +1,11 @@
-import { LifetimeMetric, MediaProductType, MetricPeriod, PageOption, WeekAndMonthMetric } from '../main/Enums';
+import {
+    ApiVersion,
+    LifetimeMetric,
+    MediaProductType,
+    MetricPeriod,
+    PageOption,
+    WeekAndMonthMetric,
+} from '../main/Enums';
 import { CommentData } from '../main/requests/data/CommentData';
 import { CONTAINER_STATUS_CODE } from '../main/requests/data/ContainerData';
 import { ContentPublishingLimitData } from '../main/requests/data/ContentPublishingLimitData';
@@ -435,4 +442,9 @@ export class TestConstants {
     static readonly CONTENT_PUBLISHING_LIMIT_DATA_PARTIAL: ContentPublishingLimitData = {
         quota_usage: 5,
     };
+
+    /**
+     * A dummy API Version.
+     */
+    static readonly API_VERSION = ApiVersion.V11_0;
 }

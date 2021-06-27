@@ -487,3 +487,31 @@ export enum ContentPublishingLimitFields {
      */
     QUOTA_USAGE = 'quota_usage',
 }
+
+/**
+ * API Versions that can be used.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
+export enum ApiVersion {
+    /**
+     * {@link https://developers.facebook.com/docs/graph-api/changelog/version8.0}
+     */
+    V8_0 = 'v8.0',
+
+    /**
+     * {@link https://developers.facebook.com/docs/graph-api/changelog/version9.0}
+     */
+    V9_0 = 'v9.0',
+
+    /**
+     * {@link https://developers.facebook.com/docs/graph-api/changelog/version10.0}
+     */
+    V10_0 = 'v10.0',
+
+    /**
+     * {@link https://developers.facebook.com/docs/graph-api/changelog/version11.0}
+     */
+    V11_0 = 'v11.0',
+}

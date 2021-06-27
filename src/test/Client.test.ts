@@ -44,6 +44,11 @@ import { TestConstants } from './TestConstants';
 
 describe('Client', () => {
     const client: Client = new Client(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID);
+    const clientExplicitVersion: Client = new Client(
+        TestConstants.ACCESS_TOKEN,
+        TestConstants.PAGE_ID,
+        TestConstants.API_VERSION
+    );
 
     it('Gets the access token', () => {
         expect(client.getAccessToken()).toEqual(TestConstants.ACCESS_TOKEN);
@@ -65,11 +70,21 @@ describe('Client', () => {
                 PageField.FOLLOWS_COUNT
             )
         );
+        expect(clientExplicitVersion.newGetPageInfoRequest()).toEqual(
+            new GetPageInfoRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
+        );
     });
 
     it('Builds a GetPageMediaRequest', () => {
         expect(client.newGetPageMediaRequest()).toEqual(
             new GetPageMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
+        );
+        expect(clientExplicitVersion.newGetPageMediaRequest()).toEqual(
+            new GetPageMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
         );
         expect(client.newGetPageMediaRequest(PrivateMediaField.IS_COMMENT_ENABLED, PublicMediaField.OWNER)).toEqual(
             new GetPageMediaRequest(
@@ -84,6 +99,11 @@ describe('Client', () => {
     it('Builds a GetPageLifetimeInsightsRequest', () => {
         expect(client.newGetPageLifetimeInsightsRequest()).toEqual(
             new GetPageLifetimeInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
+        );
+        expect(clientExplicitVersion.newGetPageLifetimeInsightsRequest()).toEqual(
+            new GetPageLifetimeInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
         );
         expect(
             client.newGetPageLifetimeInsightsRequest(LifetimeMetric.AUDIENCE_LOCALE, LifetimeMetric.ONLINE_FOLLOWERS)
@@ -101,6 +121,11 @@ describe('Client', () => {
         expect(client.newGetPageDayInsightsRequest()).toEqual(
             new GetPageDayInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
         );
+        expect(clientExplicitVersion.newGetPageDayInsightsRequest()).toEqual(
+            new GetPageDayInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
+        );
         expect(client.newGetPageDayInsightsRequest(DayMetric.IMPRESSIONS, DayMetric.GET_DIRECTIONS_CLICKS)).toEqual(
             new GetPageDayInsightsRequest(
                 TestConstants.ACCESS_TOKEN,
@@ -114,6 +139,11 @@ describe('Client', () => {
     it('Builds a GetPageWeekInsightsRequest', () => {
         expect(client.newGetPageWeekInsightsRequest()).toEqual(
             new GetPageWeekInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
+        );
+        expect(clientExplicitVersion.newGetPageWeekInsightsRequest()).toEqual(
+            new GetPageWeekInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
         );
         expect(client.newGetPageWeekInsightsRequest(WeekAndMonthMetric.IMPRESSIONS, WeekAndMonthMetric.REACH)).toEqual(
             new GetPageWeekInsightsRequest(
@@ -129,6 +159,11 @@ describe('Client', () => {
         expect(client.newGetPageMonthInsightsRequest()).toEqual(
             new GetPageMonthInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
         );
+        expect(clientExplicitVersion.newGetPageMonthInsightsRequest()).toEqual(
+            new GetPageMonthInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
+        );
         expect(client.newGetPageMonthInsightsRequest(WeekAndMonthMetric.IMPRESSIONS, WeekAndMonthMetric.REACH)).toEqual(
             new GetPageMonthInsightsRequest(
                 TestConstants.ACCESS_TOKEN,
@@ -142,6 +177,11 @@ describe('Client', () => {
     it('Builds a GetMediaInfoRequest', () => {
         expect(client.newGetMediaInfoRequest(TestConstants.MEDIA_ID)).toEqual(
             new GetMediaInfoRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID)
+        );
+        expect(clientExplicitVersion.newGetMediaInfoRequest(TestConstants.MEDIA_ID)).toEqual(
+            new GetMediaInfoRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
         );
         expect(
             client.newGetMediaInfoRequest(TestConstants.MEDIA_ID, PublicMediaField.OWNER, PrivateMediaField.SHORTCODE)
@@ -159,11 +199,21 @@ describe('Client', () => {
         expect(client.newGetMediaChildrenRequest(TestConstants.MEDIA_ID)).toEqual(
             new GetMediaChildrenRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID)
         );
+        expect(clientExplicitVersion.newGetMediaChildrenRequest(TestConstants.MEDIA_ID)).toEqual(
+            new GetMediaChildrenRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
+        );
     });
 
     it('Builds a GetMediaCommentsRequests', () => {
         expect(client.newGetMediaCommentsRequest(TestConstants.MEDIA_ID)).toEqual(
             new GetMediaCommentsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID)
+        );
+        expect(clientExplicitVersion.newGetMediaCommentsRequest(TestConstants.MEDIA_ID)).toEqual(
+            new GetMediaCommentsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
         );
     });
 
@@ -171,11 +221,25 @@ describe('Client', () => {
         expect(client.newPostMediaCommentRequest(TestConstants.MEDIA_ID, TestConstants.COMMENT_TEXT)).toEqual(
             new PostMediaCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID, TestConstants.COMMENT_TEXT)
         );
+        expect(
+            clientExplicitVersion.newPostMediaCommentRequest(TestConstants.MEDIA_ID, TestConstants.COMMENT_TEXT)
+        ).toEqual(
+            new PostMediaCommentRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.MEDIA_ID,
+                TestConstants.COMMENT_TEXT
+            ).withApiVersion(TestConstants.API_VERSION)
+        );
     });
 
     it('Builds a GetSimplePostMediaInsightsRequest', () => {
         expect(client.newGetSimplePostMediaInsightsRequest(TestConstants.MEDIA_ID)).toEqual(
             new GetSimplePostMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID)
+        );
+        expect(clientExplicitVersion.newGetSimplePostMediaInsightsRequest(TestConstants.MEDIA_ID)).toEqual(
+            new GetSimplePostMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
         );
         expect(
             client.newGetSimplePostMediaInsightsRequest(
@@ -197,6 +261,11 @@ describe('Client', () => {
         expect(client.newGetStoryMediaInsightsRequest(TestConstants.MEDIA_ID)).toEqual(
             new GetStoryMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID)
         );
+        expect(clientExplicitVersion.newGetStoryMediaInsightsRequest(TestConstants.MEDIA_ID)).toEqual(
+            new GetStoryMediaInsightsRequest(TestConstants.ACCESS_TOKEN, TestConstants.MEDIA_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
+        );
         expect(
             client.newGetStoryMediaInsightsRequest(TestConstants.MEDIA_ID, StoryMetric.REACH, StoryMetric.TAPS_FORWARD)
         ).toEqual(
@@ -212,6 +281,13 @@ describe('Client', () => {
     it('Builds a GetHashtagIdRequest', () => {
         expect(client.newGetHashtagIdRequest(TestConstants.HASHTAG)).toEqual(
             new GetHashtagIdRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.HASHTAG)
+        );
+        expect(clientExplicitVersion.newGetHashtagIdRequest(TestConstants.HASHTAG)).toEqual(
+            new GetHashtagIdRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.HASHTAG
+            ).withApiVersion(TestConstants.API_VERSION)
         );
         expect(client.newGetHashtagIdRequest(TestConstants.HASHTAG, TestConstants.PAGE_ID_2)).toEqual(
             new GetHashtagIdRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID_2, TestConstants.HASHTAG)
@@ -248,6 +324,13 @@ describe('Client', () => {
         expect(client.newGetHashtagTopMediaRequest(TestConstants.HASHTAG_ID)).toEqual(
             new GetHashtagTopMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.HASHTAG_ID, TestConstants.PAGE_ID)
         );
+        expect(clientExplicitVersion.newGetHashtagTopMediaRequest(TestConstants.HASHTAG_ID)).toEqual(
+            new GetHashtagTopMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.HASHTAG_ID,
+                TestConstants.PAGE_ID
+            ).withApiVersion(TestConstants.API_VERSION)
+        );
         expect(
             client.newGetHashtagTopMediaRequest(
                 TestConstants.HASHTAG_ID,
@@ -270,6 +353,11 @@ describe('Client', () => {
         expect(client.newGetCommentRequest(TestConstants.COMMENT_ID)).toEqual(
             new GetCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID)
         );
+        expect(clientExplicitVersion.newGetCommentRequest(TestConstants.COMMENT_ID)).toEqual(
+            new GetCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
+        );
         expect(
             client.newGetCommentRequest(TestConstants.COMMENT_ID, CommentField.REPLIES, CommentField.TIMESTAMP)
         ).toEqual(
@@ -286,6 +374,11 @@ describe('Client', () => {
         expect(client.newPostHideCommentRequest(TestConstants.COMMENT_ID)).toEqual(
             new PostHideCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID)
         );
+        expect(clientExplicitVersion.newPostHideCommentRequest(TestConstants.COMMENT_ID)).toEqual(
+            new PostHideCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
+        );
         expect(client.newPostHideCommentRequest(TestConstants.COMMENT_ID, false)).toEqual(
             new PostHideCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID, false)
         );
@@ -295,11 +388,21 @@ describe('Client', () => {
         expect(client.newDeleteCommentRequest(TestConstants.COMMENT_ID)).toEqual(
             new DeleteCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID)
         );
+        expect(clientExplicitVersion.newDeleteCommentRequest(TestConstants.COMMENT_ID)).toEqual(
+            new DeleteCommentRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
+        );
     });
 
     it('Builds a GetRepliesRequest', () => {
         expect(client.newGetRepliesRequest(TestConstants.COMMENT_ID)).toEqual(
             new GetRepliesRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID)
+        );
+        expect(clientExplicitVersion.newGetRepliesRequest(TestConstants.COMMENT_ID)).toEqual(
+            new GetRepliesRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
         );
         expect(client.newGetRepliesRequest(TestConstants.COMMENT_ID, CommentField.TEXT, CommentField.USER)).toEqual(
             new GetRepliesRequest(
@@ -315,11 +418,23 @@ describe('Client', () => {
         expect(client.newPostReplyRequest(TestConstants.COMMENT_ID, TestConstants.COMMENT_TEXT)).toEqual(
             new PostReplyRequest(TestConstants.ACCESS_TOKEN, TestConstants.COMMENT_ID, TestConstants.COMMENT_TEXT)
         );
+        expect(clientExplicitVersion.newPostReplyRequest(TestConstants.COMMENT_ID, TestConstants.COMMENT_TEXT)).toEqual(
+            new PostReplyRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.COMMENT_ID,
+                TestConstants.COMMENT_TEXT
+            ).withApiVersion(TestConstants.API_VERSION)
+        );
     });
 
     it('Builds a GetTagsRequest', () => {
         expect(client.newGetTagsRequest()).toEqual(
             new GetTagsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
+        );
+        expect(clientExplicitVersion.newGetTagsRequest()).toEqual(
+            new GetTagsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
         );
         expect(client.newGetTagsRequest(PublicMediaField.LIKE_COUNT, PublicMediaField.CAPTION)).toEqual(
             new GetTagsRequest(
@@ -335,6 +450,11 @@ describe('Client', () => {
         expect(client.newGetContainerRequest(TestConstants.CONTAINER_ID)).toEqual(
             new GetContainerRequest(TestConstants.ACCESS_TOKEN, TestConstants.CONTAINER_ID)
         );
+        expect(clientExplicitVersion.newGetContainerRequest(TestConstants.CONTAINER_ID)).toEqual(
+            new GetContainerRequest(TestConstants.ACCESS_TOKEN, TestConstants.CONTAINER_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
+        );
         expect(client.newGetContainerRequest(TestConstants.CONTAINER_ID, ...Object.values(ContainerField))).toEqual(
             new GetContainerRequest(
                 TestConstants.ACCESS_TOKEN,
@@ -347,6 +467,13 @@ describe('Client', () => {
     it('Builds a PostPagePhotoMediaRequest', () => {
         expect(client.newPostPagePhotoMediaRequest(TestConstants.MEDIA_URL)).toEqual(
             new PostPagePhotoMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.MEDIA_URL)
+        );
+        expect(clientExplicitVersion.newPostPagePhotoMediaRequest(TestConstants.MEDIA_URL)).toEqual(
+            new PostPagePhotoMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.MEDIA_URL
+            ).withApiVersion(TestConstants.API_VERSION)
         );
         expect(
             client.newPostPagePhotoMediaRequest(
@@ -371,6 +498,13 @@ describe('Client', () => {
         expect(client.newPostPageVideoMediaRequest(TestConstants.MEDIA_URL)).toEqual(
             new PostPageVideoMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.MEDIA_URL)
         );
+        expect(clientExplicitVersion.newPostPageVideoMediaRequest(TestConstants.MEDIA_URL)).toEqual(
+            new PostPageVideoMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.MEDIA_URL
+            ).withApiVersion(TestConstants.API_VERSION)
+        );
         expect(
             client.newPostPageVideoMediaRequest(
                 TestConstants.MEDIA_URL,
@@ -394,11 +528,23 @@ describe('Client', () => {
         expect(client.newPostPublishMediaRequest(TestConstants.CONTAINER_ID)).toEqual(
             new PostPublishMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.CONTAINER_ID)
         );
+        expect(clientExplicitVersion.newPostPublishMediaRequest(TestConstants.CONTAINER_ID)).toEqual(
+            new PostPublishMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.CONTAINER_ID
+            ).withApiVersion(TestConstants.API_VERSION)
+        );
     });
 
     it('Builds a GetPageStoriesRequest', () => {
         expect(client.newGetPageStoriesRequest()).toEqual(
             new GetPageStoriesRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
+        );
+        expect(clientExplicitVersion.newGetPageStoriesRequest()).toEqual(
+            new GetPageStoriesRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
         );
     });
 
@@ -406,11 +552,22 @@ describe('Client', () => {
         expect(client.newGetPageRecentlySearchedHashtagsRequest()).toEqual(
             new GetPageRecentlySearchedHashtagsRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
         );
+        expect(clientExplicitVersion.newGetPageRecentlySearchedHashtagsRequest()).toEqual(
+            new GetPageRecentlySearchedHashtagsRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID
+            ).withApiVersion(TestConstants.API_VERSION)
+        );
     });
 
     it('Builds a GetContentPublishingLimitRequest', () => {
         expect(client.newGetContentPublishingLimitRequest()).toEqual(
             new GetContentPublishingLimitRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
+        );
+        expect(clientExplicitVersion.newGetContentPublishingLimitRequest()).toEqual(
+            new GetContentPublishingLimitRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
         );
         expect(client.newGetContentPublishingLimitRequest(ContentPublishingLimitFields.QUOTA_USAGE)).toEqual(
             new GetContentPublishingLimitRequest(

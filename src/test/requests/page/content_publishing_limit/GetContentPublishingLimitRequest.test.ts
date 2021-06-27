@@ -42,6 +42,9 @@ describe('GetContentPublishingLimitRequest', () => {
         expect(() => request.addRange(new Date(), new Date())).toThrowError(
             new Error('For GetContentPublishingLimitRequest, use "since(date)" instead.')
         );
+        expect(() => request.withRange(new Date(), new Date())).toThrowError(
+            new Error('For GetContentPublishingLimitRequest, use "since(date)" instead.')
+        );
     });
 
     const mock = new MockAdapter(axios);
