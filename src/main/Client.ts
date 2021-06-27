@@ -1,4 +1,5 @@
 import {
+    ApiVersion,
     CommentField,
     ContainerField,
     ContentPublishingLimitFields,
@@ -59,14 +60,20 @@ export class Client {
     private pageId: string;
 
     /**
+     * The API version to use on requests.
+     */
+    private apiVersion?: ApiVersion;
+
+    /**
      * The constructor.
      *
      * @param accessToken the access token.
      * @param pageId The id of the page.
      */
-    constructor(accessToken: string, pageId: string) {
+    constructor(accessToken: string, pageId: string, apiVersion?: ApiVersion) {
         this.accessToken = accessToken;
         this.pageId = pageId;
+        this.apiVersion = apiVersion;
     }
 
     /**
@@ -95,7 +102,7 @@ export class Client {
      * @returns a new {@link GetPageInfoRequest}.
      */
     public newGetPageInfoRequest(...fields: PageField[]): GetPageInfoRequest {
-        return new GetPageInfoRequest(this.accessToken, this.pageId, ...fields);
+        return new GetPageInfoRequest(this.accessToken, this.pageId, ...fields).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -106,7 +113,7 @@ export class Client {
      * @returns a new {@link GetPageMediaRequest}.
      */
     public newGetPageMediaRequest(...fields: MediaField[]): GetPageMediaRequest {
-        return new GetPageMediaRequest(this.accessToken, this.pageId, ...fields);
+        return new GetPageMediaRequest(this.accessToken, this.pageId, ...fields).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -117,7 +124,9 @@ export class Client {
      * @returns a new {@link GetPageLifetimeInsightsRequest}.
      */
     public newGetPageLifetimeInsightsRequest(...metrics: LifetimeMetric[]): GetPageLifetimeInsightsRequest {
-        return new GetPageLifetimeInsightsRequest(this.accessToken, this.pageId, ...metrics);
+        return new GetPageLifetimeInsightsRequest(this.accessToken, this.pageId, ...metrics).withApiVersion(
+            this.apiVersion
+        );
     }
 
     /**
@@ -128,7 +137,7 @@ export class Client {
      * @returns a new {@link GetPageDayInsightsRequest}.
      */
     public newGetPageDayInsightsRequest(...metrics: DayMetric[]): GetPageDayInsightsRequest {
-        return new GetPageDayInsightsRequest(this.accessToken, this.pageId, ...metrics);
+        return new GetPageDayInsightsRequest(this.accessToken, this.pageId, ...metrics).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -139,7 +148,9 @@ export class Client {
      * @returns a new {@link GetPageWeekInsightsRequest}.
      */
     public newGetPageWeekInsightsRequest(...metrics: WeekAndMonthMetric[]): GetPageWeekInsightsRequest {
-        return new GetPageWeekInsightsRequest(this.accessToken, this.pageId, ...metrics);
+        return new GetPageWeekInsightsRequest(this.accessToken, this.pageId, ...metrics).withApiVersion(
+            this.apiVersion
+        );
     }
 
     /**
@@ -150,7 +161,9 @@ export class Client {
      * @returns a new {@link GetPageMonthInsightsRequest}.
      */
     public newGetPageMonthInsightsRequest(...metrics: WeekAndMonthMetric[]): GetPageMonthInsightsRequest {
-        return new GetPageMonthInsightsRequest(this.accessToken, this.pageId, ...metrics);
+        return new GetPageMonthInsightsRequest(this.accessToken, this.pageId, ...metrics).withApiVersion(
+            this.apiVersion
+        );
     }
 
     /**
@@ -162,7 +175,7 @@ export class Client {
      * @returns a new {@link GetMediaInfoRequest}.
      */
     public newGetMediaInfoRequest(mediaId: string, ...fields: MediaField[]): GetMediaInfoRequest {
-        return new GetMediaInfoRequest(this.accessToken, mediaId, ...fields);
+        return new GetMediaInfoRequest(this.accessToken, mediaId, ...fields).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -173,7 +186,7 @@ export class Client {
      * @returns a new {@link GetMediaChildrenRequest}.
      */
     public newGetMediaChildrenRequest(mediaId: string): GetMediaChildrenRequest {
-        return new GetMediaChildrenRequest(this.accessToken, mediaId);
+        return new GetMediaChildrenRequest(this.accessToken, mediaId).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -185,7 +198,7 @@ export class Client {
      * @returns a new {@link GetMediaCommentsRequest}.
      */
     public newGetMediaCommentsRequest(mediaId: string, ...fields: CommentField[]): GetMediaCommentsRequest {
-        return new GetMediaCommentsRequest(this.accessToken, mediaId, ...fields);
+        return new GetMediaCommentsRequest(this.accessToken, mediaId, ...fields).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -197,7 +210,7 @@ export class Client {
      * @returns a new {@link PostMediaCommentRequest}.
      */
     public newPostMediaCommentRequest(mediaId: string, text: string): PostMediaCommentRequest {
-        return new PostMediaCommentRequest(this.accessToken, mediaId, text);
+        return new PostMediaCommentRequest(this.accessToken, mediaId, text).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -212,7 +225,9 @@ export class Client {
         mediaId: string,
         ...metrics: SimplePostMetric[]
     ): GetSimplePostMediaInsightsRequest {
-        return new GetSimplePostMediaInsightsRequest(this.accessToken, mediaId, ...metrics);
+        return new GetSimplePostMediaInsightsRequest(this.accessToken, mediaId, ...metrics).withApiVersion(
+            this.apiVersion
+        );
     }
 
     /**
@@ -224,7 +239,7 @@ export class Client {
      * @returns a new {@link GetPostMediaInsightsRequest}.
      */
     public newGetStoryMediaInsightsRequest(mediaId: string, ...metrics: StoryMetric[]): GetStoryMediaInsightsRequest {
-        return new GetStoryMediaInsightsRequest(this.accessToken, mediaId, ...metrics);
+        return new GetStoryMediaInsightsRequest(this.accessToken, mediaId, ...metrics).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -236,7 +251,7 @@ export class Client {
      * @returns a new {@link GetHashtagIdRequest}.
      */
     public newGetHashtagIdRequest(hashtag: string, userId: string = this.pageId): GetHashtagIdRequest {
-        return new GetHashtagIdRequest(this.accessToken, userId, hashtag);
+        return new GetHashtagIdRequest(this.accessToken, userId, hashtag).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -253,7 +268,9 @@ export class Client {
         userId: string = this.pageId,
         ...fields: PublicMediaField[]
     ): GetHashtagRecentMediaRequest {
-        return new GetHashtagRecentMediaRequest(this.accessToken, hashtagId, userId, ...fields);
+        return new GetHashtagRecentMediaRequest(this.accessToken, hashtagId, userId, ...fields).withApiVersion(
+            this.apiVersion
+        );
     }
 
     /**
@@ -270,7 +287,9 @@ export class Client {
         userId: string = this.pageId,
         ...fields: PublicMediaField[]
     ): GetHashtagTopMediaRequest {
-        return new GetHashtagTopMediaRequest(this.accessToken, hashtagId, userId, ...fields);
+        return new GetHashtagTopMediaRequest(this.accessToken, hashtagId, userId, ...fields).withApiVersion(
+            this.apiVersion
+        );
     }
 
     /**
@@ -282,7 +301,7 @@ export class Client {
      * @returns a new {@link GetCommentRequest}.
      */
     public newGetCommentRequest(commentId: string, ...fields: CommentField[]): GetCommentRequest {
-        return new GetCommentRequest(this.accessToken, commentId, ...fields);
+        return new GetCommentRequest(this.accessToken, commentId, ...fields).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -294,7 +313,7 @@ export class Client {
      * @returns a new {@link PostHideCommentRequest}.
      */
     public newPostHideCommentRequest(commentId: string, hide = true): PostHideCommentRequest {
-        return new PostHideCommentRequest(this.accessToken, commentId, hide);
+        return new PostHideCommentRequest(this.accessToken, commentId, hide).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -305,7 +324,7 @@ export class Client {
      * @returns a new {@link DeleteCommentRequest}.
      */
     public newDeleteCommentRequest(commentId: string): DeleteCommentRequest {
-        return new DeleteCommentRequest(this.accessToken, commentId);
+        return new DeleteCommentRequest(this.accessToken, commentId).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -317,7 +336,7 @@ export class Client {
      * @returns a new {@link GetRepliesRequest}.
      */
     public newGetRepliesRequest(commentId: string, ...fields: CommentField[]): GetRepliesRequest {
-        return new GetRepliesRequest(this.accessToken, commentId, ...fields);
+        return new GetRepliesRequest(this.accessToken, commentId, ...fields).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -329,7 +348,7 @@ export class Client {
      * @returns a new {@link PostReplyRequest}.
      */
     public newPostReplyRequest(commentId: string, text: string): PostReplyRequest {
-        return new PostReplyRequest(this.accessToken, commentId, text);
+        return new PostReplyRequest(this.accessToken, commentId, text).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -340,7 +359,7 @@ export class Client {
      * @returns a new {@link GetTagsRequest}.
      */
     public newGetTagsRequest(...fields: PublicMediaField[]): GetTagsRequest {
-        return new GetTagsRequest(this.accessToken, this.pageId, ...fields);
+        return new GetTagsRequest(this.accessToken, this.pageId, ...fields).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -352,7 +371,7 @@ export class Client {
      * @returns a new {@link GetCommentRequest}.
      */
     public newGetContainerRequest(containerId: string, ...fields: ContainerField[]): GetContainerRequest {
-        return new GetContainerRequest(this.accessToken, containerId, ...fields);
+        return new GetContainerRequest(this.accessToken, containerId, ...fields).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -371,7 +390,14 @@ export class Client {
         locationId?: string,
         userTags?: UserTag[]
     ): PostPagePhotoMediaRequest {
-        return new PostPagePhotoMediaRequest(this.accessToken, this.pageId, imageUrl, caption, locationId, userTags);
+        return new PostPagePhotoMediaRequest(
+            this.accessToken,
+            this.pageId,
+            imageUrl,
+            caption,
+            locationId,
+            userTags
+        ).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -390,7 +416,14 @@ export class Client {
         thumbOffset?: number,
         locationId?: string
     ): PostPageVideoMediaRequest {
-        return new PostPageVideoMediaRequest(this.accessToken, this.pageId, videoUrl, caption, thumbOffset, locationId);
+        return new PostPageVideoMediaRequest(
+            this.accessToken,
+            this.pageId,
+            videoUrl,
+            caption,
+            thumbOffset,
+            locationId
+        ).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -401,7 +434,7 @@ export class Client {
      * @returns a new {@link PostPublishMediaRequest}.
      */
     public newPostPublishMediaRequest(containerId: string): PostPublishMediaRequest {
-        return new PostPublishMediaRequest(this.accessToken, this.pageId, containerId);
+        return new PostPublishMediaRequest(this.accessToken, this.pageId, containerId).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -410,7 +443,7 @@ export class Client {
      * @returns a new {@link GetPageStoriesRequest}.
      */
     public newGetPageStoriesRequest(): GetPageStoriesRequest {
-        return new GetPageStoriesRequest(this.accessToken, this.pageId);
+        return new GetPageStoriesRequest(this.accessToken, this.pageId).withApiVersion(this.apiVersion);
     }
 
     /**
@@ -419,7 +452,9 @@ export class Client {
      * @returns a new {@link GetPageRecentlySearchedHashtagsRequest}.
      */
     public newGetPageRecentlySearchedHashtagsRequest(): GetPageRecentlySearchedHashtagsRequest {
-        return new GetPageRecentlySearchedHashtagsRequest(this.accessToken, this.pageId);
+        return new GetPageRecentlySearchedHashtagsRequest(this.accessToken, this.pageId).withApiVersion(
+            this.apiVersion
+        );
     }
 
     /**
@@ -432,6 +467,8 @@ export class Client {
     public newGetContentPublishingLimitRequest(
         ...fields: ContentPublishingLimitFields[]
     ): GetContentPublishingLimitRequest {
-        return new GetContentPublishingLimitRequest(this.accessToken, this.pageId, ...fields);
+        return new GetContentPublishingLimitRequest(this.accessToken, this.pageId, ...fields).withApiVersion(
+            this.apiVersion
+        );
     }
 }
