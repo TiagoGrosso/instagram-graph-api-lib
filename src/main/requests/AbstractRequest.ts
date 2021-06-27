@@ -71,7 +71,7 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
      *
      * @param pageOptionToken the page option token to create the param.
      *
-     * @deprecated since `next.release`, use {@link AbstractRequest#withPaging} instead.
+     * @deprecated since 1.7.0, use {@link AbstractRequest#withPaging} instead.
      */
     public addPaging(pageOptionToken: PageOptionToken): void {
         this.params.before = undefined;
@@ -85,7 +85,7 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
      * @param since the since param.
      * @param until the until param.
      *
-     * @deprecated since `next.release`, use {@link AbstractRequest#withRange} instead.
+     * @deprecated since 1.7.0, use {@link AbstractRequest#withRange} instead.
      */
     public addRange(since: Date, until: Date): void {
         this.params.since = since;
@@ -97,7 +97,7 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
      *
      * @param limit the number of objects to retrieve.
      *
-     * @deprecated since `next.release`, use {@link AbstractRequest#withLimit} instead.
+     * @deprecated since 1.7.0, use {@link AbstractRequest#withLimit} instead.
      */
     public addLimit(limit: number): void {
         this.params.limit = limit;

@@ -492,7 +492,7 @@ export enum ContentPublishingLimitFields {
  * API Versions that can be used.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 1.7.0
  */
 export enum ApiVersion {
     /**
