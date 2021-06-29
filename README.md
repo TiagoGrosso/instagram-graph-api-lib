@@ -22,10 +22,6 @@ You can now use this lib to publish videos and photos to your page! Check out th
 
 Simply run `npm install instagram-graph-api`.
 
-## How do I use this lib?
-
-You can always check the [typedoc documentation](https://tiagogrosso.github.io/instagram-graph-api-lib/) if you are having doubts.
-
 ## What can this lib currently do?
 
 This lib supports making requests to most of the Instagram Graph API resources. It does not yet cover:
@@ -35,6 +31,10 @@ This lib supports making requests to most of the Instagram Graph API resources. 
 
 As it currently stands, this lib allows you to get a lot of information about your page and media, including basic information and insights. It also allows you to create and publish media (photos and videos) as well as to create and reply to comments, delete them and hide them.
 For now, this lib does not contain any complex logic. It simply models requests to the Instagram Graph API and gives you an easy way to execute them.
+
+## How do I use this lib?
+
+You can always check the [typedoc documentation](https://tiagogrosso.github.io/instagram-graph-api-lib/) if you are having doubts.
 
 ### Building requests
 
@@ -110,8 +110,8 @@ let request: GetPageMediaRequest = new GetPageMediaRequest(ACCESS_TOKEN, PAGE_ID
 request.execute().then((response: GetPageMediaResponse) => {
     let nextPage: string | undefined = response.getPaging().getAfter();
     if (nextPage) {
-        request.addPaging({ option: PageOption.AFTER, value: nextPage }); // you can reuse the old request 😎
-        request.execute([...])
+        request.withPaging({ option: PageOption.AFTER, value: nextPage })
+               .execute([...]); // you can reuse the old request 😎
     } else {
         console.log('🛑🛑🛑');
     }
@@ -124,8 +124,8 @@ Similarly, you can add a range option which the Get Insights requests use, like 
 import { GetPageLifetimeInsightsRequest, GetPageLifetimeInsightsRequest } from 'instagram-graph-api';
 
 
-const request: GetPageLifetimeInsightsRequest = new GetPageLifetimeInsightsRequest(ACCESS_TOKEN, PAGE_ID);
-request.addRange(new Date('2021-01-01'), new Date('2021-01-15'))
+const request: GetPageLifetimeInsightsRequest = new GetPageLifetimeInsightsRequest(ACCESS_TOKEN, PAGE_ID)
+                                                        .withRange(new Date('2021-01-01'), new Date('2021-01-15'))
 
 request.execute().then((response: GetPageLifetimeInsightsResponse) => {
     [...]
@@ -137,8 +137,7 @@ Finally, you can add a limit option that will limit the amount of objects retrie
 ```typescript
 import { GetPageMediaRequest, GetPageMediaResponse } from 'instagram-graph-api';
 
-const request: GetPageMediaRequest = new GetPageMediaRequest(ACCESS_TOKEN, PAGE_ID);
-request.addLimit(5);
+const request: GetPageMediaRequest = new GetPageMediaRequest(ACCESS_TOKEN, PAGE_ID).withLimit(5);
 
 request.execute().then((response: GetPageMediaResponse) => {
     console.log(response.getData().length); // This will be < 5
