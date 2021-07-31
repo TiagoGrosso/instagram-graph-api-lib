@@ -169,7 +169,6 @@ All the requests to a page will require the use of a Page ID. To find out what t
         console.log(response.getIgPageId());
     });
     ```
-
 ## Release Process
 
 Releases of this lib should be very incremental. When a new resource is supported a release will be issued soon after without waiting to pile up new features to do big releases.
