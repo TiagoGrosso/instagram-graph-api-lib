@@ -33,6 +33,7 @@ import { GetPageDayInsightsRequest } from '../main/requests/page/insights/GetPag
 import { GetPageLifetimeInsightsRequest } from '../main/requests/page/insights/GetPageLifetimeInsightsRequest';
 import { GetPageMonthInsightsRequest } from '../main/requests/page/insights/GetPageMonthInsightsRequest';
 import { GetPageWeekInsightsRequest } from '../main/requests/page/insights/GetPageWeekInsightsRequest';
+import { GetInstagramAccountInfoRequest } from '../main/requests/page/instagram_account_info/GetInstagramAccountInfoRequest';
 import { GetPageMediaRequest } from '../main/requests/page/media/GetPageMediaRequest';
 import { PostPagePhotoMediaRequest } from '../main/requests/page/media/PostPagePhotoMediaRequest';
 import { PostPageVideoMediaRequest } from '../main/requests/page/media/PostPageVideoMediaRequest';
@@ -574,6 +575,17 @@ describe('Client', () => {
                 TestConstants.ACCESS_TOKEN,
                 TestConstants.PAGE_ID,
                 ContentPublishingLimitFields.QUOTA_USAGE
+            )
+        );
+    });
+
+    it('Builds a GetInstagramAccountInfoRequest', () => {
+        expect(client.newGetInstagramAccountInfoRequest()).toEqual(
+            new GetInstagramAccountInfoRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID)
+        );
+        expect(clientExplicitVersion.newGetInstagramAccountInfoRequest()).toEqual(
+            new GetInstagramAccountInfoRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID).withApiVersion(
+                TestConstants.API_VERSION
             )
         );
     });

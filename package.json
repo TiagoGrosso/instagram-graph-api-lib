@@ -8,6 +8,7 @@
         "build:dev": "NODE_ENV=dev rollup -c",
         "cti": "cti entrypoint src/ -o Index.ts -e test",
         "test": "jest --coverage",
+        "test_watch": "jest --watch",
         "docs": "typedoc --out docs src/main README.md",
         "format": "prettier --write src",
         "check-format": "prettier --check src",
@@ -50,7 +51,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run build && npm test && npm run check-format && npm run lint"
+            "pre-commit": "npm run cti && npm run build && npm test && npm run check-format && npm run lint"
         }
     },
     "directories": {

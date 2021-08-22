@@ -11,7 +11,10 @@ import { CONTAINER_STATUS_CODE } from '../main/requests/data/ContainerData';
 import { ContentPublishingLimitData } from '../main/requests/data/ContentPublishingLimitData';
 import { BasicInsightsMetricData, MetricValue } from '../main/requests/data/insights/BasicInsightsMetricData';
 import { ComplexMetricValue } from '../main/requests/data/insights/ComplexMetric';
-import { MeData } from '../main/requests/data/MeData';
+import { AuthorizedFacebookPagesData } from '../main/requests/data/AuthorizedFacebookPagesData';
+import { LinkedInstagramAccountData } from '../main/requests/data/LinkedInstagramAccountData';
+import { InstagramAccountInfoData } from '../main/requests/data/InstagramAccountInfoData';
+import { UserLongLivedTokenData } from '../main/requests/data/UserLongLivedTokenData';
 import { MediaData } from '../main/requests/data/MediaData';
 import { PageInfoData } from '../main/requests/data/PageInfoData';
 import { PagingData } from '../main/requests/data/Paging';
@@ -220,14 +223,64 @@ export class TestConstants {
     };
 
     /**
-     * A dummy me data object.
+     * A dummy list of Facebock pages data objects.
      */
-    static readonly ME_DATA: MeData = {
+    static readonly AUTHORIZED_FACEBOOK_PAGES: AuthorizedFacebookPagesData = {
+        data: [
+            {
+                name: 'Page Name',
+                id: 'page_id',
+                access_token: 'facebook_page_access_token',
+            },
+            {
+                name: 'Page2 Name',
+                id: 'page2_id',
+                access_token: 'facebook_page_access_token',
+            },
+        ],
+    };
+
+    /**
+     * A linked instagram account to a Facebock page
+     */
+    static readonly LINKED_INSTAGRAM_ACCOUNT: LinkedInstagramAccountData = {
         instagram_business_account: {
-            id: 'page_ig_id',
+            id: 'instagram_page_id',
         },
         id: 'page_id',
     };
+
+    /**
+     * A dummy Instagram account ID
+     */
+    static readonly INSTAGRAM_ID = 'instagram_account_id';
+
+    /**
+     * A dummy Instagram account data
+     */
+    static readonly INSTAGRAM_ACCOUNT_DATA: InstagramAccountInfoData = {
+        id: 'instagram_account_id',
+        username: 'instagram_username',
+        name: 'instagram_name',
+        profile_picture_url: 'instagram_profile_picture_url',
+    };
+
+    /**
+     * A dummy user long-lived access token.
+     */
+    static readonly USER_LONG_LIVED_TOKEN_DATA: UserLongLivedTokenData = {
+        access_token: 'user_long_lived_access_token',
+    };
+
+    /**
+     * A dummy Facebook App client ID.
+     */
+    static readonly FACEBOOK_CLIENT_APP_ID = 'facebook_client_app_id';
+
+    /**
+     * A dummy Facebook App client Secret.
+     */
+    static readonly FACEBOOK_CLIENT_APP_SECRET = 'facebook_client_app_secret';
 
     /**
      * A dummy lifetime metric data.

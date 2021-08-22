@@ -33,6 +33,7 @@ import { GetPageDayInsightsRequest } from './requests/page/insights/GetPageDayIn
 import { GetPageLifetimeInsightsRequest } from './requests/page/insights/GetPageLifetimeInsightsRequest';
 import { GetPageMonthInsightsRequest } from './requests/page/insights/GetPageMonthInsightsRequest';
 import { GetPageWeekInsightsRequest } from './requests/page/insights/GetPageWeekInsightsRequest';
+import { GetInstagramAccountInfoRequest } from './requests/page/instagram_account_info/GetInstagramAccountInfoRequest';
 import { GetPageMediaRequest } from './requests/page/media/GetPageMediaRequest';
 import { PostPagePhotoMediaRequest } from './requests/page/media/PostPagePhotoMediaRequest';
 import { PostPageVideoMediaRequest } from './requests/page/media/PostPageVideoMediaRequest';
@@ -470,5 +471,14 @@ export class Client {
         return new GetContentPublishingLimitRequest(this.accessToken, this.pageId, ...fields).withApiVersion(
             this.apiVersion
         );
+    }
+
+    /**
+     * Builds a new {@link GetInstagramAccountInfoRequest}.
+     *
+     * @returns a new {@link GetInstagramAccountInfoRequest}.
+     */
+    public newGetInstagramAccountInfoRequest(): GetInstagramAccountInfoRequest {
+        return new GetInstagramAccountInfoRequest(this.accessToken, this.pageId).withApiVersion(this.apiVersion);
     }
 }
