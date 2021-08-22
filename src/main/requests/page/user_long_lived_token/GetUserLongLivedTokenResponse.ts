@@ -2,7 +2,7 @@ import { AbstractResponse } from '../../AbstractResponse';
 import { UserLongLivedTokenData } from '../../data/UserLongLivedTokenData';
 
 /**
- * Represents a response from the {@link GetUserLongLivedTokenRequest}"
+ * Represents a response from a Get UserLong Lived Token Request.
  *
  * @author Andres Gutierrez <andres99@gmail.com>
  * @since `next.release`

@@ -3,20 +3,22 @@ import { AbstractRequest } from '../../AbstractRequest';
 import { GetInstagramAccountInfoResponse } from './GetInstagramAccountInfoResponse';
 
 /**
- * A Get request to obtain Instagram account information.
+ * A Get request to obtain information about an Instagram account.
  *
  * @author Andres Gutierrez <andres99@gmail.com>
  * @since `next.release`
  */
 export class GetInstagramAccountInfoRequest extends AbstractRequest<GetInstagramAccountInfoResponse> {
-    // The ID of Instagram you want information
+    /**
+     * The instagram page id.
+     */
     instagramPageId: string;
 
     /**
      * The constructor.
      *
      * @param accessToken the access token.
-     * @param instagramPageId Instagram account ID
+     * @param instagramPageId the Instagram account id.
      */
     constructor(accessToken: string, instagramPageId: string) {
         super(accessToken);

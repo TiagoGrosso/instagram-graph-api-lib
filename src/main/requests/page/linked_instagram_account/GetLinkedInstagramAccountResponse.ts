@@ -3,17 +3,18 @@ import { LinkedInstagramAccountData } from '../../data/LinkedInstagramAccountDat
 
 /**
  * Class that represents a response from a Facebook page response
- * Is used to get linked instagram account ID
+ * Is used to get linked Instagram account id.
  *
  * @author Andres Gutierrez <andres99@gmail.com>
  * @since `next.release`
  */
 export class GetLinkedInstagramAccountResponse extends AbstractResponse<LinkedInstagramAccountData> {
     /**
-     * First gets the list of authorized facebook pages.
+     * Gets the list of authorized facebook pages.
+     *
      * Facebook requires Instagram accounts to be linked to a Facebook page and also
-     * to be Instagram business accounts. If these conditions are meet. This
-     * endpoint will return linked Instagram Page ID.
+     * to be Instagram business accounts. If these conditions are met, this
+     * request will return the linked Instagram Page ID.
      *
      * @returns the list of authorized facebook pages.
      */

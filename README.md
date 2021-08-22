@@ -152,23 +152,60 @@ You can follow Facebook's documentation on how to [generate an access token](htt
 
 You can also extend your token's validity to avoid having to generate a new one once in a while. Once again, Facebook's documentation on how to [generate long-lived tokens](https://developers.facebook.com/docs/facebook-login/access-tokens/refreshing) will come in handy. Long-lived Page Tokens do not have an expiration date, making them ideal for most use cases of this lib.
 
+#### Using this lib to manage user tokens
+
+For some use cases, for example when you want to build a tool for your own pages, it's fine to go through the above steps to generate a long-lived token. For other uses cases, such as when you have an app that will make request on behalf of users, it becomes a bother.
+
+This lib provides a few requests to get you around that:
+
+1. First, you still need to get your hands on an initial access token. You can get it via a facebook login prompt for users of your app.
+2. When you have a user token, you can build and execute a `GetUserLongLivedTokenRequest`:
+
+    ```typescript
+    import { GetUserLongLivedTokenRequest, GetUserLongLivedTokenResponse } from 'instagram-graph-api';
+
+    // You can get your APP_ID and APP_SECRET_ID through the Facebook Developers website.
+    const request: GetUserLongLivedTokenRequest = new GetUserLongLivedTokenRequest(
+        APP_ID,
+        APP_SECRET_ID,
+        USER_ACCESS_TOKEN
+    );
+
+    request.execute().then((response: GetUserLongLivedTokenResponse) => {
+        const longLivedToken: string = response.getLongLivedToken();
+    });
+    ```
+
 ### Page ID
 
 All the requests to a page will require the use of a Page ID. To find out what the ID of a page is, you can:
 
 -   [Directly make a call to the API](https://developers.facebook.com/docs/instagram-api/guides/business-discovery)
 -   Use one of the many websites that will make that call for you (look for `Instagram Page ID` on a search engine)
--   Use this lib to make the request for you, by building and executing a `GetMeRequest`, as such:
+-   Use this lib to make the request for you, by building and executing a `GetLinkedInstagramAccountRequest`, as such:
 
-    ```typescript
-    import { GetMeRequest, GetMeResponse } from 'instagram-graph-api';
+```typescript
+import { GetLinkedInstagramAccountRequest, GetLinkedInstagramAccountResponse } from 'instagram-graph-api';
 
-    let request: GetMeRequest = new GetMeRequest(ACCESS_TOKEN);
+const request: GetLinkedInstagramAccountRequest = new GetLinkedInstagramAccountRequest(ACCESS_TOKEN, FACEBOOK_PAGE_ID);
 
-    request.execute().then((response: GetMeResponse) => {
-        console.log(response.getIgPageId());
-    });
-    ```
+request.execute().then((response: GetLinkedInstagramAccountResponse) => {
+    const pageId: string = response.getInstagramPageId();
+});
+```
+
+-   You can get the `FACEBOOK_PAGE_ID` through the Facebook Developers portal but you can also get it through this lib:
+
+```typescript
+import { GetAuthorizedFacebookPagesRequest, GetAuthorizedFacebookPagesResponse } from 'instagram-graph-api';
+
+const request: GetAuthorizedFacebookPagesRequest = new GetAuthorizedFacebookPagesRequest(ACCESS_TOKEN);
+
+request.execute().then((response: GetAuthorizedFacebookPagesResponse) => {
+    const firstFacebookPage: string = pagesResponse.getAuthorizedFacebookPages()[0].id;
+});
+```
+
 ## Release Process
 
 Releases of this lib should be very incremental. When a new resource is supported a release will be issued soon after without waiting to pile up new features to do big releases.

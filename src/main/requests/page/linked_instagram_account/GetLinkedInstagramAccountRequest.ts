@@ -10,15 +10,19 @@ import { GetLinkedInstagramAccountResponse } from './GetLinkedInstagramAccountRe
  * @since `next.release`
  */
 export class GetLinkedInstagramAccountRequest extends AbstractRequest<GetLinkedInstagramAccountResponse> {
-    // A business Instagram account has to be linked to a Facebook page. To get the ID
-    // of an Instagram account you need the ID of their linked Facebook page.
+    /**
+     * The Facebook page id.
+     *
+     * A business Instagram account has to be linked to a Facebook page. To get the id
+     * of an Instagram account you need the id of their linked Facebook page.
+     */
     facebookPageId: string;
 
     /**
      * The constructor.
      *
      * @param accessToken the access token.
-     * @param facebookPageId Facebook page where Instagram Account is linked.
+     * @param facebookPageId the facebook page id.
      */
     constructor(accessToken: string, facebookPageId: string) {
         super(accessToken);

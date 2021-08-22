@@ -2,7 +2,7 @@ import { AbstractResponse } from '../../AbstractResponse';
 import { AuthorizedFacebookPagesData, FacebookPage } from '../../data/AuthorizedFacebookPagesData';
 
 /**
- * Class that represents a response of user's Facebook pages
+ * Class that represents a response of user's Facebook pages.
  *
  * @author Andres Gutierrez <andres99@gmail.com>
  * @since `next.release`
