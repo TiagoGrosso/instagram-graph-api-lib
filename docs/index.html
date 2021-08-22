@@ -80,10 +80,6 @@
 					<h2>Installation</h2>
 				</a>
 				<p>Simply run <code>npm install instagram-graph-api</code>.</p>
-				<a href="#how-do-i-use-this-lib" id="how-do-i-use-this-lib" style="color: inherit; text-decoration: none;">
-					<h2>How do I use this lib?</h2>
-				</a>
-				<p>You can always check the <a href="https://tiagogrosso.github.io/instagram-graph-api-lib/">typedoc documentation</a> if you are having doubts.</p>
 				<a href="#what-can-this-lib-currently-do" id="what-can-this-lib-currently-do" style="color: inherit; text-decoration: none;">
 					<h2>What can this lib currently do?</h2>
 				</a>
@@ -94,6 +90,10 @@
 				</ul>
 				<p>As it currently stands, this lib allows you to get a lot of information about your page and media, including basic information and insights. It also allows you to create and publish media (photos and videos) as well as to create and reply to comments, delete them and hide them.
 				For now, this lib does not contain any complex logic. It simply models requests to the Instagram Graph API and gives you an easy way to execute them.</p>
+				<a href="#how-do-i-use-this-lib" id="how-do-i-use-this-lib" style="color: inherit; text-decoration: none;">
+					<h2>How do I use this lib?</h2>
+				</a>
+				<p>You can always check the <a href="https://tiagogrosso.github.io/instagram-graph-api-lib/">typedoc documentation</a> if you are having doubts.</p>
 				<a href="#building-requests" id="building-requests" style="color: inherit; text-decoration: none;">
 					<h3>Building requests</h3>
 				</a>
@@ -158,8 +158,8 @@
 <span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">    </span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">nextPage</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000"> | </span><span style="color: #267F99">undefined</span><span style="color: #000000"> = </span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getPaging</span><span style="color: #000000">().</span><span style="color: #795E26">getAfter</span><span style="color: #000000">();</span>
 <span style="color: #000000">    </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">nextPage</span><span style="color: #000000">) {</span>
-<span style="color: #000000">        </span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">addPaging</span><span style="color: #000000">({ </span><span style="color: #001080">option:</span><span style="color: #000000"> </span><span style="color: #001080">PageOption</span><span style="color: #000000">.</span><span style="color: #0070C1">AFTER</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #001080">nextPage</span><span style="color: #000000"> }); </span><span style="color: #008000">// you can reuse the old request 😎</span>
-<span style="color: #000000">        </span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">([...])</span>
+<span style="color: #000000">        </span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">withPaging</span><span style="color: #000000">({ </span><span style="color: #001080">option:</span><span style="color: #000000"> </span><span style="color: #001080">PageOption</span><span style="color: #000000">.</span><span style="color: #0070C1">AFTER</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #001080">nextPage</span><span style="color: #000000"> })</span>
+<span style="color: #000000">               .</span><span style="color: #795E26">execute</span><span style="color: #000000">([...]); </span><span style="color: #008000">// you can reuse the old request 😎</span>
 <span style="color: #000000">    } </span><span style="color: #AF00DB">else</span><span style="color: #000000"> {</span>
 <span style="color: #000000">        </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;🛑🛑🛑&#039;</span><span style="color: #000000">);</span>
 <span style="color: #000000">    }</span>
@@ -169,8 +169,8 @@
 				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageLifetimeInsightsRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageLifetimeInsightsRequest</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
 
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageLifetimeInsightsRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetPageLifetimeInsightsRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
-<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">addRange</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;2021-01-01&#039;</span><span style="color: #000000">), </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;2021-01-15&#039;</span><span style="color: #000000">))</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageLifetimeInsightsRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetPageLifetimeInsightsRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">)</span>
+<span style="color: #000000">                                                        .</span><span style="color: #795E26">withRange</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;2021-01-01&#039;</span><span style="color: #000000">), </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;2021-01-15&#039;</span><span style="color: #000000">))</span>
 
 <span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageLifetimeInsightsResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">    [...]</span>
@@ -179,8 +179,7 @@
 				<p>Finally, you can add a limit option that will limit the amount of objects retrieved with that request. For example:</p>
 				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageMediaRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageMediaResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetPageMediaRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
-<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">addLimit</span><span style="color: #000000">(</span><span style="color: #098658">5</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetPageMediaRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">).</span><span style="color: #795E26">withLimit</span><span style="color: #000000">(</span><span style="color: #098658">5</span><span style="color: #000000">);</span>
 
 <span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
 <span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getData</span><span style="color: #000000">().</span><span style="color: #001080">length</span><span style="color: #000000">); </span><span style="color: #008000">// This will be &lt; 5</span>
@@ -192,26 +191,58 @@
 				<p>To use this lib you&#39;ll require an Access Token to Facebook&#39;s Graph API (over which the Instagram Graph API is built), which in turn will require a couple of other things. Check out the <a href="https://developers.facebook.com/docs/instagram-api/getting-started">before you start</a> on the getting started documentation.</p>
 				<p>You can follow Facebook&#39;s documentation on how to <a href="https://developers.facebook.com/docs/facebook-login/access-tokens/">generate an access token</a> to grab a token for yourself. You&#39;ll most likely want a Page Token. Check which permissions you&#39;ll need for the request you want to perform on the <a href="https://developers.facebook.com/docs/instagram-api/reference/">Instagram Graph API Reference</a>.</p>
 				<p>You can also extend your token&#39;s validity to avoid having to generate a new one once in a while. Once again, Facebook&#39;s documentation on how to <a href="https://developers.facebook.com/docs/facebook-login/access-tokens/refreshing">generate long-lived tokens</a> will come in handy. Long-lived Page Tokens do not have an expiration date, making them ideal for most use cases of this lib.</p>
+				<a href="#using-this-lib-to-manage-user-tokens" id="using-this-lib-to-manage-user-tokens" style="color: inherit; text-decoration: none;">
+					<h4>Using this lib to manage user tokens</h4>
+				</a>
+				<p>For some use cases, for example when you want to build a tool for your own pages, it&#39;s fine to go through the above steps to generate a long-lived token. For other uses cases, such as when you have an app that will make request on behalf of users, it becomes a bother.</p>
+				<p>This lib provides a few requests to get you around that:</p>
+				<ol>
+					<li><p>First, you still need to get your hands on an initial access token. You can get it via a facebook login prompt for users of your app.</p>
+					</li>
+					<li><p>When you have a user token, you can build and execute a <code>GetUserLongLivedTokenRequest</code>:</p>
+						<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetUserLongLivedTokenRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetUserLongLivedTokenResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #008000">// You can get your APP_ID and APP_SECRET_ID through the Facebook Developers website.</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetUserLongLivedTokenRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetUserLongLivedTokenRequest</span><span style="color: #000000">(</span>
+<span style="color: #000000">    </span><span style="color: #0070C1">APP_ID</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #0070C1">APP_SECRET_ID</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #0070C1">USER_ACCESS_TOKEN</span>
+<span style="color: #000000">);</span>
+
+<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetUserLongLivedTokenResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">longLivedToken</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000"> = </span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getLongLivedToken</span><span style="color: #000000">();</span>
+<span style="color: #000000">});</span>
+</code></pre>
+					</li>
+				</ol>
 				<a href="#page-id" id="page-id" style="color: inherit; text-decoration: none;">
 					<h3>Page ID</h3>
 				</a>
 				<p>All the requests to a page will require the use of a Page ID. To find out what the ID of a page is, you can:</p>
 				<ul>
-					<li><p>  <a href="https://developers.facebook.com/docs/instagram-api/guides/business-discovery">Directly make a call to the API</a></p>
-					</li>
-					<li><p>  Use one of the many websites that will make that call for you (look for <code>Instagram Page ID</code> on a search engine)</p>
-					</li>
-					<li><p>Use this lib to make the request for you, by building and executing a <code>GetMeRequest</code>, as such:</p>
-						<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetMeRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetMeResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
+					<li>  <a href="https://developers.facebook.com/docs/instagram-api/guides/business-discovery">Directly make a call to the API</a></li>
+					<li>  Use one of the many websites that will make that call for you (look for <code>Instagram Page ID</code> on a search engine)</li>
+					<li>  Use this lib to make the request for you, by building and executing a <code>GetLinkedInstagramAccountRequest</code>, as such:</li>
+				</ul>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetLinkedInstagramAccountRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetLinkedInstagramAccountResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
 
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetMeRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetMeRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetLinkedInstagramAccountRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetLinkedInstagramAccountRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">FACEBOOK_PAGE_ID</span><span style="color: #000000">);</span>
 
-<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetMeResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getIgPageId</span><span style="color: #000000">());</span>
+<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetLinkedInstagramAccountResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">pageId</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000"> = </span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getInstagramPageId</span><span style="color: #000000">();</span>
 <span style="color: #000000">});</span>
 </code></pre>
-					</li>
+				<ul>
+					<li>  You can get the <code>FACEBOOK_PAGE_ID</code> through the Facebook Developers portal but you can also get it through this lib:</li>
 				</ul>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetAuthorizedFacebookPagesRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetAuthorizedFacebookPagesResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetAuthorizedFacebookPagesRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetAuthorizedFacebookPagesRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">);</span>
+
+<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetAuthorizedFacebookPagesResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">firstFacebookPage</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000"> = </span><span style="color: #001080">pagesResponse</span><span style="color: #000000">.</span><span style="color: #795E26">getAuthorizedFacebookPages</span><span style="color: #000000">()[</span><span style="color: #098658">0</span><span style="color: #000000">].</span><span style="color: #001080">id</span><span style="color: #000000">;</span>
+<span style="color: #000000">});</span>
+</code></pre>
 				<a href="#release-process" id="release-process" style="color: inherit; text-decoration: none;">
 					<h2>Release Process</h2>
 				</a>
@@ -300,6 +331,9 @@
 						<a href="modules/requests_container_getcontainerresponse.html">requests/container/<wbr>Get<wbr>Container<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_authorizedfacebookpagesdata.html">requests/data/<wbr>Authorized<wbr>Facebook<wbr>Pages<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/requests_data_commentdata.html">requests/data/<wbr>Comment<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -312,7 +346,10 @@
 						<a href="modules/requests_data_contentpublishinglimitdata.html">requests/data/<wbr>Content<wbr>Publishing<wbr>Limit<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_medata.html">requests/data/<wbr>MeData</a>
+						<a href="modules/requests_data_instagramaccountinfodata.html">requests/data/<wbr>Instagram<wbr>Account<wbr>Info<wbr>Data</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_linkedinstagramaccountdata.html">requests/data/<wbr>Linked<wbr>Instagram<wbr>Account<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_data_mediadata.html">requests/data/<wbr>Media<wbr>Data</a>
@@ -322,6 +359,9 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_data_paging.html">requests/data/<wbr>Paging</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_data_userlonglivedtokendata.html">requests/data/<wbr>User<wbr>Long<wbr>Lived<wbr>Token<wbr>Data</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_data_insights_abstractmetric.html">requests/data/insights/<wbr>Abstract<wbr>Metric</a>
@@ -390,6 +430,12 @@
 						<a href="modules/requests_media_insights_getstorymediainsightsrequest.html">requests/media/insights/<wbr>Get<wbr>Story<wbr>Media<wbr>Insights<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_authorized_facebook_pages_getauthorizedfacebookpagesrequest.html">requests/page/authorized_<wbr>facebook_<wbr>pages/<wbr>Get<wbr>Authorized<wbr>Facebook<wbr>Pages<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_authorized_facebook_pages_getauthorizedfacebookpagesresponse.html">requests/page/authorized_<wbr>facebook_<wbr>pages/<wbr>Get<wbr>Authorized<wbr>Facebook<wbr>Pages<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
 						<a href="modules/requests_page_content_publishing_limit_getcontentpublishinglimitrequest.html">requests/page/content_<wbr>publishing_<wbr>limit/<wbr>Get<wbr>Content<wbr>Publishing<wbr>Limit<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-module">
@@ -426,10 +472,16 @@
 						<a href="modules/requests_page_insights_getpageweekinsightsrequest.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Week<wbr>Insights<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_me_getmerequest.html">requests/page/me/<wbr>Get<wbr>MeRequest</a>
+						<a href="modules/requests_page_instagram_account_info_getinstagramaccountinforequest.html">requests/page/instagram_<wbr>account_<wbr>info/<wbr>Get<wbr>Instagram<wbr>Account<wbr>Info<wbr>Request</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_me_getmeresponse.html">requests/page/me/<wbr>Get<wbr>MeResponse</a>
+						<a href="modules/requests_page_instagram_account_info_getinstagramaccountinforesponse.html">requests/page/instagram_<wbr>account_<wbr>info/<wbr>Get<wbr>Instagram<wbr>Account<wbr>Info<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_linked_instagram_account_getlinkedinstagramaccountrequest.html">requests/page/linked_<wbr>instagram_<wbr>account/<wbr>Get<wbr>Linked<wbr>Instagram<wbr>Account<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_linked_instagram_account_getlinkedinstagramaccountresponse.html">requests/page/linked_<wbr>instagram_<wbr>account/<wbr>Get<wbr>Linked<wbr>Instagram<wbr>Account<wbr>Response</a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_page_media_getpagemediarequest.html">requests/page/media/<wbr>Get<wbr>Page<wbr>Media<wbr>Request</a>
@@ -457,6 +509,12 @@
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/requests_page_tags_gettagsresponse.html">requests/page/tags/<wbr>Get<wbr>Tags<wbr>Response</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_user_long_lived_token_getuserlonglivedtokenrequest.html">requests/page/user_<wbr>long_<wbr>lived_<wbr>token/<wbr>Get<wbr>User<wbr>Long<wbr>Lived<wbr>Token<wbr>Request</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/requests_page_user_long_lived_token_getuserlonglivedtokenresponse.html">requests/page/user_<wbr>long_<wbr>lived_<wbr>token/<wbr>Get<wbr>User<wbr>Long<wbr>Lived<wbr>Token<wbr>Response</a>
 					</li>
 				</ul>
 			</nav>

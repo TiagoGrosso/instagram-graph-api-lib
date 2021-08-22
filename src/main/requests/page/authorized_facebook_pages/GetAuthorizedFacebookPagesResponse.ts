@@ -5,7 +5,7 @@ import { AuthorizedFacebookPagesData, FacebookPage } from '../../data/Authorized
  * Class that represents a response of user's Facebook pages.
  *
  * @author Andres Gutierrez <andres99@gmail.com>
- * @since `next.release`
+ * @since 2.0.0
  */
 export class GetAuthorizedFacebookPagesResponse extends AbstractResponse<AuthorizedFacebookPagesData> {
     /**

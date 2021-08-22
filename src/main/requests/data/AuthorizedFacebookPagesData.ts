@@ -2,7 +2,7 @@
  * Interface to represent data regarding a Facebook page.
  *
  * @author Andres Gutierrez <andres99@gmail.com>
- * @since `next.release`
+ * @since 2.0.0
  */
 export interface FacebookPage {
     /**
@@ -26,7 +26,7 @@ export interface FacebookPage {
  * pages this user has authorized to your app.
  *
  * @author Andres Gutierrez <andres99@gmail.com>
- * @since `next.release`
+ * @since 2.0.0
  */
 export interface AuthorizedFacebookPagesData {
     data: Array<FacebookPage>;

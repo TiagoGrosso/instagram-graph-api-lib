@@ -7,7 +7,7 @@ import { GetLinkedInstagramAccountResponse } from './GetLinkedInstagramAccountRe
  * a Facebock page
  *
  * @author Andres Gutierrez <andres99@gmail.com>
- * @since `next.release`
+ * @since 2.0.0
  */
 export class GetLinkedInstagramAccountRequest extends AbstractRequest<GetLinkedInstagramAccountResponse> {
     /**

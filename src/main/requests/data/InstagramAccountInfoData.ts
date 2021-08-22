@@ -2,7 +2,7 @@
  * Basic info of connected Instagram account.
  *
  * @author Andres Gutierrez <andres99@gmail.com>
- * @since `next.release`
+ * @since 2.0.0
  */
 export interface InstagramAccountInfoData {
     /**

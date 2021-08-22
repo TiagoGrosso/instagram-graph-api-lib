@@ -6,7 +6,7 @@ import { LinkedInstagramAccountData } from '../../data/LinkedInstagramAccountDat
  * Is used to get linked Instagram account id.
  *
  * @author Andres Gutierrez <andres99@gmail.com>
- * @since `next.release`
+ * @since 2.0.0
  */
 export class GetLinkedInstagramAccountResponse extends AbstractResponse<LinkedInstagramAccountData> {
     /**

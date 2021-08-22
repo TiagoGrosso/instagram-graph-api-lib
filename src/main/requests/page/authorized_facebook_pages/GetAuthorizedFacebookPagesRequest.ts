@@ -7,7 +7,7 @@ import { GetAuthorizedFacebookPagesResponse } from './GetAuthorizedFacebookPages
  * to your app.
  *
  * @author Andres Gutierrez <andres99@gmail.com>
- * @since `next.release`
+ * @since 2.0.0
  */
 export class GetAuthorizedFacebookPagesRequest extends AbstractRequest<GetAuthorizedFacebookPagesResponse> {
     /**

@@ -6,7 +6,7 @@ import { GetInstagramAccountInfoResponse } from './GetInstagramAccountInfoRespon
  * A Get request to obtain information about an Instagram account.
  *
  * @author Andres Gutierrez <andres99@gmail.com>
- * @since `next.release`
+ * @since 2.0.0
  */
 export class GetInstagramAccountInfoRequest extends AbstractRequest<GetInstagramAccountInfoResponse> {
     /**
