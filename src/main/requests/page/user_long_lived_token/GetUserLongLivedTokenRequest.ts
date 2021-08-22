@@ -17,7 +17,7 @@ const GRANT_TYPE = 'fb_exchange_token';
  * https://developers.facebook.com/docs/facebook-login/access-tokens/refreshing
  *
  * @author Andres Gutierrez <andres99@gmail.com>
- * @since `next.release`
+ * @since 2.0.0
  */
 export class GetUserLongLivedTokenRequest extends AbstractRequest<GetUserLongLivedTokenResponse> {
     /**

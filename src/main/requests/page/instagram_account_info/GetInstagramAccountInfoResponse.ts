@@ -5,7 +5,7 @@ import { InstagramAccountInfoData } from '../../data/InstagramAccountInfoData';
  * Class that represents a response from a Get Instagram Account Info request.
  *
  * @author Andres Gutierrez <andres99@gmail.com>
- * @since `next.release`
+ * @since 2.0.0
  */
 export class GetInstagramAccountInfoResponse extends AbstractResponse<InstagramAccountInfoData> {
     /**
