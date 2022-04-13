@@ -21,7 +21,7 @@ jobs:
       run: git push --set-upstream origin release/${{ github.event.inputs.version }}
     - uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: '16.x'
         registry-url: 'https://registry.npmjs.org'
     - name: Replace version placeholder
       run: sh scripts/replace-next-version-tag.sh ${{ github.event.inputs.version }}
@@ -67,7 +67,7 @@ jobs:
         token: '${{ secrets.GITHUB_TOKEN }}'
     - uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: '16.x'
         registry-url: 'https://registry.npmjs.org'
     - name: Install node packages
       run: npm install
