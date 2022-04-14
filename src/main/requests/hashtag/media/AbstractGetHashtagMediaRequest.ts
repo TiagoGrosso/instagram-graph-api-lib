@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { PublicMediaField } from '../../../Enums';
+import { HashtagMediaField } from '../../../Enums';
 import { AbstractGetMediaRequest } from '../../AbstractGetMediaRequest';
 import { GetHashtagMediaResponse } from './GetHashtagMediaResponse';
 
@@ -23,8 +23,8 @@ export abstract class AbstractGetHashtagMediaRequest extends AbstractGetMediaReq
      * @param userId the id of the user making the request.
      * @param fields the fields to retrieve from the API. If no field is specified, all are retrieved.
      */
-    constructor(accessToken: string, hashtagId: string, userId: string, ...fields: PublicMediaField[]) {
-        const actualFields: PublicMediaField[] = fields.length > 0 ? fields : Object.values(PublicMediaField);
+    constructor(accessToken: string, hashtagId: string, userId: string, ...fields: HashtagMediaField[]) {
+        const actualFields: HashtagMediaField[] = fields.length > 0 ? fields : Object.values(HashtagMediaField);
         super(accessToken, ...actualFields);
         this.hashtagId = hashtagId;
         this.params.user_id = userId;

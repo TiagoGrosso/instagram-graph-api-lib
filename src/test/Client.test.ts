@@ -4,6 +4,7 @@ import {
     ContainerField,
     ContentPublishingLimitFields,
     DayMetric,
+    HashtagMediaField,
     LifetimeMetric,
     PageField,
     PrivateMediaField,
@@ -307,16 +308,16 @@ describe('Client', () => {
             client.newGetHashtagRecentMediaRequest(
                 TestConstants.HASHTAG_ID,
                 TestConstants.PAGE_ID_2,
-                PublicMediaField.CAPTION,
-                PublicMediaField.CHILDREN
+                HashtagMediaField.CAPTION,
+                HashtagMediaField.CHILDREN
             )
         ).toEqual(
             new GetHashtagRecentMediaRequest(
                 TestConstants.ACCESS_TOKEN,
                 TestConstants.HASHTAG_ID,
                 TestConstants.PAGE_ID_2,
-                PublicMediaField.CAPTION,
-                PublicMediaField.CHILDREN
+                HashtagMediaField.CAPTION,
+                HashtagMediaField.CHILDREN
             )
         );
     });
@@ -336,16 +337,16 @@ describe('Client', () => {
             client.newGetHashtagTopMediaRequest(
                 TestConstants.HASHTAG_ID,
                 TestConstants.PAGE_ID_2,
-                PublicMediaField.CAPTION,
-                PublicMediaField.CHILDREN
+                HashtagMediaField.CAPTION,
+                HashtagMediaField.CHILDREN
             )
         ).toEqual(
             new GetHashtagTopMediaRequest(
                 TestConstants.ACCESS_TOKEN,
                 TestConstants.HASHTAG_ID,
                 TestConstants.PAGE_ID_2,
-                PublicMediaField.CAPTION,
-                PublicMediaField.CHILDREN
+                HashtagMediaField.CAPTION,
+                HashtagMediaField.CHILDREN
             )
         );
     });

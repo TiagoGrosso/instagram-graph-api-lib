@@ -269,7 +269,60 @@ export enum PrivateMediaField {
     THUMBNAIL_URL = 'thumbnail_url',
 }
 
-export type MediaField = PrivateMediaField | PublicMediaField;
+/**
+ * Hashtag Media info fields.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
+export enum HashtagMediaField {
+    /**
+     * The caption of the media.
+     */
+    CAPTION = 'caption',
+
+    /**
+     * The number of comments on the media object.
+     */
+    COMMENTS_COUNT = 'comments_count',
+
+    /**
+     * The id of the media object.
+     */
+    ID = 'id',
+
+    /**
+     * The children of the media object. Only returned for Album IG Media.
+     */
+    CHILDREN = 'children',
+
+    /**
+     * The number of likes on the media object.
+     */
+    LIKE_COUNT = 'like_count',
+
+    /**
+     * The type of media object.
+     */
+    MEDIA_TYPE = 'media_type',
+
+    /**
+     * The URL of the media object.
+     */
+    MEDIA_URL = 'media_url',
+
+    /**
+     * The permalink of the media object.
+     */
+    PERMALINK = 'permalink',
+
+    /**
+     * The ISO 8601 formatted creation date in UTC (default is UTC ±00:00)
+     */
+    TIMESTAMP = 'timestamp',
+}
+
+export type MediaField = PrivateMediaField | PublicMediaField | HashtagMediaField;
 
 /**
  * The surfaces where media can bne published.
@@ -514,4 +567,16 @@ export enum ApiVersion {
      * {@link https://developers.facebook.com/docs/graph-api/changelog/version11.0}
      */
     V11_0 = 'v11.0',
+
+    /**
+     * {@link https://developers.facebook.com/docs/graph-api/changelog/version12.0}
+     */
+    V12_0 = 'v12.0',
+
+    /**
+     * {@link https://developers.facebook.com/docs/graph-api/changelog/version13.0}
+     */
+    V13_0 = 'v13.0',
+
+    LATEST = V13_0,
 }

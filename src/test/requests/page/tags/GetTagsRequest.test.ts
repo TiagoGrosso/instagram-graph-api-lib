@@ -22,7 +22,11 @@ describe('GetTagsRequest', () => {
         expect(request.config().method).toEqual('GET');
         expect(request.config().url).toEqual(`/${TestConstants.PAGE_ID}/tags`);
 
-        expect(requestAllFields.config().params.fields).toEqual(Object.values(PublicMediaField).join(','));
+        expect(requestAllFields.config().params.fields).toEqual(
+            Object.values(PublicMediaField)
+                .filter((field) => field != PublicMediaField.VIDEO_TITLE)
+                .join(',')
+        );
     });
 
     const mock = new MockAdapter(axios);

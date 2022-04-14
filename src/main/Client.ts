@@ -4,6 +4,7 @@ import {
     ContainerField,
     ContentPublishingLimitFields,
     DayMetric,
+    HashtagMediaField,
     LifetimeMetric,
     MediaField,
     PageField,
@@ -267,7 +268,7 @@ export class Client {
     public newGetHashtagRecentMediaRequest(
         hashtagId: string,
         userId: string = this.pageId,
-        ...fields: PublicMediaField[]
+        ...fields: HashtagMediaField[]
     ): GetHashtagRecentMediaRequest {
         return new GetHashtagRecentMediaRequest(this.accessToken, hashtagId, userId, ...fields).withApiVersion(
             this.apiVersion
@@ -286,7 +287,7 @@ export class Client {
     public newGetHashtagTopMediaRequest(
         hashtagId: string,
         userId: string = this.pageId,
-        ...fields: PublicMediaField[]
+        ...fields: HashtagMediaField[]
     ): GetHashtagTopMediaRequest {
         return new GetHashtagTopMediaRequest(this.accessToken, hashtagId, userId, ...fields).withApiVersion(
             this.apiVersion

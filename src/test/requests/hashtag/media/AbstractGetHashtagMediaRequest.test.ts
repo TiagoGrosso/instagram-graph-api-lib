@@ -1,7 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { Constants } from '../../../../main/Constants';
-import { PublicMediaField } from '../../../../main/Enums';
+import { HashtagMediaField } from '../../../../main/Enums';
 import { AbstractGetHashtagMediaRequest } from '../../../../main/requests/hashtag/media/AbstractGetHashtagMediaRequest';
 import { GetPageMediaResponse } from '../../../../main/requests/page/media/GetPageMediaResponse';
 import { TestConstants } from '../../../TestConstants';
@@ -13,8 +13,8 @@ describe('AbstractGetHashtagMediaRequest', () => {
         TestConstants.ACCESS_TOKEN,
         TestConstants.HASHTAG_ID,
         TestConstants.PAGE_ID,
-        PublicMediaField.CAPTION,
-        PublicMediaField.CHILDREN
+        HashtagMediaField.CAPTION,
+        HashtagMediaField.CHILDREN
     );
     const requestAllFields: AbstractGetHashtagMediaRequestImpl = new AbstractGetHashtagMediaRequestImpl(
         TestConstants.ACCESS_TOKEN,
@@ -23,13 +23,13 @@ describe('AbstractGetHashtagMediaRequest', () => {
     );
 
     it('Builds the config', () => {
-        const fields = `${PublicMediaField.CAPTION},${PublicMediaField.CHILDREN}`;
+        const fields = `${HashtagMediaField.CAPTION},${HashtagMediaField.CHILDREN}`;
 
         expect(request.config().params.fields).toEqual(fields);
         expect(request.config().params.user_id).toEqual(TestConstants.PAGE_ID);
         expect(request.config().method).toEqual('GET');
         expect(request.config().url).toEqual(`/${TestConstants.HASHTAG_ID}`);
-        expect(requestAllFields.config().params.fields).toEqual(Object.values(PublicMediaField).join(','));
+        expect(requestAllFields.config().params.fields).toEqual(Object.values(HashtagMediaField).join(','));
     });
 
     const mock = new MockAdapter(axios);
