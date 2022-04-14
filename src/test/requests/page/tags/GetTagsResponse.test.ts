@@ -25,4 +25,12 @@ describe('GetTagsResponse', () => {
         expect(response.getBefore()).toEqual(TestConstants.PAGING.cursors?.before);
         expect(responseNoCursors.getBefore()).toBeUndefined();
     });
+
+    it('Handles missing paging', () => {
+        const responseNoPaging = new GetTagsResponse({
+            data: [TestConstants.FULL_MEDIA_DATA, TestConstants.BARE_MEDIA_DATA],
+        });
+        expect(responseNoPaging.getBefore()).toBeUndefined();
+        expect(responseNoPaging.getAfter()).toBeUndefined();
+    });
 });

@@ -131,19 +131,16 @@ export class TestConstants {
     };
 
     /**
+     * An array of dummy ids.
+     */
+    static readonly ID_ARRAY: string[] = ['id1', 'id2', 'id3'];
+
+    /**
      * A dummy children data object
      */
-    static readonly CHILDREN_DATA: { id: string }[] = [
-        {
-            id: 'child_1',
-        },
-        {
-            id: 'child_2',
-        },
-        {
-            id: 'child_3',
-        },
-    ];
+    static readonly CHILDREN_DATA: { id: string }[] = TestConstants.ID_ARRAY.map((id) => ({
+        id: id,
+    }));
 
     /**
      * A dummy comment text.

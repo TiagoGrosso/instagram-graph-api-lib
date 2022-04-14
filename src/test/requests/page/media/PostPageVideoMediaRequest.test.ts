@@ -12,7 +12,8 @@ describe('PostPageVideoMediaRequest.', () => {
         TestConstants.MEDIA_URL,
         TestConstants.CAPTION,
         TestConstants.THUMB_OFFSET,
-        TestConstants.LOCATION_ID
+        TestConstants.LOCATION_ID,
+        true
     );
     const requestBare: PostPageVideoMediaRequest = new PostPageVideoMediaRequest(
         TestConstants.ACCESS_TOKEN,
@@ -27,6 +28,7 @@ describe('PostPageVideoMediaRequest.', () => {
         expect(request.config().params.caption).toEqual(TestConstants.CAPTION);
         expect(request.config().params.thumb_offset).toEqual(TestConstants.THUMB_OFFSET);
         expect(request.config().params.location_id).toEqual(TestConstants.LOCATION_ID);
+        expect(request.config().params.is_carousel).toBeTruthy();
     });
 
     it('Adds params request config', () => {
@@ -34,14 +36,17 @@ describe('PostPageVideoMediaRequest.', () => {
         expect(requestBare.config().params.caption).toBeUndefined();
         expect(requestBare.config().params.location_id).toBeUndefined();
         expect(requestBare.config().params.thumb_offset).toBeUndefined();
+        expect(requestBare.config().params.is_carousel).toBeFalsy();
 
         requestBare.withCaption(TestConstants.CAPTION);
         requestBare.withLocationId(TestConstants.LOCATION_ID);
         requestBare.withThumbOffset(TestConstants.THUMB_OFFSET);
+        requestBare.withIsCarousel(true);
 
         expect(requestBare.config().params.caption).toEqual(TestConstants.CAPTION);
         expect(requestBare.config().params.thumb_offset).toEqual(TestConstants.THUMB_OFFSET);
         expect(requestBare.config().params.location_id).toEqual(TestConstants.LOCATION_ID);
+        expect(requestBare.config().params.is_carousel).toBeTruthy();
     });
 
     const mock = new MockAdapter(axios);
