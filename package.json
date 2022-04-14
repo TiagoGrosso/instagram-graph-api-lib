@@ -9,7 +9,7 @@
         "cti": "cti entrypoint src/ -o Index.ts -e test",
         "test": "jest --coverage",
         "test_watch": "jest --watch",
-        "docs": "typedoc --out docs src/main README.md",
+        "docs": "typedoc --out docs src/Index.ts README.md",
         "format": "prettier --write src",
         "check-format": "prettier --check src",
         "lint": "eslint src"
