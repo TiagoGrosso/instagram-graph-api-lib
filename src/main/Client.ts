@@ -36,6 +36,7 @@ import { GetPageMonthInsightsRequest } from './requests/page/insights/GetPageMon
 import { GetPageWeekInsightsRequest } from './requests/page/insights/GetPageWeekInsightsRequest';
 import { GetInstagramAccountInfoRequest } from './requests/page/instagram_account_info/GetInstagramAccountInfoRequest';
 import { GetPageMediaRequest } from './requests/page/media/GetPageMediaRequest';
+import { PostPageCaroulselMediaRequest } from './requests/page/media/PostPageCaroulselMediaRequest';
 import { PostPagePhotoMediaRequest } from './requests/page/media/PostPagePhotoMediaRequest';
 import { PostPageVideoMediaRequest } from './requests/page/media/PostPageVideoMediaRequest';
 import { PostPublishMediaRequest } from './requests/page/media_publish/PostPublishMediaRequest';
@@ -424,6 +425,29 @@ export class Client {
             videoUrl,
             caption,
             thumbOffset,
+            locationId
+        ).withApiVersion(this.apiVersion);
+    }
+
+    /**
+     * Build a new {@link PostPageCaroulselMediaRequest}.
+     *
+     * @param caption the caption.
+     * @param locationId the location id.
+     * @param children the carousel children.
+     *
+     * @returns a new {@link PostPageCaroulselMediaRequest}.
+     */
+    public newPostPageCaroulselMediaRequest(
+        children?: string[],
+        caption?: string,
+        locationId?: string
+    ): PostPageCaroulselMediaRequest {
+        return new PostPageCaroulselMediaRequest(
+            this.accessToken,
+            this.pageId,
+            children,
+            caption,
             locationId
         ).withApiVersion(this.apiVersion);
     }

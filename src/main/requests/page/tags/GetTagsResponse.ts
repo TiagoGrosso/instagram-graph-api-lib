@@ -19,7 +19,7 @@ export class GetTagsResponse extends AbstractGetManyMediaResponse {
      *
      * @param body the body of the response.
      */
-    constructor(body: { data: MediaData[]; paging: PagingData }) {
+    constructor(body: { data: MediaData[]; paging?: PagingData }) {
         super(body.data);
         this.cursors = body.paging?.cursors;
     }

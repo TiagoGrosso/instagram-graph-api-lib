@@ -1,8 +1,5 @@
-import { AxiosResponse } from 'axios';
-import { AbstractRequest } from '../../AbstractRequest';
-import { CreatedObjectIdResponse } from '../../common/CreatedObjectIdResponse';
 import { UserTag } from '../../Params';
-import { Method } from '../../RequestConfig';
+import { AbstractPostPageMediaRequest, MediaType } from './AbstractPostPageMediaRequest';
 
 /**
  * A request that creates a new Photo Media container.
@@ -10,12 +7,7 @@ import { Method } from '../../RequestConfig';
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 1.1.0
  */
-export class PostPagePhotoMediaRequest extends AbstractRequest<CreatedObjectIdResponse> {
-    /**
-     * The page id.
-     */
-    private pageId: string;
-
+export class PostPagePhotoMediaRequest extends AbstractPostPageMediaRequest {
     /**
      * The constructor
      *
@@ -32,38 +24,13 @@ export class PostPagePhotoMediaRequest extends AbstractRequest<CreatedObjectIdRe
         imageUrl: string,
         caption?: string,
         locationId?: string,
-        userTags?: UserTag[]
+        userTags?: UserTag[],
+        isCarousel = false
     ) {
-        super(accessToken);
-        this.pageId = pageId;
+        super(accessToken, pageId, caption, locationId);
         this.params.image_url = imageUrl;
-        this.params.caption = caption;
-        this.params.location_id = locationId;
         this.params.user_tags = userTags;
-    }
-
-    /**
-     * Sets the caption in the request.
-     *
-     * @param caption the caption.
-     *
-     * @returns this object, for chained invocation.
-     */
-    public withCaption(caption: string): PostPagePhotoMediaRequest {
-        this.params.caption = caption;
-        return this;
-    }
-
-    /**
-     * Sets the location id in the request.
-     *
-     * @param locationId the location id.
-     *
-     * @returns this object, for chained invocation.
-     */
-    public withLocationId(locationId: string): PostPagePhotoMediaRequest {
-        this.params.location_id = locationId;
-        return this;
+        this.params.is_carousel = isCarousel;
     }
 
     /**
@@ -79,23 +46,21 @@ export class PostPagePhotoMediaRequest extends AbstractRequest<CreatedObjectIdRe
     }
 
     /**
-     * @inheritdoc
+     * Sets the is_carousel param in the request.
+     *
+     * @param userTags the is_carousel.
+     *
+     * @returns this object, for chained invocation.
      */
-    protected parseResponse(response: AxiosResponse<{ id: string }>): CreatedObjectIdResponse {
-        return new CreatedObjectIdResponse(response.data);
+    public withIsCarousel(isCarousel: boolean): PostPagePhotoMediaRequest {
+        this.params.is_carousel = isCarousel;
+        return this;
     }
 
     /**
      * @inheritdoc
      */
-    protected url(): string {
-        return `/${this.pageId}/media`;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected method(): Method {
-        return 'POST';
+    protected mediaType(): MediaType | undefined {
+        return undefined;
     }
 }

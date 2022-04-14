@@ -12,7 +12,8 @@ describe('PostPagePhotoMediaRequest.', () => {
         TestConstants.MEDIA_URL,
         TestConstants.CAPTION,
         TestConstants.LOCATION_ID,
-        [TestConstants.USER_TAG]
+        [TestConstants.USER_TAG],
+        true
     );
     const requestBare: PostPagePhotoMediaRequest = new PostPagePhotoMediaRequest(
         TestConstants.ACCESS_TOKEN,
@@ -27,6 +28,7 @@ describe('PostPagePhotoMediaRequest.', () => {
         expect(request.config().params.caption).toEqual(TestConstants.CAPTION);
         expect(request.config().params.location_id).toEqual(TestConstants.LOCATION_ID);
         expect(request.config().params.user_tags).toEqual([TestConstants.USER_TAG]);
+        expect(request.config().params.is_carousel).toBeTruthy();
     });
 
     it('Adds params request config', () => {
@@ -34,14 +36,17 @@ describe('PostPagePhotoMediaRequest.', () => {
         expect(requestBare.config().params.caption).toBeUndefined();
         expect(requestBare.config().params.location_id).toBeUndefined();
         expect(requestBare.config().params.user_tags).toBeUndefined();
+        expect(requestBare.config().params.is_carousel).toBeFalsy();
 
         requestBare.withCaption(TestConstants.CAPTION);
         requestBare.withLocationId(TestConstants.LOCATION_ID);
         requestBare.withUserTags([TestConstants.USER_TAG]);
+        requestBare.withIsCarousel(true);
 
         expect(requestBare.config().params.caption).toEqual(TestConstants.CAPTION);
         expect(requestBare.config().params.location_id).toEqual(TestConstants.LOCATION_ID);
         expect(requestBare.config().params.user_tags).toEqual([TestConstants.USER_TAG]);
+        expect(requestBare.config().params.is_carousel).toBeTruthy();
     });
 
     const mock = new MockAdapter(axios);

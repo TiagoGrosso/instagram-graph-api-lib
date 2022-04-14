@@ -1,7 +1,4 @@
-import { AxiosResponse } from 'axios';
-import { AbstractRequest } from '../../AbstractRequest';
-import { CreatedObjectIdResponse } from '../../common/CreatedObjectIdResponse';
-import { Method } from '../../RequestConfig';
+import { AbstractPostPageMediaRequest, MediaType } from './AbstractPostPageMediaRequest';
 
 /**
  * A request that creates a new Video Media container.
@@ -9,12 +6,7 @@ import { Method } from '../../RequestConfig';
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 1.1.0
  */
-export class PostPageVideoMediaRequest extends AbstractRequest<CreatedObjectIdResponse> {
-    /**
-     * The page id.
-     */
-    private pageId: string;
-
+export class PostPageVideoMediaRequest extends AbstractPostPageMediaRequest {
     /**
      * The constructor
      *
@@ -30,39 +22,13 @@ export class PostPageVideoMediaRequest extends AbstractRequest<CreatedObjectIdRe
         videoUrl: string,
         caption?: string,
         thumbOffset?: number,
-        locationId?: string
+        locationId?: string,
+        isCarousel = false
     ) {
-        super(accessToken);
-        this.pageId = pageId;
+        super(accessToken, pageId, caption, locationId);
         this.params.video_url = videoUrl;
-        this.params.caption = caption;
         this.params.thumb_offset = thumbOffset;
-        this.params.location_id = locationId;
-        this.params.media_type = 'video';
-    }
-
-    /**
-     * Sets the caption in the request.
-     *
-     * @param caption the caption.
-     *
-     * @returns this object, for chained invocation.
-     */
-    public withCaption(caption: string): PostPageVideoMediaRequest {
-        this.params.caption = caption;
-        return this;
-    }
-
-    /**
-     * Sets the location id in the request.
-     *
-     * @param locationId the location id.
-     *
-     * @returns this object, for chained invocation.
-     */
-    public withLocationId(locationId: string): PostPageVideoMediaRequest {
-        this.params.location_id = locationId;
-        return this;
+        this.params.is_carousel = isCarousel;
     }
 
     /**
@@ -72,29 +38,27 @@ export class PostPageVideoMediaRequest extends AbstractRequest<CreatedObjectIdRe
      *
      * @returns this object, for chained invocation.
      */
-    public withThumbOffset(thumbOffset: number): PostPageVideoMediaRequest {
+    public withThumbOffset(thumbOffset: number): this {
         this.params.thumb_offset = thumbOffset;
+        return this;
+    }
+
+    /**
+     * Sets the is_carousel param in the request.
+     *
+     * @param userTags the is_carousel.
+     *
+     * @returns this object, for chained invocation.
+     */
+    public withIsCarousel(isCarousel: boolean): this {
+        this.params.is_carousel = isCarousel;
         return this;
     }
 
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<{ id: string }>): CreatedObjectIdResponse {
-        return new CreatedObjectIdResponse(response.data);
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected url(): string {
-        return `/${this.pageId}/media`;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected method(): Method {
-        return 'POST';
+    protected mediaType(): MediaType | undefined {
+        return MediaType.VIDEO;
     }
 }

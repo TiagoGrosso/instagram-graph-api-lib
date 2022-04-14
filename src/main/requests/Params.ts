@@ -1,3 +1,5 @@
+import { MediaType } from './page/media/AbstractPostPageMediaRequest';
+
 /**
  * Represents a user tag in a media object.
  */
@@ -32,7 +34,9 @@ export interface Params {
     user_tags?: UserTag[];
     thumb_offset?: number;
     video_url?: string;
-    media_type?: 'video';
+    media_type?: MediaType;
+    is_carousel?: boolean;
+    children?: string[];
     /**
      * Not obtainable through this API. https://developers.facebook.com/docs/instagram-api/reference/ig-user/media
      */

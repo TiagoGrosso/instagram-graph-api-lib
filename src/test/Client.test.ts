@@ -36,6 +36,7 @@ import { GetPageMonthInsightsRequest } from '../main/requests/page/insights/GetP
 import { GetPageWeekInsightsRequest } from '../main/requests/page/insights/GetPageWeekInsightsRequest';
 import { GetInstagramAccountInfoRequest } from '../main/requests/page/instagram_account_info/GetInstagramAccountInfoRequest';
 import { GetPageMediaRequest } from '../main/requests/page/media/GetPageMediaRequest';
+import { PostPageCaroulselMediaRequest } from '../main/requests/page/media/PostPageCaroulselMediaRequest';
 import { PostPagePhotoMediaRequest } from '../main/requests/page/media/PostPagePhotoMediaRequest';
 import { PostPageVideoMediaRequest } from '../main/requests/page/media/PostPageVideoMediaRequest';
 import { PostPublishMediaRequest } from '../main/requests/page/media_publish/PostPublishMediaRequest';
@@ -521,6 +522,32 @@ describe('Client', () => {
                 TestConstants.MEDIA_URL,
                 TestConstants.CAPTION,
                 TestConstants.THUMB_OFFSET,
+                TestConstants.LOCATION_ID
+            )
+        );
+    });
+
+    it('Builds a PostPageCarouselMediaRequest', () => {
+        expect(client.newPostPageCaroulselMediaRequest(TestConstants.ID_ARRAY)).toEqual(
+            new PostPageCaroulselMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.ID_ARRAY)
+        );
+        expect(clientExplicitVersion.newPostPageCaroulselMediaRequest()).toEqual(
+            new PostPageCaroulselMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID).withApiVersion(
+                TestConstants.API_VERSION
+            )
+        );
+        expect(
+            client.newPostPageCaroulselMediaRequest(
+                TestConstants.ID_ARRAY,
+                TestConstants.CAPTION,
+                TestConstants.LOCATION_ID
+            )
+        ).toEqual(
+            new PostPageCaroulselMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.ID_ARRAY,
+                TestConstants.CAPTION,
                 TestConstants.LOCATION_ID
             )
         );
