@@ -24,7 +24,11 @@ describe('GetMediaInfoRequest', () => {
         expect(request.config().params.fields).toEqual(fields);
         expect(request.config().method).toEqual('GET');
         expect(request.config().url).toEqual(`/${TestConstants.MEDIA_ID}`);
-        expect(requestAllFields.config().params.fields).toEqual(Object.values(PublicMediaField).join(','));
+        expect(requestAllFields.config().params.fields).toEqual(
+            Object.values(PublicMediaField)
+                .filter((field) => field != PublicMediaField.VIDEO_TITLE)
+                .join(',')
+        );
     });
 
     const mock = new MockAdapter(axios);

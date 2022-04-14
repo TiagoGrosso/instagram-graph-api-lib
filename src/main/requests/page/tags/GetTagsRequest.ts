@@ -23,7 +23,11 @@ export class GetTagsRequest extends AbstractGetMediaRequest<GetTagsResponse> {
      * @param fields the fields to retrieve from the API for each media object. If no field is specified, all public fields are retrieved.
      */
     constructor(accessToken: string, pageId: string, ...fields: MediaField[]) {
-        const actualFields: MediaField[] = fields.length > 0 ? fields : Object.values(PublicMediaField);
+        const actualFields: MediaField[] =
+            fields.length > 0
+                ? fields
+                : Object.values(PublicMediaField).filter((field) => field != PublicMediaField.VIDEO_TITLE); //Filter out the video title because it's deprecated
+
         super(accessToken, ...actualFields);
         this.pageId = pageId;
     }

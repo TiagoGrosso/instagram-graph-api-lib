@@ -13,6 +13,9 @@ export class Utils {
      * @returns an array with all the media fields.
      */
     public static getAllMediaFields(): MediaField[] {
-        return [...Object.values(PublicMediaField), ...Object.values(PrivateMediaField)];
+        return [
+            ...Object.values(PublicMediaField).filter((field) => field != PublicMediaField.VIDEO_TITLE), //Filter out the video title because it's deprecated
+            ...Object.values(PrivateMediaField),
+        ];
     }
 }
