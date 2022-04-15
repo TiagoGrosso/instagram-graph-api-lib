@@ -13,3 +13,4 @@ Follow the links to the version that you wish to consult.
 -   [1.6.0](./1.6.0.md)
 -   [1.7.0](./1.7.0.md)
 -   [2.0.0](./2.0.0.md)
+-   [3.0.0](./3.0.0.md)

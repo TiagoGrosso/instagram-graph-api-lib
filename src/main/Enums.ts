@@ -273,7 +273,7 @@ export enum PrivateMediaField {
  * Hashtag Media info fields.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 3.0.0
  */
 export enum HashtagMediaField {
     /**

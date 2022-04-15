@@ -7,7 +7,7 @@ import { Method } from '../../RequestConfig';
  * An abstract request that creates a new Media container.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 3.0.0
  */
 export abstract class AbstractPostPageMediaRequest extends AbstractRequest<CreatedObjectIdResponse> {
     /**
@@ -88,7 +88,7 @@ export abstract class AbstractPostPageMediaRequest extends AbstractRequest<Creat
  * The media type.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 3.0.0
  */
 export enum MediaType {
     VIDEO = 'video',
