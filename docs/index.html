@@ -1,555 +1,139 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>instagram-graph-api</title>
-	<meta name="description" content="Documentation for instagram-graph-api">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">instagram-graph-api</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>instagram-graph-api</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#instagram-graph-api" id="instagram-graph-api" style="color: inherit; text-decoration: none;">
-					<h1>Instagram Graph API</h1>
-				</a>
-				<p><a href="https://www.npmjs.org/package/instagram-graph-api"><img src="https://img.shields.io/npm/v/instagram-graph-api.svg?style=flat-square" alt="npm version"></a>
-					<a href="https://codecov.io/gh/TiagoGrosso/instagram-graph-api-lib"><img src="https://codecov.io/gh/TiagoGrosso/instagram-graph-api-lib/branch/master/graph/badge.svg?token=1WBXW0RE0Q" alt="codecov"></a>
-					<a href="https://packagephobia.com/result?p=instagram-graph-api"><img src="https://packagephobia.com/badge?p=instagram-graph-api" alt="install size"></a>
-					<a href="http://npm-stat.com/charts.html?package=instagram-graph-api"><img src="https://img.shields.io/npm/dm/instagram-graph-api.svg?style=flat-square" alt="npm downloads"></a>
-				<img src="https://img.shields.io/npm/l/instagram-graph-api" alt="License"></p>
-				<a href="#description" id="description" style="color: inherit; text-decoration: none;">
-					<h2>Description</h2>
-				</a>
-				<p>This npm package lets you easily perform requests to the <a href="https://developers.facebook.com/docs/instagram-api/">Instagram Graph API</a>, aiming to reduce the integration time and allowing you to easily obtain the information you want through code and to publish your media without hassle.</p>
-				<p>This package is made by independent contributors and is in no way officially related to or supported by Instagram/Facebook.</p>
-				<p>You can find what changed in each version by checking the <a href="changelog/changelog.md">Changelog</a>.</p>
-				<a href="#new-since-120" id="new-since-120" style="color: inherit; text-decoration: none;">
-					<h2>New since 1.2.0</h2>
-				</a>
-				<p>You can now use this lib to publish videos and photos to your page! Check out the <a href="#publishing-media">Publishing media</a> section.</p>
-				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
-					<h2>Installation</h2>
-				</a>
-				<p>Simply run <code>npm install instagram-graph-api</code>.</p>
-				<a href="#what-can-this-lib-currently-do" id="what-can-this-lib-currently-do" style="color: inherit; text-decoration: none;">
-					<h2>What can this lib currently do?</h2>
-				</a>
-				<p>This lib supports making requests to most of the Instagram Graph API resources. It does not yet cover:</p>
-				<ul>
-					<li>  <code>Mentions</code>, <code>Mentioned Comments</code> and <code>Mentioned Media</code> in the <code>IG User</code> node.</li>
-					<li>  Webhooks.</li>
-				</ul>
-				<p>As it currently stands, this lib allows you to get a lot of information about your page and media, including basic information and insights. It also allows you to create and publish media (photos and videos) as well as to create and reply to comments, delete them and hide them.
-				For now, this lib does not contain any complex logic. It simply models requests to the Instagram Graph API and gives you an easy way to execute them.</p>
-				<a href="#how-do-i-use-this-lib" id="how-do-i-use-this-lib" style="color: inherit; text-decoration: none;">
-					<h2>How do I use this lib?</h2>
-				</a>
-				<p>You can always check the <a href="https://tiagogrosso.github.io/instagram-graph-api-lib/">typedoc documentation</a> if you are having doubts.</p>
-				<a href="#building-requests" id="building-requests" style="color: inherit; text-decoration: none;">
-					<h3>Building requests</h3>
-				</a>
-				<p>This lib was built with a simple mindset: creating requests should be as straightforward as possible. With that in mind, to start pumping out requests left and right, just create a client and use it to build requests for you:</p>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">Client</span><span style="color: #000000">, </span><span style="color: #001080">GetPageInfoRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageMediaRequest</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>instagram-graph-api</title><meta name="description" content="Documentation for instagram-graph-api"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">instagram-graph-api</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>instagram-graph-api</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#instagram-graph-api" id="instagram-graph-api" style="color: inherit; text-decoration: none;">
+  <h1>Instagram Graph API</h1>
+</a>
+<p><a href="https://www.npmjs.org/package/instagram-graph-api"><img src="https://img.shields.io/npm/v/instagram-graph-api.svg?style=flat-square" alt="npm version"></a>
+<a href="https://codecov.io/gh/TiagoGrosso/instagram-graph-api-lib"><img src="https://codecov.io/gh/TiagoGrosso/instagram-graph-api-lib/branch/master/graph/badge.svg?token=1WBXW0RE0Q" alt="codecov"></a>
+<a href="https://packagephobia.com/result?p=instagram-graph-api"><img src="https://packagephobia.com/badge?p=instagram-graph-api" alt="install size"></a>
+<a href="http://npm-stat.com/charts.html?package=instagram-graph-api"><img src="https://img.shields.io/npm/dm/instagram-graph-api.svg?style=flat-square" alt="npm downloads"></a>
+<img src="https://img.shields.io/npm/l/instagram-graph-api" alt="License"></p>
 
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">client</span><span style="color: #000000">: </span><span style="color: #267F99">Client</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Client</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
+<a href="#description" id="description" style="color: inherit; text-decoration: none;">
+  <h2>Description</h2>
+</a>
+<p>This npm package lets you easily perform requests to the <a href="https://developers.facebook.com/docs/instagram-api/">Instagram Graph API</a>, aiming to reduce the integration time and allowing you to easily obtain the information you want through code and to publish your media without hassle.</p>
+<p>This package is made by independent contributors and is in no way officially related to or supported by Instagram/Facebook.</p>
+<p>You can find what changed in each version by checking the <a href="changelog/changelog.md">Changelog</a>.</p>
 
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">pageInfoRequest</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000"> = </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">newGetPageInfoRequest</span><span style="color: #000000">();</span>
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">pageMediaRequest</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000"> = </span><span style="color: #001080">client</span><span style="color: #000000">.</span><span style="color: #795E26">newGetPageMediaRequest</span><span style="color: #000000">();</span>
-<span style="color: #000000">[...]</span>
+<a href="#new-since-120" id="new-since-120" style="color: inherit; text-decoration: none;">
+  <h2>New since 1.2.0</h2>
+</a>
+<p>You can now use this lib to publish videos and photos to your page! Check out the <a href="#publishing-media">Publishing media</a> section.</p>
+
+<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+  <h2>Installation</h2>
+</a>
+<p>Simply run <code>npm install instagram-graph-api</code>.</p>
+
+<a href="#what-can-this-lib-currently-do" id="what-can-this-lib-currently-do" style="color: inherit; text-decoration: none;">
+  <h2>What can this lib currently do?</h2>
+</a>
+<p>This lib supports making requests to most of the Instagram Graph API resources. It does not yet cover:</p>
+<ul>
+<li><code>Mentions</code>, <code>Mentioned Comments</code> and <code>Mentioned Media</code> in the <code>IG User</code> node.</li>
+<li>Webhooks.</li>
+</ul>
+<p>As it currently stands, this lib allows you to get a lot of information about your page and media, including basic information and insights. It also allows you to create and publish media (photos and videos) as well as to create and reply to comments, delete them and hide them.
+For now, this lib does not contain any complex logic. It simply models requests to the Instagram Graph API and gives you an easy way to execute them.</p>
+
+<a href="#how-do-i-use-this-lib" id="how-do-i-use-this-lib" style="color: inherit; text-decoration: none;">
+  <h2>How do I use this lib?</h2>
+</a>
+<p>You can always check the <a href="https://tiagogrosso.github.io/instagram-graph-api-lib/">typedoc documentation</a> if you are having doubts.</p>
+
+<a href="#building-requests" id="building-requests" style="color: inherit; text-decoration: none;">
+  <h3>Building requests</h3>
+</a>
+<p>This lib was built with a simple mindset: creating requests should be as straightforward as possible. With that in mind, to start pumping out requests left and right, just create a client and use it to build requests for you:</p>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">Client</span><span class="hl-1">, </span><span class="hl-2">GetPageInfoRequest</span><span class="hl-1">, </span><span class="hl-2">GetPageMediaRequest</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;instagram-graph-api&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">client</span><span class="hl-1">: </span><span class="hl-5">Client</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">Client</span><span class="hl-1">(</span><span class="hl-7">ACCESS_TOKEN</span><span class="hl-1">, </span><span class="hl-7">PAGE_ID</span><span class="hl-1">);</span><br/><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">pageInfoRequest</span><span class="hl-1">: </span><span class="hl-5">GetPageInfoRequest</span><span class="hl-1"> = </span><span class="hl-2">client</span><span class="hl-1">.</span><span class="hl-6">newGetPageInfoRequest</span><span class="hl-1">();</span><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">pageMediaRequest</span><span class="hl-1">: </span><span class="hl-5">GetPageMediaRequest</span><span class="hl-1"> = </span><span class="hl-2">client</span><span class="hl-1">.</span><span class="hl-6">newGetPageMediaRequest</span><span class="hl-1">();</span><br/><span class="hl-1">[...]</span>
 </code></pre>
-				<p>You can also build each request yourself, and that won&#39;t be hard at all. You&#39;ll just have to pass the Access Token and the Page ID to each new request. Here&#39;s an example:</p>
-				<pre><code class="language-typescript"><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetPageInfoRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
+<p>You can also build each request yourself, and that won&#39;t be hard at all. You&#39;ll just have to pass the Access Token and the Page ID to each new request. Here&#39;s an example:</p>
+<pre><code class="language-typescript"><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">request</span><span class="hl-1">: </span><span class="hl-5">GetPageInfoRequest</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">GetPageInfoRequest</span><span class="hl-1">(</span><span class="hl-7">ACCESS_TOKEN</span><span class="hl-1">, </span><span class="hl-7">PAGE_ID</span><span class="hl-1">);</span>
 </code></pre>
-				<a href="#executing-the-requests" id="executing-the-requests" style="color: inherit; text-decoration: none;">
-					<h3>Executing the requests</h3>
-				</a>
-				<p>After you build your request object, you can do one of two things:</p>
-				<a href="#built-in-execute-method" id="built-in-execute-method" style="color: inherit; text-decoration: none;">
-					<h4>Built-in execute() method</h4>
-				</a>
-				<p>You can execute the request with the built in method that returns a parsed response. This will use <a href="https://www.npmjs.com/package/axios">Axios</a>.</p>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageInfoRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageInfoResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
 
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetPageInfoRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
+<a href="#executing-the-requests" id="executing-the-requests" style="color: inherit; text-decoration: none;">
+  <h3>Executing the requests</h3>
+</a>
+<p>After you build your request object, you can do one of two things:</p>
 
-<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageInfoResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">`The page </span><span style="color: #0000FF">${</span><span style="color: #001080">response</span><span style="color: #000000FF">.</span><span style="color: #795E26">getName</span><span style="color: #000000FF">()</span><span style="color: #0000FF">}</span><span style="color: #A31515"> has </span><span style="color: #0000FF">${</span><span style="color: #001080">response</span><span style="color: #000000FF">.</span><span style="color: #795E26">getFollowers</span><span style="color: #000000FF">()</span><span style="color: #0000FF">}</span><span style="color: #A31515"> followers.`</span><span style="color: #000000">);</span>
-<span style="color: #000000">});</span>
+<a href="#built-in-execute-method" id="built-in-execute-method" style="color: inherit; text-decoration: none;">
+  <h4>Built-in execute() method</h4>
+</a>
+<p>You can execute the request with the built in method that returns a parsed response. This will use <a href="https://www.npmjs.com/package/axios">Axios</a>.</p>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">GetPageInfoRequest</span><span class="hl-1">, </span><span class="hl-2">GetPageInfoResponse</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;instagram-graph-api&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">request</span><span class="hl-1">: </span><span class="hl-5">GetPageInfoRequest</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">GetPageInfoRequest</span><span class="hl-1">(</span><span class="hl-7">ACCESS_TOKEN</span><span class="hl-1">, </span><span class="hl-7">PAGE_ID</span><span class="hl-1">);</span><br/><br/><span class="hl-2">request</span><span class="hl-1">.</span><span class="hl-6">execute</span><span class="hl-1">().</span><span class="hl-6">then</span><span class="hl-1">((</span><span class="hl-2">response</span><span class="hl-1">: </span><span class="hl-5">GetPageInfoResponse</span><span class="hl-1">) </span><span class="hl-4">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-3">`The page </span><span class="hl-4">${</span><span class="hl-2">response</span><span class="hl-8">.</span><span class="hl-6">getName</span><span class="hl-8">()</span><span class="hl-4">}</span><span class="hl-3"> has </span><span class="hl-4">${</span><span class="hl-2">response</span><span class="hl-8">.</span><span class="hl-6">getFollowers</span><span class="hl-8">()</span><span class="hl-4">}</span><span class="hl-3"> followers.`</span><span class="hl-1">);</span><br/><span class="hl-1">});</span>
 </code></pre>
-				<a href="#extract-the-config" id="extract-the-config" style="color: inherit; text-decoration: none;">
-					<h4>Extract the config</h4>
-				</a>
-				<p>Alternatively, you can extract the request config to modify it, execute it and parse the response as you see fit.</p>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageInfoRequest</span><span style="color: #000000">, </span><span style="color: #001080">RequestConfig</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
 
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageInfoRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetPageInfoRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
-
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">config</span><span style="color: #000000">: </span><span style="color: #267F99">RequestConfig</span><span style="color: #000000"> = </span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">config</span><span style="color: #000000">();</span>
-
-<span style="color: #000000">[...]</span>
+<a href="#extract-the-config" id="extract-the-config" style="color: inherit; text-decoration: none;">
+  <h4>Extract the config</h4>
+</a>
+<p>Alternatively, you can extract the request config to modify it, execute it and parse the response as you see fit.</p>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">GetPageInfoRequest</span><span class="hl-1">, </span><span class="hl-2">RequestConfig</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;instagram-graph-api&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">request</span><span class="hl-1">: </span><span class="hl-5">GetPageInfoRequest</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">GetPageInfoRequest</span><span class="hl-1">(</span><span class="hl-7">ACCESS_TOKEN</span><span class="hl-1">, </span><span class="hl-7">PAGE_ID</span><span class="hl-1">);</span><br/><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">config</span><span class="hl-1">: </span><span class="hl-5">RequestConfig</span><span class="hl-1"> = </span><span class="hl-2">request</span><span class="hl-1">.</span><span class="hl-6">config</span><span class="hl-1">();</span><br/><br/><span class="hl-1">[...]</span>
 </code></pre>
-				<a href="#publishing-media" id="publishing-media" style="color: inherit; text-decoration: none;">
-					<h3>Publishing media</h3>
-				</a>
-				<p>Publishing Media through the Instagram Graph API, and conversely through this lib, follows these steps:</p>
-				<ol>
-					<li>Create an IG Container object (through the <code>PostPagePhotoMediaRequest</code> or the <code>PostPageVideoMediaRequest</code>).</li>
-					<li>Wait for the IG Container status to move to <code>FINISHED</code> (check the status through the <code>GetContainerRequest</code>).</li>
-					<li>Publish the IG Container (through the <code>PostPublishMediaRequest</code>).</li>
-				</ol>
-				<p>For more info on this flow, refer to the <a href="https://developers.facebook.com/docs/instagram-api/guides/content-publishing">Content Publishing documentation</a>.</p>
-				<a href="#other-request-options" id="other-request-options" style="color: inherit; text-decoration: none;">
-					<h3>Other request options</h3>
-				</a>
-				<p>You can give paging and range options to the requests, as supported by certain resources on the Instagram Graph API. (check the <a href="https://developers.facebook.com/docs/instagram-api/reference/">reference documentation</a> to see which ones do). For example, the Get Page Media request supports paging, here&#39;s a naive example of how to use:</p>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageMediaRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageMediaResponse</span><span style="color: #000000">, </span><span style="color: #001080">PageOption</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
 
-<span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetPageMediaRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">);</span>
+<a href="#publishing-media" id="publishing-media" style="color: inherit; text-decoration: none;">
+  <h3>Publishing media</h3>
+</a>
+<p>Publishing Media through the Instagram Graph API, and conversely through this lib, follows these steps:</p>
+<ol>
+<li>Create an IG Container object (through the <code>PostPagePhotoMediaRequest</code> or the <code>PostPageVideoMediaRequest</code>).</li>
+<li>Wait for the IG Container status to move to <code>FINISHED</code> (check the status through the <code>GetContainerRequest</code>).</li>
+<li>Publish the IG Container (through the <code>PostPublishMediaRequest</code>).</li>
+</ol>
+<p>For more info on this flow, refer to the <a href="https://developers.facebook.com/docs/instagram-api/guides/content-publishing">Content Publishing documentation</a>.</p>
 
-<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">nextPage</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000"> | </span><span style="color: #267F99">undefined</span><span style="color: #000000"> = </span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getPaging</span><span style="color: #000000">().</span><span style="color: #795E26">getAfter</span><span style="color: #000000">();</span>
-<span style="color: #000000">    </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">nextPage</span><span style="color: #000000">) {</span>
-<span style="color: #000000">        </span><span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">withPaging</span><span style="color: #000000">({ </span><span style="color: #001080">option:</span><span style="color: #000000"> </span><span style="color: #001080">PageOption</span><span style="color: #000000">.</span><span style="color: #0070C1">AFTER</span><span style="color: #000000">, </span><span style="color: #001080">value:</span><span style="color: #000000"> </span><span style="color: #001080">nextPage</span><span style="color: #000000"> })</span>
-<span style="color: #000000">               .</span><span style="color: #795E26">execute</span><span style="color: #000000">([...]); </span><span style="color: #008000">// you can reuse the old request 😎</span>
-<span style="color: #000000">    } </span><span style="color: #AF00DB">else</span><span style="color: #000000"> {</span>
-<span style="color: #000000">        </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;🛑🛑🛑&#039;</span><span style="color: #000000">);</span>
-<span style="color: #000000">    }</span>
-<span style="color: #000000">});</span>
+<a href="#other-request-options" id="other-request-options" style="color: inherit; text-decoration: none;">
+  <h3>Other request options</h3>
+</a>
+<p>You can give paging and range options to the requests, as supported by certain resources on the Instagram Graph API. (check the <a href="https://developers.facebook.com/docs/instagram-api/reference/">reference documentation</a> to see which ones do). For example, the Get Page Media request supports paging, here&#39;s a naive example of how to use:</p>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">GetPageMediaRequest</span><span class="hl-1">, </span><span class="hl-2">GetPageMediaResponse</span><span class="hl-1">, </span><span class="hl-2">PageOption</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;instagram-graph-api&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">request</span><span class="hl-1">: </span><span class="hl-5">GetPageMediaRequest</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">GetPageMediaRequest</span><span class="hl-1">(</span><span class="hl-7">ACCESS_TOKEN</span><span class="hl-1">, </span><span class="hl-7">PAGE_ID</span><span class="hl-1">);</span><br/><br/><span class="hl-2">request</span><span class="hl-1">.</span><span class="hl-6">execute</span><span class="hl-1">().</span><span class="hl-6">then</span><span class="hl-1">((</span><span class="hl-2">response</span><span class="hl-1">: </span><span class="hl-5">GetPageMediaResponse</span><span class="hl-1">) </span><span class="hl-4">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-4">let</span><span class="hl-1"> </span><span class="hl-2">nextPage</span><span class="hl-1">: </span><span class="hl-5">string</span><span class="hl-1"> | </span><span class="hl-5">undefined</span><span class="hl-1"> = </span><span class="hl-2">response</span><span class="hl-1">.</span><span class="hl-6">getPaging</span><span class="hl-1">().</span><span class="hl-6">getAfter</span><span class="hl-1">();</span><br/><span class="hl-1">    </span><span class="hl-0">if</span><span class="hl-1"> (</span><span class="hl-2">nextPage</span><span class="hl-1">) {</span><br/><span class="hl-1">        </span><span class="hl-2">request</span><span class="hl-1">.</span><span class="hl-6">withPaging</span><span class="hl-1">({ </span><span class="hl-2">option:</span><span class="hl-1"> </span><span class="hl-2">PageOption</span><span class="hl-1">.</span><span class="hl-7">AFTER</span><span class="hl-1">, </span><span class="hl-2">value:</span><span class="hl-1"> </span><span class="hl-2">nextPage</span><span class="hl-1"> })</span><br/><span class="hl-1">               .</span><span class="hl-6">execute</span><span class="hl-1">([...]); </span><span class="hl-9">// you can reuse the old request 😎</span><br/><span class="hl-1">    } </span><span class="hl-0">else</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-3">&#39;🛑🛑🛑&#39;</span><span class="hl-1">);</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">});</span>
 </code></pre>
-				<p>Similarly, you can add a range option which the Get Insights requests use, like so:</p>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageLifetimeInsightsRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageLifetimeInsightsRequest</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
-
-
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageLifetimeInsightsRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetPageLifetimeInsightsRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">)</span>
-<span style="color: #000000">                                                        .</span><span style="color: #795E26">withRange</span><span style="color: #000000">(</span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;2021-01-01&#039;</span><span style="color: #000000">), </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Date</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;2021-01-15&#039;</span><span style="color: #000000">))</span>
-
-<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageLifetimeInsightsResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    [...]</span>
-<span style="color: #000000">});</span>
+<p>Similarly, you can add a range option which the Get Insights requests use, like so:</p>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">GetPageLifetimeInsightsRequest</span><span class="hl-1">, </span><span class="hl-2">GetPageLifetimeInsightsRequest</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;instagram-graph-api&#39;</span><span class="hl-1">;</span><br/><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-7">request</span><span class="hl-1">: </span><span class="hl-5">GetPageLifetimeInsightsRequest</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">GetPageLifetimeInsightsRequest</span><span class="hl-1">(</span><span class="hl-7">ACCESS_TOKEN</span><span class="hl-1">, </span><span class="hl-7">PAGE_ID</span><span class="hl-1">)</span><br/><span class="hl-1">                                                        .</span><span class="hl-6">withRange</span><span class="hl-1">(</span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-5">Date</span><span class="hl-1">(</span><span class="hl-3">&#39;2021-01-01&#39;</span><span class="hl-1">), </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-5">Date</span><span class="hl-1">(</span><span class="hl-3">&#39;2021-01-15&#39;</span><span class="hl-1">))</span><br/><br/><span class="hl-2">request</span><span class="hl-1">.</span><span class="hl-6">execute</span><span class="hl-1">().</span><span class="hl-6">then</span><span class="hl-1">((</span><span class="hl-2">response</span><span class="hl-1">: </span><span class="hl-5">GetPageLifetimeInsightsResponse</span><span class="hl-1">) </span><span class="hl-4">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    [...]</span><br/><span class="hl-1">});</span>
 </code></pre>
-				<p>Finally, you can add a limit option that will limit the amount of objects retrieved with that request. For example:</p>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetPageMediaRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetPageMediaResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
-
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetPageMediaRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">PAGE_ID</span><span style="color: #000000">).</span><span style="color: #795E26">withLimit</span><span style="color: #000000">(</span><span style="color: #098658">5</span><span style="color: #000000">);</span>
-
-<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetPageMediaResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #001080">console</span><span style="color: #000000">.</span><span style="color: #795E26">log</span><span style="color: #000000">(</span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getData</span><span style="color: #000000">().</span><span style="color: #001080">length</span><span style="color: #000000">); </span><span style="color: #008000">// This will be &lt; 5</span>
-<span style="color: #000000">});</span>
+<p>Finally, you can add a limit option that will limit the amount of objects retrieved with that request. For example:</p>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">GetPageMediaRequest</span><span class="hl-1">, </span><span class="hl-2">GetPageMediaResponse</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;instagram-graph-api&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-7">request</span><span class="hl-1">: </span><span class="hl-5">GetPageMediaRequest</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">GetPageMediaRequest</span><span class="hl-1">(</span><span class="hl-7">ACCESS_TOKEN</span><span class="hl-1">, </span><span class="hl-7">PAGE_ID</span><span class="hl-1">).</span><span class="hl-6">withLimit</span><span class="hl-1">(</span><span class="hl-10">5</span><span class="hl-1">);</span><br/><br/><span class="hl-2">request</span><span class="hl-1">.</span><span class="hl-6">execute</span><span class="hl-1">().</span><span class="hl-6">then</span><span class="hl-1">((</span><span class="hl-2">response</span><span class="hl-1">: </span><span class="hl-5">GetPageMediaResponse</span><span class="hl-1">) </span><span class="hl-4">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-2">console</span><span class="hl-1">.</span><span class="hl-6">log</span><span class="hl-1">(</span><span class="hl-2">response</span><span class="hl-1">.</span><span class="hl-6">getData</span><span class="hl-1">().</span><span class="hl-2">length</span><span class="hl-1">); </span><span class="hl-9">// This will be &lt; 5</span><br/><span class="hl-1">});</span>
 </code></pre>
-				<a href="#access-token" id="access-token" style="color: inherit; text-decoration: none;">
-					<h3>Access Token</h3>
-				</a>
-				<p>To use this lib you&#39;ll require an Access Token to Facebook&#39;s Graph API (over which the Instagram Graph API is built), which in turn will require a couple of other things. Check out the <a href="https://developers.facebook.com/docs/instagram-api/getting-started">before you start</a> on the getting started documentation.</p>
-				<p>You can follow Facebook&#39;s documentation on how to <a href="https://developers.facebook.com/docs/facebook-login/access-tokens/">generate an access token</a> to grab a token for yourself. You&#39;ll most likely want a Page Token. Check which permissions you&#39;ll need for the request you want to perform on the <a href="https://developers.facebook.com/docs/instagram-api/reference/">Instagram Graph API Reference</a>.</p>
-				<p>You can also extend your token&#39;s validity to avoid having to generate a new one once in a while. Once again, Facebook&#39;s documentation on how to <a href="https://developers.facebook.com/docs/facebook-login/access-tokens/refreshing">generate long-lived tokens</a> will come in handy. Long-lived Page Tokens do not have an expiration date, making them ideal for most use cases of this lib.</p>
-				<a href="#using-this-lib-to-manage-user-tokens" id="using-this-lib-to-manage-user-tokens" style="color: inherit; text-decoration: none;">
-					<h4>Using this lib to manage user tokens</h4>
-				</a>
-				<p>For some use cases, for example when you want to build a tool for your own pages, it&#39;s fine to go through the above steps to generate a long-lived token. For other uses cases, such as when you have an app that will make request on behalf of users, it becomes a bother.</p>
-				<p>This lib provides a few requests to get you around that:</p>
-				<ol>
-					<li><p>First, you still need to get your hands on an initial access token. You can get it via a facebook login prompt for users of your app.</p>
-					</li>
-					<li><p>When you have a user token, you can build and execute a <code>GetUserLongLivedTokenRequest</code>:</p>
-						<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetUserLongLivedTokenRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetUserLongLivedTokenResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
 
-<span style="color: #008000">// You can get your APP_ID and APP_SECRET_ID through the Facebook Developers website.</span>
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetUserLongLivedTokenRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetUserLongLivedTokenRequest</span><span style="color: #000000">(</span>
-<span style="color: #000000">    </span><span style="color: #0070C1">APP_ID</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #0070C1">APP_SECRET_ID</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #0070C1">USER_ACCESS_TOKEN</span>
-<span style="color: #000000">);</span>
+<a href="#access-token" id="access-token" style="color: inherit; text-decoration: none;">
+  <h3>Access Token</h3>
+</a>
+<p>To use this lib you&#39;ll require an Access Token to Facebook&#39;s Graph API (over which the Instagram Graph API is built), which in turn will require a couple of other things. Check out the <a href="https://developers.facebook.com/docs/instagram-api/getting-started">before you start</a> on the getting started documentation.</p>
+<p>You can follow Facebook&#39;s documentation on how to <a href="https://developers.facebook.com/docs/facebook-login/access-tokens/">generate an access token</a> to grab a token for yourself. You&#39;ll most likely want a Page Token. Check which permissions you&#39;ll need for the request you want to perform on the <a href="https://developers.facebook.com/docs/instagram-api/reference/">Instagram Graph API Reference</a>.</p>
+<p>You can also extend your token&#39;s validity to avoid having to generate a new one once in a while. Once again, Facebook&#39;s documentation on how to <a href="https://developers.facebook.com/docs/facebook-login/access-tokens/refreshing">generate long-lived tokens</a> will come in handy. Long-lived Page Tokens do not have an expiration date, making them ideal for most use cases of this lib.</p>
 
-<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetUserLongLivedTokenResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">longLivedToken</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000"> = </span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getLongLivedToken</span><span style="color: #000000">();</span>
-<span style="color: #000000">});</span>
+<a href="#using-this-lib-to-manage-user-tokens" id="using-this-lib-to-manage-user-tokens" style="color: inherit; text-decoration: none;">
+  <h4>Using this lib to manage user tokens</h4>
+</a>
+<p>For some use cases, for example when you want to build a tool for your own pages, it&#39;s fine to go through the above steps to generate a long-lived token. For other uses cases, such as when you have an app that will make request on behalf of users, it becomes a bother.</p>
+<p>This lib provides a few requests to get you around that:</p>
+<ol>
+<li><p>First, you still need to get your hands on an initial access token. You can get it via a facebook login prompt for users of your app.</p>
+</li>
+<li><p>When you have a user token, you can build and execute a <code>GetUserLongLivedTokenRequest</code>:</p>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">GetUserLongLivedTokenRequest</span><span class="hl-1">, </span><span class="hl-2">GetUserLongLivedTokenResponse</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;instagram-graph-api&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-9">// You can get your APP_ID and APP_SECRET_ID through the Facebook Developers website.</span><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-7">request</span><span class="hl-1">: </span><span class="hl-5">GetUserLongLivedTokenRequest</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">GetUserLongLivedTokenRequest</span><span class="hl-1">(</span><br/><span class="hl-1">    </span><span class="hl-7">APP_ID</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-7">APP_SECRET_ID</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-7">USER_ACCESS_TOKEN</span><br/><span class="hl-1">);</span><br/><br/><span class="hl-2">request</span><span class="hl-1">.</span><span class="hl-6">execute</span><span class="hl-1">().</span><span class="hl-6">then</span><span class="hl-1">((</span><span class="hl-2">response</span><span class="hl-1">: </span><span class="hl-5">GetUserLongLivedTokenResponse</span><span class="hl-1">) </span><span class="hl-4">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-7">longLivedToken</span><span class="hl-1">: </span><span class="hl-5">string</span><span class="hl-1"> = </span><span class="hl-2">response</span><span class="hl-1">.</span><span class="hl-6">getLongLivedToken</span><span class="hl-1">();</span><br/><span class="hl-1">});</span>
 </code></pre>
-					</li>
-				</ol>
-				<a href="#page-id" id="page-id" style="color: inherit; text-decoration: none;">
-					<h3>Page ID</h3>
-				</a>
-				<p>All the requests to a page will require the use of a Page ID. To find out what the ID of a page is, you can:</p>
-				<ul>
-					<li>  <a href="https://developers.facebook.com/docs/instagram-api/guides/business-discovery">Directly make a call to the API</a></li>
-					<li>  Use one of the many websites that will make that call for you (look for <code>Instagram Page ID</code> on a search engine)</li>
-					<li>  Use this lib to make the request for you, by building and executing a <code>GetLinkedInstagramAccountRequest</code>, as such:</li>
-				</ul>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetLinkedInstagramAccountRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetLinkedInstagramAccountResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
+</li>
+</ol>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetLinkedInstagramAccountRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetLinkedInstagramAccountRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">, </span><span style="color: #0070C1">FACEBOOK_PAGE_ID</span><span style="color: #000000">);</span>
-
-<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetLinkedInstagramAccountResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">pageId</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000"> = </span><span style="color: #001080">response</span><span style="color: #000000">.</span><span style="color: #795E26">getInstagramPageId</span><span style="color: #000000">();</span>
-<span style="color: #000000">});</span>
+<a href="#page-id" id="page-id" style="color: inherit; text-decoration: none;">
+  <h3>Page ID</h3>
+</a>
+<p>All the requests to a page will require the use of a Page ID. To find out what the ID of a page is, you can:</p>
+<ul>
+<li><a href="https://developers.facebook.com/docs/instagram-api/guides/business-discovery">Directly make a call to the API</a></li>
+<li>Use one of the many websites that will make that call for you (look for <code>Instagram Page ID</code> on a search engine)</li>
+<li>Use this lib to make the request for you, by building and executing a <code>GetLinkedInstagramAccountRequest</code>, as such:</li>
+</ul>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">GetLinkedInstagramAccountRequest</span><span class="hl-1">, </span><span class="hl-2">GetLinkedInstagramAccountResponse</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;instagram-graph-api&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-7">request</span><span class="hl-1">: </span><span class="hl-5">GetLinkedInstagramAccountRequest</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">GetLinkedInstagramAccountRequest</span><span class="hl-1">(</span><span class="hl-7">ACCESS_TOKEN</span><span class="hl-1">, </span><span class="hl-7">FACEBOOK_PAGE_ID</span><span class="hl-1">);</span><br/><br/><span class="hl-2">request</span><span class="hl-1">.</span><span class="hl-6">execute</span><span class="hl-1">().</span><span class="hl-6">then</span><span class="hl-1">((</span><span class="hl-2">response</span><span class="hl-1">: </span><span class="hl-5">GetLinkedInstagramAccountResponse</span><span class="hl-1">) </span><span class="hl-4">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-7">pageId</span><span class="hl-1">: </span><span class="hl-5">string</span><span class="hl-1"> = </span><span class="hl-2">response</span><span class="hl-1">.</span><span class="hl-6">getInstagramPageId</span><span class="hl-1">();</span><br/><span class="hl-1">});</span>
 </code></pre>
-				<ul>
-					<li>  You can get the <code>FACEBOOK_PAGE_ID</code> through the Facebook Developers portal but you can also get it through this lib:</li>
-				</ul>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">GetAuthorizedFacebookPagesRequest</span><span style="color: #000000">, </span><span style="color: #001080">GetAuthorizedFacebookPagesResponse</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;instagram-graph-api&#039;</span><span style="color: #000000">;</span>
-
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">request</span><span style="color: #000000">: </span><span style="color: #267F99">GetAuthorizedFacebookPagesRequest</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">GetAuthorizedFacebookPagesRequest</span><span style="color: #000000">(</span><span style="color: #0070C1">ACCESS_TOKEN</span><span style="color: #000000">);</span>
-
-<span style="color: #001080">request</span><span style="color: #000000">.</span><span style="color: #795E26">execute</span><span style="color: #000000">().</span><span style="color: #795E26">then</span><span style="color: #000000">((</span><span style="color: #001080">response</span><span style="color: #000000">: </span><span style="color: #267F99">GetAuthorizedFacebookPagesResponse</span><span style="color: #000000">) </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
-<span style="color: #000000">    </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">firstFacebookPage</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000"> = </span><span style="color: #001080">pagesResponse</span><span style="color: #000000">.</span><span style="color: #795E26">getAuthorizedFacebookPages</span><span style="color: #000000">()[</span><span style="color: #098658">0</span><span style="color: #000000">].</span><span style="color: #001080">id</span><span style="color: #000000">;</span>
-<span style="color: #000000">});</span>
+<ul>
+<li>You can get the <code>FACEBOOK_PAGE_ID</code> through the Facebook Developers portal but you can also get it through this lib:</li>
+</ul>
+<pre><code class="language-typescript"><span class="hl-0">import</span><span class="hl-1"> { </span><span class="hl-2">GetAuthorizedFacebookPagesRequest</span><span class="hl-1">, </span><span class="hl-2">GetAuthorizedFacebookPagesResponse</span><span class="hl-1"> } </span><span class="hl-0">from</span><span class="hl-1"> </span><span class="hl-3">&#39;instagram-graph-api&#39;</span><span class="hl-1">;</span><br/><br/><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-7">request</span><span class="hl-1">: </span><span class="hl-5">GetAuthorizedFacebookPagesRequest</span><span class="hl-1"> = </span><span class="hl-4">new</span><span class="hl-1"> </span><span class="hl-6">GetAuthorizedFacebookPagesRequest</span><span class="hl-1">(</span><span class="hl-7">ACCESS_TOKEN</span><span class="hl-1">);</span><br/><br/><span class="hl-2">request</span><span class="hl-1">.</span><span class="hl-6">execute</span><span class="hl-1">().</span><span class="hl-6">then</span><span class="hl-1">((</span><span class="hl-2">response</span><span class="hl-1">: </span><span class="hl-5">GetAuthorizedFacebookPagesResponse</span><span class="hl-1">) </span><span class="hl-4">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-4">const</span><span class="hl-1"> </span><span class="hl-7">firstFacebookPage</span><span class="hl-1">: </span><span class="hl-5">string</span><span class="hl-1"> = </span><span class="hl-2">pagesResponse</span><span class="hl-1">.</span><span class="hl-6">getAuthorizedFacebookPages</span><span class="hl-1">()[</span><span class="hl-10">0</span><span class="hl-1">].</span><span class="hl-2">id</span><span class="hl-1">;</span><br/><span class="hl-1">});</span>
 </code></pre>
-				<a href="#release-process" id="release-process" style="color: inherit; text-decoration: none;">
-					<h2>Release Process</h2>
-				</a>
-				<p>Releases of this lib should be very incremental. When a new resource is supported a release will be issued soon after without waiting to pile up new features to do big releases.</p>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Modules</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/client.html">Client</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/constants.html">Constants</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/enums.html">Enums</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/utils.html">Utils</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_abstractgetinsightsresponse.html">requests/<wbr>Abstract<wbr>Get<wbr>Insights<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_abstractgetmanymediaresponse.html">requests/<wbr>Abstract<wbr>Get<wbr>Many<wbr>Media<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_abstractgetmediarequest.html">requests/<wbr>Abstract<wbr>Get<wbr>Media<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_abstractrequest.html">requests/<wbr>Abstract<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_abstractresponse.html">requests/<wbr>Abstract<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_params.html">requests/<wbr>Params</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_requestconfig.html">requests/<wbr>Request<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_comment_abstractcommentrequest.html">requests/comment/<wbr>Abstract<wbr>Comment<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_comment_commentupdateresponse.html">requests/comment/<wbr>Comment<wbr>Update<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_comment_deletecommentrequest.html">requests/comment/<wbr>Delete<wbr>Comment<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_comment_getcommentrequest.html">requests/comment/<wbr>Get<wbr>Comment<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_comment_getcommentresponse.html">requests/comment/<wbr>Get<wbr>Comment<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_comment_posthidecommentrequest.html">requests/comment/<wbr>Post<wbr>Hide<wbr>Comment<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_comment_replies_abstractrepliesrequest.html">requests/comment/replies/<wbr>Abstract<wbr>Replies<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_comment_replies_getrepliesrequest.html">requests/comment/replies/<wbr>Get<wbr>Replies<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_comment_replies_postreplyrequest.html">requests/comment/replies/<wbr>Post<wbr>Reply<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_common_createdobjectidresponse.html">requests/common/<wbr>Created<wbr>Object<wbr>IdResponse</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_common_getobjectcommentsresponse.html">requests/common/<wbr>Get<wbr>Object<wbr>Comments<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_common_manyidsresponse.html">requests/common/<wbr>Many<wbr>Ids<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_container_getcontainerrequest.html">requests/container/<wbr>Get<wbr>Container<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_container_getcontainerresponse.html">requests/container/<wbr>Get<wbr>Container<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_authorizedfacebookpagesdata.html">requests/data/<wbr>Authorized<wbr>Facebook<wbr>Pages<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_commentdata.html">requests/data/<wbr>Comment<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_common.html">requests/data/<wbr>Common</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_containerdata.html">requests/data/<wbr>Container<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_contentpublishinglimitdata.html">requests/data/<wbr>Content<wbr>Publishing<wbr>Limit<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_instagramaccountinfodata.html">requests/data/<wbr>Instagram<wbr>Account<wbr>Info<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_linkedinstagramaccountdata.html">requests/data/<wbr>Linked<wbr>Instagram<wbr>Account<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_mediadata.html">requests/data/<wbr>Media<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_pageinfodata.html">requests/data/<wbr>Page<wbr>Info<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_paging.html">requests/data/<wbr>Paging</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_userlonglivedtokendata.html">requests/data/<wbr>User<wbr>Long<wbr>Lived<wbr>Token<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_insights_abstractmetric.html">requests/data/insights/<wbr>Abstract<wbr>Metric</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_insights_basicinsightsmetricdata.html">requests/data/insights/<wbr>Basic<wbr>Insights<wbr>Metric<wbr>Data</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_insights_complexmetric.html">requests/data/insights/<wbr>Complex<wbr>Metric</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_data_insights_simplemetric.html">requests/data/insights/<wbr>Simple<wbr>Metric</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_hashtag_media_abstractgethashtagmediarequest.html">requests/hashtag/media/<wbr>Abstract<wbr>Get<wbr>Hashtag<wbr>Media<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_hashtag_media_gethashtagmediaresponse.html">requests/hashtag/media/<wbr>Get<wbr>Hashtag<wbr>Media<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_hashtag_media_gethashtagrecentmediarequest.html">requests/hashtag/media/<wbr>Get<wbr>Hashtag<wbr>Recent<wbr>Media<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_hashtag_media_gethashtagtopmediarequest.html">requests/hashtag/media/<wbr>Get<wbr>Hashtag<wbr>Top<wbr>Media<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_hashtag_search_gethashtagidrequest.html">requests/hashtag/search/<wbr>Get<wbr>Hashtag<wbr>IdRequest</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_hashtag_search_gethashtagidresponse.html">requests/hashtag/search/<wbr>Get<wbr>Hashtag<wbr>IdResponse</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_media_children_getmediachildrenrequest.html">requests/media/children/<wbr>Get<wbr>Media<wbr>Children<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_media_children_getmediachildrenresponse.html">requests/media/children/<wbr>Get<wbr>Media<wbr>Children<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_media_comments_abstractmediacommentsrequest.html">requests/media/comments/<wbr>Abstract<wbr>Media<wbr>Comments<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_media_comments_getmediacommentsrequest.html">requests/media/comments/<wbr>Get<wbr>Media<wbr>Comments<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_media_comments_postmediacommentrequest.html">requests/media/comments/<wbr>Post<wbr>Media<wbr>Comment<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_media_info_getmediainforequest.html">requests/media/info/<wbr>Get<wbr>Media<wbr>Info<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_media_info_getmediainforesponse.html">requests/media/info/<wbr>Get<wbr>Media<wbr>Info<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_media_insights_abstractgetmediainsightsrequest.html">requests/media/insights/<wbr>Abstract<wbr>Get<wbr>Media<wbr>Insights<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_media_insights_getalbummediainsightsrequest.html">requests/media/insights/<wbr>Get<wbr>Album<wbr>Media<wbr>Insights<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_media_insights_getmediainsightsresponse.html">requests/media/insights/<wbr>Get<wbr>Media<wbr>Insights<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_media_insights_getsimplepostmediainsightsrequest.html">requests/media/insights/<wbr>Get<wbr>Simple<wbr>Post<wbr>Media<wbr>Insights<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_media_insights_getstorymediainsightsrequest.html">requests/media/insights/<wbr>Get<wbr>Story<wbr>Media<wbr>Insights<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_authorized_facebook_pages_getauthorizedfacebookpagesrequest.html">requests/page/authorized_<wbr>facebook_<wbr>pages/<wbr>Get<wbr>Authorized<wbr>Facebook<wbr>Pages<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_authorized_facebook_pages_getauthorizedfacebookpagesresponse.html">requests/page/authorized_<wbr>facebook_<wbr>pages/<wbr>Get<wbr>Authorized<wbr>Facebook<wbr>Pages<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_content_publishing_limit_getcontentpublishinglimitrequest.html">requests/page/content_<wbr>publishing_<wbr>limit/<wbr>Get<wbr>Content<wbr>Publishing<wbr>Limit<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_content_publishing_limit_getcontentpublishinglimitresponse.html">requests/page/content_<wbr>publishing_<wbr>limit/<wbr>Get<wbr>Content<wbr>Publishing<wbr>Limit<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_info_getpageinforequest.html">requests/page/info/<wbr>Get<wbr>Page<wbr>Info<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_info_getpageinforesponse.html">requests/page/info/<wbr>Get<wbr>Page<wbr>Info<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_insights_abstractgetpageinsightsrequest.html">requests/page/insights/<wbr>Abstract<wbr>Get<wbr>Page<wbr>Insights<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_insights_abstractgetpagetimedinsightsrequest.html">requests/page/insights/<wbr>Abstract<wbr>Get<wbr>Page<wbr>Timed<wbr>Insights<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_insights_getpagedayinsightsrequest.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Day<wbr>Insights<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_insights_getpagelifetimeinsightsrequest.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Lifetime<wbr>Insights<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_insights_getpagelifetimeinsightsresponse.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Lifetime<wbr>Insights<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_insights_getpagemonthinsightsrequest.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Month<wbr>Insights<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_insights_getpagetimedinsightsresponse.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Timed<wbr>Insights<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_insights_getpageweekinsightsrequest.html">requests/page/insights/<wbr>Get<wbr>Page<wbr>Week<wbr>Insights<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_instagram_account_info_getinstagramaccountinforequest.html">requests/page/instagram_<wbr>account_<wbr>info/<wbr>Get<wbr>Instagram<wbr>Account<wbr>Info<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_instagram_account_info_getinstagramaccountinforesponse.html">requests/page/instagram_<wbr>account_<wbr>info/<wbr>Get<wbr>Instagram<wbr>Account<wbr>Info<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_linked_instagram_account_getlinkedinstagramaccountrequest.html">requests/page/linked_<wbr>instagram_<wbr>account/<wbr>Get<wbr>Linked<wbr>Instagram<wbr>Account<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_linked_instagram_account_getlinkedinstagramaccountresponse.html">requests/page/linked_<wbr>instagram_<wbr>account/<wbr>Get<wbr>Linked<wbr>Instagram<wbr>Account<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_media_getpagemediarequest.html">requests/page/media/<wbr>Get<wbr>Page<wbr>Media<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_media_getpagemediaresponse.html">requests/page/media/<wbr>Get<wbr>Page<wbr>Media<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_media_postpagephotomediarequest.html">requests/page/media/<wbr>Post<wbr>Page<wbr>Photo<wbr>Media<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_media_postpagevideomediarequest.html">requests/page/media/<wbr>Post<wbr>Page<wbr>Video<wbr>Media<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_media_publish_postpublishmediarequest.html">requests/page/media_<wbr>publish/<wbr>Post<wbr>Publish<wbr>Media<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_recently_searched_hashtags_getpagerecentlysearchedhashtagsrequest.html">requests/page/recently_<wbr>searched_<wbr>hashtags/<wbr>Get<wbr>Page<wbr>Recently<wbr>Searched<wbr>Hashtags<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_stories_getpagestoriesrequest.html">requests/page/stories/<wbr>Get<wbr>Page<wbr>Stories<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_tags_gettagsrequest.html">requests/page/tags/<wbr>Get<wbr>Tags<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_tags_gettagsresponse.html">requests/page/tags/<wbr>Get<wbr>Tags<wbr>Response</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_user_long_lived_token_getuserlonglivedtokenrequest.html">requests/page/user_<wbr>long_<wbr>lived_<wbr>token/<wbr>Get<wbr>User<wbr>Long<wbr>Lived<wbr>Token<wbr>Request</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/requests_page_user_long_lived_token_getuserlonglivedtokenresponse.html">requests/page/user_<wbr>long_<wbr>lived_<wbr>token/<wbr>Get<wbr>User<wbr>Long<wbr>Lived<wbr>Token<wbr>Response</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+
+<a href="#release-process" id="release-process" style="color: inherit; text-decoration: none;">
+  <h2>Release Process</h2>
+</a>
+<p>Releases of this lib should be very incremental. When a new resource is supported a release will be issued soon after without waiting to pile up new features to do big releases.</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-enum"><a href="enums/AlbumMetric.html" class="tsd-kind-icon">Album<wbr/>Metric</a></li><li class="tsd-kind-enum"><a href="enums/ApiVersion.html" class="tsd-kind-icon">Api<wbr/>Version</a></li><li class="tsd-kind-enum"><a href="enums/CONTAINER_STATUS_CODE.html" class="tsd-kind-icon">CONTAINER_<wbr/>STATUS_<wbr/>CODE</a></li><li class="tsd-kind-enum"><a href="enums/CommentField.html" class="tsd-kind-icon">Comment<wbr/>Field</a></li><li class="tsd-kind-enum"><a href="enums/ContainerField.html" class="tsd-kind-icon">Container<wbr/>Field</a></li><li class="tsd-kind-enum"><a href="enums/ContentPublishingLimitFields.html" class="tsd-kind-icon">Content<wbr/>Publishing<wbr/>Limit<wbr/>Fields</a></li><li class="tsd-kind-enum"><a href="enums/DayMetric.html" class="tsd-kind-icon">Day<wbr/>Metric</a></li><li class="tsd-kind-enum"><a href="enums/HashtagMediaField.html" class="tsd-kind-icon">Hashtag<wbr/>Media<wbr/>Field</a></li><li class="tsd-kind-enum"><a href="enums/LifetimeMetric.html" class="tsd-kind-icon">Lifetime<wbr/>Metric</a></li><li class="tsd-kind-enum"><a href="enums/MediaProductType.html" class="tsd-kind-icon">Media<wbr/>Product<wbr/>Type</a></li><li class="tsd-kind-enum"><a href="enums/MediaType.html" class="tsd-kind-icon">Media<wbr/>Type</a></li><li class="tsd-kind-enum"><a href="enums/MetricPeriod.html" class="tsd-kind-icon">Metric<wbr/>Period</a></li><li class="tsd-kind-enum"><a href="enums/PageField.html" class="tsd-kind-icon">Page<wbr/>Field</a></li><li class="tsd-kind-enum"><a href="enums/PageOption.html" class="tsd-kind-icon">Page<wbr/>Option</a></li><li class="tsd-kind-enum"><a href="enums/PrivateMediaField.html" class="tsd-kind-icon">Private<wbr/>Media<wbr/>Field</a></li><li class="tsd-kind-enum"><a href="enums/PublicMediaField.html" class="tsd-kind-icon">Public<wbr/>Media<wbr/>Field</a></li><li class="tsd-kind-enum"><a href="enums/SimplePostMetric.html" class="tsd-kind-icon">Simple<wbr/>Post<wbr/>Metric</a></li><li class="tsd-kind-enum"><a href="enums/StoryMetric.html" class="tsd-kind-icon">Story<wbr/>Metric</a></li><li class="tsd-kind-enum"><a href="enums/WeekAndMonthMetric.html" class="tsd-kind-icon">Week<wbr/>And<wbr/>Month<wbr/>Metric</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AbstractCommentRequest.html" class="tsd-kind-icon">Abstract<wbr/>Comment<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/AbstractGetHashtagMediaRequest.html" class="tsd-kind-icon">Abstract<wbr/>Get<wbr/>Hashtag<wbr/>Media<wbr/>Request</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AbstractGetInsightsResponse.html" class="tsd-kind-icon">Abstract<wbr/>Get<wbr/>Insights<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/AbstractGetManyMediaResponse.html" class="tsd-kind-icon">Abstract<wbr/>Get<wbr/>Many<wbr/>Media<wbr/>Response</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AbstractGetMediaInsightsRequest.html" class="tsd-kind-icon">Abstract<wbr/>Get<wbr/>Media<wbr/>Insights<wbr/>Request</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AbstractGetMediaRequest.html" class="tsd-kind-icon">Abstract<wbr/>Get<wbr/>Media<wbr/>Request</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AbstractGetPageInsightsRequest.html" class="tsd-kind-icon">Abstract<wbr/>Get<wbr/>Page<wbr/>Insights<wbr/>Request</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AbstractGetPageTimedInsightsRequest.html" class="tsd-kind-icon">Abstract<wbr/>Get<wbr/>Page<wbr/>Timed<wbr/>Insights<wbr/>Request</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AbstractMediaCommentsRequest.html" class="tsd-kind-icon">Abstract<wbr/>Media<wbr/>Comments<wbr/>Request</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AbstractMetric.html" class="tsd-kind-icon">Abstract<wbr/>Metric</a></li><li class="tsd-kind-class"><a href="classes/AbstractPostPageMediaRequest.html" class="tsd-kind-icon">Abstract<wbr/>Post<wbr/>Page<wbr/>Media<wbr/>Request</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AbstractRepliesRequest.html" class="tsd-kind-icon">Abstract<wbr/>Replies<wbr/>Request</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AbstractRequest.html" class="tsd-kind-icon">Abstract<wbr/>Request</a></li><li class="tsd-kind-class tsd-has-type-parameter"><a href="classes/AbstractResponse.html" class="tsd-kind-icon">Abstract<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/Client.html" class="tsd-kind-icon">Client</a></li><li class="tsd-kind-class"><a href="classes/CommentUpdateResponse.html" class="tsd-kind-icon">Comment<wbr/>Update<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/ComplexMetric.html" class="tsd-kind-icon">Complex<wbr/>Metric</a></li><li class="tsd-kind-class"><a href="classes/Constants.html" class="tsd-kind-icon">Constants</a></li><li class="tsd-kind-class"><a href="classes/CreatedObjectIdResponse.html" class="tsd-kind-icon">Created<wbr/>Object<wbr/>Id<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/DateOlderThanOneDay.html" class="tsd-kind-icon">Date<wbr/>Older<wbr/>Than<wbr/>One<wbr/>Day</a></li><li class="tsd-kind-class"><a href="classes/DeleteCommentRequest.html" class="tsd-kind-icon">Delete<wbr/>Comment<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetAlbumMediaInsightsRequest.html" class="tsd-kind-icon">Get<wbr/>Album<wbr/>Media<wbr/>Insights<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetAuthorizedFacebookPagesRequest.html" class="tsd-kind-icon">Get<wbr/>Authorized<wbr/>Facebook<wbr/>Pages<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetAuthorizedFacebookPagesResponse.html" class="tsd-kind-icon">Get<wbr/>Authorized<wbr/>Facebook<wbr/>Pages<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetCommentRequest.html" class="tsd-kind-icon">Get<wbr/>Comment<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetCommentResponse.html" class="tsd-kind-icon">Get<wbr/>Comment<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetContainerRequest.html" class="tsd-kind-icon">Get<wbr/>Container<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetContainerResponse.html" class="tsd-kind-icon">Get<wbr/>Container<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetContentPublishingLimitRequest.html" class="tsd-kind-icon">Get<wbr/>Content<wbr/>Publishing<wbr/>Limit<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetContentPublishingLimitResponse.html" class="tsd-kind-icon">Get<wbr/>Content<wbr/>Publishing<wbr/>Limit<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetHashtagIdRequest.html" class="tsd-kind-icon">Get<wbr/>Hashtag<wbr/>Id<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetHashtagIdResponse.html" class="tsd-kind-icon">Get<wbr/>Hashtag<wbr/>Id<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetHashtagMediaResponse.html" class="tsd-kind-icon">Get<wbr/>Hashtag<wbr/>Media<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetHashtagRecentMediaRequest.html" class="tsd-kind-icon">Get<wbr/>Hashtag<wbr/>Recent<wbr/>Media<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetHashtagTopMediaRequest.html" class="tsd-kind-icon">Get<wbr/>Hashtag<wbr/>Top<wbr/>Media<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetInstagramAccountInfoRequest.html" class="tsd-kind-icon">Get<wbr/>Instagram<wbr/>Account<wbr/>Info<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetInstagramAccountInfoResponse.html" class="tsd-kind-icon">Get<wbr/>Instagram<wbr/>Account<wbr/>Info<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetLinkedInstagramAccountRequest.html" class="tsd-kind-icon">Get<wbr/>Linked<wbr/>Instagram<wbr/>Account<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetLinkedInstagramAccountResponse.html" class="tsd-kind-icon">Get<wbr/>Linked<wbr/>Instagram<wbr/>Account<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetMediaChildrenRequest.html" class="tsd-kind-icon">Get<wbr/>Media<wbr/>Children<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetMediaChildrenResponse.html" class="tsd-kind-icon">Get<wbr/>Media<wbr/>Children<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetMediaCommentsRequest.html" class="tsd-kind-icon">Get<wbr/>Media<wbr/>Comments<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetMediaInfoRequest.html" class="tsd-kind-icon">Get<wbr/>Media<wbr/>Info<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetMediaInfoResponse.html" class="tsd-kind-icon">Get<wbr/>Media<wbr/>Info<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetMediaInsightsResponse.html" class="tsd-kind-icon">Get<wbr/>Media<wbr/>Insights<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetObjectCommentsResponse.html" class="tsd-kind-icon">Get<wbr/>Object<wbr/>Comments<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetPageDayInsightsRequest.html" class="tsd-kind-icon">Get<wbr/>Page<wbr/>Day<wbr/>Insights<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetPageInfoRequest.html" class="tsd-kind-icon">Get<wbr/>Page<wbr/>Info<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetPageInfoResponse.html" class="tsd-kind-icon">Get<wbr/>Page<wbr/>Info<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetPageLifetimeInsightsRequest.html" class="tsd-kind-icon">Get<wbr/>Page<wbr/>Lifetime<wbr/>Insights<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetPageLifetimeInsightsResponse.html" class="tsd-kind-icon">Get<wbr/>Page<wbr/>Lifetime<wbr/>Insights<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetPageMediaRequest.html" class="tsd-kind-icon">Get<wbr/>Page<wbr/>Media<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetPageMediaResponse.html" class="tsd-kind-icon">Get<wbr/>Page<wbr/>Media<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetPageMonthInsightsRequest.html" class="tsd-kind-icon">Get<wbr/>Page<wbr/>Month<wbr/>Insights<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetPageRecentlySearchedHashtagsRequest.html" class="tsd-kind-icon">Get<wbr/>Page<wbr/>Recently<wbr/>Searched<wbr/>Hashtags<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetPageStoriesRequest.html" class="tsd-kind-icon">Get<wbr/>Page<wbr/>Stories<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetPageTimedInsightsResponse.html" class="tsd-kind-icon">Get<wbr/>Page<wbr/>Timed<wbr/>Insights<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetPageWeekInsightsRequest.html" class="tsd-kind-icon">Get<wbr/>Page<wbr/>Week<wbr/>Insights<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetRepliesRequest.html" class="tsd-kind-icon">Get<wbr/>Replies<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetSimplePostMediaInsightsRequest.html" class="tsd-kind-icon">Get<wbr/>Simple<wbr/>Post<wbr/>Media<wbr/>Insights<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetStoryMediaInsightsRequest.html" class="tsd-kind-icon">Get<wbr/>Story<wbr/>Media<wbr/>Insights<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetTagsRequest.html" class="tsd-kind-icon">Get<wbr/>Tags<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetTagsResponse.html" class="tsd-kind-icon">Get<wbr/>Tags<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/GetUserLongLivedTokenRequest.html" class="tsd-kind-icon">Get<wbr/>User<wbr/>Long<wbr/>Lived<wbr/>Token<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/GetUserLongLivedTokenResponse.html" class="tsd-kind-icon">Get<wbr/>User<wbr/>Long<wbr/>Lived<wbr/>Token<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/ManyIdsResponse.html" class="tsd-kind-icon">Many<wbr/>Ids<wbr/>Response</a></li><li class="tsd-kind-class"><a href="classes/Paging.html" class="tsd-kind-icon">Paging</a></li><li class="tsd-kind-class"><a href="classes/PostHideCommentRequest.html" class="tsd-kind-icon">Post<wbr/>Hide<wbr/>Comment<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/PostMediaCommentRequest.html" class="tsd-kind-icon">Post<wbr/>Media<wbr/>Comment<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/PostPageCaroulselMediaRequest.html" class="tsd-kind-icon">Post<wbr/>Page<wbr/>Caroulsel<wbr/>Media<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/PostPagePhotoMediaRequest.html" class="tsd-kind-icon">Post<wbr/>Page<wbr/>Photo<wbr/>Media<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/PostPageVideoMediaRequest.html" class="tsd-kind-icon">Post<wbr/>Page<wbr/>Video<wbr/>Media<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/PostPublishMediaRequest.html" class="tsd-kind-icon">Post<wbr/>Publish<wbr/>Media<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/PostReplyRequest.html" class="tsd-kind-icon">Post<wbr/>Reply<wbr/>Request</a></li><li class="tsd-kind-class"><a href="classes/SimpleMetric.html" class="tsd-kind-icon">Simple<wbr/>Metric</a></li><li class="tsd-kind-class"><a href="classes/Utils.html" class="tsd-kind-icon">Utils</a></li><li class="tsd-kind-interface"><a href="interfaces/AuthorizedFacebookPagesData.html" class="tsd-kind-icon">Authorized<wbr/>Facebook<wbr/>Pages<wbr/>Data</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/BasicInsightsMetricData.html" class="tsd-kind-icon">Basic<wbr/>Insights<wbr/>Metric<wbr/>Data</a></li><li class="tsd-kind-interface"><a href="interfaces/CommentData.html" class="tsd-kind-icon">Comment<wbr/>Data</a></li><li class="tsd-kind-interface"><a href="interfaces/CommentReplyData.html" class="tsd-kind-icon">Comment<wbr/>Reply<wbr/>Data</a></li><li class="tsd-kind-interface"><a href="interfaces/Config.html" class="tsd-kind-icon">Config</a></li><li class="tsd-kind-interface"><a href="interfaces/ContainerData.html" class="tsd-kind-icon">Container<wbr/>Data</a></li><li class="tsd-kind-interface"><a href="interfaces/ContentPublishingLimitData.html" class="tsd-kind-icon">Content<wbr/>Publishing<wbr/>Limit<wbr/>Data</a></li><li class="tsd-kind-interface"><a href="interfaces/Cursors.html" class="tsd-kind-icon">Cursors</a></li><li class="tsd-kind-interface"><a href="interfaces/FacebookPage.html" class="tsd-kind-icon">Facebook<wbr/>Page</a></li><li class="tsd-kind-interface"><a href="interfaces/InstagramAccountInfoData.html" class="tsd-kind-icon">Instagram<wbr/>Account<wbr/>Info<wbr/>Data</a></li><li class="tsd-kind-interface"><a href="interfaces/LinkedInstagramAccountData.html" class="tsd-kind-icon">Linked<wbr/>Instagram<wbr/>Account<wbr/>Data</a></li><li class="tsd-kind-interface"><a href="interfaces/MediaData.html" class="tsd-kind-icon">Media<wbr/>Data</a></li><li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/MetricValue.html" class="tsd-kind-icon">Metric<wbr/>Value</a></li><li class="tsd-kind-interface"><a href="interfaces/PageInfoData.html" class="tsd-kind-icon">Page<wbr/>Info<wbr/>Data</a></li><li class="tsd-kind-interface"><a href="interfaces/PagingData.html" class="tsd-kind-icon">Paging<wbr/>Data</a></li><li class="tsd-kind-interface"><a href="interfaces/Params.html" class="tsd-kind-icon">Params</a></li><li class="tsd-kind-interface"><a href="interfaces/RequestConfig.html" class="tsd-kind-icon">Request<wbr/>Config</a></li><li class="tsd-kind-interface"><a href="interfaces/UserLongLivedTokenData.html" class="tsd-kind-icon">User<wbr/>Long<wbr/>Lived<wbr/>Token<wbr/>Data</a></li><li class="tsd-kind-type-alias"><a href="modules.html#Children" class="tsd-kind-icon">Children</a></li><li class="tsd-kind-type-alias"><a href="modules.html#CommentReplies" class="tsd-kind-icon">Comment<wbr/>Replies</a></li><li class="tsd-kind-type-alias"><a href="modules.html#ComplexMetricValue" class="tsd-kind-icon">Complex<wbr/>Metric<wbr/>Value</a></li><li class="tsd-kind-type-alias"><a href="modules.html#InnerId" class="tsd-kind-icon">Inner<wbr/>Id</a></li><li class="tsd-kind-type-alias"><a href="modules.html#MediaField" class="tsd-kind-icon">Media<wbr/>Field</a></li><li class="tsd-kind-type-alias"><a href="modules.html#Method" class="tsd-kind-icon">Method</a></li><li class="tsd-kind-type-alias"><a href="modules.html#PageOptionToken" class="tsd-kind-icon">Page<wbr/>Option<wbr/>Token</a></li><li class="tsd-kind-type-alias"><a href="modules.html#UserTag" class="tsd-kind-icon">User<wbr/>Tag</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>

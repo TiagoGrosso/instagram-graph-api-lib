@@ -4,7 +4,7 @@ import { AbstractPostPageMediaRequest, MediaType } from './AbstractPostPageMedia
  * A request that creates a new Carousel Media container.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 3.0.0
  */
 export class PostPageCaroulselMediaRequest extends AbstractPostPageMediaRequest {
     /**
