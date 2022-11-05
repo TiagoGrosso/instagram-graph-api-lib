@@ -18,16 +18,16 @@ export class GetContainerResponse extends AbstractResponse<ContainerData> {
     }
 
     /**
-     * Gets the container stauts.
+     * Gets the container status.
      *
-     * @returns the container stauts.
+     * @returns the container status.
      */
     public getContainerStatus(): string | undefined {
         return this.data.status;
     }
 
     /**
-     * Gets the the container status code.
+     * Gets the container status code.
      *
      * @returns the container status code.
      */

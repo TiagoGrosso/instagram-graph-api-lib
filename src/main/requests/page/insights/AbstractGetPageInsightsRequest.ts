@@ -19,7 +19,7 @@ export abstract class AbstractGetPageInsightsRequest<
     /**
      * The id of the page.
      */
-    private pageId: string;
+    private readonly pageId: string;
 
     /**
      * The constructor.
@@ -28,7 +28,7 @@ export abstract class AbstractGetPageInsightsRequest<
      * @param pageId the page ID.
      * @param metrics the metrics definitions.
      */
-    constructor(accessToken: string, pageId: string, metrics: Set<T>) {
+    protected constructor(accessToken: string, pageId: string, metrics: Set<T>) {
         super(accessToken);
         this.pageId = pageId;
         this.params.metric = Array.from(metrics).join(',');

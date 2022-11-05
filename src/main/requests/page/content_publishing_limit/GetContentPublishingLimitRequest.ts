@@ -14,7 +14,7 @@ export class GetContentPublishingLimitRequest extends AbstractRequest<GetContent
     /**
      * The page id.
      */
-    private pageId: string;
+    private readonly pageId: string;
 
     /**
      * The constructor.

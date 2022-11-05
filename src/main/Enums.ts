@@ -513,7 +513,7 @@ export enum ContainerField {
     ID = 'id',
 
     /**
-     * Publishing status. If status_code is ERROR, this value will be an error subcode.
+     * Publishing status. If status_code is ERROR, this value will be an error sub code.
      */
     STATUS = 'status',
 

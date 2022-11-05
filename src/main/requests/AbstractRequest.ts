@@ -33,8 +33,9 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
      * The constructor.
      *
      * @param accessToken the access token.
+     * @param apiVersion the API version.
      */
-    constructor(accessToken: string, apiVersion?: ApiVersion) {
+    protected constructor(accessToken: string, apiVersion?: ApiVersion) {
         this.params = {
             access_token: accessToken,
         };

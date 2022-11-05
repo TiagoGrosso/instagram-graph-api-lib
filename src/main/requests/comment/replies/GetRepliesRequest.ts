@@ -14,7 +14,7 @@ export class GetRepliesRequest extends AbstractRepliesRequest<GetObjectCommentsR
      * The constructor.
      *
      * @param accessToken the access token.
-     * @param pageId the id of the comment.
+     * @param commentId the id of the comment.
      * @param fields the fields to retrieve from the API. If no field is specified, all are retrieved.
      */
     constructor(accessToken: string, commentId: string, ...fields: CommentField[]) {

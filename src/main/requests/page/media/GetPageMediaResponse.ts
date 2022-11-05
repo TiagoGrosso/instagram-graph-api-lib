@@ -12,7 +12,7 @@ export class GetPageMediaResponse extends AbstractGetManyMediaResponse {
     /**
      * The paging of the response.
      */
-    private paging: Paging;
+    private readonly paging: Paging;
 
     /**
      * The constructor.

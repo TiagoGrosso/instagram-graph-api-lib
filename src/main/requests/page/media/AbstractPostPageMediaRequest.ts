@@ -13,7 +13,7 @@ export abstract class AbstractPostPageMediaRequest extends AbstractRequest<Creat
     /**
      * The page id.
      */
-    private pageId: string;
+    private readonly pageId: string;
 
     /**
      * The constructor
@@ -23,7 +23,7 @@ export abstract class AbstractPostPageMediaRequest extends AbstractRequest<Creat
      * @param caption the caption.
      * @param locationId the location id.
      */
-    constructor(accessToken: string, pageId: string, caption?: string, locationId?: string) {
+    protected constructor(accessToken: string, pageId: string, caption?: string, locationId?: string) {
         super(accessToken);
         this.pageId = pageId;
         this.params.caption = caption;

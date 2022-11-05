@@ -11,7 +11,7 @@ export class ManyIdsResponse extends AbstractResponse<{ id: string }[]> {
     /**
      * The paging of the response.
      */
-    private paging: Paging;
+    private readonly paging: Paging;
 
     /**
      * The constructor.

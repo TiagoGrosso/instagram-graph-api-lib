@@ -17,6 +17,7 @@ export class PostPagePhotoMediaRequest extends AbstractPostPageMediaRequest {
      * @param caption the caption.
      * @param locationId the location id.
      * @param userTags the user_tags.
+     * @param isCarousel whether the media is a carousel.
      */
     constructor(
         accessToken: string,
@@ -48,7 +49,7 @@ export class PostPagePhotoMediaRequest extends AbstractPostPageMediaRequest {
     /**
      * Sets the is_carousel param in the request.
      *
-     * @param userTags the is_carousel.
+     * @param isCarousel whether the media is a carousel.
      *
      * @returns this object, for chained invocation.
      */

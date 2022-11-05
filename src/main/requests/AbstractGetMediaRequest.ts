@@ -16,7 +16,7 @@ export abstract class AbstractGetMediaRequest<T extends AbstractResponse<unknown
      * @param accessToken the access token.
      * @param fields the fields to retrieve from the API. If no field is specified, all are retrieved.
      */
-    constructor(accessToken: string, ...fields: MediaField[]) {
+    protected constructor(accessToken: string, ...fields: MediaField[]) {
         super(accessToken);
         const fieldsSet: Set<string> = fields.length > 0 ? new Set(fields) : new Set(Utils.getAllMediaFields());
         this.params.fields = Array.from(fieldsSet).join(',');

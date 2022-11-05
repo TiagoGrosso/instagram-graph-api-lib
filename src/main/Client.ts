@@ -36,7 +36,7 @@ import { GetPageMonthInsightsRequest } from './requests/page/insights/GetPageMon
 import { GetPageWeekInsightsRequest } from './requests/page/insights/GetPageWeekInsightsRequest';
 import { GetInstagramAccountInfoRequest } from './requests/page/instagram_account_info/GetInstagramAccountInfoRequest';
 import { GetPageMediaRequest } from './requests/page/media/GetPageMediaRequest';
-import { PostPageCaroulselMediaRequest } from './requests/page/media/PostPageCaroulselMediaRequest';
+import { PostPageCarouselMediaRequest } from './requests/page/media/PostPageCarouselMediaRequest';
 import { PostPagePhotoMediaRequest } from './requests/page/media/PostPagePhotoMediaRequest';
 import { PostPageVideoMediaRequest } from './requests/page/media/PostPageVideoMediaRequest';
 import { PostPublishMediaRequest } from './requests/page/media_publish/PostPublishMediaRequest';
@@ -55,23 +55,24 @@ export class Client {
     /**
      * The API access token.
      */
-    private accessToken: string;
+    private readonly accessToken: string;
 
     /**
      * The id of the page. This is used on page related requests so it should be the page for which the access token has permissions.
      */
-    private pageId: string;
+    private readonly pageId: string;
 
     /**
      * The API version to use on requests.
      */
-    private apiVersion?: ApiVersion;
+    private readonly apiVersion?: ApiVersion;
 
     /**
      * The constructor.
      *
      * @param accessToken the access token.
      * @param pageId The id of the page.
+     * @param apiVersion the API version
      */
     constructor(accessToken: string, pageId: string, apiVersion?: ApiVersion) {
         this.accessToken = accessToken;
@@ -217,12 +218,12 @@ export class Client {
     }
 
     /**
-     * Builds a new {@link GetPostMediaInsightsRequest}.
+     * Builds a new {@link GetSimplePostMediaInsightsRequest}.
      *
      * @param mediaId the media object id (must be of type 'Photo' or 'Video').
      * @param metrics the metrics to retrieve from the API. If no metric is specified, all are retrieved.
      *
-     * @returns a new {@link GetPostMediaInsightsRequest}.
+     * @returns a new {@link GetSimplePostMediaInsightsRequest}.
      */
     public newGetSimplePostMediaInsightsRequest(
         mediaId: string,
@@ -234,12 +235,12 @@ export class Client {
     }
 
     /**
-     * Builds a new {@link GetPostMediaInsightsRequest}.
+     * Builds a new {@link GetStoryMediaInsightsRequest}.
      *
      * @param mediaId the media object id (must be of type 'Story').
      * @param metrics the metrics to retrieve from the API. If no metric is specified, all are retrieved.
      *
-     * @returns a new {@link GetPostMediaInsightsRequest}.
+     * @returns a new {@link GetStoryMediaInsightsRequest}.
      */
     public newGetStoryMediaInsightsRequest(mediaId: string, ...metrics: StoryMetric[]): GetStoryMediaInsightsRequest {
         return new GetStoryMediaInsightsRequest(this.accessToken, mediaId, ...metrics).withApiVersion(this.apiVersion);
@@ -430,20 +431,20 @@ export class Client {
     }
 
     /**
-     * Build a new {@link PostPageCaroulselMediaRequest}.
+     * Build a new {@link PostPageCarouselMediaRequest}.
      *
      * @param caption the caption.
      * @param locationId the location id.
      * @param children the carousel children.
      *
-     * @returns a new {@link PostPageCaroulselMediaRequest}.
+     * @returns a new {@link PostPageCarouselMediaRequest}.
      */
     public newPostPageCaroulselMediaRequest(
         children?: string[],
         caption?: string,
         locationId?: string
-    ): PostPageCaroulselMediaRequest {
-        return new PostPageCaroulselMediaRequest(
+    ): PostPageCarouselMediaRequest {
+        return new PostPageCarouselMediaRequest(
             this.accessToken,
             this.pageId,
             children,

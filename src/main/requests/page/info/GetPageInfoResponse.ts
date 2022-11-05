@@ -27,9 +27,9 @@ export class GetPageInfoResponse extends AbstractResponse<PageInfoData> {
     }
 
     /**
-     * Gets the instragram id of the page.
+     * Gets the Instagram id of the page.
      *
-     * @returns the instragram id of the page.
+     * @returns the Instagram id of the page.
      */
     public getIgId(): string | undefined {
         return this.data.ig_id;

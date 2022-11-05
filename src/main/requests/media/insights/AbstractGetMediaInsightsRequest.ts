@@ -17,7 +17,7 @@ export abstract class AbstractGetMediaInsightsRequest<
     /**
      * The media object id.
      */
-    private mediaId: string;
+    private readonly mediaId: string;
 
     /**
      * The constructor.
@@ -26,7 +26,7 @@ export abstract class AbstractGetMediaInsightsRequest<
      * @param mediaId the media object id (must be of type 'Post').
      * @param metrics the metrics to retrieve from the API.
      */
-    constructor(accessToken: string, mediaId: string, metrics: Set<T>) {
+    protected constructor(accessToken: string, mediaId: string, metrics: Set<T>) {
         super(accessToken);
         this.mediaId = mediaId;
         this.params.metric = Array.from(metrics).join(',');

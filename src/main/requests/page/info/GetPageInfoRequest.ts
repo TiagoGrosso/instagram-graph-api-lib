@@ -13,7 +13,7 @@ export class GetPageInfoRequest extends AbstractRequest<GetPageInfoResponse> {
     /**
      * The page id.
      */
-    private pageId: string;
+    private readonly pageId: string;
 
     /**
      * The constructor.

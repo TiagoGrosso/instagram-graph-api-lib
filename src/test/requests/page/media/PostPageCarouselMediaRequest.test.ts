@@ -2,21 +2,21 @@ import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 import { Constants } from '../../../../main/Constants';
 import { CreatedObjectIdResponse } from '../../../../main/requests/common/CreatedObjectIdResponse';
-import { PostPageCaroulselMediaRequest } from '../../../../main/requests/page/media/PostPageCaroulselMediaRequest';
+import { PostPageCarouselMediaRequest } from '../../../../main/requests/page/media/PostPageCarouselMediaRequest';
 import { TestConstants } from '../../../TestConstants';
 
 describe('PostPageCaroulselMediaRequest.', () => {
-    const request: PostPageCaroulselMediaRequest = new PostPageCaroulselMediaRequest(
+    const request: PostPageCarouselMediaRequest = new PostPageCarouselMediaRequest(
         TestConstants.ACCESS_TOKEN,
         TestConstants.PAGE_ID,
         TestConstants.ID_ARRAY,
         TestConstants.CAPTION,
         TestConstants.LOCATION_ID
     );
-    let requestBare: PostPageCaroulselMediaRequest;
+    let requestBare: PostPageCarouselMediaRequest;
 
     beforeEach(() => {
-        requestBare = new PostPageCaroulselMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID);
+        requestBare = new PostPageCarouselMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID);
     });
 
     it('Builds the config', () => {

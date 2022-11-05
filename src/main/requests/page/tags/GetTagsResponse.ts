@@ -12,7 +12,7 @@ export class GetTagsResponse extends AbstractGetManyMediaResponse {
     /**
      * The cursors of the response.
      */
-    private cursors: Cursors | undefined;
+    private readonly cursors: Cursors | undefined;
 
     /**
      * The constructor.

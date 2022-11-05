@@ -1,7 +1,7 @@
 import { AbstractResponse } from '../../AbstractResponse';
 
 /**
- * Class that represents a response from a Get Hashtag Id request.
+ * Class that represents a response from a Get Hashtag ID request.
  * Technically the request will return an array of objects, but in practice it will always have a single item.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
