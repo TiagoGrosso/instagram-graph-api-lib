@@ -35,7 +35,7 @@
         "@typescript-eslint/parser": "^4.15.0",
         "axios-mock-adapter": "^1.19.0",
         "create-ts-index": "^1.14.0",
-        "eslint": "^7.20.0",
+        "eslint": "^8.26.0",
         "eslint-config-google": "^0.14.0",
         "husky": "^8.0.1",
         "jest": "^26.6.3",
