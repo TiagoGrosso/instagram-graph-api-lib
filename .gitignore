@@ -119,6 +119,7 @@ dist
 *.code-workspace
 lib/
 .vscode/
+.idea/
 
 # For testing purposes
 src/Main.ts

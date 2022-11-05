@@ -14,7 +14,7 @@ export class GetContainerRequest extends AbstractRequest<GetContainerResponse> {
     /**
      * The container id.
      */
-    private containerId: string;
+    private readonly containerId: string;
 
     /**
      * The constructor.

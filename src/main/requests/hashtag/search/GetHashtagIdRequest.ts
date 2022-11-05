@@ -3,7 +3,7 @@ import { AbstractRequest } from '../../AbstractRequest';
 import { GetHashtagIdResponse } from './GetHashtagIdResponse';
 
 /**
- * A request that gets the id of an hashtag.
+ * A request that gets the id of a hashtag.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 0.4.0

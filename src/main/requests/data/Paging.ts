@@ -49,7 +49,7 @@ export class Paging {
     /**
      * The paging data.
      */
-    private pagingData: PagingData;
+    private readonly pagingData: PagingData;
 
     /**
      * The constructor.

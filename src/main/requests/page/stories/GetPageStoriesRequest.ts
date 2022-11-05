@@ -13,16 +13,16 @@ export class GetPageStoriesRequest extends AbstractRequest<ManyIdsResponse> {
     /**
      * The page id.
      */
-    private pageId: string;
+    private readonly pageId: string;
 
     /**
      * The constructor
      *
-     * @param accesToken the access token.
+     * @param accessToken the access token.
      * @param pageId the page id
      */
-    constructor(accesToken: string, pageId: string) {
-        super(accesToken);
+    constructor(accessToken: string, pageId: string) {
+        super(accessToken);
         this.pageId = pageId;
     }
 

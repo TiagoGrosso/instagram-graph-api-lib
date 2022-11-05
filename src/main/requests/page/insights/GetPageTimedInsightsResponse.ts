@@ -13,7 +13,7 @@ export class GetPageTimedInsightsResponse extends AbstractGetInsightsResponse<Si
     /**
      * The paging of the response.
      */
-    private paging: Paging;
+    private readonly paging: Paging;
 
     /**
      * The constructor.

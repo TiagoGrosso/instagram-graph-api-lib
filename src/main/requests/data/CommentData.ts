@@ -77,7 +77,7 @@ export interface CommentReplyData {
 }
 
 /**
- * The type of a comment replies object.
+ * The type of comment replies object.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 0.6.0

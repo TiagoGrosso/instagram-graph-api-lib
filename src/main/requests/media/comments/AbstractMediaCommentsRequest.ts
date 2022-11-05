@@ -11,7 +11,7 @@ export abstract class AbstractMediaCommentsRequest<T extends AbstractResponse<un
     /**
      * The id of the media object.
      */
-    private mediaId: string;
+    private readonly mediaId: string;
 
     /**
      * The constructor.
@@ -19,7 +19,7 @@ export abstract class AbstractMediaCommentsRequest<T extends AbstractResponse<un
      * @param accessToken The access token.
      * @param mediaId the id of the media object.
      */
-    constructor(accessToken: string, mediaId: string) {
+    protected constructor(accessToken: string, mediaId: string) {
         super(accessToken);
         this.mediaId = mediaId;
     }

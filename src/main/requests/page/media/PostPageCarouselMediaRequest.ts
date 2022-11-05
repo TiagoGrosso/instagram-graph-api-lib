@@ -6,13 +6,13 @@ import { AbstractPostPageMediaRequest, MediaType } from './AbstractPostPageMedia
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 3.0.0
  */
-export class PostPageCaroulselMediaRequest extends AbstractPostPageMediaRequest {
+export class PostPageCarouselMediaRequest extends AbstractPostPageMediaRequest {
     /**
      * The constructor
      *
      * @param accessToken the access token.
      * @param pageId the page id.
-     * @param videoUrl the video URL.
+     * @param children the video URL.
      * @param caption the caption.
      * @param locationId the location id.
      */

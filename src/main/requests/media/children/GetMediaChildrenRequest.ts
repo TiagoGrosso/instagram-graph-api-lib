@@ -12,7 +12,7 @@ export class GetMediaChildrenRequest extends AbstractRequest<GetMediaChildrenRes
     /**
      * The id of the media object (must be an album).
      */
-    private mediaId: string;
+    private readonly mediaId: string;
 
     /**
      * The constructor

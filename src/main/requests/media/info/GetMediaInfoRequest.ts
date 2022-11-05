@@ -13,7 +13,7 @@ export class GetMediaInfoRequest extends AbstractGetMediaRequest<GetMediaInfoRes
     /**
      * The media object id.
      */
-    private mediaId: string;
+    private readonly mediaId: string;
 
     /**
      * The constructor

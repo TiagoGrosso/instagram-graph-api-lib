@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
-import { AbstractRequest } from '../../../../main/requests/AbstractRequest';
-import { CreatedObjectIdResponse } from '../../../../main/requests/common/CreatedObjectIdResponse';
-import { Method } from '../../../../main/requests/RequestConfig';
+import { AbstractRequest } from '../../AbstractRequest';
+import { CreatedObjectIdResponse } from '../../common/CreatedObjectIdResponse';
+import { Method } from '../../RequestConfig';
 
 /**
  * A request that publishes a media object.
@@ -13,7 +13,7 @@ export class PostPublishMediaRequest extends AbstractRequest<CreatedObjectIdResp
     /**
      * The page id.
      */
-    private pageId: string;
+    private readonly pageId: string;
 
     /**
      * The constructor.

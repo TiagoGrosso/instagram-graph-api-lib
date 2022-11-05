@@ -13,7 +13,7 @@ export class GetPageMediaRequest extends AbstractGetMediaRequest<GetPageMediaRes
     /**
      * The page id.
      */
-    private pageId: string;
+    private readonly pageId: string;
 
     /**
      * The constructor

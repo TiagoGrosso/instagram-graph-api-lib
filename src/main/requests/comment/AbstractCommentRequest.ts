@@ -11,7 +11,7 @@ export abstract class AbstractCommentRequest<T extends AbstractResponse<unknown>
     /**
      * The id of the comment.
      */
-    private commentId: string;
+    private readonly commentId: string;
 
     /**
      * The constructor.

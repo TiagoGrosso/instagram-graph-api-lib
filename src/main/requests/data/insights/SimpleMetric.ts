@@ -87,7 +87,7 @@ export class SimpleMetric extends AbstractMetric<MetricValue<number>[]> {
     }
 
     /**
-     * Returns the the highest value of the metric. In case of a tie, the first value found is returned.
+     * Returns the highest value of the metric. In case of a tie, the first value found is returned.
      *
      * @returns the highest value of the metric.
      */
@@ -102,7 +102,7 @@ export class SimpleMetric extends AbstractMetric<MetricValue<number>[]> {
     }
 
     /**
-     * Returns the the lowest value of the metric. In case of a tie, the first value found is returned.
+     * Returns the lowest value of the metric. In case of a tie, the first value found is returned.
      *
      * @returns the lowest value of the metric.
      */

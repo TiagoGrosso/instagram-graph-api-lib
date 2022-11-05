@@ -11,7 +11,7 @@ export interface PageInfoData {
     id: string;
 
     /**
-     * The intragram id of the page.
+     * The instagram id of the page.
      */
     ig_id?: string;
 

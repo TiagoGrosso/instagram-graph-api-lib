@@ -13,7 +13,7 @@ export class GetTagsRequest extends AbstractGetMediaRequest<GetTagsResponse> {
     /**
      * The page id.
      */
-    private pageId: string;
+    private readonly pageId: string;
 
     /**
      * The constructor

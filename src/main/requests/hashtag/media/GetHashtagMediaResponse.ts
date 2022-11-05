@@ -12,13 +12,12 @@ export class GetHashtagMediaResponse extends AbstractGetManyMediaResponse {
     /**
      * The paging of the response.
      */
-    private paging: Paging;
+    private readonly paging: Paging;
 
     /**
      * The constructor.
      *
      * @param body the body of the response.
-     * @param paging the paging of the response.
      */
     constructor(body: { data: MediaData[]; paging: PagingData }) {
         super(body.data);

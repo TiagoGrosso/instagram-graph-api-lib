@@ -4,7 +4,7 @@ import { GetLinkedInstagramAccountResponse } from './GetLinkedInstagramAccountRe
 
 /**
  * A Get request to obtain instagram_business_account information related with
- * a Facebock page
+ * a Facebook page
  *
  * @author Andres Gutierrez <andres99@gmail.com>
  * @since 2.0.0
