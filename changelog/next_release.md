@@ -1,12 +1,1 @@
 # `next.release`
-
-# Added
-
-- Support for API Version 14.0.
-- Support for API Version 15.0.
-
-# Changed
-
-- Renamed `PostPageCaroulselMediaRequest` to `PostPageCarouselMediaRequest` to fix a typo.
-- Renamed `accesToken` param in `GetPageRecentlySearchedHashtagsRequest` and `GetPageStoriesRequest` to `accessToken` to fix a typo.
-- Latest API Version updated to 15.0.
