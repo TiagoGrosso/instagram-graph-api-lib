@@ -73,7 +73,8 @@
     "node_modules",
     "**/*.spec.ts",
     "**/*.test.ts",
-    "src/test/TestConstants.ts"
+    "src/test/TestConstants.ts",
+    "src/it/TestEnv.ts"
   ],
   "ts-node": {
     "compilerOptions": {
