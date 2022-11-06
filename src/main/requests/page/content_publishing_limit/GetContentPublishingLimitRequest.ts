@@ -35,9 +35,9 @@ export class GetContentPublishingLimitRequest extends AbstractRequest<GetContent
      * @inheritdoc
      */
     protected parseResponse(
-        response: AxiosResponse<{ data: ContentPublishingLimitData }>
+        response: AxiosResponse<{ data: ContentPublishingLimitData[] }>
     ): GetContentPublishingLimitResponse {
-        return new GetContentPublishingLimitResponse(response.data.data);
+        return new GetContentPublishingLimitResponse(response.data.data[0]);
     }
 
     /**

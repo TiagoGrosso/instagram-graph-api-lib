@@ -278,7 +278,7 @@ export class AbstractGetManyMediaResponse extends AbstractResponse<MediaData[]> 
     }
 
     /**
-     * Getsan array with the shortcodes of the all the media objects.
+     * Gets an array with the shortcodes of the all the media objects.
      * If a media object does not have the 'shortcode' field, 'undefined' is returned for that object.
      *
      * @returns an array with the shortcodes of the all the media objects.
@@ -378,6 +378,8 @@ export class AbstractGetManyMediaResponse extends AbstractResponse<MediaData[]> 
      * If a media object does not have the 'video_title' field, 'undefined' is returned for that object.
      *
      * @returns an array with the video titles of the all the media objects.
+     *
+     * @deprecated this is no longer returned when using the latest versions of the API.
      */
     public getVideoTitles(): (string | undefined)[] {
         return this.data.map((elem) => elem.video_title);
@@ -388,6 +390,8 @@ export class AbstractGetManyMediaResponse extends AbstractResponse<MediaData[]> 
      * If a media object does have not a the 'video_title' field, 'undefined' is returned for that object.
      *
      * @returns a map from the id of the media objects to their 'video_title'.
+     *
+     * @deprecated this is no longer returned when using the latest versions of the API.
      */
     public getVideoTitlesMap(): Map<string, string | undefined> {
         return new Map(
