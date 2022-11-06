@@ -42,12 +42,24 @@ Both the format checker and the linter run on all Pull Request workflows, along 
 
 ## Test Coverage
 
-This repo uses [Jest](https://jestjs.io/) for testing. You can run all tests with coverage by executing `npm run test`. The idea is that Test Coverage remains at 100%.
+This repo uses [Jest](https://jestjs.io/) for testing. You can run all unit tests with coverage by executing `npm run test`. The idea is that Test Coverage remains at 100%.
 
 Test coverage checks have been preemptively reduced to 95% to take into account some unforeseen functionality that might be hard to test.
 The lib itself will likely never have any complex logic that warrants reducing the test coverage, so expect full coverage to be requested before Pull Request approvals.
 
 Creating new tests should be pretty self-explanatory: just follow the already existing structure on the test repo.
+
+## Integration Tests
+
+This repo has integration tests. To run then you need to provide some environment variables either directly or via
+a `.env` file at the root of the project:
+
+* `PAGE_ID` - The id of the instagram page.
+* `PAGE_ACCESS_TOKEN` - A token with permissions to run operations over that page. Check
+  the [Access Token](./README.md#Access Token) section for details.
+
+Then you just need to run `npm run integration-test` and the test environment will pick those variables and use them in
+real requests to the Instagram Graph API.
 
 ## Documentation
 
