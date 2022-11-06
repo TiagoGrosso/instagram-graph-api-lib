@@ -16,3 +16,4 @@ Follow the links to the version that you wish to consult.
 -   [3.0.0](./3.0.0.md)
 -   [4.0.0](./4.0.0.md)
 -   [4.0.1](./4.0.1.md)
+-   [4.0.2](./4.0.2.md)
