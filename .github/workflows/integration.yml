@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  it:
+  integration-tests:
     environment: integration-tests
     env:
       PAGE_ID: ${{ secrets.PAGE_ID }}
