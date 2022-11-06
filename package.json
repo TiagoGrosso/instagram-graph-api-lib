@@ -13,7 +13,8 @@
         "docs": "typedoc --out docs src/Index.ts README.md",
         "format": "prettier --write src",
         "check-format": "prettier --check src",
-        "lint": "eslint src"
+        "lint": "eslint src",
+        "prepare": "husky install"
     },
     "keywords": [
         "lib",
@@ -50,11 +51,6 @@
         "ts-node": "^10.9.1",
         "typedoc": "^0.23.20",
         "typescript": "^4.1.5"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "npm run cti && npm run build && npm test && npm run check-format && npm run lint"
-        }
     },
     "directories": {
         "test": "test"
