@@ -1,0 +1,24 @@
+name: Run Integration Tests
+on:
+  schedule:
+    - cron:  '0 6 * * 6'
+  workflow_dispatch:
+
+jobs:
+  it:
+    environment: integration-tests
+    env:
+      PAGE_ID: ${{ secrets.PAGE_ID }}
+      PAGE_ACCESS_TOKEN: ${{ secrets.PAGE_ACCESS_TOKEN }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+          fetch-depth: 0
+      - name: Install node packages
+        run: npm install
+      - name: Run Integration Tests
+        run: npm run integration-test
