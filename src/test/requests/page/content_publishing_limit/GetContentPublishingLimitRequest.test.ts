@@ -49,7 +49,7 @@ describe('GetContentPublishingLimitRequest', () => {
 
     const mock = new MockAdapter(axios);
     mock.onGet(`${Constants.API_URL}/${TestConstants.PAGE_ID}/content_publishing_limit`).reply(200, {
-        data: TestConstants.CONTENT_PUBLISHING_LIMIT_DATA,
+        data: [TestConstants.CONTENT_PUBLISHING_LIMIT_DATA],
     });
     it('Parses the response', () => {
         expect.assertions(1);
