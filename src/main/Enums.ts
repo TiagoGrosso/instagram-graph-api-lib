@@ -593,3 +593,17 @@ export enum ApiVersion {
      */
     LATEST = V15_0,
 }
+
+/**
+ * The media type.
+ *
+ * @author Tiago Grosso <tiagogrosso99@gmail.com>
+ * @since `next.release`
+ */
+export enum MediaTypeInResponses {
+    IMAGE = 'IMAGE',
+
+    VIDEO = 'VIDEO',
+
+    CAROUSEL = 'CAROUSEL_ALBUM',
+}

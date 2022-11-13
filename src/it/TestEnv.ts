@@ -1,5 +1,6 @@
 import * as dotenv from 'dotenv';
 import { Client } from '../main/Client';
+import { MediaTypeInResponses } from '../main/Enums';
 
 dotenv.config();
 
@@ -24,4 +25,47 @@ const client = new Client(getPageAccessToken(), getPageId());
  */
 export function getClient(): Client {
     return client;
+}
+
+export type Media = { url: string; caption: string; type: MediaTypeInResponses };
+const photos: Media[] = [
+    {
+        url: 'https://www.comfortzone.com/-/media/Images/ComfortZone-NA/US/how-much-do-cats-sleep/shutterstock_1675786837.jpg?h=666&la=en&w=1000&hash=9A158F83CAAF0497119270A4EFAD17F0224831FB',
+        caption: 'Orange cat',
+    },
+    {
+        url: 'https://www.gccfcats.org/wp-content/uploads/2021/09/caring-for-your-cat-2.jpg',
+        caption: 'Kitten',
+    },
+    {
+        url: 'https://www.rochestercatvet.com//images/sitting-cat.jpg',
+        caption: 'Curious cat',
+    },
+].map((photo) => ({ ...photo, type: MediaTypeInResponses.IMAGE }));
+
+const videos: Media[] = [
+    {
+        url: 'https://joy.videvo.net/videvo_files/video/free/2015-07/large_watermarked/Sad_Dog_preview.mp4',
+        caption: 'German shepherd',
+    },
+    {
+        url: 'https://joy.videvo.net/videvo_files/video/free/2015-02/large_watermarked/Silver_Cat_02_Videvo_preview.mp4',
+        caption: 'Cute cat',
+    },
+    {
+        url: 'https://joy.videvo.net/videvo_files/video/free/2014-09/large_watermarked/Limousin_Cows_1__VIdevo_preview.mp4',
+        caption: 'Cows',
+    },
+].map((photo) => ({ ...photo, type: MediaTypeInResponses.VIDEO }));
+
+function randomInArray<T>(array: T[]): T {
+    return array[Math.floor(Math.random() * array.length)];
+}
+
+export function getRandomPhoto(): Media {
+    return randomInArray(photos);
+}
+
+export function getRandomVideo(): Media {
+    return randomInArray(videos);
 }

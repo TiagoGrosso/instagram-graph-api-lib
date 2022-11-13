@@ -1,4 +1,4 @@
-import { MediaProductType } from '../../Enums';
+import { MediaProductType, MediaTypeInResponses } from '../../Enums';
 import { Children } from './Common';
 
 /**
@@ -46,7 +46,7 @@ export interface MediaData {
     /**
      * The type of the media object.
      */
-    media_type?: string;
+    media_type?: MediaTypeInResponses;
 
     /**
      * The url of the media object.

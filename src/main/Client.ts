@@ -58,7 +58,7 @@ export class Client {
     private readonly accessToken: string;
 
     /**
-     * The id of the page. This is used on page related requests so it should be the page for which the access token has permissions.
+     * The id of the page. This is used on page related requests, so it should be the page for which the access token has permissions.
      */
     private readonly pageId: string;
 
@@ -439,7 +439,7 @@ export class Client {
      *
      * @returns a new {@link PostPageCarouselMediaRequest}.
      */
-    public newPostPageCaroulselMediaRequest(
+    public newPostPageCarouselMediaRequest(
         children?: string[],
         caption?: string,
         locationId?: string

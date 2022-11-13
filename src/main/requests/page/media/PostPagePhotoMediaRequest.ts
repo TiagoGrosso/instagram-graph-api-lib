@@ -62,6 +62,7 @@ export class PostPagePhotoMediaRequest extends AbstractPostPageMediaRequest {
      * @inheritdoc
      */
     protected mediaType(): MediaType | undefined {
+        // The API doesn't accept "IMAGE" here, even though it replies with it on media info requests
         return undefined;
     }
 }

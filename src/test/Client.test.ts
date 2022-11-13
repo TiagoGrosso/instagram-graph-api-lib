@@ -528,16 +528,16 @@ describe('Client', () => {
     });
 
     it('Builds a PostPageCarouselMediaRequest', () => {
-        expect(client.newPostPageCaroulselMediaRequest(TestConstants.ID_ARRAY)).toEqual(
+        expect(client.newPostPageCarouselMediaRequest(TestConstants.ID_ARRAY)).toEqual(
             new PostPageCarouselMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.ID_ARRAY)
         );
-        expect(clientExplicitVersion.newPostPageCaroulselMediaRequest()).toEqual(
+        expect(clientExplicitVersion.newPostPageCarouselMediaRequest()).toEqual(
             new PostPageCarouselMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID).withApiVersion(
                 TestConstants.API_VERSION
             )
         );
         expect(
-            client.newPostPageCaroulselMediaRequest(
+            client.newPostPageCarouselMediaRequest(
                 TestConstants.ID_ARRAY,
                 TestConstants.CAPTION,
                 TestConstants.LOCATION_ID
