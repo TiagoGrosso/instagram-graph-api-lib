@@ -44,6 +44,7 @@ import { GetPageRecentlySearchedHashtagsRequest } from './requests/page/recently
 import { GetPageStoriesRequest } from './requests/page/stories/GetPageStoriesRequest';
 import { GetTagsRequest } from './requests/page/tags/GetTagsRequest';
 import { UserTag } from './requests/Params';
+import { PostPageReelMediaRequest } from './requests/page/media/PostPageReelMediaRequest';
 
 /**
  * A client that creating requests.
@@ -426,6 +427,35 @@ export class Client {
             videoUrl,
             caption,
             thumbOffset,
+            locationId
+        ).withApiVersion(this.apiVersion);
+    }
+
+    /**
+     * Build a new {@link PostPageReelMediaRequest}.
+     *
+     * @param videoUrl the video URL.
+     * @param caption the caption.
+     * @param thumbOffset the thumbnail offset.
+     * @param shareToFeed whether the reel should be shared in the feed as well.
+     * @param locationId the location id.
+     *
+     * @returns a new {@link PostPageReelMediaRequest}.
+     */
+    public newPostPageReelMediaRequest(
+        videoUrl: string,
+        caption?: string,
+        thumbOffset?: number,
+        shareToFeed?: boolean,
+        locationId?: string
+    ): PostPageReelMediaRequest {
+        return new PostPageReelMediaRequest(
+            this.accessToken,
+            this.pageId,
+            videoUrl,
+            caption,
+            thumbOffset,
+            shareToFeed,
             locationId
         ).withApiVersion(this.apiVersion);
     }

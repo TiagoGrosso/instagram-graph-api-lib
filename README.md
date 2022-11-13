@@ -14,9 +14,9 @@ This package is made by independent contributors and is in no way officially rel
 
 You can find what changed in each version by checking the [Changelog](changelog/changelog.md).
 
-## New since 1.2.0
+## New since 5.0
 
-You can now use this lib to publish videos and photos to your page! Check out the [Publishing media](#publishing-media) section.
+You can now use this lib to publish reels to your page! Check out the [Publishing media](#publishing-media) section.
 
 ## Installation
 
@@ -92,11 +92,25 @@ import { GetPageInfoRequest, RequestConfig } from 'instagram-graph-api';
 
 Publishing Media through the Instagram Graph API, and conversely through this lib, follows these steps:
 
-1. Create an IG Container object (through the `PostPagePhotoMediaRequest` or the `PostPageVideoMediaRequest`).
+1. Create an IG Container object. The request will return the container id.
+   - For photos use `PostPagePhotoMediaRequest`.
+   - For videos use `PostPageVideoMediaRequest`.
+   - For reels use `PostPageReelMediaRequest`.
+   - For carousels check the [Publishing Carousels section below](#publishing-carousels).
 2. Wait for the IG Container status to move to `FINISHED` (check the status through the `GetContainerRequest`).
 3. Publish the IG Container (through the `PostPublishMediaRequest`).
 
 For more info on this flow, refer to the [Content Publishing documentation](https://developers.facebook.com/docs/instagram-api/guides/content-publishing).
+
+#### Publishing Carousels
+
+Publishing carousels is similar to posting other media types, but you need to create the child containers first. The steps are:
+
+1. Create photo or video containers (2-10 containers).
+2. Wait for the IG Container status to move to `FINISHED`. **Do not publish them!**.
+3. Use the container ids of your photo and video containers in a `PostPageCarouselMediaRequest`.
+4. Wait for the carousel IG Container status to move to `FINISHED`.
+5. Publish the carousel IG Container.
 
 ### Other request options
 

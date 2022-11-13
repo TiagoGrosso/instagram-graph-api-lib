@@ -44,6 +44,7 @@ import { GetPageRecentlySearchedHashtagsRequest } from '../main/requests/page/re
 import { GetPageStoriesRequest } from '../main/requests/page/stories/GetPageStoriesRequest';
 import { GetTagsRequest } from '../main/requests/page/tags/GetTagsRequest';
 import { TestConstants } from './TestConstants';
+import { PostPageReelMediaRequest } from '../main/requests/page/media/PostPageReelMediaRequest';
 
 describe('Client', () => {
     const client: Client = new Client(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID);
@@ -522,6 +523,38 @@ describe('Client', () => {
                 TestConstants.MEDIA_URL,
                 TestConstants.CAPTION,
                 TestConstants.THUMB_OFFSET,
+                TestConstants.LOCATION_ID
+            )
+        );
+    });
+
+    it('Builds a PostPageReelMediaRequest', () => {
+        expect(client.newPostPageReelMediaRequest(TestConstants.MEDIA_URL)).toEqual(
+            new PostPageReelMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.MEDIA_URL)
+        );
+        expect(clientExplicitVersion.newPostPageReelMediaRequest(TestConstants.MEDIA_URL)).toEqual(
+            new PostPageReelMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.MEDIA_URL
+            ).withApiVersion(TestConstants.API_VERSION)
+        );
+        expect(
+            client.newPostPageReelMediaRequest(
+                TestConstants.MEDIA_URL,
+                TestConstants.CAPTION,
+                TestConstants.THUMB_OFFSET,
+                TestConstants.SHARE_TO_FEED,
+                TestConstants.LOCATION_ID
+            )
+        ).toEqual(
+            new PostPageReelMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.MEDIA_URL,
+                TestConstants.CAPTION,
+                TestConstants.THUMB_OFFSET,
+                TestConstants.SHARE_TO_FEED,
                 TestConstants.LOCATION_ID
             )
         );

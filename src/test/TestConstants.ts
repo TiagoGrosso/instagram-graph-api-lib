@@ -443,6 +443,11 @@ export class TestConstants {
     static readonly CAPTION: string = 'Test Caption';
 
     /**
+     * A dummy share_to_feed.
+     */
+    static readonly SHARE_TO_FEED: boolean = true;
+
+    /**
      * A dummy location id.
      */
     static readonly LOCATION_ID: string = '111000999333';

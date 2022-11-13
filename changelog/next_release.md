@@ -2,7 +2,9 @@
 
 ### Added
 
-- Moved `MediaTypeInResponse` enum to `Enums.ts`.
+- Added `MediaTypeInResponse` enum to `Enums.ts`.
+- Support for uploading Reels via the `PostPageReelMediaRequest`.
+- Added `REEL` as a possible value of `MediaProductType` and `MediaType`.
 
 ### Changed
 
