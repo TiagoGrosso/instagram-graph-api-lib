@@ -29,10 +29,10 @@
 <p>This package is made by independent contributors and is in no way officially related to or supported by Instagram/Facebook.</p>
 <p>You can find what changed in each version by checking the <a href="changelog/changelog.md">Changelog</a>.</p>
 
-<a href="#new-since-120" id="new-since-120" style="color: inherit; text-decoration: none;">
-  <h2>New since 1.2.0</h2>
+<a href="#new-since-50" id="new-since-50" style="color: inherit; text-decoration: none;">
+  <h2>New since 5.0</h2>
 </a>
-<p>You can now use this lib to publish videos and photos to your page! Check out the <a href="#publishing-media">Publishing media</a> section.</p>
+<p>You can now use this lib to publish reels to your page! Check out the <a href="#publishing-media">Publishing media</a> section.</p>
 
 <a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
   <h2>Installation</h2>
@@ -89,11 +89,29 @@ For now, this lib does not contain any complex logic. It simply models requests 
 </a>
 <p>Publishing Media through the Instagram Graph API, and conversely through this lib, follows these steps:</p>
 <ol>
-<li>Create an IG Container object (through the <code>PostPagePhotoMediaRequest</code> or the <code>PostPageVideoMediaRequest</code>).</li>
+<li>Create an IG Container object. The request will return the container id.<ul>
+<li>For photos use <code>PostPagePhotoMediaRequest</code>.</li>
+<li>For videos use <code>PostPageVideoMediaRequest</code>.</li>
+<li>For reels use <code>PostPageReelMediaRequest</code>.</li>
+<li>For carousels check the <a href="#publishing-carousels">Publishing Carousels section below</a>.</li>
+</ul>
+</li>
 <li>Wait for the IG Container status to move to <code>FINISHED</code> (check the status through the <code>GetContainerRequest</code>).</li>
 <li>Publish the IG Container (through the <code>PostPublishMediaRequest</code>).</li>
 </ol>
 <p>For more info on this flow, refer to the <a href="https://developers.facebook.com/docs/instagram-api/guides/content-publishing">Content Publishing documentation</a>.</p>
+
+<a href="#publishing-carousels" id="publishing-carousels" style="color: inherit; text-decoration: none;">
+  <h4>Publishing Carousels</h4>
+</a>
+<p>Publishing carousels is similar to posting other media types, but you need to create the child containers first. The steps are:</p>
+<ol>
+<li>Create photo or video containers (2-10 containers).</li>
+<li>Wait for the IG Container status to move to <code>FINISHED</code>. <strong>Do not publish them!</strong>.</li>
+<li>Use the container ids of your photo and video containers in a <code>PostPageCarouselMediaRequest</code>.</li>
+<li>Wait for the carousel IG Container status to move to <code>FINISHED</code>.</li>
+<li>Publish the carousel IG Container.</li>
+</ol>
 
 <a href="#other-request-options" id="other-request-options" style="color: inherit; text-decoration: none;">
   <h3>Other request options</h3>
@@ -185,6 +203,7 @@ For now, this lib does not contain any complex logic. It simply models requests 
 <li class="tsd-kind-enum"><a href="enums/LifetimeMetric.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-8-path"></use><use href="#icon-8-text"></use></svg>Lifetime<wbr/>Metric</a></li>
 <li class="tsd-kind-enum"><a href="enums/MediaProductType.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-8-path"></use><use href="#icon-8-text"></use></svg>Media<wbr/>Product<wbr/>Type</a></li>
 <li class="tsd-kind-enum"><a href="enums/MediaType.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-8-path"></use><use href="#icon-8-text"></use></svg>Media<wbr/>Type</a></li>
+<li class="tsd-kind-enum"><a href="enums/MediaTypeInResponses.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-8-path"></use><use href="#icon-8-text"></use></svg>Media<wbr/>Type<wbr/>In<wbr/>Responses</a></li>
 <li class="tsd-kind-enum"><a href="enums/MetricPeriod.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-8-path"></use><use href="#icon-8-text"></use></svg>Metric<wbr/>Period</a></li>
 <li class="tsd-kind-enum"><a href="enums/PageField.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-8-path"></use><use href="#icon-8-text"></use></svg>Page<wbr/>Field</a></li>
 <li class="tsd-kind-enum"><a href="enums/PageOption.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-8-path"></use><use href="#icon-8-text"></use></svg>Page<wbr/>Option</a></li>
@@ -261,6 +280,7 @@ For now, this lib does not contain any complex logic. It simply models requests 
 <li class="tsd-kind-class"><a href="classes/PostMediaCommentRequest.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Post<wbr/>Media<wbr/>Comment<wbr/>Request</a></li>
 <li class="tsd-kind-class"><a href="classes/PostPageCarouselMediaRequest.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Post<wbr/>Page<wbr/>Carousel<wbr/>Media<wbr/>Request</a></li>
 <li class="tsd-kind-class"><a href="classes/PostPagePhotoMediaRequest.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Post<wbr/>Page<wbr/>Photo<wbr/>Media<wbr/>Request</a></li>
+<li class="tsd-kind-class"><a href="classes/PostPageReelMediaRequest.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Post<wbr/>Page<wbr/>Reel<wbr/>Media<wbr/>Request</a></li>
 <li class="tsd-kind-class"><a href="classes/PostPageVideoMediaRequest.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Post<wbr/>Page<wbr/>Video<wbr/>Media<wbr/>Request</a></li>
 <li class="tsd-kind-class"><a href="classes/PostPublishMediaRequest.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Post<wbr/>Publish<wbr/>Media<wbr/>Request</a></li>
 <li class="tsd-kind-class"><a href="classes/PostReplyRequest.html" class="tsd-index-link"><svg class="tsd-kind-icon" width="24" height="24" viewBox="0 0 24 24"><use href="#icon-128-path"></use><use href="#icon-128-text"></use></svg>Post<wbr/>Reply<wbr/>Request</a></li>

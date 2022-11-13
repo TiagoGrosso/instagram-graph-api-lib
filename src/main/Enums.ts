@@ -599,7 +599,7 @@ export enum ApiVersion {
  * The media type.
  *
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
- * @since `next.release`
+ * @since 5.0.0
  */
 export enum MediaTypeInResponses {
     IMAGE = 'IMAGE',
