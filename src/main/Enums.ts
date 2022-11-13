@@ -335,6 +335,7 @@ export enum MediaProductType {
     FEED = 'FEED',
     IGTV = 'IGTV',
     STORY = 'STORY',
+    REEL = 'REELS',
 }
 
 /**
@@ -603,6 +604,9 @@ export enum ApiVersion {
 export enum MediaTypeInResponses {
     IMAGE = 'IMAGE',
 
+    /**
+     * Applies to both normal videos and reels.
+     */
     VIDEO = 'VIDEO',
 
     CAROUSEL = 'CAROUSEL_ALBUM',

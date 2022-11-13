@@ -42,4 +42,5 @@ export interface Params {
      */
     location_id?: string;
     creation_id?: string;
+    share_to_feed?: boolean;
 }

@@ -94,4 +94,6 @@ export enum MediaType {
     VIDEO = 'VIDEO',
 
     CAROUSEL = 'CAROUSEL',
+
+    REEL = 'REELS',
 }

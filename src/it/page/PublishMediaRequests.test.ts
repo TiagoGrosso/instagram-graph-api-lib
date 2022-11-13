@@ -23,8 +23,12 @@ describe('PublishMedia', () => {
     it('Publishes carousel media', async () => {
         const photoMedia = getRandomPhoto();
         const videoMedia = getRandomVideo();
-        const postPhotoRequest = getClient().newPostPagePhotoMediaRequest(photoMedia.url, photoMedia.caption);
-        const postVideoRequest = getClient().newPostPageVideoMediaRequest(videoMedia.url, videoMedia.caption);
+        const postPhotoRequest = getClient()
+            .newPostPagePhotoMediaRequest(photoMedia.url, photoMedia.caption)
+            .withIsCarousel(true);
+        const postVideoRequest = getClient()
+            .newPostPageVideoMediaRequest(videoMedia.url, videoMedia.caption)
+            .withIsCarousel(true);
 
         const photoContainerId = await createContainerAndWaitToBeReady(postPhotoRequest);
         const videoContainerId = await createContainerAndWaitToBeReady(postVideoRequest);
@@ -45,6 +49,23 @@ describe('PublishMedia', () => {
         expect(response.getOwnerId()).toEqual(getPageId());
         expect(response.getMediaType()).toEqual(MediaTypeInResponses.CAROUSEL);
         expect(response.getMediaProductType()).toEqual(MediaProductType.FEED);
+    });
+
+    it('Publishes reel media', async () => {
+        const media = getRandomVideo();
+        const postReelRequest = getClient().newPostPageReelMediaRequest(media.url, media.caption).withShareToFeed(true);
+
+        const containerId = await createContainerAndWaitToBeReady(postReelRequest);
+
+        const mediaId = await publishMedia(containerId);
+        const getMediaRequest = getClient().newGetMediaInfoRequest(mediaId);
+        const response = await getMediaRequest.execute();
+
+        expect(response.getId()).toEqual(mediaId);
+        expect(response.getCaption()).toEqual(media.caption);
+        expect(response.getOwnerId()).toEqual(getPageId());
+        expect(response.getMediaType()).toEqual(MediaTypeInResponses.VIDEO);
+        expect(response.getMediaProductType()).toEqual(MediaProductType.REEL);
     });
 });
 
