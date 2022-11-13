@@ -6,6 +6,7 @@ const config: Config.InitialOptions = {
     testEnvironment: 'node',
     preset: 'ts-jest',
     collectCoverageFrom: ['**/src/main/**/*.ts', '!src/Main.ts'],
+    testTimeout: 240000,
     coverageThreshold: {
         global: {
             branches: 95,

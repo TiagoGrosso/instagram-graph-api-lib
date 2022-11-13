@@ -14,7 +14,9 @@ export class PostPageVideoMediaRequest extends AbstractPostPageMediaRequest {
      * @param pageId the page id.
      * @param videoUrl the video URL.
      * @param caption the caption.
+     * @param thumbOffset the thumbnail offset.
      * @param locationId the location id.
+     * @param isCarousel whether it is a carousel.
      */
     constructor(
         accessToken: string,
@@ -46,7 +48,7 @@ export class PostPageVideoMediaRequest extends AbstractPostPageMediaRequest {
     /**
      * Sets the is_carousel param in the request.
      *
-     * @param userTags the is_carousel.
+     * @param isCarousel whether it is a carousel.
      *
      * @returns this object, for chained invocation.
      */

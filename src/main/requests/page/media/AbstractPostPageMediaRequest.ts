@@ -91,7 +91,7 @@ export abstract class AbstractPostPageMediaRequest extends AbstractRequest<Creat
  * @since 3.0.0
  */
 export enum MediaType {
-    VIDEO = 'video',
+    VIDEO = 'VIDEO',
 
-    CAROUSEL = 'carousel',
+    CAROUSEL = 'CAROUSEL',
 }

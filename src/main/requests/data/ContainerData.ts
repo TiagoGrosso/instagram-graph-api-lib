@@ -8,27 +8,27 @@ export enum CONTAINER_STATUS_CODE {
     /**
      * The container was not published within 24 hours and has expired.
      */
-    EXPIRED,
+    EXPIRED = 'EXPIRED',
 
     /**
      * The container failed to complete the publishing process.
      */
-    ERROR,
+    ERROR = 'ERROR',
 
     /**
      * The container and its media object are ready to be published.
      */
-    FINISHED,
+    FINISHED = 'FINISHED',
 
     /**
      * The container is still in the publishing process.
      */
-    IN_PROGRESS,
+    IN_PROGRESS = 'IN_PROGRESS',
 
     /**
      * The container's media object has been published.
      */
-    PUBLISHED,
+    PUBLISHED = 'PUBLISHED',
 }
 
 /**
