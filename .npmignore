@@ -125,6 +125,7 @@ tsconfig.json
 jest.config.ts
 lib/Main.*
 .github/*
+.husky/*
 .eslint*
 .prettier*
 CODE_OF_CONDUCT.md
