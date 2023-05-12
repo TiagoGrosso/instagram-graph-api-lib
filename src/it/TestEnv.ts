@@ -30,7 +30,7 @@ export function getClient(): Client {
 export type Media = { url: string; caption: string; type: MediaTypeInResponses };
 const photos: Media[] = [
     {
-        url: 'https://www.comfortzone.com/-/media/Images/ComfortZone-NA/US/how-much-do-cats-sleep/shutterstock_1675786837.jpg?h=666&la=en&w=1000&hash=9A158F83CAAF0497119270A4EFAD17F0224831FB',
+        url: 'https://media.istockphoto.com/id/1018078858/photo/gorgeous-ginger-cat-on-isolated-black-background.jpg?s=612x612&w=0&k=20&c=47yGoaN8LMsLCMKhScisycwaGnZdKTNvdTq61mHTLBo=',
         caption: 'Orange cat',
     },
     {
@@ -38,7 +38,7 @@ const photos: Media[] = [
         caption: 'Kitten',
     },
     {
-        url: 'https://www.rochestercatvet.com//images/sitting-cat.jpg',
+        url: 'https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_640.jpg',
         caption: 'Curious cat',
     },
 ].map((photo) => ({ ...photo, type: MediaTypeInResponses.IMAGE }));
