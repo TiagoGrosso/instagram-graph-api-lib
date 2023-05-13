@@ -4,6 +4,7 @@ import { CONTAINER_STATUS_CODE } from '../../main/requests/data/ContainerData';
 import { MediaProductType, MediaTypeInResponses } from '../../main/Enums';
 import { MediaData } from '../../main/requests/data/MediaData';
 import { AbstractPostPageMediaRequest } from '../../main/requests/page/media/AbstractPostPageMediaRequest';
+import { AxiosError } from 'axios';
 
 describe('PublishMedia', () => {
     it('Publishes photo media', async () => {
@@ -99,12 +100,18 @@ function waitForContainerToBeReady(containerId: string): Promise<boolean> {
 }
 
 async function createContainerAndWaitToBeReady(req: AbstractPostPageMediaRequest): Promise<string> {
-    const containerId = (await req.execute()).getId();
-    const containerSuccess = await waitForContainerToBeReady(containerId);
-    if (!containerSuccess) {
-        fail('There was an error creating the container');
+    try {
+        const containerId = (await req.execute()).getId();
+        const containerSuccess = await waitForContainerToBeReady(containerId);
+        if (!containerSuccess) {
+            fail('There was an error creating the container');
+        }
+        return containerId;
+    } catch (e) {
+        const error = e as AxiosError;
+        console.error(error.response?.data);
+        throw new Error(error.message);
     }
-    return containerId;
 }
 
 async function publishMedia(containerId: string): Promise<string> {
