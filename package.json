@@ -34,7 +34,7 @@
         "@rollup/plugin-node-resolve": "^15.0.1",
         "@types/jest": "^26.0.20",
         "@types/retry": "^0.12.2",
-        "@typescript-eslint/eslint-plugin": "^5.42.0",
+        "@typescript-eslint/eslint-plugin": "^6.13.2",
         "@typescript-eslint/parser": "^5.42.0",
         "axios-mock-adapter": "^1.19.0",
         "create-ts-index": "^1.14.0",
