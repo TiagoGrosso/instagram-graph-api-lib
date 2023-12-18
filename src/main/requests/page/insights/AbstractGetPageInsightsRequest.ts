@@ -14,7 +14,7 @@ import { AbstractMetric } from '../../data/insights/AbstractMetric';
  */
 export abstract class AbstractGetPageInsightsRequest<
     T extends DayMetric | WeekAndMonthMetric | LifetimeMetric,
-    R extends AbstractGetInsightsResponse<AbstractMetric<unknown>>
+    R extends AbstractGetInsightsResponse<AbstractMetric<unknown>>,
 > extends AbstractRequest<R> {
     /**
      * The id of the page.
