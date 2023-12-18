@@ -12,7 +12,7 @@ import { GetPageTimedInsightsResponse } from './GetPageTimedInsightsResponse';
  * @since 0.2.0
  */
 export abstract class AbstractGetPageTimedInsightsRequest<
-    T extends DayMetric | WeekAndMonthMetric
+    T extends DayMetric | WeekAndMonthMetric,
 > extends AbstractGetPageInsightsRequest<T, GetPageTimedInsightsResponse> {
     /**
      * @inheritdoc

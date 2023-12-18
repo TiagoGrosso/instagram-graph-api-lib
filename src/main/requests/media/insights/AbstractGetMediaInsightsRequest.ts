@@ -12,7 +12,7 @@ import { GetMediaInsightsResponse } from './GetMediaInsightsResponse';
  * @since 0.2.0
  */
 export abstract class AbstractGetMediaInsightsRequest<
-    T extends SimplePostMetric | StoryMetric | AlbumMetric
+    T extends SimplePostMetric | StoryMetric | AlbumMetric,
 > extends AbstractRequest<GetMediaInsightsResponse> {
     /**
      * The media object id.
