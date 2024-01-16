@@ -75,7 +75,7 @@ jobs:
             - integration-tests
         steps:
             - uses: actions/checkout@v4
-            - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+            - uses: oleksiyrudenko/gha-git-credentials@v2.1.1
               with:
                   token: '${{ secrets.GITHUB_TOKEN }}'
             - name: Create release branch
@@ -127,7 +127,7 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   ref: ${{ github.event.inputs.version }}
-            - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+            - uses: oleksiyrudenko/gha-git-credentials@v2.1.1
               with:
                   token: '${{ secrets.GITHUB_TOKEN }}'
             - uses: actions/setup-node@v4
@@ -153,7 +153,7 @@ jobs:
             - uses: actions/checkout@v4
               with:
                   ref: ${{ github.event.inputs.version }}
-            - uses: oleksiyrudenko/gha-git-credentials@v2-latest
+            - uses: oleksiyrudenko/gha-git-credentials@v2.1.1
               with:
                   token: '${{ secrets.REPO_PAT }}'
             - uses: repo-sync/pull-request@v2
