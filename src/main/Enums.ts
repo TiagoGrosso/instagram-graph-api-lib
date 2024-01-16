@@ -590,9 +590,24 @@ export enum ApiVersion {
     V15_0 = 'v15.0',
 
     /**
+     * {@link https://developers.facebook.com/docs/graph-api/changelog/version16.0}
+     */
+    V16_0 = 'v16.0',
+
+    /**
+     * {@link https://developers.facebook.com/docs/graph-api/changelog/version17.0}
+     */
+    V17_0 = 'v17.0',
+
+    /**
+     * {@link https://developers.facebook.com/docs/graph-api/changelog/version18.0}
+     */
+    V18_0 = 'v18.0',
+
+    /**
      * The latest API Version available.
      */
-    LATEST = V15_0,
+    LATEST = V18_0,
 }
 
 /**

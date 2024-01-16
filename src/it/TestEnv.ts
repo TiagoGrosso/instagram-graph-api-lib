@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 import { Client } from '../main/Client';
-import { MediaTypeInResponses } from '../main/Enums';
+import { ApiVersion, MediaTypeInResponses } from '../main/Enums';
 
 dotenv.config();
 
@@ -18,7 +18,7 @@ export function getPageAccessToken(): string {
     return process.env.PAGE_ACCESS_TOKEN ?? '';
 }
 
-const client = new Client(getPageAccessToken(), getPageId());
+const client = new Client(getPageAccessToken(), getPageId(), ApiVersion.LATEST);
 
 /**
  * Gets the client to create requests.

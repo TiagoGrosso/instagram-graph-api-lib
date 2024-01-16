@@ -1,63 +1,61 @@
 name: Check code
 on:
-  push:
-    branches:
-      - 'master'
-  pull_request:
-    branches:
-      - '*'
+    push:
+        branches:
+            - 'master'
+    pull_request:
+        branches:
+            - '*'
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '16.x'
-        registry-url: 'https://registry.npmjs.org'
-    - name: Install node packages
-      run: npm install
-    - name: Build index
-      run: npm run cti
-    - name: Build project
-      run: npm run build
-  test:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '16.x'
-        registry-url: 'https://registry.npmjs.org'
-        fetch-depth: 0
-    - name: Install node packages
-      run: npm install
-    - name: Run tests with coverage
-      run: npm test
-    - name: Coverage
-      run: bash <(curl -s https://codecov.io/bash)
-  check-format:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '16.x'
-        registry-url: 'https://registry.npmjs.org'
-    - name: Install node packages
-      run: npm install
-    - name: Check format
-      run: npm run check-format
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: '16.x'
-        registry-url: 'https://registry.npmjs.org'
-    - name: Install node packages
-      run: npm install
-    - name: Run linter
-      run: npm run lint
-
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '16.x'
+                  registry-url: 'https://registry.npmjs.org'
+            - name: Install node packages
+              run: npm install
+            - name: Build index
+              run: npm run cti
+            - name: Build project
+              run: npm run build
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '16.x'
+                  registry-url: 'https://registry.npmjs.org'
+            - name: Install node packages
+              run: npm install
+            - name: Run tests with coverage
+              run: npm test
+            - name: Coverage
+              run: bash <(curl -s https://codecov.io/bash)
+    check-format:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '16.x'
+                  registry-url: 'https://registry.npmjs.org'
+            - name: Install node packages
+              run: npm install
+            - name: Check format
+              run: npm run check-format
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '16.x'
+                  registry-url: 'https://registry.npmjs.org'
+            - name: Install node packages
+              run: npm install
+            - name: Run linter
+              run: npm run lint
