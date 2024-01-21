@@ -38,13 +38,12 @@ import { GetInstagramAccountInfoRequest } from '../main/requests/page/instagram_
 import { GetPageMediaRequest } from '../main/requests/page/media/GetPageMediaRequest';
 import { PostPageCarouselMediaRequest } from '../main/requests/page/media/PostPageCarouselMediaRequest';
 import { PostPagePhotoMediaRequest } from '../main/requests/page/media/PostPagePhotoMediaRequest';
-import { PostPageVideoMediaRequest } from '../main/requests/page/media/PostPageVideoMediaRequest';
+import { PostPageReelMediaRequest } from '../main/requests/page/media/PostPageReelMediaRequest';
 import { PostPublishMediaRequest } from '../main/requests/page/media_publish/PostPublishMediaRequest';
 import { GetPageRecentlySearchedHashtagsRequest } from '../main/requests/page/recently_searched_hashtags/GetPageRecentlySearchedHashtagsRequest';
 import { GetPageStoriesRequest } from '../main/requests/page/stories/GetPageStoriesRequest';
 import { GetTagsRequest } from '../main/requests/page/tags/GetTagsRequest';
 import { TestConstants } from './TestConstants';
-import { PostPageReelMediaRequest } from '../main/requests/page/media/PostPageReelMediaRequest';
 
 describe('Client', () => {
     const client: Client = new Client(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID);
@@ -494,36 +493,6 @@ describe('Client', () => {
                 TestConstants.CAPTION,
                 TestConstants.LOCATION_ID,
                 [TestConstants.USER_TAG]
-            )
-        );
-    });
-
-    it('Builds a PostPageVideoMediaRequest', () => {
-        expect(client.newPostPageVideoMediaRequest(TestConstants.MEDIA_URL)).toEqual(
-            new PostPageVideoMediaRequest(TestConstants.ACCESS_TOKEN, TestConstants.PAGE_ID, TestConstants.MEDIA_URL)
-        );
-        expect(clientExplicitVersion.newPostPageVideoMediaRequest(TestConstants.MEDIA_URL)).toEqual(
-            new PostPageVideoMediaRequest(
-                TestConstants.ACCESS_TOKEN,
-                TestConstants.PAGE_ID,
-                TestConstants.MEDIA_URL
-            ).withApiVersion(TestConstants.API_VERSION)
-        );
-        expect(
-            client.newPostPageVideoMediaRequest(
-                TestConstants.MEDIA_URL,
-                TestConstants.CAPTION,
-                TestConstants.THUMB_OFFSET,
-                TestConstants.LOCATION_ID
-            )
-        ).toEqual(
-            new PostPageVideoMediaRequest(
-                TestConstants.ACCESS_TOKEN,
-                TestConstants.PAGE_ID,
-                TestConstants.MEDIA_URL,
-                TestConstants.CAPTION,
-                TestConstants.THUMB_OFFSET,
-                TestConstants.LOCATION_ID
             )
         );
     });

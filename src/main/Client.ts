@@ -38,7 +38,6 @@ import { GetInstagramAccountInfoRequest } from './requests/page/instagram_accoun
 import { GetPageMediaRequest } from './requests/page/media/GetPageMediaRequest';
 import { PostPageCarouselMediaRequest } from './requests/page/media/PostPageCarouselMediaRequest';
 import { PostPagePhotoMediaRequest } from './requests/page/media/PostPagePhotoMediaRequest';
-import { PostPageVideoMediaRequest } from './requests/page/media/PostPageVideoMediaRequest';
 import { PostPublishMediaRequest } from './requests/page/media_publish/PostPublishMediaRequest';
 import { GetPageRecentlySearchedHashtagsRequest } from './requests/page/recently_searched_hashtags/GetPageRecentlySearchedHashtagsRequest';
 import { GetPageStoriesRequest } from './requests/page/stories/GetPageStoriesRequest';
@@ -402,32 +401,6 @@ export class Client {
             caption,
             locationId,
             userTags
-        ).withApiVersion(this.apiVersion);
-    }
-
-    /**
-     * Build a new {@link PostPageVideoMediaRequest}.
-     *
-     * @param videoUrl the image URL.
-     * @param caption the caption.
-     * @param thumbOffset the thumbnail offset time in milliseconds.
-     * @param locationId the location id.
-     *
-     * @returns a new {@link PostPageVideoMediaRequest}.
-     */
-    public newPostPageVideoMediaRequest(
-        videoUrl: string,
-        caption?: string,
-        thumbOffset?: number,
-        locationId?: string
-    ): PostPageVideoMediaRequest {
-        return new PostPageVideoMediaRequest(
-            this.accessToken,
-            this.pageId,
-            videoUrl,
-            caption,
-            thumbOffset,
-            locationId
         ).withApiVersion(this.apiVersion);
     }
 
