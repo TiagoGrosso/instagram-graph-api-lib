@@ -27,7 +27,7 @@
     "license": "MIT",
     "description": "A library to help perform requests to the Instagram Graph API.",
     "dependencies": {
-        "axios": "^0.21.1"
+        "axios": "^0.27.2"
     },
     "devDependencies": {
         "@commitlint/cli": "^18.4.4",
