@@ -1,41 +1,11 @@
-name: Check code
+name: Publish npm package
 on:
+    workflow_dispatch:
+    push:
+      branches:
+        - 'master'
 
-    pull_request:
-        branches:
-            - '*'
 jobs:
-    check-commit-message:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: '20'
-                  registry-url: 'https://registry.npmjs.org'
-            - name: Install node packages
-              run: npm install
-            - name: Validate PR commits with commitlint
-              if: github.event_name == 'pull_request'
-              run: npx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
-
-    build:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-            - uses: actions/setup-node@v4
-              with:
-                  node-version: '20'
-                  registry-url: 'https://registry.npmjs.org'
-            - name: Install node packages
-              run: npm install
-            - name: Build index
-              run: npm run cti
-            - name: Build project
-              run: npm run build
-
     test:
         runs-on: ubuntu-latest
         steps:
@@ -63,7 +33,7 @@ jobs:
               run: npm install
             - name: Check format
               run: npm run check-format
-              
+
     lint:
         runs-on: ubuntu-latest
         steps:
@@ -76,3 +46,49 @@ jobs:
               run: npm install
             - name: Run linter
               run: npm run lint
+
+    integration-tests:
+        environment: integration-tests
+        env:
+            PAGE_ID: ${{ secrets.PAGE_ID }}
+            PAGE_ACCESS_TOKEN: ${{ secrets.PAGE_ACCESS_TOKEN }}
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+                  registry-url: 'https://registry.npmjs.org'
+            - name: Install node packages
+              run: npm install
+            - name: Run Integration Tests
+              run: npm run integration-test
+
+    publish:
+        needs:
+            - check-format
+            - test
+            - lint
+            - integration-tests
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+              with:
+                persist-credentials: false
+            - uses: actions/setup-node@v4 #d Require because of Husky hooks
+              with:
+                  node-version: '20'
+                  registry-url: 'https://registry.npmjs.org'
+            - name: Install node packages
+              run: npm install
+            - name: Build index
+              run: npm run cti
+            - name: Generate docs
+              run: npm run docs
+            - name: Build project
+              run: npm run build
+            - name: Run Semantic Release
+              run: npx semantic-release
+              env:
+                  GITHUB_TOKEN: ${{ secrets.REPO_PAT }}
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_SEMANTIC_RELEASE_TOKEN }}

@@ -14,6 +14,7 @@
         "format": "prettier --write src",
         "check-format": "prettier --check src",
         "lint": "eslint src",
+        "commit": "commit",
         "prepare": "husky install"
     },
     "keywords": [
@@ -29,9 +30,14 @@
         "axios": "^0.21.1"
     },
     "devDependencies": {
+        "@commitlint/cli": "^18.4.4",
+        "@commitlint/config-angular": "^18.4.4",
+        "@commitlint/prompt-cli": "^18.4.4",
         "@rollup/plugin-commonjs": "^25.0.0",
         "@rollup/plugin-json": "^6.0.0",
         "@rollup/plugin-node-resolve": "^15.0.1",
+        "@semantic-release/changelog": "^6.0.3",
+        "@semantic-release/git": "^10.0.1",
         "@types/jest": "^26.0.20",
         "@types/retry": "^0.12.2",
         "@typescript-eslint/eslint-plugin": "^6.14.0",
@@ -64,5 +70,30 @@
     "bugs": {
         "url": "https://github.com/TiagoGrosso/instagram-graph-api-lib/issues"
     },
-    "homepage": "https://github.com/TiagoGrosso/instagram-graph-api-lib#readme"
+    "homepage": "https://github.com/TiagoGrosso/instagram-graph-api-lib#readme",
+    "release": {
+        "plugins": [
+            "@semantic-release/commit-analyzer",
+            "@semantic-release/github",
+            "@semantic-release/release-notes-generator",
+            [
+                "@semantic-release/changelog",
+                {
+                    "changelogFile": "changelog/CHANGELOG.md"
+                }
+            ],
+            "@semantic-release/npm",
+            [
+                "@semantic-release/git",
+                {
+                    "assets": [
+                        "docs/*",
+                        "changelog/*"
+                    ],
+                    "message": "chore(release): Release ${nextRelease.version} docs\n\n${nextRelease.notes}"
+
+                }
+            ]
+        ]
+    }
 }
