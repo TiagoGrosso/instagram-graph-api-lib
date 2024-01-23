@@ -1,10 +1,10 @@
-import { getClient, getPageId, getRandomPhoto, getRandomVideo, Media } from '../TestEnv';
+import { AxiosError } from 'axios';
 import retry from 'retry';
-import { CONTAINER_STATUS_CODE } from '../../main/requests/data/ContainerData';
 import { MediaProductType, MediaTypeInResponses } from '../../main/Enums';
+import { CONTAINER_STATUS_CODE } from '../../main/requests/data/ContainerData';
 import { MediaData } from '../../main/requests/data/MediaData';
 import { AbstractPostPageMediaRequest } from '../../main/requests/page/media/AbstractPostPageMediaRequest';
-import { AxiosError } from 'axios';
+import { getClient, getPageId, getRandomPhoto, getRandomVideo, Media } from '../TestEnv';
 
 describe('PublishMedia', () => {
     it('Publishes photo media', async () => {
@@ -14,25 +14,18 @@ describe('PublishMedia', () => {
         await publishAndAssertSimpleMedia(containerId, media);
     });
 
-    it('Publishes video media', async () => {
-        const media = getRandomVideo();
-        const postVideoRequest = getClient().newPostPageVideoMediaRequest(media.url, media.caption);
-        const containerId = await createContainerAndWaitToBeReady(postVideoRequest);
-        await publishAndAssertSimpleMedia(containerId, media);
-    });
-
     it('Publishes carousel media', async () => {
         const photoMedia = getRandomPhoto();
-        const videoMedia = getRandomVideo();
+        const photoMedia2 = getRandomPhoto();
         const postPhotoRequest = getClient()
             .newPostPagePhotoMediaRequest(photoMedia.url, photoMedia.caption)
             .withIsCarousel(true);
-        const postVideoRequest = getClient()
-            .newPostPageVideoMediaRequest(videoMedia.url, videoMedia.caption)
+        const postPhotoRequest2 = getClient()
+            .newPostPagePhotoMediaRequest(photoMedia2.url, photoMedia2.caption)
             .withIsCarousel(true);
 
         const photoContainerId = await createContainerAndWaitToBeReady(postPhotoRequest);
-        const videoContainerId = await createContainerAndWaitToBeReady(postVideoRequest);
+        const videoContainerId = await createContainerAndWaitToBeReady(postPhotoRequest2);
 
         const carouselCaption = 'Sample caption';
         const postCarouselRequest = getClient().newPostPageCarouselMediaRequest(
@@ -83,7 +76,8 @@ function waitForContainerToBeReady(containerId: string): Promise<boolean> {
             const response = await getContainerStatusRequest.execute();
             const statusCode = response.getContainerStatusCode();
             if (statusCode === CONTAINER_STATUS_CODE.ERROR) {
-                console.error(response.getContainerStatus());
+                //console.error(response.getContainerStatus());
+                console.error(response);
                 resolve(false);
                 operation.stop();
             }

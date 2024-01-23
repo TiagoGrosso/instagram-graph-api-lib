@@ -93,8 +93,6 @@ export abstract class AbstractPostPageMediaRequest extends AbstractRequest<Creat
 export enum MediaType {
     IMAGE = 'IMAGE',
 
-    VIDEO = 'VIDEO',
-
     CAROUSEL = 'CAROUSEL',
 
     REEL = 'REELS',
