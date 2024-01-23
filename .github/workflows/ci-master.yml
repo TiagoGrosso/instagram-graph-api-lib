@@ -50,7 +50,7 @@ jobs:
     integration-tests:
         environment: integration-tests
         env:
-            PAGE_ID: ${{ secrets.PAGE_ID }}
+            PAGE_ID: ${{ vars.PAGE_ID }}
             PAGE_ACCESS_TOKEN: ${{ secrets.PAGE_ACCESS_TOKEN }}
         runs-on: ubuntu-latest
         steps:
