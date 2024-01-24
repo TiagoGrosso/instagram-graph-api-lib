@@ -61,6 +61,38 @@ describe('PublishMedia', () => {
         expect(response.getMediaType()).toEqual(MediaTypeInResponses.VIDEO);
         expect(response.getMediaProductType()).toEqual(MediaProductType.REEL);
     });
+
+    it('Publishes story image media', async () => {
+        const media = getRandomPhoto();
+        const postStoryRequest = getClient().newPostPageStoriesPhotoMediaRequest(media.url);
+
+        const containerId = await createContainerAndWaitToBeReady(postStoryRequest);
+
+        const mediaId = await publishMedia(containerId);
+        const getMediaRequest = getClient().newGetMediaInfoRequest(mediaId);
+        const response = await getMediaRequest.execute();
+
+        expect(response.getId()).toEqual(mediaId);
+        expect(response.getOwnerId()).toEqual(getPageId());
+        expect(response.getMediaType()).toEqual(MediaTypeInResponses.IMAGE);
+        expect(response.getMediaProductType()).toEqual(MediaProductType.STORY);
+    });
+
+    it('Publishes story video media', async () => {
+        const media = getRandomVideo();
+        const postStoryRequest = getClient().newPostPageStoriesVideoMediaRequest(media.url);
+
+        const containerId = await createContainerAndWaitToBeReady(postStoryRequest);
+
+        const mediaId = await publishMedia(containerId);
+        const getMediaRequest = getClient().newGetMediaInfoRequest(mediaId);
+        const response = await getMediaRequest.execute();
+
+        expect(response.getId()).toEqual(mediaId);
+        expect(response.getOwnerId()).toEqual(getPageId());
+        expect(response.getMediaType()).toEqual(MediaTypeInResponses.VIDEO);
+        expect(response.getMediaProductType()).toEqual(MediaProductType.STORY);
+    });
 });
 
 function waitForContainerToBeReady(containerId: string): Promise<boolean> {

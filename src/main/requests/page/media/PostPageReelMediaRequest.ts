@@ -1,4 +1,5 @@
-import { AbstractPostPageMediaRequest, MediaType } from './AbstractPostPageMediaRequest';
+import { MediaType } from './AbstractPostPageMediaRequest';
+import { AbstractPostPageTimelineMediaRequest } from './AbstractPostTimelineMediaRequest';
 
 /**
  * * A request that creates a new Reels Media container.
@@ -6,7 +7,7 @@ import { AbstractPostPageMediaRequest, MediaType } from './AbstractPostPageMedia
  *  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  *  * @since 5.0.0
  *  */
-export class PostPageReelMediaRequest extends AbstractPostPageMediaRequest {
+export class PostPageReelMediaRequest extends AbstractPostPageTimelineMediaRequest {
     /**
      * The constructor
      *

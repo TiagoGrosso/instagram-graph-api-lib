@@ -14,9 +14,9 @@ This package is made by independent contributors and is in no way officially rel
 
 You can find what changed in each version by checking the [Changelog](changelog/changelog.md).
 
-## New since 5.0
+## New since 6.1
 
-You can now use this lib to publish reels to your page! Check out the [Publishing media](#publishing-media) section.
+You can now use this lib to publish stories to your page! Check out the [Publishing media](#publishing-media) section.
 
 ## Installation
 
@@ -94,9 +94,11 @@ Publishing Media through the Instagram Graph API, and conversely through this li
 
 1. Create an IG Container object. The request will return the container id.
    - For photos use `PostPagePhotoMediaRequest`.
-   - For videos use `PostPageVideoMediaRequest`.
+   - ~~For videos use `PostPageVideoMediaRequest`.~~ Instagram has removed the ability to publish normal/legacy videos through their API. Videos are now always reels.
    - For reels use `PostPageReelMediaRequest`.
    - For carousels check the [Publishing Carousels section below](#publishing-carousels).
+   - For Story videos use `PostPageStoryPhotoMediaRequest`
+   - For Story videos use `PostPageStoryVideoMediaRequest`
 2. Wait for the IG Container status to move to `FINISHED` (check the status through the `GetContainerRequest`).
 3. Publish the IG Container (through the `PostPublishMediaRequest`).
 
@@ -222,4 +224,4 @@ request.execute().then((response: GetAuthorizedFacebookPagesResponse) => {
 
 ## Release Process
 
-Releases of this lib should be very incremental. When a new resource is supported a release will be issued soon after without waiting to pile up new features to do big releases.
+This project follows [Semantic Release](https://github.com/semantic-release/) with a publish on every commit to `master`.

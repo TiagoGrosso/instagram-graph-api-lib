@@ -39,6 +39,8 @@ import { GetPageMediaRequest } from '../main/requests/page/media/GetPageMediaReq
 import { PostPageCarouselMediaRequest } from '../main/requests/page/media/PostPageCarouselMediaRequest';
 import { PostPagePhotoMediaRequest } from '../main/requests/page/media/PostPagePhotoMediaRequest';
 import { PostPageReelMediaRequest } from '../main/requests/page/media/PostPageReelMediaRequest';
+import { PostPageStoriesPhotoMediaRequest } from '../main/requests/page/media/PostPageStoriesPhotoMediaRequest';
+import { PostPageStoriesVideoMediaRequest } from '../main/requests/page/media/PostPageStoriesVideoMediaRequest';
 import { PostPublishMediaRequest } from '../main/requests/page/media_publish/PostPublishMediaRequest';
 import { GetPageRecentlySearchedHashtagsRequest } from '../main/requests/page/recently_searched_hashtags/GetPageRecentlySearchedHashtagsRequest';
 import { GetPageStoriesRequest } from '../main/requests/page/stories/GetPageStoriesRequest';
@@ -564,6 +566,40 @@ describe('Client', () => {
                 TestConstants.ACCESS_TOKEN,
                 TestConstants.PAGE_ID,
                 TestConstants.CONTAINER_ID
+            ).withApiVersion(TestConstants.API_VERSION)
+        );
+    });
+
+    it('Builds a PostPageStoriesPhotoMediaRequest', () => {
+        expect(client.newPostPageStoriesPhotoMediaRequest(TestConstants.MEDIA_URL)).toEqual(
+            new PostPageStoriesPhotoMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.MEDIA_URL
+            )
+        );
+        expect(clientExplicitVersion.newPostPageStoriesPhotoMediaRequest(TestConstants.MEDIA_URL)).toEqual(
+            new PostPageStoriesPhotoMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.MEDIA_URL
+            ).withApiVersion(TestConstants.API_VERSION)
+        );
+    });
+
+    it('Builds a PostPageStoriesVideoMediaRequest', () => {
+        expect(client.newPostPageStoriesVideoMediaRequest(TestConstants.MEDIA_URL)).toEqual(
+            new PostPageStoriesVideoMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.MEDIA_URL
+            )
+        );
+        expect(clientExplicitVersion.newPostPageStoriesVideoMediaRequest(TestConstants.MEDIA_URL)).toEqual(
+            new PostPageStoriesVideoMediaRequest(
+                TestConstants.ACCESS_TOKEN,
+                TestConstants.PAGE_ID,
+                TestConstants.MEDIA_URL
             ).withApiVersion(TestConstants.API_VERSION)
         );
     });

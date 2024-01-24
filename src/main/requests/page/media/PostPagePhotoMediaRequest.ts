@@ -1,5 +1,6 @@
 import { UserTag } from '../../Params';
-import { AbstractPostPageMediaRequest, MediaType } from './AbstractPostPageMediaRequest';
+import { MediaType } from './AbstractPostPageMediaRequest';
+import { AbstractPostPageTimelineMediaRequest } from './AbstractPostTimelineMediaRequest';
 
 /**
  * A request that creates a new Photo Media container.
@@ -7,7 +8,7 @@ import { AbstractPostPageMediaRequest, MediaType } from './AbstractPostPageMedia
  * @author Tiago Grosso <tiagogrosso99@gmail.com>
  * @since 1.1.0
  */
-export class PostPagePhotoMediaRequest extends AbstractPostPageMediaRequest {
+export class PostPagePhotoMediaRequest extends AbstractPostPageTimelineMediaRequest {
     /**
      * The constructor
      *
