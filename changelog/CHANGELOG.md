@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/TiagoGrosso/instagram-graph-api-lib/compare/v6.0.0...v6.1.0) (2024-01-24)
+
+
+### Features
+
+* **page:** adds requests to publish stories to page ([#315](https://github.com/TiagoGrosso/instagram-graph-api-lib/issues/315)) ([04658b7](https://github.com/TiagoGrosso/instagram-graph-api-lib/commit/04658b766a08b282892625dc8a7d64c8692b328d))
+
 # [6.0.0](https://github.com/TiagoGrosso/instagram-graph-api-lib/compare/v5.0.1...v6.0.0) (2024-01-23)
 
 
