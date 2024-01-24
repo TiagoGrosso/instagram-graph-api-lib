@@ -20,39 +20,11 @@ export abstract class AbstractPostPageMediaRequest extends AbstractRequest<Creat
      *
      * @param accessToken the access token.
      * @param pageId the page id.
-     * @param caption the caption.
-     * @param locationId the location id.
      */
-    protected constructor(accessToken: string, pageId: string, caption?: string, locationId?: string) {
+    protected constructor(accessToken: string, pageId: string) {
         super(accessToken);
         this.pageId = pageId;
-        this.params.caption = caption;
-        this.params.location_id = locationId;
         this.params.media_type = this.mediaType();
-    }
-
-    /**
-     * Sets the caption in the request.
-     *
-     * @param caption the caption.
-     *
-     * @returns this object, for chained invocation.
-     */
-    public withCaption(caption: string): this {
-        this.params.caption = caption;
-        return this;
-    }
-
-    /**
-     * Sets the location id in the request.
-     *
-     * @param locationId the location id.
-     *
-     * @returns this object, for chained invocation.
-     */
-    public withLocationId(locationId: string): this {
-        this.params.location_id = locationId;
-        return this;
     }
 
     /**
@@ -96,4 +68,6 @@ export enum MediaType {
     CAROUSEL = 'CAROUSEL',
 
     REEL = 'REELS',
+
+    STORIES = 'STORIES',
 }

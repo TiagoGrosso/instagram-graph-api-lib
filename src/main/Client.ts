@@ -44,6 +44,8 @@ import { GetPageStoriesRequest } from './requests/page/stories/GetPageStoriesReq
 import { GetTagsRequest } from './requests/page/tags/GetTagsRequest';
 import { UserTag } from './requests/Params';
 import { PostPageReelMediaRequest } from './requests/page/media/PostPageReelMediaRequest';
+import { PostPageStoriesPhotoMediaRequest } from './requests/page/media/PostPageStoriesPhotoMediaRequest';
+import { PostPageStoriesVideoMediaRequest } from './requests/page/media/PostPageStoriesVideoMediaRequest';
 
 /**
  * A client that creating requests.
@@ -454,6 +456,32 @@ export class Client {
             caption,
             locationId
         ).withApiVersion(this.apiVersion);
+    }
+
+    /**
+     * Build a new {@link PostPageStoriesPhotoMediaRequest}.
+     *
+     * @param imageUrl the image URL.
+     *
+     * @returns a new {@link PostPageStoriesPhotoMediaRequest}.
+     */
+    public newPostPageStoriesPhotoMediaRequest(imageUrl: string): PostPageStoriesPhotoMediaRequest {
+        return new PostPageStoriesPhotoMediaRequest(this.accessToken, this.pageId, imageUrl).withApiVersion(
+            this.apiVersion
+        );
+    }
+
+    /**
+     * Build a new {@link PostPageStoriesVideoMediaRequest}.
+     *
+     * @param videoUrl the video URL.
+     *
+     * @returns a new {@link PostPageStoriesVideoMediaRequest}.
+     */
+    public newPostPageStoriesVideoMediaRequest(videoUrl: string): PostPageStoriesVideoMediaRequest {
+        return new PostPageStoriesVideoMediaRequest(this.accessToken, this.pageId, videoUrl).withApiVersion(
+            this.apiVersion
+        );
     }
 
     /**
