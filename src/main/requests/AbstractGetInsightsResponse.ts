@@ -48,9 +48,9 @@ export abstract class AbstractGetInsightsResponse<T extends AbstractMetric<unkno
      * @returns the metric with the given name or undefined if not found.
      */
     public getMetricByName(name: string, ignoreCase = true): T | undefined {
-        const sensitivity = ignoreCase ? { sensitivity: 'accent' } : { sensitivity: 'case' };
+        const options: Intl.CollatorOptions = ignoreCase ? { sensitivity: 'accent' } : { sensitivity: 'case' };
         return this.getMetricByExpression(
-            (metric) => metric.getMetricName().localeCompare(name, undefined, sensitivity) === 0
+            (metric) => metric.getMetricName().localeCompare(name, undefined, options) === 0
         );
     }
 
