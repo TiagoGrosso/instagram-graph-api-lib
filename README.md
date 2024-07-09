@@ -43,10 +43,10 @@ This lib was built with a simple mindset: creating requests should be as straigh
 ```typescript
 import { Client, GetPageInfoRequest, GetPageMediaRequest } from 'instagram-graph-api';
 
-  const client: Client = new Client(ACCESS_TOKEN, PAGE_ID);
+const client: Client = new Client(ACCESS_TOKEN, PAGE_ID);
 
-  const pageInfoRequest: GetPageInfoRequest = client.newGetPageInfoRequest();
-  const pageMediaRequest: GetPageMediaRequest = client.newGetPageMediaRequest();
+const pageInfoRequest: GetPageInfoRequest = client.newGetPageInfoRequest();
+const pageMediaRequest: GetPageMediaRequest = client.newGetPageMediaRequest();
 [...]
 ```
 
@@ -67,7 +67,7 @@ You can execute the request with the built in method that returns a parsed respo
 ```typescript
 import { GetPageInfoRequest, GetPageInfoResponse } from 'instagram-graph-api';
 
-  const request: GetPageInfoRequest = new GetPageInfoRequest(ACCESS_TOKEN, PAGE_ID);
+const request: GetPageInfoRequest = new GetPageInfoRequest(ACCESS_TOKEN, PAGE_ID);
 
 request.execute().then((response: GetPageInfoResponse) => {
     console.log(`The page ${response.getName()} has ${response.getFollowers()} followers.`);
@@ -81,9 +81,9 @@ Alternatively, you can extract the request config to modify it, execute it and p
 ```typescript
 import { GetPageInfoRequest, RequestConfig } from 'instagram-graph-api';
 
-  const request: GetPageInfoRequest = new GetPageInfoRequest(ACCESS_TOKEN, PAGE_ID);
+const request: GetPageInfoRequest = new GetPageInfoRequest(ACCESS_TOKEN, PAGE_ID);
 
-  const config: RequestConfig = request.config();
+const config: RequestConfig = request.config();
 
 [...]
 ```
@@ -121,7 +121,7 @@ You can give paging and range options to the requests, as supported by certain r
 ```typescript
 import { GetPageMediaRequest, GetPageMediaResponse, PageOption } from 'instagram-graph-api';
 
-  const request: GetPageMediaRequest = new GetPageMediaRequest(ACCESS_TOKEN, PAGE_ID);
+const request: GetPageMediaRequest = new GetPageMediaRequest(ACCESS_TOKEN, PAGE_ID);
 
 request.execute().then((response: GetPageMediaResponse) => {
       const nextPage: string | undefined = response.getPaging().getAfter();
