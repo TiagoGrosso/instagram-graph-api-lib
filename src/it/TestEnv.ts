@@ -45,15 +45,15 @@ const photos: Media[] = [
 
 const videos: Media[] = [
     {
-        url: 'https://joy.videvo.net/videvo_files/video/free/2015-07/large_watermarked/Sad_Dog_preview.mp4',
-        caption: 'German shepherd',
+        url: 'https://videos.pexels.com/video-files/855029/855029-sd_640_360_30fps.mp4',
+        caption: 'Cat bathing',
     },
     {
-        url: 'https://joy.videvo.net/videvo_files/video/free/2015-02/large_watermarked/Silver_Cat_02_Videvo_preview.mp4',
-        caption: 'Cute cat',
+        url: 'https://videos.pexels.com/video-files/854132/854132-sd_640_360_25fps.mp4',
+        caption: 'Golden pupper',
     },
     {
-        url: 'https://joy.videvo.net/videvo_files/video/free/2014-09/large_watermarked/Limousin_Cows_1__VIdevo_preview.mp4',
+        url: 'https://videos.pexels.com/video-files/857176/857176-sd_640_360_25fps.mp4',
         caption: 'Cows',
     },
 ].map((photo) => ({ ...photo, type: MediaTypeInResponses.VIDEO }));
