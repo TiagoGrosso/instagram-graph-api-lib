@@ -6,6 +6,8 @@ import { MediaData } from '../../main/requests/data/MediaData';
 import { AbstractPostPageMediaRequest } from '../../main/requests/page/media/AbstractPostPageMediaRequest';
 import { getClient, getPageId, getRandomPhoto, getRandomVideo, Media } from '../TestEnv';
 
+const VIDEO_MEDIA_PUBLISH_TIMEOUT: number = 5 * 60 * 1000;
+
 describe('PublishMedia', () => {
     it('Publishes photo media', async () => {
         const media = getRandomPhoto();
@@ -45,22 +47,28 @@ describe('PublishMedia', () => {
         expect(response.getMediaProductType()).toEqual(MediaProductType.FEED);
     });
 
-    it('Publishes reel media', async () => {
-        const media = getRandomVideo();
-        const postReelRequest = getClient().newPostPageReelMediaRequest(media.url, media.caption).withShareToFeed(true);
+    it(
+        'Publishes reel media',
+        async () => {
+            const media = getRandomVideo();
+            const postReelRequest = getClient()
+                .newPostPageReelMediaRequest(media.url, media.caption)
+                .withShareToFeed(true);
 
-        const containerId = await createContainerAndWaitToBeReady(postReelRequest);
+            const containerId = await createContainerAndWaitToBeReady(postReelRequest);
 
-        const mediaId = await publishMedia(containerId);
-        const getMediaRequest = getClient().newGetMediaInfoRequest(mediaId);
-        const response = await getMediaRequest.execute();
+            const mediaId = await publishMedia(containerId);
+            const getMediaRequest = getClient().newGetMediaInfoRequest(mediaId);
+            const response = await getMediaRequest.execute();
 
-        expect(response.getId()).toEqual(mediaId);
-        expect(response.getCaption()).toEqual(media.caption);
-        expect(response.getOwnerId()).toEqual(getPageId());
-        expect(response.getMediaType()).toEqual(MediaTypeInResponses.VIDEO);
-        expect(response.getMediaProductType()).toEqual(MediaProductType.REEL);
-    });
+            expect(response.getId()).toEqual(mediaId);
+            expect(response.getCaption()).toEqual(media.caption);
+            expect(response.getOwnerId()).toEqual(getPageId());
+            expect(response.getMediaType()).toEqual(MediaTypeInResponses.VIDEO);
+            expect(response.getMediaProductType()).toEqual(MediaProductType.REEL);
+        },
+        VIDEO_MEDIA_PUBLISH_TIMEOUT
+    );
 
     it('Publishes story image media', async () => {
         const media = getRandomPhoto();
@@ -78,27 +86,31 @@ describe('PublishMedia', () => {
         expect(response.getMediaProductType()).toEqual(MediaProductType.STORY);
     });
 
-    it('Publishes story video media', async () => {
-        const media = getRandomVideo();
-        const postStoryRequest = getClient().newPostPageStoriesVideoMediaRequest(media.url);
+    it(
+        'Publishes story video media',
+        async () => {
+            const media = getRandomVideo();
+            const postStoryRequest = getClient().newPostPageStoriesVideoMediaRequest(media.url);
 
-        const containerId = await createContainerAndWaitToBeReady(postStoryRequest);
+            const containerId = await createContainerAndWaitToBeReady(postStoryRequest);
 
-        const mediaId = await publishMedia(containerId);
-        const getMediaRequest = getClient().newGetMediaInfoRequest(mediaId);
-        const response = await getMediaRequest.execute();
+            const mediaId = await publishMedia(containerId);
+            const getMediaRequest = getClient().newGetMediaInfoRequest(mediaId);
+            const response = await getMediaRequest.execute();
 
-        expect(response.getId()).toEqual(mediaId);
-        expect(response.getOwnerId()).toEqual(getPageId());
-        expect(response.getMediaType()).toEqual(MediaTypeInResponses.VIDEO);
-        expect(response.getMediaProductType()).toEqual(MediaProductType.STORY);
-    });
+            expect(response.getId()).toEqual(mediaId);
+            expect(response.getOwnerId()).toEqual(getPageId());
+            expect(response.getMediaType()).toEqual(MediaTypeInResponses.VIDEO);
+            expect(response.getMediaProductType()).toEqual(MediaProductType.STORY);
+        },
+        VIDEO_MEDIA_PUBLISH_TIMEOUT
+    );
 });
 
 function waitForContainerToBeReady(containerId: string): Promise<boolean> {
     const getContainerStatusRequest = getClient().newGetContainerRequest(containerId);
     const operation = retry.operation({
-        retries: 10,
+        retries: 1000,
         factor: 1,
         minTimeout: 2000,
         maxTimeout: 2000,
