@@ -1,3 +1,12 @@
+## [6.1.1](https://github.com/TiagoGrosso/instagram-graph-api-lib/compare/v6.1.0...v6.1.1) (2024-07-15)
+
+
+### Bug Fixes
+
+* **ci:** allow sentence case in commmits ([985cb7e](https://github.com/TiagoGrosso/instagram-graph-api-lib/commit/985cb7ed97860cd7a89abe9be240f3978f76876c))
+* **it:** increase timeout for video publishing tests ([#380](https://github.com/TiagoGrosso/instagram-graph-api-lib/issues/380)) ([2b8af70](https://github.com/TiagoGrosso/instagram-graph-api-lib/commit/2b8af707917006b599d395ef28b21681629368bc))
+* **it:** replace stale video links in ITs ([bde0cf9](https://github.com/TiagoGrosso/instagram-graph-api-lib/commit/bde0cf967084684098ff038105c232c1a6b13ebe))
+
 # [6.1.0](https://github.com/TiagoGrosso/instagram-graph-api-lib/compare/v6.0.0...v6.1.0) (2024-01-24)
 
 
