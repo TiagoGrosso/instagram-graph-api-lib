@@ -40,8 +40,8 @@
         "@semantic-release/git": "^10.0.1",
         "@types/jest": "^29.5.12",
         "@types/retry": "^0.12.2",
-        "@typescript-eslint/eslint-plugin": "^7.0.0",
-        "@typescript-eslint/parser": "^7.0.0",
+        "@typescript-eslint/eslint-plugin": "^8.0.0",
+        "@typescript-eslint/parser": "^8.0.0",
         "axios-mock-adapter": "^1.19.0",
         "create-ts-index": "^1.14.0",
         "dotenv": "^16.0.3",
@@ -91,7 +91,6 @@
                         "changelog/*"
                     ],
                     "message": "chore(release): Release ${nextRelease.version} docs\n\n${nextRelease.notes}"
-
                 }
             ]
         ]
