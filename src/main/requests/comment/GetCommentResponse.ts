@@ -107,4 +107,22 @@ export class GetCommentResponse extends AbstractResponse<CommentData> {
     public getUsername(): string | undefined {
         return this.data.username;
     }
+
+    /**
+     * Gets the "from" object of the comment.
+     *
+     * @returns the "from" object of the comment.
+     */
+    public getFrom(): { id: string; username: string } | undefined {
+        return this.data.from;
+    }
+
+    /**
+     * Gets the id of the parent of the comment (if any).
+     *
+     * @returns the id of the parent of the comment (if any).
+     */
+    public getParentId(): string | undefined {
+        return this.data.parent_id;
+    }
 }

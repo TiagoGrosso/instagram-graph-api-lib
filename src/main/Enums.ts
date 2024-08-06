@@ -499,6 +499,16 @@ export enum CommentField {
      * The username of the user who made the comment.
      */
     USERNAME = 'username',
+
+    /**
+     * The information about the comment owner.
+     */
+    FROM = 'from',
+
+    /**
+     * The ID of the parent IG Comment if this comment was created on another IG Comment (i.e. a reply to another comment).
+     */
+    PARENT_ID = 'parent_id',
 }
 
 /**

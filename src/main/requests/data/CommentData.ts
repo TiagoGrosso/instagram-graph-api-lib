@@ -51,6 +51,26 @@ export interface CommentData {
      * The username of the user who made the comment.
      */
     username?: string;
+
+    /**
+     * The information about the comment creator
+     */
+    from?: {
+        /**
+         * The IGSID of the comment creator.
+         */
+        id: string;
+
+        /**
+         * The username of the comment creator.
+         */
+        username: string;
+    };
+
+    /**
+     * The ID of the parent IG Comment if this comment was created on another IG Comment (i.e. a reply to another comment).
+     */
+    parent_id?: string;
 }
 
 /**

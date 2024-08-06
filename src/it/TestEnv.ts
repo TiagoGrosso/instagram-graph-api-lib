@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 import { Client } from '../main/Client';
-import { ApiVersion, MediaTypeInResponses } from '../main/Enums';
+import { ApiVersion, CommentField, MediaTypeInResponses, PublicMediaField } from '../main/Enums';
 
 dotenv.config();
 
@@ -68,4 +68,52 @@ export function getRandomPhoto(): Media {
 
 export function getRandomVideo(): Media {
     return randomInArray(videos);
+}
+
+let publishedMedia: string | undefined;
+export async function getPublishedMedia(): Promise<string> {
+    if (!publishedMedia) {
+        const ids = await getClient()
+            .newGetPageMediaRequest(PublicMediaField.ID)
+            .execute()
+            .then((res) => res.getIds());
+        if (ids.length === 0) {
+            throw new Error('No published media found');
+        }
+        publishedMedia = ids[0];
+    }
+    return publishedMedia;
+}
+
+let publishedComment: string | undefined;
+export async function getPublishedComment(): Promise<string> {
+    const media = await getPublishedMedia();
+    if (!publishedComment) {
+        const ids = await getClient()
+            .newGetMediaCommentsRequest(media, CommentField.ID)
+            .execute()
+            .then((res) => res.getIds());
+        if (ids.length === 0) {
+            throw new Error('No published comment found');
+        }
+        publishedComment = ids[0];
+    }
+    return publishedComment;
+}
+
+let replyComment: string | undefined;
+export async function getReplyComment(): Promise<string> {
+    const comment = await getPublishedComment();
+    if (!replyComment) {
+        const replies = await getClient()
+            .newGetCommentRequest(comment, CommentField.REPLIES)
+            .execute()
+            .then((res) => res.getReplies());
+
+        if (!replies || replies.length === 0) {
+            throw new Error('No reply found');
+        }
+        replyComment = replies[0].id;
+    }
+    return replyComment;
 }

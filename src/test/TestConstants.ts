@@ -182,6 +182,10 @@ export class TestConstants {
                 id: 'user_id',
             },
             username: 'username',
+            from: {
+                id: 'from_user_id',
+                username: 'from_username',
+            },
         },
     ];
 
