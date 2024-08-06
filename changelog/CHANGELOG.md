@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/TiagoGrosso/instagram-graph-api-lib/compare/v6.1.1...v6.2.0) (2024-08-06)
+
+
+### Features
+
+* **comments:** add 'from' and 'parent_id' fields to comment data ([#395](https://github.com/TiagoGrosso/instagram-graph-api-lib/issues/395)) ([1a0cb14](https://github.com/TiagoGrosso/instagram-graph-api-lib/commit/1a0cb144de4e13896e1b324b89e3a67a56d026ea))
+
 ## [6.1.1](https://github.com/TiagoGrosso/instagram-graph-api-lib/compare/v6.1.0...v6.1.1) (2024-07-15)
 
 
