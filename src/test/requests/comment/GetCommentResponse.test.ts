@@ -58,4 +58,9 @@ describe('GetCommentResponse', () => {
         expect(bareResponse.getUsername()).toBeUndefined();
         expect(response.getUsername()).toEqual(TestConstants.COMMENTS_DATA[1].username);
     });
+
+    it('Gets the "from" object', () => {
+        expect(bareResponse.getFrom()).toBeUndefined();
+        expect(response.getFrom()).toEqual(TestConstants.COMMENTS_DATA[1].from);
+    });
 });
