@@ -1,14 +1,13 @@
-import axios, { AxiosResponse } from 'axios';
-import MockAdapter from 'axios-mock-adapter';
 import { Constants } from '../../main/Constants';
 import { ApiVersion } from '../../main/Enums';
 import { AbstractRequest } from '../../main/requests/AbstractRequest';
 import { AbstractResponse } from '../../main/requests/AbstractResponse';
+import { MediaData } from '../../main/requests/data/MediaData';
 import { TestConstants } from '../TestConstants';
 
 describe('AbstractRequest', () => {
     class AbstractRequestImpl extends AbstractRequest<AbstractResponseImpl> {
-        protected parseResponse(response: AxiosResponse): AbstractResponseImpl {
+        protected parseResponse(response: MediaData): AbstractResponseImpl {
             return new AbstractResponseImpl(response);
         }
         protected url(): string {
@@ -20,23 +19,19 @@ describe('AbstractRequest', () => {
         }
     }
 
-    class AbstractResponseImpl extends AbstractResponse<AxiosResponse> {
-        constructor(response: AxiosResponse) {
+    class AbstractResponseImpl extends AbstractResponse<MediaData> {
+        constructor(response: MediaData) {
             super(response);
         }
     }
 
     const request: AbstractRequestImpl = new AbstractRequestImpl();
 
-    const mock = new MockAdapter(axios);
-    mock.onAny().reply(200, TestConstants.FULL_MEDIA_DATA);
+    fetchMock.mockOnce(JSON.stringify(TestConstants.FULL_MEDIA_DATA));
 
-    it('Executes the request', () => {
-        expect.assertions(2);
-        return request.execute().then((response) => {
-            expect(response.getData().status).toEqual(200);
-            expect(response.getData().data).toEqual(TestConstants.FULL_MEDIA_DATA);
-        });
+    it('Executes the request', async () => {
+        const response = await request.execute();
+        expect(response.getData()).toEqual(TestConstants.FULL_MEDIA_DATA);
     });
 
     it('Builds a config', () => {

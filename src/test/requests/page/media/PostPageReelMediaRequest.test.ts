@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { CreatedObjectIdResponse } from '../../../../main/requests/common/CreatedObjectIdResponse';
 import { PostPageReelMediaRequest } from '../../../../main/requests/page/media/PostPageReelMediaRequest';
 import { TestConstants } from '../../../TestConstants';
@@ -49,12 +47,10 @@ describe('PostPageReelMediaRequest.', () => {
         expect(request.config().params.share_to_feed).toEqual(TestConstants.SHARE_TO_FEED);
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onPost(`${Constants.API_URL}/${TestConstants.PAGE_ID}/media`).reply(200, { id: TestConstants.CONTAINER_ID });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(JSON.stringify({ id: TestConstants.CONTAINER_ID }));
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(new CreatedObjectIdResponse({ id: TestConstants.CONTAINER_ID }));
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new CreatedObjectIdResponse({ id: TestConstants.CONTAINER_ID }));
     });
 });

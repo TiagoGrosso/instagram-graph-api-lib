@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { HashtagMediaField } from '../../../../main/Enums';
 import { AbstractGetHashtagMediaRequest } from '../../../../main/requests/hashtag/media/AbstractGetHashtagMediaRequest';
 import { GetPageMediaResponse } from '../../../../main/requests/page/media/GetPageMediaResponse';
@@ -32,20 +30,20 @@ describe('AbstractGetHashtagMediaRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Object.values(HashtagMediaField).join(','));
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.HASHTAG_ID}`).reply(200, {
-        data: [TestConstants.HASHTAG_ALBUM_MEDIA_DATA, TestConstants.HASHTAG_IMAGE_MEDIA_DATA],
-        paging: TestConstants.PAGING,
-    });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(
+        JSON.stringify({
+            data: [TestConstants.HASHTAG_ALBUM_MEDIA_DATA, TestConstants.HASHTAG_IMAGE_MEDIA_DATA],
+            paging: TestConstants.PAGING,
+        })
+    );
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(
-                new GetPageMediaResponse({
-                    data: [TestConstants.HASHTAG_ALBUM_MEDIA_DATA, TestConstants.HASHTAG_IMAGE_MEDIA_DATA],
-                    paging: TestConstants.PAGING,
-                })
-            );
-        });
+        const response = await request.execute();
+        expect(response).toEqual(
+            new GetPageMediaResponse({
+                data: [TestConstants.HASHTAG_ALBUM_MEDIA_DATA, TestConstants.HASHTAG_IMAGE_MEDIA_DATA],
+                paging: TestConstants.PAGING,
+            })
+        );
     });
 });

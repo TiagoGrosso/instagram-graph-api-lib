@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { LifetimeMetric, MetricPeriod } from '../../../../main/Enums';
 import { GetPageLifetimeInsightsRequest } from '../../../../main/requests/page/insights/GetPageLifetimeInsightsRequest';
 import { GetPageLifetimeInsightsResponse } from '../../../../main/requests/page/insights/GetPageLifetimeInsightsResponse';
@@ -28,18 +26,18 @@ describe('GetPageLifetimeInsightsRequest', () => {
         expect(allFieldsRequest.config().params.metric).toEqual(Object.values(LifetimeMetric).join(','));
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.PAGE_ID}/insights`).reply(200, {
-        data: TestConstants.COMPLEX_METRIC_DATA,
-    });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(
+        JSON.stringify({
+            data: TestConstants.COMPLEX_METRIC_DATA,
+        })
+    );
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(
-                new GetPageLifetimeInsightsResponse({
-                    data: TestConstants.COMPLEX_METRIC_DATA,
-                })
-            );
-        });
+        const response = await request.execute();
+        expect(response).toEqual(
+            new GetPageLifetimeInsightsResponse({
+                data: TestConstants.COMPLEX_METRIC_DATA,
+            })
+        );
     });
 });

@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { PrivateMediaField, PublicMediaField } from '../../../../main/Enums';
 import { GetPageMediaRequest } from '../../../../main/requests/page/media/GetPageMediaRequest';
 import { GetPageMediaResponse } from '../../../../main/requests/page/media/GetPageMediaResponse';
@@ -28,17 +26,17 @@ describe('GetPageMediaRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Utils.getAllMediaFields().join(','));
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.PAGE_ID}/media`).reply(200, {
-        data: [TestConstants.PARTIAL_MEDIA_DATA],
-        paging: TestConstants.PAGING,
-    });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(
+        JSON.stringify({
+            data: [TestConstants.PARTIAL_MEDIA_DATA],
+            paging: TestConstants.PAGING,
+        })
+    );
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(
-                new GetPageMediaResponse({ data: [TestConstants.PARTIAL_MEDIA_DATA], paging: TestConstants.PAGING })
-            );
-        });
+        const response = await request.execute();
+        expect(response).toEqual(
+            new GetPageMediaResponse({ data: [TestConstants.PARTIAL_MEDIA_DATA], paging: TestConstants.PAGING })
+        );
     });
 });

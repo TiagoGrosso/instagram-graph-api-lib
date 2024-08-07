@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { PostMediaCommentRequest } from '../../../../main/requests/media/comments/PostMediaCommentRequest';
 import { CreatedObjectIdResponse } from '../../../../main/requests/common/CreatedObjectIdResponse';
 import { TestConstants } from '../../../TestConstants';
@@ -17,14 +15,14 @@ describe('GetMediaCommentsRequest', () => {
         expect(request.config().url).toEqual(`/${TestConstants.MEDIA_ID}/comments`);
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onPost(`${Constants.API_URL}/${TestConstants.MEDIA_ID}/comments`).reply(200, {
-        id: TestConstants.COMMENT_ID,
-    });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(
+        JSON.stringify({
+            id: TestConstants.COMMENT_ID,
+        })
+    );
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(new CreatedObjectIdResponse({ id: TestConstants.COMMENT_ID }));
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new CreatedObjectIdResponse({ id: TestConstants.COMMENT_ID }));
     });
 });

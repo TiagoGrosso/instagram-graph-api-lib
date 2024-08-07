@@ -1,8 +1,7 @@
-import axios, { AxiosResponse } from 'axios';
 import { Method, RequestConfig } from './RequestConfig';
 import { AbstractResponse } from './AbstractResponse';
 import { Constants } from '../Constants';
-import { Params } from './Params';
+import { Params, paramsToURLSearchParams } from './Params';
 import { ApiVersion, PageOption } from '../Enums';
 
 /**
@@ -61,10 +60,17 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
      *
      * @returns the promise of a parsed response.
      */
-    public execute(): Promise<R> {
-        return axios(this.config()).then((response) => {
-            return this.parseResponse(response);
+    public async execute(): Promise<R> {
+        const config = this.config();
+        const url = `${config.baseURL}/${config.url}?${paramsToURLSearchParams(config.params)}`;
+
+        const request = new Request(url, {
+            method: config.method,
         });
+
+        const response = await fetch(request);
+        const parsed = await response.json();
+        return this.parseResponse(parsed);
     }
 
     /**
@@ -161,7 +167,7 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
      *
      * @param response the parsed response.
      */
-    protected abstract parseResponse(response: AxiosResponse<unknown>): R;
+    protected abstract parseResponse(response: unknown): R;
 
     /**
      * Gets the url for the request.

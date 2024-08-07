@@ -1,7 +1,8 @@
-import { AxiosResponse } from 'axios';
 import { HashtagMediaField } from '../../../Enums';
 import { AbstractGetMediaRequest } from '../../AbstractGetMediaRequest';
 import { GetHashtagMediaResponse } from './GetHashtagMediaResponse';
+import { MediaData } from '../../data/MediaData';
+import { PagingData } from '../../data/Paging';
 
 /**
  * A request that gets information about the media of an hashtag.
@@ -33,8 +34,8 @@ export abstract class AbstractGetHashtagMediaRequest extends AbstractGetMediaReq
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetHashtagMediaResponse {
-        return new GetHashtagMediaResponse(response.data);
+    protected parseResponse(response: { data: MediaData[]; paging: PagingData }): GetHashtagMediaResponse {
+        return new GetHashtagMediaResponse(response);
     }
 
     /**

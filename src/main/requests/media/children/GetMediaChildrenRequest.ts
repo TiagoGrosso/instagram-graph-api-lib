@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { AbstractRequest } from '../../AbstractRequest';
 import { GetMediaChildrenResponse } from './GetMediaChildrenResponse';
 
@@ -28,8 +27,8 @@ export class GetMediaChildrenRequest extends AbstractRequest<GetMediaChildrenRes
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetMediaChildrenResponse {
-        return new GetMediaChildrenResponse(response.data);
+    protected parseResponse(response: { data: { id: string }[] }): GetMediaChildrenResponse {
+        return new GetMediaChildrenResponse(response);
     }
 
     /**

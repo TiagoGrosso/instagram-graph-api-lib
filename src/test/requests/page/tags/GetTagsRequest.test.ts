@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { PublicMediaField } from '../../../../main/Enums';
 import { GetTagsRequest } from '../../../../main/requests/page/tags/GetTagsRequest';
 import { GetTagsResponse } from '../../../../main/requests/page/tags/GetTagsResponse';
@@ -29,17 +27,17 @@ describe('GetTagsRequest', () => {
         );
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.PAGE_ID}/tags`).reply(200, {
-        data: [TestConstants.PARTIAL_MEDIA_DATA],
-        paging: TestConstants.PAGING,
-    });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(
+        JSON.stringify({
+            data: [TestConstants.PARTIAL_MEDIA_DATA],
+            paging: TestConstants.PAGING,
+        })
+    );
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(
-                new GetTagsResponse({ data: [TestConstants.PARTIAL_MEDIA_DATA], paging: TestConstants.PAGING })
-            );
-        });
+        const response = await request.execute();
+        expect(response).toEqual(
+            new GetTagsResponse({ data: [TestConstants.PARTIAL_MEDIA_DATA], paging: TestConstants.PAGING })
+        );
     });
 });

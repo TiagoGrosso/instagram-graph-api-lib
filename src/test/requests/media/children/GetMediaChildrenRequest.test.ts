@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { GetMediaChildrenRequest } from '../../../../main/requests/media/children/GetMediaChildrenRequest';
 import { GetMediaChildrenResponse } from '../../../../main/requests/media/children/GetMediaChildrenResponse';
 import { TestConstants } from '../../../TestConstants';
@@ -16,14 +14,14 @@ describe('GetMediaCommentsRequest', () => {
         expect(request.config().url).toEqual(`/${TestConstants.MEDIA_ID}/children`);
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.MEDIA_ID}/children`).reply(200, {
-        data: TestConstants.CHILDREN_DATA,
-    });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(
+        JSON.stringify({
+            data: TestConstants.CHILDREN_DATA,
+        })
+    );
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(new GetMediaChildrenResponse({ data: TestConstants.CHILDREN_DATA }));
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new GetMediaChildrenResponse({ data: TestConstants.CHILDREN_DATA }));
     });
 });

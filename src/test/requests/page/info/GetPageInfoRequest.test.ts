@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { PageField } from '../../../../main/Enums';
 import { GetPageInfoRequest } from '../../../../main/requests/page/info/GetPageInfoRequest';
 import { GetPageInfoResponse } from '../../../../main/requests/page/info/GetPageInfoResponse';
@@ -27,12 +25,10 @@ describe('GetPageInfoRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Object.values(PageField).join(','));
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.PAGE_ID}`).reply(200, TestConstants.PAGE_INFO_DATA);
-    it('Parses the response', () => {
+    fetchMock.mockOnce(JSON.stringify(TestConstants.PAGE_INFO_DATA));
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(new GetPageInfoResponse(TestConstants.PAGE_INFO_DATA));
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new GetPageInfoResponse(TestConstants.PAGE_INFO_DATA));
     });
 });

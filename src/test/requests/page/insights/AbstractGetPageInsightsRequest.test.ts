@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { MetricPeriod } from '../../../../main/Enums';
 import { AbstractGetPageTimedInsightsRequest } from '../../../../main/requests/page/insights/AbstractGetPageTimedInsightsRequest';
 import { GetPageTimedInsightsResponse } from '../../../../main/requests/page/insights/GetPageTimedInsightsResponse';
@@ -18,20 +16,20 @@ describe('AbstractGetPageInsightsRequest', () => {
 
     const request: AbstractPageInsightsRequestImpl = new AbstractPageInsightsRequestImpl();
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.PAGE_ID}/insights`).reply(200, {
-        data: TestConstants.SIMPLE_METRIC_DATA,
-        paging: TestConstants.PAGING,
-    });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(
+        JSON.stringify({
+            data: TestConstants.SIMPLE_METRIC_DATA,
+            paging: TestConstants.PAGING,
+        })
+    );
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(
-                new GetPageTimedInsightsResponse({
-                    data: TestConstants.SIMPLE_METRIC_DATA,
-                    paging: TestConstants.PAGING,
-                })
-            );
-        });
+        const response = await request.execute();
+        expect(response).toEqual(
+            new GetPageTimedInsightsResponse({
+                data: TestConstants.SIMPLE_METRIC_DATA,
+                paging: TestConstants.PAGING,
+            })
+        );
     });
 });

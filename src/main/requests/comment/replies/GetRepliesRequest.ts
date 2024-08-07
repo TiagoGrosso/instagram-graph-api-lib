@@ -1,7 +1,7 @@
-import { AxiosResponse } from 'axios';
 import { CommentField } from '../../../Enums';
 import { GetObjectCommentsResponse } from '../../common/GetObjectCommentsResponse';
 import { AbstractRepliesRequest } from './AbstractRepliesRequest';
+import { CommentData } from '../../data/CommentData';
 
 /**
  * A request to get the replies to a comment.
@@ -27,7 +27,7 @@ export class GetRepliesRequest extends AbstractRepliesRequest<GetObjectCommentsR
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetObjectCommentsResponse {
-        return new GetObjectCommentsResponse(response.data);
+    protected parseResponse(response: { data: CommentData[] }): GetObjectCommentsResponse {
+        return new GetObjectCommentsResponse(response);
     }
 }

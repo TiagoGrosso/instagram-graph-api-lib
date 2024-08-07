@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { StoryMetric } from '../../../../main/Enums';
 import { GetMediaInsightsResponse } from '../../../../main/requests/media/insights/GetMediaInsightsResponse';
 import { GetStoryMediaInsightsRequest } from '../../../../main/requests/media/insights/GetStoryMediaInsightsRequest';
@@ -22,14 +20,14 @@ describe('GetStoryMediaInsightsRequest', () => {
         expect(allFieldsRequest.config().params.metric).toEqual(Object.values(StoryMetric).join(','));
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.MEDIA_ID}/insights`).reply(200, {
-        data: TestConstants.SIMPLE_METRIC_DATA,
-    });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(
+        JSON.stringify({
+            data: TestConstants.SIMPLE_METRIC_DATA,
+        })
+    );
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(new GetMediaInsightsResponse({ data: TestConstants.SIMPLE_METRIC_DATA }));
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new GetMediaInsightsResponse({ data: TestConstants.SIMPLE_METRIC_DATA }));
     });
 });

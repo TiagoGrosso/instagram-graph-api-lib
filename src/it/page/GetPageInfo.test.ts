@@ -9,24 +9,21 @@ describe('GetPageInfo', () => {
         expect(result.getId()).toEqual(getPageId());
     });
 
-    Object.values(PageField)
-        .filter((field) => field != PageField.ID)
-        .forEach((field) => {
-            it(`Gets the page info with only '${field}'`, async () => {
-                const request = getClient().newGetPageInfoRequest(field);
-                const result = await request.execute();
-                Object.values(PageField)
-                    .filter(
-                        (expectedField) =>
-                            ![
-                                field,
-                                PageField.ID, // Always returned
-                            ].includes(expectedField)
-                    )
-                    .forEach((expectedField) => expect(result.getData()[expectedField]).toBeUndefined());
+    const fields = Object.values(PageField).filter((field) => field != PageField.ID);
+    it.each(fields)(`Gets the page info with only '$s'`, async (field) => {
+        const request = getClient().newGetPageInfoRequest(field);
+        const result = await request.execute();
+        Object.values(PageField)
+            .filter(
+                (expectedField) =>
+                    ![
+                        field,
+                        PageField.ID, // Always returned
+                    ].includes(expectedField)
+            )
+            .forEach((expectedField) => expect(result.getData()[expectedField]).toBeUndefined());
 
-                expect(result.getId()).toEqual(getPageId());
-                expect(result.getData()[field]).toBeDefined();
-            });
-        });
+        expect(result.getId()).toEqual(getPageId());
+        expect(result.getData()[field]).toBeDefined();
+    });
 });

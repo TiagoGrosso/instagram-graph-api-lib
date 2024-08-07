@@ -1,7 +1,7 @@
-import { AxiosResponse } from 'axios';
 import { CommentField } from '../../../Enums';
 import { GetObjectCommentsResponse } from '../../common/GetObjectCommentsResponse';
 import { AbstractMediaCommentsRequest } from './AbstractMediaCommentsRequest';
+import { CommentData } from '../../data/CommentData';
 
 /**
  * A request that gets the comments of a media object.
@@ -26,7 +26,7 @@ export class GetMediaCommentsRequest extends AbstractMediaCommentsRequest<GetObj
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetObjectCommentsResponse {
-        return new GetObjectCommentsResponse(response.data);
+    protected parseResponse(response: { data: CommentData[] }): GetObjectCommentsResponse {
+        return new GetObjectCommentsResponse(response);
     }
 }

@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { CommentUpdateResponse } from '../../../main/requests/comment/CommentUpdateResponse';
 import { DeleteCommentRequest } from '../../../main/requests/comment/DeleteCommentRequest';
 import { TestConstants } from '../../TestConstants';
@@ -16,12 +14,10 @@ describe('DeleteCommentRequest', () => {
         expect(request.config().url).toEqual(`/${TestConstants.COMMENT_ID}`);
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onDelete(`${Constants.API_URL}/${TestConstants.COMMENT_ID}`).reply(200, { success: true });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(JSON.stringify({ success: true }));
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(new CommentUpdateResponse({ success: true }));
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new CommentUpdateResponse({ success: true }));
     });
 });

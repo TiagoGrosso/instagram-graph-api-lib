@@ -14,9 +14,13 @@ This package is made by independent contributors and is in no way officially rel
 
 You can find what changed in each version by checking the [Changelog](changelog/changelog.md).
 
-## New since 6.1
+## New since 7.0
 
-You can now use this lib to publish stories to your page! Check out the [Publishing media](#publishing-media) section.
+This lib is now dependency free 🎉
+
+Axios has been removed as a dependency. `execute()` and `config()` methods still work exactly the same on the outside.
+
+Error handling using `AxiosError` is essentially the major change.
 
 ## Installation
 
@@ -53,7 +57,7 @@ const pageMediaRequest: GetPageMediaRequest = client.newGetPageMediaRequest();
 You can also build each request yourself, and that won't be hard at all. You'll just have to pass the Access Token and the Page ID to each new request. Here's an example:
 
 ```typescript
-  const request: GetPageInfoRequest = new GetPageInfoRequest(ACCESS_TOKEN, PAGE_ID);
+const request: GetPageInfoRequest = new GetPageInfoRequest(ACCESS_TOKEN, PAGE_ID);
 ```
 
 ### Executing the requests
@@ -93,12 +97,12 @@ const config: RequestConfig = request.config();
 Publishing Media through the Instagram Graph API, and conversely through this lib, follows these steps:
 
 1. Create an IG Container object. The request will return the container id.
-   - For photos use `PostPagePhotoMediaRequest`.
-   - ~~For videos use `PostPageVideoMediaRequest`.~~ Instagram has removed the ability to publish normal/legacy videos through their API. Videos are now always reels.
-   - For reels use `PostPageReelMediaRequest`.
-   - For carousels check the [Publishing Carousels section below](#publishing-carousels).
-   - For Story videos use `PostPageStoryPhotoMediaRequest`
-   - For Story videos use `PostPageStoryVideoMediaRequest`
+    - For photos use `PostPagePhotoMediaRequest`.
+    - ~~For videos use `PostPageVideoMediaRequest`.~~ Instagram has removed the ability to publish normal/legacy videos through their API. Videos are now always reels.
+    - For reels use `PostPageReelMediaRequest`.
+    - For carousels check the [Publishing Carousels section below](#publishing-carousels).
+    - For Story videos use `PostPageStoryPhotoMediaRequest`
+    - For Story videos use `PostPageStoryVideoMediaRequest`
 2. Wait for the IG Container status to move to `FINISHED` (check the status through the `GetContainerRequest`).
 3. Publish the IG Container (through the `PostPublishMediaRequest`).
 

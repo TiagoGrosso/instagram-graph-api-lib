@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { AbstractRequest } from '../../AbstractRequest';
 import { CreatedObjectIdResponse } from '../../common/CreatedObjectIdResponse';
 import { Method } from '../../RequestConfig';
@@ -30,8 +29,8 @@ export abstract class AbstractPostPageMediaRequest extends AbstractRequest<Creat
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<{ id: string }>): CreatedObjectIdResponse {
-        return new CreatedObjectIdResponse(response.data);
+    protected parseResponse(response: { id: string }): CreatedObjectIdResponse {
+        return new CreatedObjectIdResponse(response);
     }
 
     /**

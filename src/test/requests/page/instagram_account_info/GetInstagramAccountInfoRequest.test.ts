@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { GetInstagramAccountInfoRequest } from '../../../../main/requests/page/instagram_account_info/GetInstagramAccountInfoRequest';
 import { GetInstagramAccountInfoResponse } from '../../../../main/requests/page/instagram_account_info/GetInstagramAccountInfoResponse';
 import { TestConstants } from '../../../TestConstants';
@@ -16,12 +14,10 @@ describe('GetInstagramAccountInfoRequest', () => {
         expect(request.config().url).toEqual(`/${TestConstants.INSTAGRAM_ID}`);
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.INSTAGRAM_ID}`).reply(200, TestConstants.INSTAGRAM_ACCOUNT_DATA);
-    it('Parses the response', () => {
+    fetchMock.mockOnce(JSON.stringify(TestConstants.INSTAGRAM_ACCOUNT_DATA));
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(new GetInstagramAccountInfoResponse(TestConstants.INSTAGRAM_ACCOUNT_DATA));
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new GetInstagramAccountInfoResponse(TestConstants.INSTAGRAM_ACCOUNT_DATA));
     });
 });
