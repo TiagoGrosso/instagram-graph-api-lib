@@ -23,6 +23,7 @@ describe('GetMediaCommentsRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Object.values(CommentField).join(','));
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             data: TestConstants.COMMENTS_DATA,

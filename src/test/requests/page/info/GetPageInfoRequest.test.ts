@@ -25,6 +25,7 @@ describe('GetPageInfoRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Object.values(PageField).join(','));
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify(TestConstants.PAGE_INFO_DATA));
     it('Parses the response', async () => {
         expect.assertions(1);

@@ -11,6 +11,7 @@ describe('GetPageStoriesRequest', () => {
         expect(request.config().url).toEqual(`/${TestConstants.PAGE_ID}/stories`);
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             data: [{ id: TestConstants.MEDIA_ID }],

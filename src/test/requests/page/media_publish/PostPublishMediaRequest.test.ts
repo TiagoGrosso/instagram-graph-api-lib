@@ -16,6 +16,7 @@ describe('PostPublishMediaRequest', () => {
         expect(request.config().params.creation_id).toEqual(TestConstants.CONTAINER_ID);
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             id: TestConstants.MEDIA_ID,

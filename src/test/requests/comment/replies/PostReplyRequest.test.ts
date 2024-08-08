@@ -16,6 +16,7 @@ describe('GetRepliesRequest', () => {
         expect(request.config().params.message).toEqual(TestConstants.COMMENT_TEXT);
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             id: TestConstants.COMMENT_ID,

@@ -26,6 +26,7 @@ describe('GetPageLifetimeInsightsRequest', () => {
         expect(allFieldsRequest.config().params.metric).toEqual(Object.values(LifetimeMetric).join(','));
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             data: TestConstants.COMPLEX_METRIC_DATA,

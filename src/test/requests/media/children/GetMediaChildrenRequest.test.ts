@@ -14,6 +14,7 @@ describe('GetMediaCommentsRequest', () => {
         expect(request.config().url).toEqual(`/${TestConstants.MEDIA_ID}/children`);
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             data: TestConstants.CHILDREN_DATA,

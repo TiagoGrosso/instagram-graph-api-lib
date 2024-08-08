@@ -23,6 +23,7 @@ describe('GetCommentRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Object.values(CommentField).join(','));
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify(TestConstants.COMMENTS_DATA[1]));
     it('Parses the response', async () => {
         expect.assertions(1);

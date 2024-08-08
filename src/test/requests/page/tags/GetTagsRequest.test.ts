@@ -27,6 +27,7 @@ describe('GetTagsRequest', () => {
         );
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             data: [TestConstants.PARTIAL_MEDIA_DATA],

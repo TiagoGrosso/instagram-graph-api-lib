@@ -28,6 +28,7 @@ describe('AbstractRequest', () => {
 
     const request: AbstractRequestImpl = new AbstractRequestImpl();
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify(TestConstants.FULL_MEDIA_DATA));
     it('Executes the request', async () => {
         const response = await request.execute();

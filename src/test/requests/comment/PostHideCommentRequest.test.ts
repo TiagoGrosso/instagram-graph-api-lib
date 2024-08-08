@@ -21,6 +21,7 @@ describe('PostHideCommentRequest', () => {
         expect(requestExplicit.config().params.hide).toEqual(false);
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify({ success: true }));
     it('Parses the response', async () => {
         expect.assertions(1);

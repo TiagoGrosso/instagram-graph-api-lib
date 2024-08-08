@@ -22,6 +22,7 @@ describe('GetAlbumMediaInsightsRequest', () => {
         expect(allFieldsRequest.config().params.metric).toEqual(Object.values(AlbumMetric).join(','));
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             data: TestConstants.SIMPLE_METRIC_DATA,

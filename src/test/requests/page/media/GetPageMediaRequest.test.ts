@@ -26,6 +26,7 @@ describe('GetPageMediaRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Utils.getAllMediaFields().join(','));
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             data: [TestConstants.PARTIAL_MEDIA_DATA],

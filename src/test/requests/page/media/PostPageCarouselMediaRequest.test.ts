@@ -57,6 +57,7 @@ describe('PostPageCaroulselMediaRequest.', () => {
         expect(request.config().params.children).toEqual(TestConstants.ID_ARRAY.slice(1));
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify({ id: TestConstants.CONTAINER_ID }));
     it('Parses the response', async () => {
         expect.assertions(1);

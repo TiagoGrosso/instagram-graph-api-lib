@@ -34,6 +34,7 @@ describe('GetRepliesRequest', () => {
         );
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             data: TestConstants.COMMENTS_DATA,

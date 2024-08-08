@@ -16,6 +16,7 @@ describe('AbstractGetPageInsightsRequest', () => {
 
     const request: AbstractPageInsightsRequestImpl = new AbstractPageInsightsRequestImpl();
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             data: TestConstants.SIMPLE_METRIC_DATA,

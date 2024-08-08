@@ -14,6 +14,7 @@ describe('GetPageRecentlySearchedHashtagsRequest', () => {
         expect(request.config().url).toEqual(`/${TestConstants.PAGE_ID}/recently_searched_hashtags`);
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             data: [{ id: TestConstants.HASHTAG_ID }],

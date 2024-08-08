@@ -15,6 +15,5 @@ const config: Config.InitialOptions = {
             statements: 95,
         },
     },
-    setupFiles: ['./src/test/SetupJest.ts'],
 };
 export default config;
