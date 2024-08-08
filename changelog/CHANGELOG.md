@@ -1,3 +1,31 @@
+# [7.0.0](https://github.com/TiagoGrosso/instagram-graph-api-lib/compare/v6.2.0...v7.0.0) (2024-08-08)
+
+
+### Bug Fixes
+
+* **docs:** update readme after axios removal ([#397](https://github.com/TiagoGrosso/instagram-graph-api-lib/issues/397)) ([2987796](https://github.com/TiagoGrosso/instagram-graph-api-lib/commit/2987796132bec3b3a16c19136b94d2f5f9676035))
+* **it:** remove fetch mock from integration tests ([#399](https://github.com/TiagoGrosso/instagram-graph-api-lib/issues/399)) ([e8ae3c3](https://github.com/TiagoGrosso/instagram-graph-api-lib/commit/e8ae3c330000943d0c1eeca85dba36047af2b75b))
+
+
+### chore
+
+* remove deprecated methods for paging, range and limit ([#398](https://github.com/TiagoGrosso/instagram-graph-api-lib/issues/398)) ([560100b](https://github.com/TiagoGrosso/instagram-graph-api-lib/commit/560100bb8eb659f187895fe7c9e3176dc1bcb238))
+
+
+### Features
+
+* **request:** remove axios and use native fetch instead ([#396](https://github.com/TiagoGrosso/instagram-graph-api-lib/issues/396)) ([6036fea](https://github.com/TiagoGrosso/instagram-graph-api-lib/commit/6036fea128da8d3a0be7d57a8fd87139f1f8dfe1))
+
+
+### BREAKING CHANGES
+
+* `addPaging()`, `addRange()` and `addLimit()` are no
+longer available and should be replaced with `withPaging()`,
+`withRange()` and `withLimit()`
+* **request:** Since Axios has been removed, error handling with
+`AxiosError` will no longer work and should be done in accordance with
+the native Node `fetch`.
+
 # [6.2.0](https://github.com/TiagoGrosso/instagram-graph-api-lib/compare/v6.1.1...v6.2.0) (2024-08-06)
 
 
