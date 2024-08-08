@@ -1,3 +1,4 @@
+import fetchMock from 'jest-fetch-mock';
 import { Constants } from '../../main/Constants';
 import { ApiVersion } from '../../main/Enums';
 import { AbstractRequest } from '../../main/requests/AbstractRequest';
@@ -28,7 +29,6 @@ describe('AbstractRequest', () => {
     const request: AbstractRequestImpl = new AbstractRequestImpl();
 
     fetchMock.mockOnce(JSON.stringify(TestConstants.FULL_MEDIA_DATA));
-
     it('Executes the request', async () => {
         const response = await request.execute();
         expect(response.getData()).toEqual(TestConstants.FULL_MEDIA_DATA);
@@ -43,29 +43,6 @@ describe('AbstractRequest', () => {
             url: TestConstants.PATH,
             baseURL: `${Constants.API_URL}/`,
         });
-    });
-
-    it('Adds the paging (deprecated method)', () => {
-        request.addPaging(TestConstants.BEFORE_PAGE);
-        expect(request.config().params.before).toEqual(TestConstants.BEFORE_PAGE.value);
-        request.addPaging(TestConstants.AFTER_PAGE);
-        expect(request.config().params.after).toEqual(TestConstants.AFTER_PAGE.value);
-
-        // Test that it clears the previous paging
-        expect(request.config().params.before).toBeUndefined();
-        request.addPaging(TestConstants.BEFORE_PAGE);
-        expect(request.config().params.after).toBeUndefined();
-    });
-
-    it('Adds the range (deprecated method)', () => {
-        request.addRange(TestConstants.SINCE, TestConstants.UNTIL);
-        expect(request.config().params.since).toEqual(TestConstants.SINCE);
-        expect(request.config().params.until).toEqual(TestConstants.UNTIL);
-    });
-
-    it('Adds the limit (deprecated method)', () => {
-        request.addLimit(TestConstants.LIMIT);
-        expect(request.config().params.limit).toEqual(TestConstants.LIMIT);
     });
 
     it('Adds the paging', () => {
