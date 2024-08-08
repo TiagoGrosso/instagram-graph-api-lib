@@ -45,6 +45,7 @@ describe('GetContentPublishingLimitRequest', () => {
         );
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             data: [TestConstants.CONTENT_PUBLISHING_LIMIT_DATA],

@@ -29,6 +29,7 @@ describe('GetMediaInfoRequest', () => {
         );
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify(TestConstants.PARTIAL_MEDIA_DATA));
     it('Parses the response', async () => {
         expect.assertions(1);

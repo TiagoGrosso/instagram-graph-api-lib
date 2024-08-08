@@ -16,6 +16,7 @@ describe('PostPageStoriesPhotoMediaRequest.', () => {
         expect(request.config().params.image_url).toEqual(TestConstants.MEDIA_URL);
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify({ id: TestConstants.CONTAINER_ID }));
     it('Parses the response', async () => {
         expect.assertions(1);

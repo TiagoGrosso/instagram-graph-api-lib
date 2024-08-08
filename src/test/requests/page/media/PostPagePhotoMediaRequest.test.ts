@@ -47,6 +47,7 @@ describe('PostPagePhotoMediaRequest.', () => {
         expect(requestBare.config().params.is_carousel).toBeTruthy();
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify({ id: TestConstants.CONTAINER_ID }));
     it('Parses the response', async () => {
         expect.assertions(1);

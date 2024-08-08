@@ -22,6 +22,7 @@ describe('GetContainerRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Object.values(ContainerField).join(','));
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             id: TestConstants.CONTAINER_ID,

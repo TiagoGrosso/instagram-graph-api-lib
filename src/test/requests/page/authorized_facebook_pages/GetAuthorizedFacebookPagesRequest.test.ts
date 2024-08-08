@@ -13,6 +13,7 @@ describe('GetPageInfoRequest', () => {
         expect(request.config().url).toEqual('/me/accounts');
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify(TestConstants.AUTHORIZED_FACEBOOK_PAGES));
     it('Parses the response', async () => {
         const response = await request.execute();

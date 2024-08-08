@@ -13,6 +13,7 @@ describe('GetHashtagIdRequest', () => {
         expect(request.config().url).toEqual('/ig_hashtag_search');
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify({ data: [{ id: TestConstants.HASHTAG_ID }] }));
     it('Parses the response', async () => {
         expect.assertions(1);

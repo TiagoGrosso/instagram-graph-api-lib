@@ -14,6 +14,7 @@ describe('GetLinkedInstagramAccountRequest', () => {
         expect(request.config().url).toEqual(`/${TestConstants.PAGE_ID}`);
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify(TestConstants.LINKED_INSTAGRAM_ACCOUNT));
     it('Parses the response', async () => {
         expect.assertions(1);

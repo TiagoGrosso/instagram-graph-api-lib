@@ -47,6 +47,7 @@ describe('PostPageReelMediaRequest.', () => {
         expect(request.config().params.share_to_feed).toEqual(TestConstants.SHARE_TO_FEED);
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify({ id: TestConstants.CONTAINER_ID }));
     it('Parses the response', async () => {
         expect.assertions(1);

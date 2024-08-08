@@ -24,6 +24,7 @@ describe('GetUserLongLivedTokenRequest', () => {
         expect(request.config().url).toEqual(buildUrl());
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify(TestConstants.USER_LONG_LIVED_TOKEN_DATA));
     it('Parses the response', async () => {
         expect.assertions(1);

@@ -14,6 +14,7 @@ describe('DeleteCommentRequest', () => {
         expect(request.config().url).toEqual(`/${TestConstants.COMMENT_ID}`);
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify({ success: true }));
     it('Parses the response', async () => {
         expect.assertions(1);

@@ -30,6 +30,7 @@ describe('AbstractGetHashtagMediaRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Object.values(HashtagMediaField).join(','));
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(
         JSON.stringify({
             data: [TestConstants.HASHTAG_ALBUM_MEDIA_DATA, TestConstants.HASHTAG_IMAGE_MEDIA_DATA],

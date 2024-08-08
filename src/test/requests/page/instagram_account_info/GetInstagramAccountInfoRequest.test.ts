@@ -14,6 +14,7 @@ describe('GetInstagramAccountInfoRequest', () => {
         expect(request.config().url).toEqual(`/${TestConstants.INSTAGRAM_ID}`);
     });
 
+    fetchMock.enableMocks();
     fetchMock.mockOnce(JSON.stringify(TestConstants.INSTAGRAM_ACCOUNT_DATA));
     it('Parses the response', async () => {
         expect.assertions(1);
