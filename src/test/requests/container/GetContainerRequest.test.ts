@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { ContainerField } from '../../../main/Enums';
 import { GetContainerRequest } from '../../../main/requests/container/GetContainerRequest';
 import { GetContainerResponse } from '../../../main/requests/container/GetContainerResponse';
@@ -24,18 +22,18 @@ describe('GetContainerRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Object.values(ContainerField).join(','));
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.CONTAINER_ID}`).reply(200, {
-        id: TestConstants.CONTAINER_ID,
-        status: TestConstants.CONTAINER_STATUS,
-    });
+    fetchMock.mockOnce(
+        JSON.stringify({
+            id: TestConstants.CONTAINER_ID,
+            status: TestConstants.CONTAINER_STATUS,
+        })
+    );
 
-    it('Parses the response', () => {
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(
-                new GetContainerResponse({ id: TestConstants.CONTAINER_ID, status: TestConstants.CONTAINER_STATUS })
-            );
-        });
+        const response = await request.execute();
+        expect(response).toEqual(
+            new GetContainerResponse({ id: TestConstants.CONTAINER_ID, status: TestConstants.CONTAINER_STATUS })
+        );
     });
 });

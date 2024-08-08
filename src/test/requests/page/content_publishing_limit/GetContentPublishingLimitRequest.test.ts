@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { ContentPublishingLimitFields } from '../../../../main/Enums';
 import {
     DateOlderThanOneDay,
@@ -35,28 +33,26 @@ describe('GetContentPublishingLimitRequest', () => {
 
     it('Throws on an invalid "since" date', () => {
         const date: Date = new Date('20 Dec 1980');
-        expect(() => request.since(date)).toThrowError(new DateOlderThanOneDay(date));
+        expect(() => request.since(date)).toThrow(new DateOlderThanOneDay(date));
     });
 
     it('Throws on trying to add a range', () => {
-        expect(() => request.addRange(new Date(), new Date())).toThrowError(
+        expect(() => request.addRange(new Date(), new Date())).toThrow(
             new Error('For GetContentPublishingLimitRequest, use "since(date)" instead.')
         );
-        expect(() => request.withRange(new Date(), new Date())).toThrowError(
+        expect(() => request.withRange(new Date(), new Date())).toThrow(
             new Error('For GetContentPublishingLimitRequest, use "since(date)" instead.')
         );
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.PAGE_ID}/content_publishing_limit`).reply(200, {
-        data: [TestConstants.CONTENT_PUBLISHING_LIMIT_DATA],
-    });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(
+        JSON.stringify({
+            data: [TestConstants.CONTENT_PUBLISHING_LIMIT_DATA],
+        })
+    );
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(
-                new GetContentPublishingLimitResponse(TestConstants.CONTENT_PUBLISHING_LIMIT_DATA)
-            );
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new GetContentPublishingLimitResponse(TestConstants.CONTENT_PUBLISHING_LIMIT_DATA));
     });
 });

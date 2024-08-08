@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { CommentField } from '../../../../main/Enums';
 import { GetMediaCommentsRequest } from '../../../../main/requests/media/comments/GetMediaCommentsRequest';
 import { GetObjectCommentsResponse } from '../../../../main/requests/common/GetObjectCommentsResponse';
@@ -25,14 +23,14 @@ describe('GetMediaCommentsRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Object.values(CommentField).join(','));
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.MEDIA_ID}/comments`).reply(200, {
-        data: TestConstants.COMMENTS_DATA,
-    });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(
+        JSON.stringify({
+            data: TestConstants.COMMENTS_DATA,
+        })
+    );
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(new GetObjectCommentsResponse({ data: TestConstants.COMMENTS_DATA }));
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new GetObjectCommentsResponse({ data: TestConstants.COMMENTS_DATA }));
     });
 });

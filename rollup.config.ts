@@ -5,7 +5,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import typescript from 'rollup-plugin-typescript2';
 import { terser } from 'rollup-plugin-terser';
 
-const packageJson = require('./package.json');
+import packageJson from './package.json';
 
 export default {
     input: 'src/Index.ts',
@@ -14,7 +14,6 @@ export default {
         format: 'cjs',
         sourcemap: process.env.NODE_ENV === 'dev' ? true : false,
     },
-    external: ['axios'],
     plugins: [
         peerDepsExternal(),
         resolve(),

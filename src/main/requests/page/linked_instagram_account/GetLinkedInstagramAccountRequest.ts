@@ -1,6 +1,6 @@
-import { AxiosResponse } from 'axios';
 import { AbstractRequest } from '../../AbstractRequest';
 import { GetLinkedInstagramAccountResponse } from './GetLinkedInstagramAccountResponse';
+import { LinkedInstagramAccountData } from '../../data/LinkedInstagramAccountData';
 
 /**
  * A Get request to obtain instagram_business_account information related with
@@ -33,8 +33,8 @@ export class GetLinkedInstagramAccountRequest extends AbstractRequest<GetLinkedI
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetLinkedInstagramAccountResponse {
-        return new GetLinkedInstagramAccountResponse(response.data);
+    protected parseResponse(response: LinkedInstagramAccountData): GetLinkedInstagramAccountResponse {
+        return new GetLinkedInstagramAccountResponse(response);
     }
 
     /**

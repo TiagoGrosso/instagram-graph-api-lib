@@ -1,7 +1,8 @@
-import { AxiosResponse } from 'axios';
 import { MediaField } from '../../../Enums';
 import { AbstractGetMediaRequest } from '../../AbstractGetMediaRequest';
 import { GetPageMediaResponse } from './GetPageMediaResponse';
+import { MediaData } from '../../data/MediaData';
+import { PagingData } from '../../data/Paging';
 
 /**
  * A request that gets information about the media of a page.
@@ -37,7 +38,7 @@ export class GetPageMediaRequest extends AbstractGetMediaRequest<GetPageMediaRes
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetPageMediaResponse {
-        return new GetPageMediaResponse(response.data);
+    protected parseResponse(response: { data: MediaData[]; paging: PagingData }): GetPageMediaResponse {
+        return new GetPageMediaResponse(response);
     }
 }

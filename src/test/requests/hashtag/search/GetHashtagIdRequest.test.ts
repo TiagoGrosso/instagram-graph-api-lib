@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { GetHashtagIdRequest } from '../../../../main/requests/hashtag/search/GetHashtagIdRequest';
 import { GetHashtagIdResponse } from '../../../../main/requests/hashtag/search/GetHashtagIdResponse';
 import { TestConstants } from '../../../TestConstants';
@@ -15,12 +13,10 @@ describe('GetHashtagIdRequest', () => {
         expect(request.config().url).toEqual('/ig_hashtag_search');
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/ig_hashtag_search`).reply(200, { data: [{ id: TestConstants.HASHTAG_ID }] });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(JSON.stringify({ data: [{ id: TestConstants.HASHTAG_ID }] }));
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(new GetHashtagIdResponse({ data: [{ id: TestConstants.HASHTAG_ID }] }));
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new GetHashtagIdResponse({ data: [{ id: TestConstants.HASHTAG_ID }] }));
     });
 });

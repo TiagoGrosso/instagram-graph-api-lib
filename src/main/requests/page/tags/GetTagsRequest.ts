@@ -1,6 +1,6 @@
-import { AxiosResponse } from 'axios';
 import { MediaField, PublicMediaField } from '../../../Enums';
 import { AbstractGetMediaRequest } from '../../AbstractGetMediaRequest';
+import { MediaData } from '../../data/MediaData';
 import { GetTagsResponse } from './GetTagsResponse';
 
 /**
@@ -42,7 +42,7 @@ export class GetTagsRequest extends AbstractGetMediaRequest<GetTagsResponse> {
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetTagsResponse {
-        return new GetTagsResponse(response.data);
+    protected parseResponse(request: { data: MediaData[] }): GetTagsResponse {
+        return new GetTagsResponse(request);
     }
 }

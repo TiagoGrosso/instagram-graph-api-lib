@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { AbstractRequest } from '../../AbstractRequest';
 import { GetHashtagIdResponse } from './GetHashtagIdResponse';
 
@@ -25,8 +24,8 @@ export class GetHashtagIdRequest extends AbstractRequest<GetHashtagIdResponse> {
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetHashtagIdResponse {
-        return new GetHashtagIdResponse(response.data);
+    protected parseResponse(response: { data: { id: string }[] }): GetHashtagIdResponse {
+        return new GetHashtagIdResponse(response);
     }
 
     /**

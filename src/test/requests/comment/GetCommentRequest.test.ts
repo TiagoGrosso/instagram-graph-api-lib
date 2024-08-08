@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { CommentField } from '../../../main/Enums';
 import { GetCommentRequest } from '../../../main/requests/comment/GetCommentRequest';
 import { GetCommentResponse } from '../../../main/requests/comment/GetCommentResponse';
@@ -25,12 +23,10 @@ describe('GetCommentRequest', () => {
         expect(requestAllFields.config().params.fields).toEqual(Object.values(CommentField).join(','));
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.COMMENT_ID}`).reply(200, TestConstants.COMMENTS_DATA[1]);
-    it('Parses the response', () => {
+    fetchMock.mockOnce(JSON.stringify(TestConstants.COMMENTS_DATA[1]));
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(new GetCommentResponse(TestConstants.COMMENTS_DATA[1]));
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new GetCommentResponse(TestConstants.COMMENTS_DATA[1]));
     });
 });

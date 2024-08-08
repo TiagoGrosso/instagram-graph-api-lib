@@ -1,7 +1,7 @@
-import { AxiosResponse } from 'axios';
 import { MediaField, PublicMediaField } from '../../../Enums';
 import { AbstractGetMediaRequest } from '../../AbstractGetMediaRequest';
 import { GetMediaInfoResponse } from './GetMediaInfoResponse';
+import { MediaData } from '../../data/MediaData';
 
 /**
  * A request that gets information about a media object.
@@ -41,7 +41,7 @@ export class GetMediaInfoRequest extends AbstractGetMediaRequest<GetMediaInfoRes
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetMediaInfoResponse {
-        return new GetMediaInfoResponse(response.data);
+    protected parseResponse(response: MediaData): GetMediaInfoResponse {
+        return new GetMediaInfoResponse(response);
     }
 }

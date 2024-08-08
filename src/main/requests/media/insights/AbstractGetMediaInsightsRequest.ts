@@ -1,7 +1,7 @@
-import { AxiosResponse } from 'axios';
 import { AlbumMetric, SimplePostMetric, StoryMetric } from '../../../Enums';
 import { AbstractRequest } from '../../AbstractRequest';
 import { GetMediaInsightsResponse } from './GetMediaInsightsResponse';
+import { BasicInsightsMetricData, MetricValue } from '../../data/insights/BasicInsightsMetricData';
 
 /**
  * An abstract class to represent request that gets insights about a media object.
@@ -42,7 +42,9 @@ export abstract class AbstractGetMediaInsightsRequest<
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetMediaInsightsResponse {
-        return new GetMediaInsightsResponse(response.data);
+    protected parseResponse(response: {
+        data: BasicInsightsMetricData<MetricValue<number>[]>[];
+    }): GetMediaInsightsResponse {
+        return new GetMediaInsightsResponse(response);
     }
 }

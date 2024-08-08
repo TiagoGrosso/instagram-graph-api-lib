@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { ContainerField } from '../../Enums';
 import { AbstractRequest } from '../AbstractRequest';
 import { ContainerData } from '../data/ContainerData';
@@ -33,8 +32,8 @@ export class GetContainerRequest extends AbstractRequest<GetContainerResponse> {
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<ContainerData>): GetContainerResponse {
-        return new GetContainerResponse(response.data);
+    protected parseResponse(response: ContainerData): GetContainerResponse {
+        return new GetContainerResponse(response);
     }
 
     /**

@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { AbstractRequest } from '../../AbstractRequest';
 import { ManyIdsResponse } from '../../common/ManyIdsResponse';
 import { PagingData } from '../../data/Paging';
@@ -29,8 +28,8 @@ export class GetPageStoriesRequest extends AbstractRequest<ManyIdsResponse> {
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<{ data: { id: string }[]; paging: PagingData }>): ManyIdsResponse {
-        return new ManyIdsResponse({ data: response.data.data, paging: response.data.paging });
+    protected parseResponse(response: { data: { id: string }[]; paging: PagingData }): ManyIdsResponse {
+        return new ManyIdsResponse({ data: response.data, paging: response.paging });
     }
 
     /**

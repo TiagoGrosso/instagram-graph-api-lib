@@ -1,5 +1,5 @@
-import { AxiosResponse } from 'axios';
 import { AbstractRequest } from '../../AbstractRequest';
+import { AuthorizedFacebookPagesData } from '../../data/AuthorizedFacebookPagesData';
 import { GetAuthorizedFacebookPagesResponse } from './GetAuthorizedFacebookPagesResponse';
 
 /**
@@ -22,8 +22,8 @@ export class GetAuthorizedFacebookPagesRequest extends AbstractRequest<GetAuthor
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetAuthorizedFacebookPagesResponse {
-        return new GetAuthorizedFacebookPagesResponse(response.data);
+    protected parseResponse(response: AuthorizedFacebookPagesData): GetAuthorizedFacebookPagesResponse {
+        return new GetAuthorizedFacebookPagesResponse(response);
     }
 
     /**

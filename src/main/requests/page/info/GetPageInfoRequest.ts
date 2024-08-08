@@ -1,7 +1,7 @@
-import { AxiosResponse } from 'axios';
 import { GetPageInfoResponse } from './GetPageInfoResponse';
 import { AbstractRequest } from '../../AbstractRequest';
 import { PageField } from '../../../Enums';
+import { PageInfoData } from '../../data/PageInfoData';
 
 /**
  * A request that gets information about a page.
@@ -32,8 +32,8 @@ export class GetPageInfoRequest extends AbstractRequest<GetPageInfoResponse> {
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetPageInfoResponse {
-        return new GetPageInfoResponse(response.data);
+    protected parseResponse(response: PageInfoData): GetPageInfoResponse {
+        return new GetPageInfoResponse(response);
     }
 
     /**

@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { ContentPublishingLimitFields } from '../../../Enums';
 import { AbstractRequest } from '../../AbstractRequest';
 import { ContentPublishingLimitData } from '../../data/ContentPublishingLimitData';
@@ -34,10 +33,8 @@ export class GetContentPublishingLimitRequest extends AbstractRequest<GetContent
     /**
      * @inheritdoc
      */
-    protected parseResponse(
-        response: AxiosResponse<{ data: ContentPublishingLimitData[] }>
-    ): GetContentPublishingLimitResponse {
-        return new GetContentPublishingLimitResponse(response.data.data[0]);
+    protected parseResponse(response: { data: ContentPublishingLimitData[] }): GetContentPublishingLimitResponse {
+        return new GetContentPublishingLimitResponse(response.data[0]);
     }
 
     /**

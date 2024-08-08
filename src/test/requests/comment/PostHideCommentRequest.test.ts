@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { CommentUpdateResponse } from '../../../main/requests/comment/CommentUpdateResponse';
 import { PostHideCommentRequest } from '../../../main/requests/comment/PostHideCommentRequest';
 import { TestConstants } from '../../TestConstants';
@@ -23,12 +21,10 @@ describe('PostHideCommentRequest', () => {
         expect(requestExplicit.config().params.hide).toEqual(false);
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onPost(`${Constants.API_URL}/${TestConstants.COMMENT_ID}`).reply(200, { success: true });
-    it('Parses the response', () => {
+    fetchMock.mockOnce(JSON.stringify({ success: true }));
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return requestDefault.execute().then((response) => {
-            expect(response).toEqual(new CommentUpdateResponse({ success: true }));
-        });
+        const response = await requestDefault.execute();
+        expect(response).toEqual(new CommentUpdateResponse({ success: true }));
     });
 });

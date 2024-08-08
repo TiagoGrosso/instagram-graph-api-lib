@@ -63,4 +63,9 @@ describe('GetCommentResponse', () => {
         expect(bareResponse.getFrom()).toBeUndefined();
         expect(response.getFrom()).toEqual(TestConstants.COMMENTS_DATA[1].from);
     });
+
+    it('Gets the "parent_id" object', () => {
+        expect(bareResponse.getParentId()).toBeUndefined();
+        expect(response.getParentId()).toEqual(TestConstants.COMMENTS_DATA[1].parent_id);
+    });
 });

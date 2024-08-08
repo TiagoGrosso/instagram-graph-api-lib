@@ -1,6 +1,6 @@
-import { AxiosResponse } from 'axios';
 import { AbstractRequest } from '../../AbstractRequest';
 import { GetInstagramAccountInfoResponse } from './GetInstagramAccountInfoResponse';
+import { InstagramAccountInfoData } from '../../data/InstagramAccountInfoData';
 
 /**
  * A Get request to obtain information about an Instagram account.
@@ -29,8 +29,8 @@ export class GetInstagramAccountInfoRequest extends AbstractRequest<GetInstagram
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetInstagramAccountInfoResponse {
-        return new GetInstagramAccountInfoResponse(response.data);
+    protected parseResponse(response: InstagramAccountInfoData): GetInstagramAccountInfoResponse {
+        return new GetInstagramAccountInfoResponse(response);
     }
 
     /**

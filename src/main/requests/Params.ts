@@ -44,3 +44,15 @@ export interface Params {
     creation_id?: string;
     share_to_feed?: boolean;
 }
+
+export function paramsToURLSearchParams(params: Params): URLSearchParams {
+    const urlParams = new URLSearchParams();
+
+    Object.entries(params).forEach(([key, value]) => {
+        if (value) {
+            urlParams.set(key, value.toString());
+        }
+    });
+
+    return urlParams;
+}

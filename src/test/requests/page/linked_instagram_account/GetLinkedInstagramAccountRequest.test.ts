@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { GetLinkedInstagramAccountRequest } from '../../../../main/requests/page/linked_instagram_account/GetLinkedInstagramAccountRequest';
 import { GetLinkedInstagramAccountResponse } from '../../../../main/requests/page/linked_instagram_account/GetLinkedInstagramAccountResponse';
 import { TestConstants } from '../../../TestConstants';
@@ -16,12 +14,10 @@ describe('GetLinkedInstagramAccountRequest', () => {
         expect(request.config().url).toEqual(`/${TestConstants.PAGE_ID}`);
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}/${TestConstants.PAGE_ID}`).reply(200, TestConstants.LINKED_INSTAGRAM_ACCOUNT);
-    it('Parses the response', () => {
+    fetchMock.mockOnce(JSON.stringify(TestConstants.LINKED_INSTAGRAM_ACCOUNT));
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(new GetLinkedInstagramAccountResponse(TestConstants.LINKED_INSTAGRAM_ACCOUNT));
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new GetLinkedInstagramAccountResponse(TestConstants.LINKED_INSTAGRAM_ACCOUNT));
     });
 });

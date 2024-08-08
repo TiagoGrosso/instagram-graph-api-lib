@@ -1,6 +1,4 @@
-import axios from 'axios';
-import MockAdapter from 'axios-mock-adapter';
-import { Constants } from '../../../../main/Constants';
+import fetchMock from 'jest-fetch-mock';
 import { GetUserLongLivedTokenRequest } from '../../../../main/requests/page/user_long_lived_token/GetUserLongLivedTokenRequest';
 import { GetUserLongLivedTokenResponse } from '../../../../main/requests/page/user_long_lived_token/GetUserLongLivedTokenResponse';
 import { TestConstants } from '../../../TestConstants';
@@ -26,12 +24,10 @@ describe('GetUserLongLivedTokenRequest', () => {
         expect(request.config().url).toEqual(buildUrl());
     });
 
-    const mock = new MockAdapter(axios);
-    mock.onGet(`${Constants.API_URL}${buildUrl()}`).reply(200, TestConstants.USER_LONG_LIVED_TOKEN_DATA);
-    it('Parses the response', () => {
+    fetchMock.mockOnce(JSON.stringify(TestConstants.USER_LONG_LIVED_TOKEN_DATA));
+    it('Parses the response', async () => {
         expect.assertions(1);
-        return request.execute().then((response) => {
-            expect(response).toEqual(new GetUserLongLivedTokenResponse(TestConstants.USER_LONG_LIVED_TOKEN_DATA));
-        });
+        const response = await request.execute();
+        expect(response).toEqual(new GetUserLongLivedTokenResponse(TestConstants.USER_LONG_LIVED_TOKEN_DATA));
     });
 });

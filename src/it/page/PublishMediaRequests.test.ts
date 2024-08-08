@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios';
 import retry from 'retry';
 import { MediaProductType, MediaTypeInResponses } from '../../main/Enums';
 import { CONTAINER_STATUS_CODE } from '../../main/requests/data/ContainerData';
@@ -146,9 +145,8 @@ async function createContainerAndWaitToBeReady(req: AbstractPostPageMediaRequest
         }
         return containerId;
     } catch (e) {
-        const error = e as AxiosError;
-        console.error(error.response?.data);
-        throw new Error(error.message);
+        console.error(e);
+        throw e;
     }
 }
 

@@ -1,6 +1,6 @@
-import { AxiosResponse } from 'axios';
 import { AbstractRequest } from '../../AbstractRequest';
 import { GetUserLongLivedTokenResponse } from './GetUserLongLivedTokenResponse';
+import { UserLongLivedTokenData } from '../../data/UserLongLivedTokenData';
 
 /**
  *  When requesting a long-lived access token on behalf of the user that is
@@ -46,8 +46,8 @@ export class GetUserLongLivedTokenRequest extends AbstractRequest<GetUserLongLiv
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): GetUserLongLivedTokenResponse {
-        return new GetUserLongLivedTokenResponse(response.data);
+    protected parseResponse(response: UserLongLivedTokenData): GetUserLongLivedTokenResponse {
+        return new GetUserLongLivedTokenResponse(response);
     }
 
     /**

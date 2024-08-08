@@ -1,4 +1,3 @@
-import { AxiosResponse } from 'axios';
 import { Method } from '../RequestConfig';
 import { AbstractCommentRequest } from './AbstractCommentRequest';
 import { CommentUpdateResponse } from './CommentUpdateResponse';
@@ -13,8 +12,8 @@ export class DeleteCommentRequest extends AbstractCommentRequest<CommentUpdateRe
     /**
      * @inheritdoc
      */
-    protected parseResponse(response: AxiosResponse<never>): CommentUpdateResponse {
-        return new CommentUpdateResponse(response.data);
+    protected parseResponse(response: { success: boolean }): CommentUpdateResponse {
+        return new CommentUpdateResponse(response);
     }
 
     /**
