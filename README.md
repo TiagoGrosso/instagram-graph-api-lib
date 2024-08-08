@@ -20,7 +20,7 @@ This lib is now dependency free 🎉
 
 Axios has been removed as a dependency. `execute()` and `config()` methods still work exactly the same on the outside.
 
-Error handling using `AxiosError` is essentially the major change.
+Error handling using `AxiosError` no longer being possible is essentially the major change.
 
 ## Installation
 
@@ -66,7 +66,7 @@ After you build your request object, you can do one of two things:
 
 #### Built-in execute() method
 
-You can execute the request with the built in method that returns a parsed response. This will use [Axios](https://www.npmjs.com/package/axios).
+You can execute the request with the built in method that returns a parsed response. This will use the native Node `fetch`.
 
 ```typescript
 import { GetPageInfoRequest, GetPageInfoResponse } from 'instagram-graph-api';
