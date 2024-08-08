@@ -78,43 +78,6 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
      *
      * @param pageOptionToken the page option token to create the param.
      *
-     * @deprecated since 1.7.0, use {@link AbstractRequest#withPaging} instead.
-     */
-    public addPaging(pageOptionToken: PageOptionToken): void {
-        this.params.before = undefined;
-        this.params.after = undefined;
-        this.params[pageOptionToken.option] = pageOptionToken.value;
-    }
-
-    /**
-     * Adds the range params to the request.
-     *
-     * @param since the since param.
-     * @param until the until param.
-     *
-     * @deprecated since 1.7.0, use {@link AbstractRequest#withRange} instead.
-     */
-    public addRange(since: Date, until: Date): void {
-        this.params.since = since;
-        this.params.until = until;
-    }
-
-    /**
-     * Adds the limit param to the request.
-     *
-     * @param limit the number of objects to retrieve.
-     *
-     * @deprecated since 1.7.0, use {@link AbstractRequest#withLimit} instead.
-     */
-    public addLimit(limit: number): void {
-        this.params.limit = limit;
-    }
-
-    /**
-     * Adds a paging param to the request.
-     *
-     * @param pageOptionToken the page option token to create the param.
-     *
      * @returns this request, for use in chain invocation.
      */
     public withPaging(pageOptionToken: PageOptionToken): this {
