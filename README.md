@@ -101,7 +101,7 @@ Publishing Media through the Instagram Graph API, and conversely through this li
     - ~~For videos use `PostPageVideoMediaRequest`.~~ Instagram has removed the ability to publish normal/legacy videos through their API. Videos are now always reels.
     - For reels use `PostPageReelMediaRequest`.
     - For carousels check the [Publishing Carousels section below](#publishing-carousels).
-    - For Story videos use `PostPageStoryPhotoMediaRequest`
+    - For Story photos use `PostPageStoryPhotoMediaRequest`
     - For Story videos use `PostPageStoryVideoMediaRequest`
 2. Wait for the IG Container status to move to `FINISHED` (check the status through the `GetContainerRequest`).
 3. Publish the IG Container (through the `PostPublishMediaRequest`).
