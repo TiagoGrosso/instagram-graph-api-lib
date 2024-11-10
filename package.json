@@ -32,7 +32,7 @@
         "@commitlint/prompt-cli": "^19.3.1",
         "@eslint/eslintrc": "^3.1.0",
         "@eslint/js": "^9.9.0",
-        "@rollup/plugin-commonjs": "^26.0.1",
+        "@rollup/plugin-commonjs": "^28.0.1",
         "@rollup/plugin-json": "^6.0.0",
         "@rollup/plugin-node-resolve": "^15.0.1",
         "@semantic-release/changelog": "^6.0.3",
@@ -60,7 +60,7 @@
         "ts-node": "^10.9.1",
         "typedoc": "^0.26.3",
         "typescript": "^5.5.3",
-        "uuid": "^10.0.0"
+        "uuid": "^11.0.2"
     },
     "directories": {
         "test": "test"
