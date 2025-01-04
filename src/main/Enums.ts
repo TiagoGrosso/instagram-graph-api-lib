@@ -16,11 +16,6 @@ export enum PageField {
     ID = 'id',
 
     /**
-     * The instagram of the page.
-     */
-    IG_ID = 'ig_id',
-
-    /**
      * The number of followers of the page.
      */
     FOLLOWERS_COUNT = 'followers_count',
@@ -248,11 +243,6 @@ export enum PublicMediaField {
  * @since 1.0.0
  */
 export enum PrivateMediaField {
-    /**
-     * The Instagram id of the media object.
-     */
-    IG_ID = 'ig_id',
-
     /**
      * Whether comments are enabled on the media object.
      */
@@ -615,9 +605,24 @@ export enum ApiVersion {
     V18_0 = 'v18.0',
 
     /**
+     * {@link https://developers.facebook.com/docs/graph-api/changelog/version19.0}
+     */
+    V19_0 = 'v19.0',
+
+    /**
+     * {@link https://developers.facebook.com/docs/graph-api/changelog/version20.0}
+     */
+    V20_0 = 'v20.0',
+
+    /**
+     * {@link https://developers.facebook.com/docs/graph-api/changelog/version21.0}
+     */
+    V21_0 = 'v21.0',
+
+    /**
      * The latest API Version available.
      */
-    LATEST = V18_0,
+    LATEST = V21_0,
 }
 
 /**

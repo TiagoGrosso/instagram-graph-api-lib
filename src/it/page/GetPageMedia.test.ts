@@ -1,4 +1,4 @@
-import { getClient, getPageId } from '../TestEnv';
+import { getClient, getRetrievedPageId } from '../TestEnv';
 import { PrivateMediaField, PublicMediaField } from '../../main/Enums';
 import { MediaData } from '../../main/requests/data/MediaData';
 
@@ -18,7 +18,9 @@ describe('GetPageMedia', () => {
                         PublicMediaField.VIDEO_TITLE, // No longer returned
                     ].includes(field)
             )
-            .forEach((field) => expect(firstMedia[field]).toBeDefined());
+            .forEach((field) => {
+                expect(firstMedia[field]).toBeDefined();
+            });
         Object.values(PrivateMediaField)
             .filter(
                 (field) =>
@@ -27,9 +29,13 @@ describe('GetPageMedia', () => {
                     ].includes(field)
             )
             .forEach((field) => {
+                if (!firstMedia[field]) {
+                    console.error(field);
+                }
                 expect(firstMedia[field]).toBeDefined();
             });
-        result.getMediaOwnerIds().forEach((id) => expect(id).toEqual(getPageId()));
+        console.log(result.getMediaOwnerIds());
+        result.getMediaOwnerIds().forEach((id) => expect(id).toEqual(getRetrievedPageId()));
     });
 
     Object.values(PublicMediaField)
