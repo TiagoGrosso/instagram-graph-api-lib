@@ -3,7 +3,7 @@ import { MediaProductType, MediaTypeInResponses } from '../../main/Enums';
 import { CONTAINER_STATUS_CODE } from '../../main/requests/data/ContainerData';
 import { MediaData } from '../../main/requests/data/MediaData';
 import { AbstractPostPageMediaRequest } from '../../main/requests/page/media/AbstractPostPageMediaRequest';
-import { getClient, getPageId, getRandomPhoto, getRandomVideo, Media } from '../TestEnv';
+import { getClient, getRandomPhoto, getRandomVideo, getRetrievedPageId, Media } from '../TestEnv';
 
 const VIDEO_MEDIA_PUBLISH_TIMEOUT: number = 5 * 60 * 1000;
 
@@ -41,7 +41,7 @@ describe('PublishMedia', () => {
 
         expect(response.getId()).toEqual(mediaId);
         expect(response.getCaption()).toEqual(carouselCaption);
-        expect(response.getOwnerId()).toEqual(getPageId());
+        expect(response.getOwnerId()).toEqual(getRetrievedPageId());
         expect(response.getMediaType()).toEqual(MediaTypeInResponses.CAROUSEL);
         expect(response.getMediaProductType()).toEqual(MediaProductType.FEED);
     });
@@ -62,7 +62,7 @@ describe('PublishMedia', () => {
 
             expect(response.getId()).toEqual(mediaId);
             expect(response.getCaption()).toEqual(media.caption);
-            expect(response.getOwnerId()).toEqual(getPageId());
+            expect(response.getOwnerId()).toEqual(getRetrievedPageId());
             expect(response.getMediaType()).toEqual(MediaTypeInResponses.VIDEO);
             expect(response.getMediaProductType()).toEqual(MediaProductType.REEL);
         },
@@ -80,7 +80,7 @@ describe('PublishMedia', () => {
         const response = await getMediaRequest.execute();
 
         expect(response.getId()).toEqual(mediaId);
-        expect(response.getOwnerId()).toEqual(getPageId());
+        expect(response.getOwnerId()).toEqual(getRetrievedPageId());
         expect(response.getMediaType()).toEqual(MediaTypeInResponses.IMAGE);
         expect(response.getMediaProductType()).toEqual(MediaProductType.STORY);
     });
@@ -98,7 +98,7 @@ describe('PublishMedia', () => {
             const response = await getMediaRequest.execute();
 
             expect(response.getId()).toEqual(mediaId);
-            expect(response.getOwnerId()).toEqual(getPageId());
+            expect(response.getOwnerId()).toEqual(getRetrievedPageId());
             expect(response.getMediaType()).toEqual(MediaTypeInResponses.VIDEO);
             expect(response.getMediaProductType()).toEqual(MediaProductType.STORY);
         },
@@ -157,7 +157,7 @@ async function publishMedia(containerId: string): Promise<string> {
 
 function assertMedia(actual: MediaData, compareTo: Media) {
     expect(actual.caption).toEqual(compareTo.caption);
-    expect(actual.owner?.id).toEqual(getPageId());
+    expect(actual.owner?.id).toEqual(getRetrievedPageId());
     expect(actual.media_type).toEqual(compareTo.type);
     expect(actual.media_product_type).toEqual(MediaProductType.FEED);
 }
