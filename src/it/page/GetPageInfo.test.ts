@@ -1,12 +1,15 @@
-import { getClient, getPageId } from '../TestEnv';
+import { getClient, getRetrievedPageId } from '../TestEnv';
 import { PageField } from '../../main/Enums';
 
 describe('GetPageInfo', () => {
     it('Gets the page info with all fields', async () => {
         const request = getClient().newGetPageInfoRequest();
         const result = await request.execute();
-        Object.values(PageField).forEach((field) => expect(result.getData()[field]).toBeDefined());
-        expect(result.getId()).toEqual(getPageId());
+        Object.values(PageField).forEach((field) => {
+            console.log(`${field}: ${result.getData()[field]} `);
+            expect(result.getData()[field]).toBeDefined();
+        });
+        expect(result.getId()).toEqual(getRetrievedPageId());
     });
 
     const fields = Object.values(PageField).filter((field) => field != PageField.ID);
@@ -23,7 +26,7 @@ describe('GetPageInfo', () => {
             )
             .forEach((expectedField) => expect(result.getData()[expectedField]).toBeUndefined());
 
-        expect(result.getId()).toEqual(getPageId());
+        expect(result.getId()).toEqual(getRetrievedPageId());
         expect(result.getData()[field]).toBeDefined();
     });
 });
