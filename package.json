@@ -58,7 +58,7 @@
         "rollup-plugin-typescript2": "^0.36.0",
         "ts-jest": "^29.1.4",
         "ts-node": "^10.9.1",
-        "typedoc": "^0.27.2",
+        "typedoc": "^0.28.0",
         "typescript": "^5.5.3",
         "uuid": "^11.0.2"
     },
