@@ -12,13 +12,23 @@ export function getPageId(): string {
 }
 
 /**
+ * Gets the page ID that is retrieved from IG objects
+ */
+export function getRetrievedPageId(): string {
+    return process.env.RETRIEVED_PAGE_ID ?? '';
+}
+
+/**
  * Gets the page access token.
  */
 export function getPageAccessToken(): string {
     return process.env.PAGE_ACCESS_TOKEN ?? '';
 }
 
-const client = new Client(getPageAccessToken(), getPageId(), ApiVersion.LATEST);
+const client = new Client(getPageAccessToken(), getPageId(), {
+    apiVersion: ApiVersion.LATEST,
+    usingInstagramLogin: true,
+});
 
 /**
  * Gets the client to create requests.
@@ -88,9 +98,10 @@ export async function getPublishedMedia(): Promise<string> {
 let publishedComment: string | undefined;
 export async function getPublishedComment(): Promise<string> {
     const media = await getPublishedMedia();
+    console.log(media); // 18049050430990685
     if (!publishedComment) {
         const ids = await getClient()
-            .newGetMediaCommentsRequest(media, CommentField.ID)
+            .newGetMediaCommentsRequest(media)
             .execute()
             .then((res) => res.getIds());
         if (ids.length === 0) {

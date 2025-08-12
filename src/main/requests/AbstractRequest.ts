@@ -29,6 +29,11 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
     protected apiVersion?: ApiVersion;
 
     /**
+     * Whether to use instagram login;
+     */
+    protected usingInstaLogin: boolean;
+
+    /**
      * The constructor.
      *
      * @param accessToken the access token.
@@ -39,6 +44,7 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
             access_token: accessToken,
         };
         this.apiVersion = apiVersion;
+        this.usingInstaLogin = false;
     }
 
     /**
@@ -51,7 +57,7 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
             params: this.params,
             method: this.method(),
             url: this.url(),
-            baseURL: `${Constants.API_URL}/${this.apiVersion ?? ''}`,
+            baseURL: `${this.baseUrl()}/${this.apiVersion ?? ''}`,
         };
     }
 
@@ -70,6 +76,9 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
 
         const response = await fetch(request);
         const parsed = await response.json();
+
+        console.log(parsed);
+
         return this.parseResponse(parsed);
     }
 
@@ -126,6 +135,18 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
     }
 
     /**
+     * Sets whether the request should be made using the Instagram Login
+     *
+     * @param usingInstaLogin whether to use Instagram Login
+     *
+     * @returns this request, for use in chain invocation.
+     */
+    public withUsingInstaLogin(usingInstaLogin: boolean): this {
+        this.usingInstaLogin = usingInstaLogin;
+        return this;
+    }
+
+    /**
      * Parses the response into a response object.
      *
      * @param response the parsed response.
@@ -146,5 +167,14 @@ export abstract class AbstractRequest<R extends AbstractResponse<unknown>> {
      */
     protected method(): Method {
         return 'GET';
+    }
+
+    /**
+     * Gets the base URL for the request (insta or facebook)
+     *
+     * @returns the base URL for the request (insta or facebook)
+     */
+    protected baseUrl(): string {
+        return this.usingInstaLogin ? Constants.API_URL_INSTA : Constants.API_URL_FB;
     }
 }
