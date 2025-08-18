@@ -9,7 +9,7 @@ jobs:
     test:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v5
             - uses: actions/setup-node@v4
               with:
                   node-version: '20'
@@ -24,7 +24,7 @@ jobs:
     check-format:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v5
             - uses: actions/setup-node@v4
               with:
                   node-version: '20'
@@ -37,7 +37,7 @@ jobs:
     lint:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v5
             - uses: actions/setup-node@v4
               with:
                   node-version: '20'
@@ -54,7 +54,7 @@ jobs:
             PAGE_ACCESS_TOKEN: ${{ secrets.PAGE_ACCESS_TOKEN }}
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v5
             - uses: actions/setup-node@v4
               with:
                   node-version: '20'
@@ -72,7 +72,7 @@ jobs:
             - integration-tests
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v4
+            - uses: actions/checkout@v5
               with:
                 persist-credentials: false
             - uses: actions/setup-node@v4 #d Require because of Husky hooks
